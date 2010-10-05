@@ -7,6 +7,11 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<ul class="user_nav">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+</ul>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 

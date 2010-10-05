@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def title
-    base_title = "ffflourish"  # Variable assignment
+    base_title = "ffflourish"                         # Variable assignment
     if @title.nil?                                    # Boolean test for nil
       base_title                                      # Implicit return
     else

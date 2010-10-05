@@ -1,6 +1,13 @@
 Ffflourish::Application.routes.draw do
   devise_for :users
-
+  
+  resources :users, :only => :show
+  
+  match '/about',     :to => 'pages#about'
+  match '/tour',      :to => 'pages#tour'
+  match '/terms',     :to => 'pages#terms'
+  match '/contact',   :to => 'pages#contact'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

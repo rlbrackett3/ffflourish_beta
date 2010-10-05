@@ -8,7 +8,16 @@ gem 'rails', '3.0.0'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'heroku'
 gem 'will_paginate', '3.0.pre2'
-gem 'devise'
+gem 'devise', '1.1.3' 
+gem 'mongoid', '2.0.0.beta.19'
+gem 'bson_ext', '1.1'
+
+# For HAML support
+gem 'haml', '3.0.18'
+gem 'haml-rails', '0.2', :group => :development
+ # the folowing gems are used to generate Devise views for Haml
+gem 'hpricot', '0.8.2', :group => :development
+gem 'ruby_parser', '2.0.5', :group => :development
 
 group :development do
   gem 'rspec-rails', '2.0.0.beta.22'
@@ -18,6 +27,7 @@ end
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'
+  gem 'mongoid-rspec', '1.2.1'
   #gem 'capybara'
   gem 'webrat'
   gem 'autotest'
