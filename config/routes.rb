@@ -1,7 +1,13 @@
 Ffflourish::Application.routes.draw do
   devise_for :users
   
-  resources :users, :only => :show
+  devise_scope :user do
+    get "/signin"   => "devise/sessions#new"
+    get "/signout"  => "devise/sessions#destroy"
+    get "/signup"   => "devise/registrations#new"
+  end
+  
+  resources :users, :only => [ :show, :index ]
   
   match '/about',     :to => 'pages#about'
   match '/tour',      :to => 'pages#tour'
