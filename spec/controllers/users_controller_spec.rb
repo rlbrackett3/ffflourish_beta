@@ -1,36 +1,51 @@
 require 'spec_helper'
 
-
 describe UsersController do
   include Devise::TestHelpers
   render_views
-#------------------------------------------------#
-  describe "GET 'index'" do
-    
-  end
+  
 #------------------------------------------------#
   describe "GET 'show'" do
+  #------------------------------------------------#
+    describe "for non-signed-in users" do
+      
+      before(:each) do
+        @user = Factory(:user)
+      end
+      
+      it "should deny access" do
+        get :show, :id => @user
+        response.should redirect_to(new_user_session_path)
+        flash[:alert].should =~ /sign in/
+      end
+      
+    end
+  #------------------------------------------------#
+    describe "for signed-in-users" do
+      
+      before(:each) do
+        @user = Factory(:user)
+        sign_in @user
+      end
+      
+      it "should be successful" do
+        get :show, :id => @user
+        response.should be_success
+      end
     
-  end
-#------------------------------------------------#
-  describe "GET 'new'" do
-    # Handled by Devise
-  end
-#------------------------------------------------#
-  describe "POST 'create'" do
-    # Handled by Devise
-  end
-#------------------------------------------------#
-  describe "GET 'edit'" do
-    # Handled by Devise
-  end
-#------------------------------------------------#
-  describe "POST 'update'" do
-    # Handled by Devise
-  end
-#------------------------------------------------#
-  describe "DELETE 'destroy'" do
-    
+      it "should find the correct user" do
+        get :show,  :id => @user
+        assigns(:user).should == @user
+      end
+      
+      it "should have the correct title" do
+        get :show,  :id => @user
+        response.should have_selector("title", 
+                    :content => @user.full_name)
+      end
+      
+    end
+  
   end
 #------------------------------------------------#
 end

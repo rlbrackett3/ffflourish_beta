@@ -1,0 +1,6 @@
+%p.field
+  = f.label       :title
+  = f.text_field  :title
+%p.field
+  = fields_for :values do |val|
+    = render 'value', :f => val

@@ -1,0 +1,16 @@
+%header
+  %nav.user_nav
+    %table
+      %tr
+        %td= link_to "Home", root_path
+        - if user_signed_in?
+          %td= link_to "Profile", profile_path(@user)
+          %td= link_to "Settings", edit_user_registration_path(current_user)
+        -else
+          %td= link_to "Take the Tour", tour_path
+        - if user_signed_in?
+          %td= link_to "Sign out", signout_path, :method => :delete
+        - else
+          %td= link_to "Sign in", signin_path
+        /= render 'devise/menu/registration_items'
+

@@ -4,11 +4,12 @@ describe User do
 #------------------------------------------------#
   # Defines a sample user with the following attributes
   before(:each) do
-    @attr = { :first_name => "Robert",
-              :last_name => "Brackett",
-              :email => "rob@test.com",
-              :password => "foobar",
-              :password_confirmation => "foobar" 
+    @attr = { :first_name                 => "Robert",
+              :last_name                  => "Brackett",
+              :email                      => "rob@test.com",
+              :email_confirmation         => "rob@test.com",
+              :password                   => "foobar",
+              :password_confirmation      => "foobar" 
               }
   end
   
@@ -67,25 +68,23 @@ describe User do
   describe "email validations" do
     
     it "should accept valid email addresses" do
-      valid_endings = %w{com org net edu es jp me nu info}
+      valid_endings = %w[com org net edu es jp me nu info]
       valid_emails = valid_endings.collect do |ending|
         "foo.bar_1-9@baz-quux0.example.#{ending}"
       end
-      #addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp] 
-      # add more exhaustive list
       valid_emails.each do |email|
-        valid_email_user = User.new(@attr.merge(:email => email))
+        valid_email_user = User.new(@attr.merge(:email => email,
+                                                :email_confirmation => email))
         valid_email_user.should be_valid
       end
     end
     
     it "should reject invalid email addresses" do
-      invalid_emails = %w{foobar@example.c @example.com f@com foo@bar..com 
-                        foobar@example.infod foobar.example.com 
-                        foo,@example.com foo@ex(ample.com foo@example,com} 
-      # add more exhaustive list
+#      invalid_emails = %w[foobar@example.c @example.com f@com foo@bar..com foobar@example.infod foobar.example.com foo,@example.com foo@example,com]
+      invalid_emails = %w[user@foo,com user_at_foo.org example.user@foo.]
       invalid_emails.each do |email|
-        invalid_email_user = User.new(@attr.merge(:email => email))
+        invalid_email_user = User.new(@attr.merge(:email => email,
+                                                  :email_confirmation => email))
         invalid_email_user.should_not be_valid
       end
     end
@@ -100,7 +99,9 @@ describe User do
     
     it "should reject email addresses identical to upcase" do
       upcased_email = @attr[:email].upcase
-      User.create!(@attr.merge(:email => upcased_email))
+      upcased_email_confirm = @attr[:email_confirmation].upcase
+      User.create!(@attr.merge( :email => upcased_email,
+                                :email_confirmation => upcased_email_confirm))
       user_with_duplicate_email = User.new(@attr)
       user_with_duplicate_email.should_not be_valid
     end

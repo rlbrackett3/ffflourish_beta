@@ -2,16 +2,27 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-# require the factory_girl gem for all tests
 require 'factory_girl'
+require 'remarkable/active_model'
+require 'remarkable/mongoid'
+
+include Devise::TestHelpers
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  
+  # == Mock Framework
   config.mock_with :rspec
+  
+  config.before :each do
+    Mongoid.master.collections.select{|c| c.name !~ /system/ }.each(&:drop)
+  end
+  
+  def test_sign_in(user)
+    controller.current_user = user
+  end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -20,9 +31,4 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   # config.use_transactional_fixtures = true
-  
-  config.before :each do
-    Mongoid.master.collections.select{|c| c.name !~ /system/ }.each(&:drop)
-  end
-    
 end
