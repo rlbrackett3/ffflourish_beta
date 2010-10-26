@@ -1,0 +1,7 @@
+%span.stats
+  %p.title Likes:
+  %table.stats
+  - @profile.stats.likes.each do |likes|
+    %tr
+      %td Interests
+      %td= likes.interests

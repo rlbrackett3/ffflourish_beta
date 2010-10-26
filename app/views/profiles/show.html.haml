@@ -26,13 +26,8 @@
   %br
 
 #user_stats
-  %table.stats
-    %tr
-      %th Likes:
-      %td things I like.
-    %tr.link
-      %td= link_to "Add Likes"
-      %td= link_to "Update My Likes"
+  /= render 'stats/likes'
+  .link= link_to "Update My Likes"
   %table.stats
     %tr
       %th Activities:

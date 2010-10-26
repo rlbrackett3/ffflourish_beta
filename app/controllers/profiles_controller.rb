@@ -40,12 +40,6 @@ class ProfilesController < ApplicationController
   #---------------------------------------------------------------------#
   def update
     @profile = Profile.find(params[:id])
-#    @profile.update(params[:profile])
-#    @profile.save
-#    @location = @profile.locations
-#    @location.update_attributes(params[:location])
-#    @website = @profile.websites
-#    @website.update_attributes(params[:website])
 
     flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
     respond_with(@profile)
