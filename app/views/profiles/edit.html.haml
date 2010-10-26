@@ -1,5 +1,4 @@
 %h1= "Updating #{current_user.first_name}'s Profile"
 = render 'form'
-= link_to 'Profile', @profile
-= link_to 'Back', profile_path
+= link_to 'Profile', profile_path(@profile)
 

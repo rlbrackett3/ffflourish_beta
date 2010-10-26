@@ -12,23 +12,53 @@ class ProfilesController < ApplicationController
   #--GET /profile/1.json                                    HTML and AJAX
   #---------------------------------------------------------------------#
   def show
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile.find(params[:id])
 
     @title = "#{current_user.first_name}'s Profile"
 
     respond_with(@profile)
   end
 #----------------------------------------------------------------------#
+#--GET /stats/new
+  #--GET /stats/new.xml
+  #--GET /stats/new.json                                    HTML AND AJAX
+  #---------------------------------------------------------------------#
+  def new
+    @profile = Profile.new
+    @profile.locations.build if @profile.locations.empty?
+    @profile.websites.build if @profile.websites.empty?
 
+    @title = "setting up #{current_user.first_name}'s ffflourish.stats"
+
+    respond_with(@profile)
+
+  end
+#---------------------------------------------------------------------#
+  #--POST /profile
+  #--POST /profile.xml
+  #--POST /profile.json                                       HTML AND AJAX
+  #---------------------------------------------------------------------#
+  def create
+    @profile = Profile.create(params[:profile])
+
+#    @location = Location.new(params[:location])
+#    @profile.locations << @location
+#    @website = Website.new(params[:website])
+#    @profile.websites << @website
+
+    flash[:notice] = "Your stats were successfully created." if @profile.save
+    respond_with(@profile)
+
+  end
 #---------------------------------------------------------------------#
   #--GET /profile/(1)user_name/edit
   #--GET /profile/(1)user_name/edit.xml
   #--GET /profile/(1)user_name/edit.json                    HTML AND AJAX
   #---------------------------------------------------------------------#
   def edit
-    @profile = Profile.find(params[:id])
-    @profile.locations.build if @profile.locations.empty?
-    @profile.websites.build if @profile.websites.empty?
+    @profile = Profile.find params[:id]
+#    @profile.locations.build if @profile.locations.empty?
+#    @profile.websites =[ Website.new ] if @profile.websites.empty?
     @title = "updating #{current_user.first_name}'s ffflourish.stats"
 
     respond_with(@profile)
@@ -39,16 +69,15 @@ class ProfilesController < ApplicationController
   #--PUT /profile/1.json                                      HTML AND AJAX
   #---------------------------------------------------------------------#
   def update
-    @profile = Profile.find(params[:id])
-#    @profile.update(params[:profile])
-#    @profile.save
+    @profile = Profile.find params[:id]
+#    @profile.update_attributes(params[:profile])
 #    @location = @profile.locations
 #    @location.update_attributes(params[:location])
 #    @website = @profile.websites
 #    @website.update_attributes(params[:website])
 
-#    flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
-#    respond_with(@profile)
+    flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
+    respond_with(@profile)
 
   end
 #---------------------------------------------------------------------#

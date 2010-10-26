@@ -4,7 +4,7 @@
       %tr
         %td= link_to "Home", root_path
         - if user_signed_in?
-          %td= link_to "Profile", profile_path(current_user.profile.id)
+          %td= link_to "Profile", profile_path(current_user.profile_id)
           %td= link_to "Settings", edit_user_registration_path(current_user)
         -else
           %td= link_to "Take the Tour", tour_path

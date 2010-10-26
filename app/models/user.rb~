@@ -51,7 +51,6 @@ class User
                               :birthday => "",
                               )
     self.profile = profile
-    self.profile.save
   end
 
 end
