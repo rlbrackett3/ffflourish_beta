@@ -8,14 +8,10 @@ Ffflourish::Application.routes.draw do
   devise_for :users
   resources :users, :only => [:show]
   resources :profiles, :only => [:show, :edit, :update]
-  match '/profile/:id' => 'profiles#show', :as => 'profile'
   #  How To: Redirect to a specific page on successful sign in
   #  redirect to another namespace that is outside of the user namespace
- # match '/profile/:id' => 'profiles#show', :as => 'profile'
+  #match '/profile/:id' => 'profiles#show', :as => 'profile'
 
-  #match "/profile/:user_id/:current_user/:id"  => 'stats#show', :as => :profile
-
-#  resources :stats, :except => [:show, :index]
 
   match '/about'        => 'pages#about'
   match '/tour'         => 'pages#tour'

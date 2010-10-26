@@ -47,8 +47,8 @@ class ProfilesController < ApplicationController
 #    @website = @profile.websites
 #    @website.update_attributes(params[:website])
 
-#    flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
-#    respond_with(@profile)
+    flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
+    respond_with(@profile)
 
   end
 #---------------------------------------------------------------------#
