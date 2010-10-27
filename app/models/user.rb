@@ -16,7 +16,7 @@ class User
 
   after_create :seed_profile
 
-#--Email contents validation--#
+#--Email contents validation--##
   # email_regex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
 #--Validations--#
