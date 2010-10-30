@@ -1,6 +1,6 @@
 = form_for @profile do |f|
   = render 'shared/error_messages', :object => f.object
-  %h2= "ffflourish.stats | #{current_user.first_name}"
-  = render 'base_stats', :f => f
+  = render 'base_stats_form', :f => f
+  = render 'stats_form', :f => f
   .actions= f.submit
 

@@ -14,8 +14,9 @@
 %p.fields
   %h3 Location
   = f.fields_for :locations do |loc|
-    = render 'location', :f => loc
+    = render 'location_form', :f => loc
 %p.fields
   %h3 Websites
   = f.fields_for :websites do |website|
-    = render 'website', :f => website
+    = render 'website_form', :f => website
+

@@ -1,0 +1,10 @@
+= form_for @stats do |f|
+  = render 'shared/error_messages', :object => f.object
+  %h2= "ffflourish.stats | #{current_user.first_name}"
+  %p.fields
+    = f.fields_for @likes do |like|
+      = like.label        :title
+      = like.text_area    :content
+      /= render 'location', :f => con
+  .actions= f.submit
+
