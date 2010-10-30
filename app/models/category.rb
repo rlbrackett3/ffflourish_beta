@@ -3,7 +3,7 @@ class Category
 
   attr_protected  :_id
 
-  field       :title
+  field       :cat
 
   embedded_in :stat,  :inverse_of => :category
 end

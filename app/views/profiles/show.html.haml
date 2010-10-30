@@ -1,33 +1,8 @@
 = link_to "Edit Profile", edit_profile_path(@profile)
-#basic_info
-  %table
-    %tr
-      %th Name:
-      %td= @profile.user_name
-      %th Status:
-      %td= @profile.status
-      %br
-      %tr
-        %th About me:
-        %td= @profile.about_me
-      %tr
-        %th Birthday:
-        %td= @profile.birthday
-      - @profile.locations.each do |loc|
-        %tr
-          %th Location:
-          %td= loc.city
-          %td= loc.state
-          %td= loc.country
-      - @profile.websites.each do |web|
-        %tr
-          %th Websites:
-          %td= web.url
-  %br
-
+= render 'basic_info'
 #user_stats
-  /= render 'stats/likes'
-  .link= link_to "Update My Likes"
+  = render 'likes'
+  .link= link_to "Update My Likes", edit_profile_path(@profile)
   %table.stats
     %tr
       %th Activities:

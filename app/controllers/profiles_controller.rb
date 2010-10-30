@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   #---------------------------------------------------------------------#
   def show
     @profile = Profile.find(params[:id])
+    @likes = @profile.stats.where(:like => true)
 
     @title = "#{current_user.first_name}'s Profile"
 
@@ -29,6 +30,13 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @profile.locations.build if @profile.locations.empty?
     @profile.websites.build if @profile.websites.empty?
+    @profile.stats.build if @profile.stats.empty?
+
+    @likes = @profile.stats.where(:like => true)
+#    @profile.stats.where(:like => true).each do |like|
+#      @likes = like.find(params[:id])
+#    end
+
     @title = "updating #{current_user.first_name}'s ffflourish.stats"
 
     respond_with(@profile)

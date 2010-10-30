@@ -1,0 +1,26 @@
+#basic_info
+  %table
+    %tr
+      %th Name:
+      %td= @profile.user_name
+      %th Status:
+      %td= @profile.status
+      %br
+      %tr
+        %th About me:
+        %td= @profile.about_me
+      %tr
+        %th Birthday:
+        %td= @profile.birthday
+      - @profile.locations.each do |loc|
+        %tr
+          %th Location:
+          %td= loc.city
+          %td= loc.state
+          %td= loc.country
+      - @profile.websites.each do |web|
+        %tr
+          %th Websites:
+          %td= web.url
+  %br
+
