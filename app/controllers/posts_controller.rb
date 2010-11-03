@@ -78,7 +78,8 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.destroy
-    respond_with(@user, @post)
+#    flash[:notice] = "Post successfully deleted!" if @post.update_attributes(params[:post])
+    respond_with(@user, :location => user_posts_path)
   end
 end
 

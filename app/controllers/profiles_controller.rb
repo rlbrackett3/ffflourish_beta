@@ -52,6 +52,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
 
+    #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
     flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
     respond_with(@profile)
 

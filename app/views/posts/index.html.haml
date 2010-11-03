@@ -15,4 +15,5 @@
     %p.post_text= post.content
     -if user_signed_in? && @user = current_user
       %p= link_to "edit post", edit_user_post_path(@user, post)
+      %p= link_to "destroy post", user_post_path(@user, post), :confirm => "Are you sure", :method => :delete
 
