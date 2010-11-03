@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   #---------------------------------------------------------------------#
   def show
     @profile = Profile.find(params[:id])
+    @user = current_user
     @likes = @profile.stats.where(:like => true)
 
     @title = "#{current_user.first_name}'s Profile"
@@ -31,6 +32,8 @@ class ProfilesController < ApplicationController
     @profile.locations.build if @profile.locations.empty?
     @profile.websites.build if @profile.websites.empty?
     @profile.stats.build if @profile.stats.empty?
+
+    @user = current_user
 
     @likes = @profile.stats.where(:like => true)
 #    @profile.stats.where(:like => true).each do |like|

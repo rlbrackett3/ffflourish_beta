@@ -1,26 +1,23 @@
-#basic_info
+#user_photo
+#user_name= @profile.user_name
+#user_status
+  .profile_title status: #{@profile.status}
+#about_me
+  = @profile.about_me
+#profile_table
   %table
     %tr
-      %th Name:
-      %td= @profile.user_name
-      %th Status:
-      %td= @profile.status
-      %br
+      %td.profile_title birthday:
+      %td= @profile.birthday
+    - @profile.locations.each do |loc|
       %tr
-        %th About me:
-        %td= @profile.about_me
+        %td.profile_title location:
+        %td= loc.city
+        %td= loc.state
+        %td= loc.country
+    - @profile.websites.each do |web|
       %tr
-        %th Birthday:
-        %td= @profile.birthday
-      - @profile.locations.each do |loc|
-        %tr
-          %th Location:
-          %td= loc.city
-          %td= loc.state
-          %td= loc.country
-      - @profile.websites.each do |web|
-        %tr
-          %th Websites:
-          %td= web.url
+        %td.profile_title websites:
+        %td= web.url
   %br
 

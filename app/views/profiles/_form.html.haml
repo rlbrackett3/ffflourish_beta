@@ -1,6 +1,6 @@
 = form_for @profile do |f|
   = render 'shared/error_messages', :object => f.object
   = render 'base_stats_form', :f => f
-  = render 'stats_form', :f => f
+  /= render 'stats_form', :f => f
   .actions= f.submit
 

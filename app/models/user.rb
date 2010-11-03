@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
@@ -10,6 +11,7 @@ class User
 
   references_one :profile, :class_name => 'Profile', :dependent => :destroy
   accepts_nested_attributes_for :profile
+  embeds_many :posts
 
 
   attr_protected  :_id

@@ -1,0 +1,6 @@
+%p.post_title= @post.title
+%p.post_content= @post.content
+-if user_signed_in? && @user = current_user
+  = link_to 'Edit', edit_user_post_path(@user, @post)
+= link_to 'Back', user_posts_path
+

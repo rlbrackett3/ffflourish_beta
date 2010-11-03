@@ -1,0 +1,12 @@
+#post_form
+  = form_for [@user, @post] do |f|
+    = render 'shared/error_messages', :object => f.object
+    %p.field
+      = f.label       :title
+      = f.text_field  :title
+    %p.field
+      = f.label       :content
+      = f.text_area   :content
+    %p.actions
+      = f.submit
+

@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   #--GET /users/1.json                                       HTML and AJAX
   #----------------------------------------------------------------------#
   def show
-    @user = User.find(params[:user_id])
-    @title = "#{current_user.first_name}'s Profile"
+    @user = User.find(params[:id])
+    @title = @user.first_name
 
-    respond_with(@user, @profile)
+    respond_with(@user)
   end
 #----------------------------------------------------------------------#
 

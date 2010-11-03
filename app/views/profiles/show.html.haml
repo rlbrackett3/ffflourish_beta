@@ -1,5 +1,6 @@
 = link_to "Edit Profile", edit_profile_path(@profile)
-= render 'basic_info'
+#top_profile_section
+  = render 'basic_info'
 #user_stats
   = render 'likes'
   .link= link_to "Update My Likes", edit_profile_path(@profile)
