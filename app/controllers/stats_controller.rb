@@ -13,9 +13,6 @@ class StatsController < ApplicationController
   #---------------------------------------------------------------------#
   def edit
     @profile = Profile.current_user
-    for @profile.stats.where(:like => true) do |like|
-      @likes = like.find(params[:id])
-    end
 
     @title = "updating #{current_user.first_name}'s ffflourish.stats"
 
