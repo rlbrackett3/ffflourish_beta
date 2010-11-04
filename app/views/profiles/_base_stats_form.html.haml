@@ -2,8 +2,8 @@
   %h3 Personal Description
 %p.user_info
   %ul
-    %li= current_user.full_name
-    %li= current_user.email
+    %li= @user.full_name
+    %li= @user.email
     %li.link= link_to "Edit Account Settings", edit_user_registration_path(current_user)
 %p.field
   = f.label       "Bio:"

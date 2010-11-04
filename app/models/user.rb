@@ -8,10 +8,12 @@ class User
 
   field :first_name
   field :last_name
-
-  references_one :profile, :class_name => 'Profile', :dependent => :destroy
+  #--User Profile --#
+  references_one    :profile, :class_name => 'Profile', :dependent => :destroy
   accepts_nested_attributes_for :profile
-  embeds_many :posts
+  #--User Blog--#
+  embeds_many       :posts
+  references_many   :comments#, :stored_as => :array, :inverse_of => :users
 
 
   attr_protected  :_id
@@ -44,8 +46,6 @@ class User
   end
 
 #--Seed the user's profile with a name and nil data--#
-
-
   def seed_profile
     profile = Profile.create( :user_name => full_name,
                               :status => 4,

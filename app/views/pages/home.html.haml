@@ -10,4 +10,6 @@
   - if @user.sign_in_count <= 5
     %p= link_to "Set up your profile", edit_profile_path(@profile)
   %p User feed should be displayed here
+  - @users.each do |user|
+    %p= link_to user.full_name, user
 

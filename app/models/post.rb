@@ -11,12 +11,12 @@ class Post
   field           :semi_public, :type => Boolean
   field           :private,     :type => Boolean
 
-  #--date fields--#
+  #--data fields--#
   field           :title
   field           :content
 
   #--embedded documents--#
-#  embeds_many     :comments
+  references_many :comments#, :stored_as => :array, :inverse_of => :posts
 #  embeds_many     :likes
 #  embeds_many     :
 

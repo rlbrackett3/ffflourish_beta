@@ -7,9 +7,9 @@ class PostsController < ApplicationController
 
   #-- Methods --#
 #----------------------------------------------------------------------#
-  #--GET /posts
-  #--GET /posts.xml
-  #--GET /posts.json                                    HTML and AJAX
+  #--GET /users/1/posts
+  #--GET /users/1/posts.xml
+  #--GET /users/1/posts.json                                HTML and AJAX
   #---------------------------------------------------------------------#
   def index
     @user = User.find(params[:user_id])
@@ -17,19 +17,20 @@ class PostsController < ApplicationController
     respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#
-  #--GET /posts/1
-  #--GET /posts/1.xml
-  #--GET /posts/1.json                                    HTML and AJAX
+  #--GET /users/1/posts/1
+  #--GET /users/1/posts/1.xml
+  #--GET /users/1/posts/1.json                              HTML and AJAX
   #---------------------------------------------------------------------#
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
+    @comments = @post.comments.all
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
-  #--GET /posts/new
-  #--GET /posts/new.xml
-  #--GET /posts/new.json                                    HTML and AJAX
+  #--GET /users/1/posts/new
+  #--GET /users/1/posts/new.xml
+  #--GET /users/1/posts/new.json                            HTML and AJAX
   #---------------------------------------------------------------------#
   def new
     @user = User.find(params[:user_id])
@@ -37,9 +38,9 @@ class PostsController < ApplicationController
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
-  #--GET /posts
-  #--GET /posts.xml
-  #--GET /posts.json                                    HTML and AJAX
+  #--GET /users/1/posts
+  #--GET /users/1/posts.xml
+  #--GET /users/1/posts.json                                HTML and AJAX
   #---------------------------------------------------------------------#
   def create
     @user = User.find(params[:user_id])
@@ -47,9 +48,9 @@ class PostsController < ApplicationController
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
-  #--GET /posts/edit
-  #--GET /posts/edit.xml
-  #--GET /posts/edit.json                                    HTML and AJAX
+  #--GET /users/1/posts/edit
+  #--GET /users/1/posts/edit.xml
+  #--GET /users/1/posts/edit.json                           HTML and AJAX
   #---------------------------------------------------------------------#
   def edit
     @user = User.find(params[:user_id])
@@ -57,9 +58,9 @@ class PostsController < ApplicationController
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
-  #--GET /posts/1
-  #--GET /posts/1.xml
-  #--GET /posts/1.json                                    HTML and AJAX
+  #--GET /users/1/posts/1
+  #--GET /users/1/posts/1.xml
+  #--GET /users/1/posts/1.json                              HTML and AJAX
   #---------------------------------------------------------------------#
   def update
     @user = User.find(params[:user_id])
@@ -70,9 +71,9 @@ class PostsController < ApplicationController
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
-  #--GET /posts/1
-  #--GET /posts/1.xml
-  #--GET /posts/1.json                                    HTML and AJAX
+  #--GET /users/1/posts/1
+  #--GET /users/1/posts/1.xml
+  #--GET /users/1/posts/1.json                              HTML and AJAX
   #---------------------------------------------------------------------#
   def destroy
     @user = User.find(params[:user_id])

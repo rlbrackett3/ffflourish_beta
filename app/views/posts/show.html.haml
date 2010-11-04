@@ -1,6 +1,16 @@
 %p.post_title= @post.title
 %p.post_content= @post.content
--if user_signed_in? && @user = current_user
+-if user_signed_in? && @user == current_user
   = link_to 'Edit', edit_user_post_path(@user, @post)
 = link_to 'Back', user_posts_path
+#comments
+  - if @post.comments.size > 0
+    %h2 Comments
+    - @comments.each do |comment|
+      %h3= comment.user.full_name
+      %p= comment.content
+%h2 New Comment
+= form_for [@user, @post, Comment.new] do |f|
+  %p= f.text_area :content, :rows => 5
+  %p= f.submit
 

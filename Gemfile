@@ -9,7 +9,7 @@ gem 'heroku'
 gem 'will_paginate', '3.0.pre2'
 gem 'devise', '~>1.1.3'
 gem 'devise_invitable', '~> 0.3.4'
-gem 'mongoid', '2.0.0.beta.19'
+gem 'mongoid', '2.0.0.beta.20'
 gem 'bson_ext', '1.1.1'
 # gem 'bson_ext', 1.1
 gem 'jquery-rails'

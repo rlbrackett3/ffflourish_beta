@@ -78,7 +78,7 @@ GEM
     mime-types (1.16)
     mongo (1.0.9)
       bson (>= 1.0.5)
-    mongoid (2.0.0.beta.19)
+    mongoid (2.0.0.beta.20)
       activemodel (~> 3.0)
       mongo (= 1.0.9)
       tzinfo (~> 0.3.22)
@@ -163,7 +163,7 @@ DEPENDENCIES
   heroku
   hpricot (= 0.8.2)
   jquery-rails
-  mongoid (= 2.0.0.beta.19)
+  mongoid (= 2.0.0.beta.20)
   mongoid-rspec (= 1.2.1)
   rails (= 3.0.1)
   remarkable_activemodel (>= 4.0.0.alpha2)
