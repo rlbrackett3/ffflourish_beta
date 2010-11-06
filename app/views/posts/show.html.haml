@@ -3,6 +3,7 @@
 -if user_signed_in? && @user == current_user
   = link_to 'Edit', edit_user_post_path(@user, @post)
 = link_to 'Back', user_posts_path
+#likes= link_to "like", @post.vote(1, current_user)
 #comments
   - if @post.comments.size > 0
     %h2 Comments

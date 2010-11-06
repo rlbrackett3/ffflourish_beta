@@ -1,6 +1,7 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Voteable
 
   attr_protected  :_id
 #  referenced_in   :feed
@@ -16,9 +17,10 @@ class Post
   field           :content
 
   #--embedded documents--#
-  references_many :comments#, :stored_as => :array, :inverse_of => :posts
 #  embeds_many     :likes
 #  embeds_many     :
+  #--relational references--#
+  references_many :comments
 
 end
 

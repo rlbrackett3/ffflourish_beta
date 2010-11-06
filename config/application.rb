@@ -24,10 +24,10 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Ffflourish
   class Application < Rails::Application
-    
+
     config.generators do |g|
       g.orm                 :mongoid
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.fixture_replacement :factory_girl, :dir => "spec"
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -62,3 +62,4 @@ module Ffflourish
     config.filter_parameters += [:password, :password_confirmation]
   end
 end
+

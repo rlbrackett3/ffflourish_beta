@@ -56,5 +56,12 @@ class User
     self.profile.save
   end
 
+  def like
+    post = self.posts.first
+    user = current_user
+
+    post.vote(1, user)
+  end
+
 end
 

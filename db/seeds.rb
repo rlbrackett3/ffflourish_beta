@@ -5,31 +5,86 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-
+require 'faker'
 puts 'EMPTY THE MONGODB DATABASE'
 Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
-puts 'SETTING UP DEFAULT USER LOGIN'
+puts 'SETTING UP FIRST USER'
 user = User.create! :first_name => 'Robert',
                     :last_name => 'Brackett',
-                    :email => 'user@test.com', 
+                    :email => 'user@test.com',
                     :email_confirmation => "user@test.com",
                     :password => 'foobar', :password_confirmation => 'foobar',
-                    :stats => [{
-                        :status => 4,
-                        :about_me => "This a little description of me.",
-                        #--birthday--#
-                        "birthday(1i)" => "1982",
-                        "birthday(2i)" => "03",
-                        "birthday(3i)" => "12",
-                        #--location--#
-                        :locations => [{ :city => "Brooklyn",
-                                        :state => "NY",
-                                        :country => "USA",
-                                        :postal_code => "11238"
-                        }],
-                        #--websites--#
-                        :websites => [{ :name => "put a f on it",
-                                        :url => "http://www.putafonit.com",
-                                        :info => "cool blog about cool people"
-                        }] }]
-puts "New stats created for default user: " << user.full_name
+                    :posts => [ {
+                                  :title => Faker::Lorem.sentence,
+                                  :content => Faker::Lorem.paragraph,
+                                  :created_at => Time.now,
+                                  :updated_at => Time.now
+                                },
+                                {
+                                  :title => Faker::Lorem.sentence,
+                                  :content => Faker::Lorem.paragraph,
+                                  :created_at => Time.now,
+                                  :updated_at => Time.now
+                                }
+                              ]
+puts "New account created for first user: " << user.full_name
+
+puts 'SETTING UP SECOND USER'
+user2 = User.create!:first_name => Faker::Name.first_name,
+                    :last_name => Faker::Name.last_name,
+                    :email => Faker::Internet.email,
+                    :password => 'foobar', :password_confirmation => 'foobar',
+                    :posts => [ {
+                                  :title => Faker::Lorem.sentence,
+                                  :content => Faker::Lorem.paragraph,
+                                  :created_at => Time.now,
+                                  :updated_at => Time.now
+                                },
+                                {
+                                  :title => Faker::Lorem.sentence,
+                                  :content => Faker::Lorem.paragraph,
+                                  :created_at => Time.now,
+                                  :updated_at => Time.now
+                                }
+                              ]
+puts "New account created for second user: " << user2.full_name
+
+puts 'SETTING UP SECOND USER'
+user3 = User.create!:first_name => Faker::Name.first_name,
+                    :last_name => Faker::Name.last_name,
+                    :email => Faker::Internet.email,
+                    :password => 'foobar', :password_confirmation => 'foobar',
+                    :posts => [ {
+                                  :title => Faker::Lorem.sentence,
+                                  :content => Faker::Lorem.paragraph,
+                                  :created_at => Time.now,
+                                  :updated_at => Time.now
+                                },
+                                {
+                                  :title => Faker::Lorem.sentence,
+                                  :content => Faker::Lorem.paragraph,
+                                  :created_at => Time.now,
+                                  :updated_at => Time.now
+                                }
+                              ]
+puts "New account created for second user: " << user3.full_name
+
+#puts 'SETTING UP USERS'
+#User.create! 20.times do |user|
+#                    user.first_name => Faker::Name.first_name,
+#                    user.last_name => Faker::Name.last_name,
+#                    user.email => Faker::Internet.email,
+#                    user.password => 'foobar',
+#                    user.password_confirmation => 'foobar',
+#                    user.posts => [ {
+#                                      :title => Faker::Lorem.sentence,
+#                                      :content => Faker::Lorem.paragraph
+#                                    },
+#                                    {
+#                                      :title => Faker::Lorem.sentence,
+#                                      :content => Faker::Lorem.paragraph
+#                                    }
+#                                  ]
+#  puts "New account created for first user: " << user.full_name
+#end
+
