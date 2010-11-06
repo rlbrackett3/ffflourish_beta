@@ -11,12 +11,12 @@ Ffflourish::Application.routes.draw do
   #match '/profile/:id' => 'profiles#show', :as => 'profile'
 
   resources :users, :only => [:show] do
+    resources :profile, :only => [:show, :edit, :update]
     resources :posts do
-      resources :comments
+      resources :comments, :only => [:create]
     end
   end
 
-  resources :profiles, :only => [:show, :edit, :update]
   resources :stats, :only => [:edit, :update] #nest stat in profile
 
 

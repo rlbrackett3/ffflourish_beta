@@ -1,9 +1,10 @@
-= link_to "Edit Profile", edit_profile_path(@profile)
+- if user_signed_in? && current_user == @user
+  = link_to "Edit Profile", edit_user_profile_path(@user, @profile)
 #top_profile_section
   = render 'basic_info'
 #user_stats
-  = render 'likes'
-  .link= link_to "Update My Likes", edit_profile_path(@profile)
+  /= render 'likes'
+  .link= link_to "Update My Likes", edit_user_profile_path(@user, @profile)
   %table.stats
     %tr
       %th Activities:

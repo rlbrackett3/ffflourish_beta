@@ -4,7 +4,7 @@
   %ul
     %li= @user.full_name
     %li= @user.email
-    %li.link= link_to "Edit Account Settings", edit_user_registration_path(current_user)
+    %li.link= link_to "Edit Account Settings", edit_user_registration_path(@user)
 %p.field
   = f.label       "Bio:"
   = f.text_area   :about_me

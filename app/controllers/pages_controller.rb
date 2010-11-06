@@ -7,11 +7,11 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       @user = current_user
+      @profile = @user.profile
+      #listing all users for development
       @users = User.all
-      @profile = Profile.first(params[:profile_id])
-      #@profile = Profile.first(:conditions => { :user_name => @user.full_name})
+      #--Page Title--#
       @title = "#{current_user.first_name}'s Home"
-
     else
       @title = "home"
     end

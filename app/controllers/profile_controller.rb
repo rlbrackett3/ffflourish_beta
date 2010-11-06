@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class ProfileController < ApplicationController
   #-- Filters --#
   before_filter :authenticate_user!
 
@@ -12,13 +12,14 @@ class ProfilesController < ApplicationController
   #--GET /profile/1.json                                    HTML and AJAX
   #---------------------------------------------------------------------#
   def show
-    @profile = Profile.find(params[:id])
-    @user = current_user
-    @likes = @profile.stats.where(:like => true)
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    
+#    @likes = @profile.stats.where(:like => true)
 
     @title = "#{current_user.first_name}'s Profile"
 
-    respond_with(@profile)
+    respond_with(@user, @profile)
   end
 #----------------------------------------------------------------------#
 
@@ -28,21 +29,20 @@ class ProfilesController < ApplicationController
   #--GET /profile/(1)user_name/edit.json                    HTML AND AJAX
   #---------------------------------------------------------------------#
   def edit
-    @profile = Profile.find(params[:id])
-    @profile.locations.build if @profile.locations.empty?
-    @profile.websites.build if @profile.websites.empty?
-    @profile.stats.build if @profile.stats.empty?
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    @user.profile.locations.build if @user.profile.locations.empty?
+    @user.profile.websites.build if @user.profile.websites.empty?
+    @user.profile.stats.build if @user.profile.stats.empty?
 
-    @user = current_user
-
-    @likes = @profile.stats.where(:like => true)
+    @likes = @user.profile.stats.where(:like => true)
 #    @profile.stats.where(:like => true).each do |like|
 #      @likes = like.find(params[:id])
 #    end
 
     @title = "updating #{current_user.first_name}'s ffflourish.stats"
 
-    respond_with(@profile)
+    respond_with(@user, @profile)
   end
 #---------------------------------------------------------------------#
   #--PUT /profile/1
@@ -50,26 +50,13 @@ class ProfilesController < ApplicationController
   #--PUT /profile/1.json                                      HTML AND AJAX
   #---------------------------------------------------------------------#
   def update
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
-    flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
-    respond_with(@profile)
-
+    flash[:notice] = "Profile successfully updated!" if @user.profile.update_attributes(params[:profile])
+    respond_with(@user, @profile)
   end
 #---------------------------------------------------------------------#
-  #--DELETE /profile/1
-  #--DELETE /profile/1.xml
-  #--DELETE /profile/1.json                                   HTML AND AJAX
-  #---------------------------------------------------------------------#
-  def destroy
-    @profile = Profile.find(params[:id])
-    @profile.destroy
-
-    respond_with(@profile, :location => root_url)
-
-  end
-#---------------------------------------------------------------------#
-
 end
 

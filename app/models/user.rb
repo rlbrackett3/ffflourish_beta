@@ -5,19 +5,22 @@ class User
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  
+  attr_protected    :_id
+  
   field :first_name
   field :last_name
+  
   #--User Profile --#
-  references_one    :profile, :class_name => 'Profile', :dependent => :destroy
+  embeds_one      :profile
   accepts_nested_attributes_for :profile
+  
   #--User Blog--#
   embeds_many       :posts
-  references_many   :comments#, :stored_as => :array, :inverse_of => :users
+  accepts_nested_attributes_for :posts
+  references_many   :comments
 
-
-  attr_protected  :_id
-
+  #--callbacks--#
   after_create :seed_profile
 
 #--Email contents validation--##
@@ -47,20 +50,17 @@ class User
 
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
-    profile = Profile.create( :user_name => full_name,
-                              :status => 4,
-                              :about_me => "Describe yourself",
-                              :birthday => "",
-                              )
-    self.profile = profile
-    self.profile.save
-  end
-
-  def like
-    post = self.posts.first
-    user = current_user
-
-    post.vote(1, user)
+    self.profile = Profile.new( :user_name => full_name,
+                          :status => 0,
+                          :about_me => "Describe yourself",
+                          :birthday => ""
+                        )
+    self.profile.locations.create!
+    self.profile.websites.create!
+    self.profile.stats.create!
+    self.save
+#    self.profile = profile
+#    self.profile.save
   end
 
 end
