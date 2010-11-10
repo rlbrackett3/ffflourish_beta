@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       #listing all users for development
       @users = User.all
       #--Page Title--#
-      @title = "#{current_user.first_name}'s Home"
+      @title = "#{current_user.first_name}'s home"
     else
       @title = "home"
     end

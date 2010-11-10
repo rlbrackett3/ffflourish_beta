@@ -14,6 +14,8 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.all
+    @post = @user.posts.first
+    @like = @post.vote 1, current_user
 
     respond_with(@user, @posts)
   end
@@ -85,5 +87,13 @@ class PostsController < ApplicationController
 #    flash[:notice] = "Post successfully deleted!" if @post.update_attributes(params[:post])
     respond_with(@user, :location => user_posts_path)
   end
+
+  def like
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+
+    respond_with(@user, @post)
+  end
+
 end
 

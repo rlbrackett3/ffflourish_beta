@@ -1,28 +1,22 @@
 Ffflourish::Application.routes.draw do
 
+  get "scaffold/posts"
+
   devise_scope :user do
-    get "/signin"     => "devise/sessions#new"
+    get "/signin"   => "devise/sessions#new"
     match "/signout"  => "devise/sessions#destroy"
-    get "/signup"     => "devise/registrations#new"
+    get "/signup"   => "devise/registrations#new"
   end
   devise_for :users
   #  How To: Redirect to a specific page on successful sign in
   #  redirect to another namespace that is outside of the user namespace
   #match '/profile/:id' => 'profiles#show', :as => 'profile'
 
-  resources :users, :only => [:show] do
-    resources :profile, :only => [:show, :edit, :update]
-    resources :posts do
-      member do
-        match 'like'
-      end
-      resources :comments, :only => [:create]
-    end
-  end
-
+  resources :users, :only => [:show]
+  resources :profiles, :only => [:show, :edit, :update]
   resources :stats, :only => [:edit, :update] #nest stat in profile
 
-
+  resources :posts
 
 
 

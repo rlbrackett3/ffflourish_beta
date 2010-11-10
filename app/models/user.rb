@@ -5,20 +5,24 @@ class User
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   attr_protected    :_id
-  
+
   field :first_name
   field :last_name
-  
+  field :likes, :type => Array, :default => []
+
   #--User Profile --#
   embeds_one      :profile
   accepts_nested_attributes_for :profile
-  
+
   #--User Blog--#
   embeds_many       :posts
   accepts_nested_attributes_for :posts
   references_many   :comments
+
+  #--Liking Posts--#
+  #references_many   :votes
 
   #--callbacks--#
   after_create :seed_profile
