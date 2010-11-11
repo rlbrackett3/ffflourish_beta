@@ -1,3 +1,1 @@
-
-= @post.vote 1, current_user
-
+page.replace_html 'like_score', "(#{post.vote_count})"

@@ -89,8 +89,11 @@ class PostsController < ApplicationController
   def like
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-
-    respond_with(@user, @post)
+    @post.vote 1, current_user
+    
+    if @post.update_attributes(params[:post])
+      redirect_to user_posts_path
+    end
   end
 
 end
