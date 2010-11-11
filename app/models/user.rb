@@ -13,12 +13,11 @@ class User
   field :likes, :type => Array, :default => []
 
   #--User Profile --#
-  embeds_one      :profile
+  embeds_one        :profile
   accepts_nested_attributes_for :profile
 
   #--User Blog--#
-  embeds_many       :posts
-  accepts_nested_attributes_for :posts
+  references_many   :posts, :stored_as => :array, :inverse_of => :user
   references_many   :comments
 
   #--Liking Posts--#

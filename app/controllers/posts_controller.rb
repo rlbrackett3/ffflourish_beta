@@ -14,8 +14,6 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.all
-    @post = @user.posts.first
-    @like = @post.vote 1, current_user
 
     respond_with(@user, @posts)
   end

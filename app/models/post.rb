@@ -1,11 +1,11 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
-#  include Mongoid::Voteable
+  include Mongoid::Voteable
 
   attr_protected  :_id
 #  referenced_in   :feed
-  embedded_in     :user, :inverse_of => :posts
+  referenced_in   :user
   #--embedded documents--#
   #--relational references--#
   references_many :comments
@@ -25,33 +25,33 @@ class Post
   field :voters, :type => Array, :default => []
 
   #--Vote methods--#
-  def vote(num, voter)
-    unless voted? voter
-      self.votes += num.to_i
-      self.voters << voter._id
-      self.save
-#      collection.update(  { "_id" => _id, "voters" => { "$ne" => voter._id } },
-#                          { "$inc" => { "votes" => num.to_i },
-#                            "$push" => { "voters" => voter._id }
-#                            } )
-    end
-  end
+#  def vote(num, voter)
+#    unless voted? voter
+#      self.votes += num.to_i
+#      self.voters << voter._id
+#      self.save
+##      collection.update(  { "_id" => _id, "voters" => { "$ne" => voter._id } },
+##                          { "$inc" => { "votes" => num.to_i },
+##                            "$push" => { "voters" => voter._id }
+##                            } )
+#    end
+#  end
 
-  def voted?(voter)
-    voters.include? voter._id
-  end
+#  def voted?(voter)
+#    voters.include? voter._id
+#  end
 
-  def vote_count
-    voters.count
-  end
+#  def vote_count
+#    voters.count
+#  end
 
-  def vote_average
-    if voters.blank?
-      nil
-    else
-      votes.to_f / voters.count
-    end
-  end
+#  def vote_average
+#    if voters.blank?
+#      nil
+#    else
+#      votes.to_f / voters.count
+#    end
+#  end
 
 end
 

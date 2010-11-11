@@ -10,13 +10,14 @@
 /Listing all the users posts
 //////////////////////////////////////////////////////////
 #user_blog
-  - @user.posts.each do |post|
+  - @posts.each do |post|
     %p.post_title= link_to post.title, user_post_path(@user, post)
     %p.post_text= post.content
     %table#post_stats
       %tr
         %td= post.created_at.strftime("%d.%m.%Y %H:%M:%S")
-        %td#likes= link_to "like", :remote => true
+        /%td#likes= link_to "like", :onclick => like_user_post_path(@user, post), :remote => true
+        %td#likes= link_to "like", "#", :onclick => post.vote(1, current_user)
         %td= post.vote_count
         -if user_signed_in? && @user == current_user
           %td= link_to "edit post", edit_user_post_path(@user, post)

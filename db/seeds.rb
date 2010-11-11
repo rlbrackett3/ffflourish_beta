@@ -9,82 +9,32 @@ require 'faker'
 puts 'EMPTY THE MONGODB DATABASE'
 Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
 puts 'SETTING UP FIRST USER'
-user = User.create! :first_name => 'Robert',
+user = User.create :first_name => 'Robert',
                     :last_name => 'Brackett',
                     :email => 'user@test.com',
                     :email_confirmation => "user@test.com",
-                    :password => 'foobar', :password_confirmation => 'foobar',
-                    :posts => [ {
-                                  :title => Faker::Lorem.sentence,
-                                  :content => Faker::Lorem.paragraph,
-                                  :created_at => Time.now,
-                                  :updated_at => Time.now
-                                },
-                                {
-                                  :title => Faker::Lorem.sentence,
-                                  :content => Faker::Lorem.paragraph,
-                                  :created_at => Time.now,
-                                  :updated_at => Time.now
-                                }
-                              ]
+                    :password => 'foobar', :password_confirmation => 'foobar'
+
+p1 = Post.create   :title => Faker::Lorem.sentence,
+                    :content => Faker::Lorem.paragraph,
+                    :created_at => Time.now,
+                    :updated_at => Time.now
+user.posts << p1
+user.save
 puts "New account created for first user: " << user.full_name
 
-puts 'SETTING UP SECOND USER'
-user2 = User.create!:first_name => Faker::Name.first_name,
-                    :last_name => Faker::Name.last_name,
-                    :email => Faker::Internet.email,
-                    :password => 'foobar', :password_confirmation => 'foobar',
-                    :posts => [ {
-                                  :title => Faker::Lorem.sentence,
-                                  :content => Faker::Lorem.paragraph,
-                                  :created_at => Time.now,
-                                  :updated_at => Time.now
-                                },
-                                {
-                                  :title => Faker::Lorem.sentence,
-                                  :content => Faker::Lorem.paragraph,
-                                  :created_at => Time.now,
-                                  :updated_at => Time.now
-                                }
-                              ]
-puts "New account created for second user: " << user2.full_name
-
-puts 'SETTING UP SECOND USER'
-user3 = User.create!:first_name => Faker::Name.first_name,
-                    :last_name => Faker::Name.last_name,
-                    :email => Faker::Internet.email,
-                    :password => 'foobar', :password_confirmation => 'foobar',
-                    :posts => [ {
-                                  :title => Faker::Lorem.sentence,
-                                  :content => Faker::Lorem.paragraph,
-                                  :created_at => Time.now,
-                                  :updated_at => Time.now
-                                },
-                                {
-                                  :title => Faker::Lorem.sentence,
-                                  :content => Faker::Lorem.paragraph,
-                                  :created_at => Time.now,
-                                  :updated_at => Time.now
-                                }
-                              ]
-puts "New account created for second user: " << user3.full_name
-
-#puts 'SETTING UP USERS'
-#User.create! 20.times do |user|
-#                    user.first_name => Faker::Name.first_name,
-#                    user.last_name => Faker::Name.last_name,
-#                    user.email => Faker::Internet.email,
-#                    user.password => 'foobar',
-#                    user.password_confirmation => 'foobar',
-#                    user.posts => [ {
-#                                      :title => Faker::Lorem.sentence,
-#                                      :content => Faker::Lorem.paragraph
-#                                    },
-#                                    {
-#                                      :title => Faker::Lorem.sentence,
-#                                      :content => Faker::Lorem.paragraph
-#                                    }
-#                                  ]
-#  puts "New account created for first user: " << user.full_name
-#end
+puts 'CREATING A BUNCH OF PEOPLE'
+20.times do
+  u = User.create :first_name => Faker::Name.first_name,
+                  :last_name  => Faker::Name.last_name,
+                  :email      => Faker::Internet.email,
+                  :password => 'foobar', :password_confirmation => 'foobar'
+  p = Post.create :title      => Faker::Lorem.sentence,
+                  :content    => Faker::Lorem.paragraph,
+                  :created_at => Time.now,
+                  :updated_at => Time.now
+  u.posts << p
+  u.save
+end
+puts "lots of new test users created!!!!"
 
