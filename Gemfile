@@ -4,6 +4,7 @@ gem 'rails', '3.0.1'
 
 #--Deploy with Heroku--#
 gem 'heroku'
+gem 'heroku-rails'
 
 #--Authentication with Devise--#
 gem 'devise', '~>1.1.3'
@@ -13,6 +14,12 @@ gem 'devise_invitable', '~> 0.3.4'
 gem 'mongoid', '2.0.0.beta.20'
 gem 'bson_ext', '1.1.1'
 gem 'mongoid_voteable'
+
+#--Image uploads and storage--#
+gem 'carrierwave'
+gem 'fog'
+gem 'aws-s3'
+gem 'mini_magick'
 
 #--General Utility Gems--#
 gem 'will_paginate', '3.0.pre2'
@@ -29,7 +36,7 @@ group :development do
   gem 'rspec-rails', '2.0.1'
   gem 'annotate-models', '1.0.4'
   gem 'faker', '0.3.1'
-#  gem 'populator'
+#  gem 'populator' # seems to require active record
 end
 
 group :test do
