@@ -10,7 +10,7 @@ Ffflourish::Application.routes.draw do
   #  redirect to another namespace that is outside of the user namespace
   #match '/profile/:id' => 'profiles#show', :as => 'profile'
 
-  resources :users, :only => [:show] do
+  resources :users do
     resources :profile, :only => [:show, :edit, :update]
     resources :posts do
       member do
@@ -19,7 +19,6 @@ Ffflourish::Application.routes.draw do
       resources :comments, :only => [:create]
     end
   end
-
   resources :stats, :only => [:edit, :update] #nest stat in profile
 
 

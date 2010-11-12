@@ -18,6 +18,34 @@ class UsersController < ApplicationController
     respond_with(@user)
   end
 #----------------------------------------------------------------------#
+  #--GET /users/1/avatar
+  #--GET /users/1/avatar.xml
+  #--GET /users/1/avatar.json                                HTML and AJAX
+  #----------------------------------------------------------------------#
+  def edit
+    @user = User.find(params[:id])
+    
+    @user.avatar.build if ! @user.avatar?
+    
+    @title = "#{@user.first_name}'s avatar"
+    respond_with(@user)
+  end
+#----------------------------------------------------------------------#
+  #--POST /users/1/avatar
+  #--POST /users/1/avatar.xml
+  #--POST /users/1/avatar.json                               HTML and AJAX
+  #----------------------------------------------------------------------#
+  def update
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    
+    flash[:notice] = "Avatar successfully updated!" if @user.update_attributes(params[:user])
+    respond_with(@user, @profile)
+#    if @user.update_attributes(params[:user])
+#      redirect_to user_profile_path(@user, @profile)
+#    end
+  end
+#----------------------------------------------------------------------#
 
 end
 

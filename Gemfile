@@ -1,53 +1,76 @@
 source 'http://rubygems.org'
 #--Rails--#
 gem 'rails', '3.0.1'
+gem 'mongrel', '>=1.2.0.pre2'
 
 #--Deploy with Heroku--#
 gem 'heroku'
 gem 'heroku-rails'
 
 #--Authentication with Devise--#
-gem 'devise', '~>1.1.3'
-gem 'devise_invitable', '~> 0.3.4'
+gem 'devise'#, '~>1.1.3'
+gem 'devise_invitable'#, '~> 0.3.4'
 
 #--Mongoid and MongoDB specific gems--#
 gem 'mongoid', '2.0.0.beta.20'
-gem 'bson_ext', '1.1.1'
+gem 'bson_ext'
 gem 'mongoid_voteable'
+gem 'mongoid_slug', :require => 'mongoid/slug'
+gem 'mongoid_taggable'
 
 #--Image uploads and storage--#
-gem 'carrierwave'
+gem 'carrierwave', :git => 'http://github.com/jnicklas/carrierwave.git'
 gem 'fog'
 gem 'aws-s3'
 gem 'mini_magick'
 
 #--General Utility Gems--#
-gem 'will_paginate', '3.0.pre2'
+gem 'will_paginate', '>=3.0.pre2'
 gem 'jquery-rails'
 
-#--For HAML support--#
-gem 'haml', '3.0.21'
-gem 'haml-rails', '0.3.4', :group => :development
- # the folowing gems are used to generate Devise views for Haml
-gem 'hpricot', '0.8.2', :group => :development
-gem 'ruby_parser', '2.0.5', :group => :development
+#--HAML support--#
+gem 'haml'
+
+group :development, :test do
+  #--Rspec--#
+  gem 'rspec'
+  gem 'rspec-rails'
+  #--Cucumber--#
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  #--Cucumber extras--#
+  gem 'spork'
+  gem 'launchy' # So you can do Then show me the page
+  #--generating test and sample data--#
+  gem 'fabrication'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  #--Ruby debugger--#
+  gem 'ruby-debug19'
+end
 
 group :development do
-  gem 'rspec-rails', '2.0.1'
-  gem 'annotate-models', '1.0.4'
-  gem 'faker', '0.3.1'
-#  gem 'populator' # seems to require active record
+  #--HAML support--#
+  gem 'haml-rails'
+  gem 'hpricot'
+  gem 'ruby_parser'
+  #--Annotate-models--#
+  gem 'annotate-models'
 end
 
 group :test do
-  gem 'rspec', '2.0.0'
+  #--Rspec Helpers--#
+  gem 'mongoid-rspec'
   gem 'remarkable_activemodel', '>=4.0.0.alpha2'
   gem 'remarkable_mongoid'
-  gem 'mongoid-rspec', '1.2.1'
-  #gem 'capybara'
-  gem 'webrat', '0.7.1'
-  gem 'autotest', '4.4.1'
-  gem 'autotest-rails', '4.1.0'
-  gem 'factory_girl_rails', '1.0'
+  #--Browser simulation--#
+  #gem 'webrat'
+  gem 'capybara' #for cucumber and javascript
+  #--Autotest--#
+  gem 'autotest'#, '4.4.1'
+  gem 'autotest-rails'#, '4.1.0'
+  #--clearing the mongoDB for mongoid testing--#
+  gem 'database_cleaner'
 end
 

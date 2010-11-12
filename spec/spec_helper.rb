@@ -3,8 +3,11 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'factory_girl'
+Factory.find_definitions
 require 'remarkable/active_model'
 require 'remarkable/mongoid'
+require 'database_cleaner'
+require 'fabrication'
 
 include Devise::TestHelpers
 
@@ -16,9 +19,25 @@ RSpec.configure do |config|
   # == Mock Framework
   config.mock_with :rspec
   
-  config.before :each do
-    Mongoid.master.collections.select{|c| c.name !~ /system/ }.each(&:drop)
+  #--mongoid-rspec--#
+  config.include Mongoid::Matchers
+  
+  # config.before :each do
+  #   Mongoid.master.collections.select{|c| c.name !~ /system/ }.each(&:drop)
+  # end
+  
+  #--use database cleaner to clear mongoDB test data--#
+  require 'database_cleaner'
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.orm = "mongoid"
   end
+
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
+  
+  #--My Nethods--#
   
   def test_sign_in(user)
     controller.current_user = user

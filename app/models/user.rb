@@ -1,3 +1,5 @@
+
+require 'carrierwave/orm/mongoid'
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -11,6 +13,7 @@ class User
   field :first_name
   field :last_name
   field :likes, :type => Array, :default => []
+  mount_uploader :avatar, AvatarUploader
 
   #--User Profile --#
   embeds_one        :profile
