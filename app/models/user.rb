@@ -1,10 +1,9 @@
-
 require 'carrierwave/orm/mongoid'
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  # :token_authenticatable, :confirmable, :lockable, :timeoutable, :invitable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -22,9 +21,7 @@ class User
   #--User Blog--#
   references_many   :posts, :stored_as => :array, :inverse_of => :user
   references_many   :comments
-
-  #--Liking Posts--#
-  #references_many   :votes
+#  references_many   :images, :stored_as => :array, :inverse_of => :user
 
   #--callbacks--#
   after_create :seed_profile
@@ -40,10 +37,6 @@ class User
   validates :email,         :presence => true,
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }
-#                            :format => { :with => email_regex }
-#  validates :password,      :presence => true,
-#                            :confirmation => true,
-#                            :length => { :within => 6..40 }
 
 #--Combine first and last name to user's full name--#
   def full_name
@@ -57,16 +50,13 @@ class User
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
     self.profile = Profile.new( :user_name => full_name,
-                          :status => 0,
-                          :about_me => "Describe yourself",
-                          :birthday => ""
-                        )
+                                :about_me => "Describe yourself",
+                                :birthday => ""
+                                )
     self.profile.locations.create!
     self.profile.websites.create!
     self.profile.stats.create!
     self.save
-#    self.profile = profile
-#    self.profile.save
   end
 
 end

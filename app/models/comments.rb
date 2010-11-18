@@ -3,11 +3,14 @@ class Comment
   include Mongoid::Timestamps
 
   attr_protected  :_id
+  #--Associations--#
   referenced_in   :user
   referenced_in   :post
 
-  #--data fileds--#
+  #--data fields--#
   field          :content
+  
+  validates :content, :presence => true
 
 end
 

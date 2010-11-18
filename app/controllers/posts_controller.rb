@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   #-- Filters --#
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!
 
   #-- Responders --#
   respond_to :html, :xml, :json
@@ -13,8 +13,11 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.all
+    @posts = @user.posts.paginate :page => params[:page],
+                                  :per_page => 13,
+                                  :order => 'created_at DESC'
 
+    @title = "#{@user.first_name}'s posts"
     respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#
@@ -25,10 +28,13 @@ class PostsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-
+    @image = @post.image
     @comments = @post.comments.all
 
+    @title = @post.title
+
     respond_with(@user, @post)
+
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/new
@@ -38,6 +44,10 @@ class PostsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @post = @user.posts.new
+    #@post.images.build
+
+    @title = "new post"
+
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
@@ -90,7 +100,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.vote 1, current_user
-    
+
     if @post.update_attributes(params[:post])
       redirect_to user_posts_path
     end

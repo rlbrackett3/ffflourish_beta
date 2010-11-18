@@ -54,7 +54,7 @@ Spork.each_run do
   # after each scenario, which can lead to hard-to-debug failures in 
   # subsequent scenarios. If you do this, we recommend you create a Before
   # block that will explicitly put your database in a known state.
-  Cucumber::Rails::World.use_transactional_fixtures = false
+#  Cucumber::Rails::World.use_transactional_fixtures = true
   # How to clean your database when transactions are turned off. See
   # http://github.com/bmabey/database_cleaner for more info.
   if defined?(ActiveRecord::Base)
@@ -64,10 +64,5 @@ Spork.each_run do
     rescue LoadError => ignore_if_database_cleaner_not_present
     end
   end
-  # Hooks for factory_girl
-  require 'factory_girl'
-  require 'factory_girl/step_definitions'
-  Dir[File.expand_path(File.join(File.dirname(__FILE__),'..','..',
-  'spec','factories','*.rb'))].each {|f| require f}
 
 end

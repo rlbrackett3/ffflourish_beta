@@ -28,8 +28,8 @@ module Ffflourish
     config.generators do |g|
       g.orm                 :mongoid
       g.template_engine     :haml
-      g.fixture_replacement :factory_girl, :dir => "spec"
-      g.test_framework      :rspec, :fixture => true
+      g.test_framework      :rspec, :fixture => false
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.fixture_replacement :fabrication, :dir => "spec/fabricators"
     end
 

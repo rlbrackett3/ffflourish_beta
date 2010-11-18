@@ -1,0 +1,10 @@
+robert@rlb-workstation:~/Railsapps/ffflourish$ rails g controller images[Ks[Kscreen -;d[Ks[K[K;s[K[Kls
+There are screens on:
+	29580.pts-7.rlb-workstation	(11/13/2010 11:16:38 PM)	(Attached)
+	29452.pts-7.rlb-workstation	(11/13/2010 11:13:12 PM)	(Detached)
+	29128.pts-7.rlb-workstation	(11/13/2010 11:08:52 PM)	(Detached)
+	28992.pts-7.rlb-workstation	(11/13/2010 11:05:03 PM)	(Attached)
+	28886.pts-7.rlb-workstation	(11/13/2010 11:02:18 PM)	(Attached)
+5 Sockets in /var/run/screen/S-robert.
+
+robert@rlb-workstation:~/Railsapps/ffflourish$ screen -lsrails g controller images[15Pscreen -ls[Kxit

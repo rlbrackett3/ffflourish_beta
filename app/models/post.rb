@@ -1,57 +1,37 @@
+require 'carrierwave/orm/mongoid'
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Voteable
 
   attr_protected  :_id
-#  referenced_in   :feed
+  #--Associations--#
   referenced_in   :user
-  #--embedded documents--#
-  #--relational references--#
   references_many :comments
-#  references_many :votes
+#  embeds_many     :images, :cascade_callbacks => true
+#  accepts_nested_attributes_for :images
+  mount_uploader :image, ImageUploader
 
   #--boolean values for controlling visability of posts--#
-  field           :public,      :type => Boolean
-  field           :semi_public, :type => Boolean
-  field           :private,     :type => Boolean
+  field           :public,      :type => Boolean, :default => false
+  field           :followers,   :type => Boolean, :default => true
+  field           :private,     :type => Boolean, :default => false
 
   #--data fields--#
   field           :title
   field           :content
 
-  #--Voting, Liking--#
-  field :votes, :type => Integer, :default => 0
-  field :voters, :type => Array, :default => []
+  #--validations--#
+  validates       :title,       :presence => true
 
-  #--Vote methods--#
-#  def vote(num, voter)
-#    unless voted? voter
-#      self.votes += num.to_i
-#      self.voters << voter._id
-#      self.save
-##      collection.update(  { "_id" => _id, "voters" => { "$ne" => voter._id } },
-##                          { "$inc" => { "votes" => num.to_i },
-##                            "$push" => { "voters" => voter._id }
-##                            } )
+#  after_save  :resave_child_if_has_attachment
+
+#  def resave_child_if_has_attachment
+#    self.images.each do |cf|
+#      cf.save if cf.image?
 #    end
 #  end
 
-#  def voted?(voter)
-#    voters.include? voter._id
-#  end
-
-#  def vote_count
-#    voters.count
-#  end
-
-#  def vote_average
-#    if voters.blank?
-#      nil
-#    else
-#      votes.to_f / voters.count
-#    end
-#  end
 
 end
 

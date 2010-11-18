@@ -6,11 +6,12 @@
 /Create a new post
 //////////////////////////////////////////////////////////
 -if user_signed_in? && @user == current_user
-  = link_to "Create a new Post", new_user_post_path(@user, @post)
+  = link_to "Create a new Post", new_user_post_path(@user, @post), :id => :new_post
 /Listing all the users posts
 //////////////////////////////////////////////////////////
 #user_blog
   - @posts.each do |post|
+    = link_to (image_tag "#{post.image.thumb_large.url}", :id => "post_image_thumb"), user_post_path(@user, post)
     %p.post_title= link_to post.title, user_post_path(@user, post)
     %p.post_text= post.content
     %table#post_stats

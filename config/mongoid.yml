@@ -13,6 +13,10 @@ development:
 test:
   <<: *defaults
   database: ffflourish_test
+  
+cucumber:
+  <<: *defaults
+  database: ffflourish_cucumber
 
 # set these environment variables on your prod server
 production:

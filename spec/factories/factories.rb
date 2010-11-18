@@ -1,24 +1,35 @@
-# By using the symbol ':user', we get Factory Girl to simulate the User model.
 Factory.define :user do |user|
-  user.first_name             "Robert"
-  user.last_name              "Brackett"
-  user.full_name              "Robert Brackett"
-  user.email                  "rlb@example.com"
-  user.email_confirmation     "rlb@example.com"
+  user.first_name             "Bair"
+  user.last_name              "DeBair"
+  user.sequence(:email)       { |n| "user#{n}@example.com"}
+  user.email_confirmation     { |u| u.email }
   user.password               "foobar"
-  user.password_confirmation  "foobar"
+  user.password_confirmation  { |u| u.password }
 end
 
-Factory.sequence :email do |n|
-  "person-#{n}@example.com"
+#Factory.define :profile do |profile|
+#  profile.association :user
+#  profile.user_name           "Bair DeBair"
+#  profile.about_me            "Describe yourself"
+#  profile.birthday            ""
+#end
+
+#Factory.sequence :email do |n|
+#  "person-#{n}@example.com"
+#end
+
+Factory.define :post do |post|
+  post.association :user, :factory => :user,
+                          :email => "test@user.com",
+                          :email_confirmation => "test@user.com"
+  post.title                  "Title"
+  post.content                "Content"
+
+  #post.comment { |p| Factory(:comment)}
 end
 
-Factory.define :stat do |stat|
-  stat.association :user
-  stat.first_name          "Robert"
-  stat.last_name           "Brackett"
-  stat.about_me            "I am a cofounder of ffflourish.com.  Welcome to the community"
-  stat.birthday            "July 19, 1984"
-  stat.location            "Brooklyn, NY USA"
-  stat.websites            "www.putafonit.com"
+Factory.define :comment do |c|
+  c.association :user, :factory => :post
+  c.content                   "This is a comment"
 end
+

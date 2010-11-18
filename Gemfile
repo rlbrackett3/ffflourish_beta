@@ -12,7 +12,7 @@ gem 'devise'#, '~>1.1.3'
 gem 'devise_invitable'#, '~> 0.3.4'
 
 #--Mongoid and MongoDB specific gems--#
-gem 'mongoid', '2.0.0.beta.20'
+gem 'mongoid', '~> 2.0.0.beta.20'
 gem 'bson_ext'
 gem 'mongoid_voteable'
 gem 'mongoid_slug', :require => 'mongoid/slug'
@@ -25,7 +25,7 @@ gem 'aws-s3'
 gem 'mini_magick'
 
 #--General Utility Gems--#
-gem 'will_paginate', '>=3.0.pre2'
+gem 'will_paginate', '~> 3.0.pre2'
 gem 'jquery-rails'
 
 #--HAML support--#
@@ -35,10 +35,13 @@ group :development, :test do
   #--Rspec--#
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'fuubar'
   #--Cucumber--#
   gem 'cucumber'
   gem 'cucumber-rails'
   #--Cucumber extras--#
+  gem 'pickle'
+  gem 'pickle-mongoid'
   gem 'spork'
   gem 'launchy' # So you can do Then show me the page
   #--generating test and sample data--#
@@ -47,10 +50,16 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   #--Ruby debugger--#
-  gem 'ruby-debug19'
+  # gem 'ruby-debug19'
+  #--Autotest--#
+  gem 'autotest'#, '4.4.1'
+  gem 'autotest-rails'#, '4.1.0'
+  gem 'autotest-notification'
+  gem 'parallel_tests'
 end
 
 group :development do
+  gem 'rails3-generators'
   #--HAML support--#
   gem 'haml-rails'
   gem 'hpricot'
@@ -65,11 +74,9 @@ group :test do
   gem 'remarkable_activemodel', '>=4.0.0.alpha2'
   gem 'remarkable_mongoid'
   #--Browser simulation--#
-  #gem 'webrat'
+  gem 'webrat' #for Rspec controller specs with views
   gem 'capybara' #for cucumber and javascript
-  #--Autotest--#
-  gem 'autotest'#, '4.4.1'
-  gem 'autotest-rails'#, '4.1.0'
+
   #--clearing the mongoDB for mongoid testing--#
   gem 'database_cleaner'
 end

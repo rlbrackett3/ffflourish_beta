@@ -10,6 +10,28 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    #--users/1/posts/ paths--#
+    when /^my posts page$/
+      user_posts_path(@me)
+    when /^my new post page$/
+      new_user_post_path(@me)
+    when /^my post(?:'s)? page$/
+      post = Post.first
+      user_post_path(@me.id.to_s, post)
+      
+    # the following are examples using path_to_pickle
+
+    when /^#{capture_model}(?:'s)? page$/                           # eg. the forum's page
+      path_to_pickle $1
+
+    when /^#{capture_model}(?:'s)? #{capture_model}(?:'s)? page$/   # eg. the forum's post's page
+      path_to_pickle $1, $2
+
+    when /^#{capture_model}(?:'s)? #{capture_model}'s (.+?) page$/  # eg. the forum's post's comments page
+      path_to_pickle $1, $2, :extra => $3                           #  or the forum's post's edit page
+
+    when /^#{capture_model}(?:'s)? (.+?) page$/                     # eg. the forum's posts page
+      path_to_pickle $1, :extra => $2                               #  or the forum's edit page
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

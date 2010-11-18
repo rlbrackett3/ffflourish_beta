@@ -9,13 +9,13 @@ require 'faker'
 puts 'EMPTY THE MONGODB DATABASE'
 Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
 puts 'SETTING UP FIRST USER'
-user = User.create :first_name => 'Robert',
+user = User.create  :first_name => 'Robert',
                     :last_name => 'Brackett',
                     :email => 'user@test.com',
                     :email_confirmation => "user@test.com",
                     :password => 'foobar', :password_confirmation => 'foobar'
 
-p1 = Post.create   :title => Faker::Lorem.sentence,
+p1 = Post.create    :title => Faker::Lorem.sentence,
                     :content => Faker::Lorem.paragraph,
                     :created_at => Time.now,
                     :updated_at => Time.now

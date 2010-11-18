@@ -2,7 +2,7 @@ class Profile
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in   :user, :inverse_of => :profile
+  embedded_in :user, :inverse_of => :profile
 
   attr_protected  :_id
   accepts_nested_attributes_for :locations, :websites, :stats

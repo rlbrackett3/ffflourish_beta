@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @profile = @user.profile
-        @likes = @profile.stats.where(:like => true)
+    @likes = @profile.stats.where(:like => true)
 
     @title = "#{current_user.first_name}'s Profile"
 

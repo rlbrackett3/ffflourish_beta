@@ -1,0 +1,2 @@
+Fabricator(:image) do
+end

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ProfilesController do
+describe ProfileController do
 
 end
