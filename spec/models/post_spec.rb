@@ -15,7 +15,7 @@ describe Post do
     it { should have_field :updated_at }
     it { should have_field :user_id }
 
-    it { should have_field :image }
+    it { should have_field :image_filename }
 
     describe "voting" do
       it { should have_field :votes }
