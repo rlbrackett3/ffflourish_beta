@@ -19,11 +19,10 @@ end
 #end
 
 Factory.define :post do |post|
-  post.association :user, :factory => :user,
-                          :email => "test@user.com",
-                          :email_confirmation => "test@user.com"
+  post.association :user, :factory => :user
   post.title                  "Title"
   post.content                "Content"
+  post.image_filename         "rails.png"
 
   #post.comment { |p| Factory(:comment)}
 end

@@ -22,7 +22,8 @@ class Post
   field           :content
 
   #--validations--#
-  validates       :title,       :presence => true
+  validates       :title, :presence => true, :length => { :within => 5..140 }
+  validates       :content, :length => { :within => 2..512, :allow_nil => true }
 
 #  after_save  :resave_child_if_has_attachment
 

@@ -5,21 +5,41 @@
   %p.field
 /Create a new post
 //////////////////////////////////////////////////////////
--if user_signed_in? && @user == current_user
-  = link_to "Create a new Post", new_user_post_path(@user, @post), :id => :new_post
+-if @user == current_user
+  /= link_to "Create a new Post", new_user_post_path(@user, @post), :id => :new_post
+  = render 'form'
 /Listing all the users posts
 //////////////////////////////////////////////////////////
-#user_blog
-  - @posts.each do |post|
-    = link_to (image_tag "#{post.image.thumb_large.url}", :id => "post_image_thumb"), user_post_path(@user, post)
-    %p.post_title= link_to post.title, user_post_path(@user, post)
-    %p.post_text= post.content
-    %table#post_stats
-      %tr
-        %td= post.created_at.strftime("%d.%m.%Y %H:%M:%S")
-        %td#like= link_to "likes", like_user_post_path(@user, post)
-        %td#like_score= "(#{post.vote_count})"
-        -if user_signed_in? && @user == current_user
-          %td= link_to "edit post", edit_user_post_path(@user, post)
-          %td= link_to "destroy post", user_post_path(@user, post), :confirm => "Are you sure", :method => :delete
+- if @posts.count > 0
+  #user_blog
+    -@posts.each do |post|
+      - if post.image?
+        = link_to (image_tag "#{post.image.large.url}",
+          :id => "post_image_thumb"), user_post_path(@user, post)
+      #post_title
+        = link_to post.title, user_post_path(@user, post)
+      #post_content
+        %p.body_text= post.content
+      #post_stats
+        #post_date= post.created_at.strftime("%d.%m.%Y %H:%M:%S")
+        #like= link_to "likes", like_user_post_path(@user, post)
+        #like_score= "(#{post.vote_count})"
+        - if @user == current_user
+          %div.post_links= link_to "edit post", edit_user_post_path(@user, post)
+          %div.post_links= link_to "destroy post", edit_user_post_path(@user, post), :confirm => "Are you sure", :id => "destroy", :method => :delete
+      %table#post_stats
+        %tr
+          %td= post.created_at.strftime("%d.%m.%Y %H:%M:%S")
+          %td#like= link_to "likes", like_user_post_path(@user, post)
+          %td#like_score= "(#{post.vote_count})"
+          -if user_signed_in? && @user == current_user
+            %td= link_to "edit post", edit_user_post_path(@user, post)
+            %td= link_to "destroy post", user_post_path(@user, post),
+              :confirm => "Are you sure",
+              :method => :delete
+    = will_paginate @posts
+- else
+  #get_posting
+    %p You have no posts yet!
+    %p Answer the question above to get started
 

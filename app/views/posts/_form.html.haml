@@ -1,17 +1,21 @@
 #post_form
+  #question
+    %p What are you doing right now that's healthy for you?
   = form_for [@user, @post], :html => {:multipart => true} do |f|
     = render 'shared/error_messages', :object => f.object
-    %p.field
-      = f.label         :title
-      = f.text_field    :title
-    %p.field
-      = f.label         :content
-      = f.text_area     :content
-    %p.field
-      /= image_tag(@post.thumb_small.url) if @post.thumb_small?
-      = f.label         :image
-      = f.file_field    :image, :id => "Image"
-      = f.hidden_field  :image_cache
+    #post_title
+      %p.field
+        = f.text_field    :title, :id => "title"
+    #post_content
+      %p.field
+        = f.label         :content
+        = f.text_area     :content, :id => "content", :rows => 5
+    #post_image
+      %p.field
+        = image_tag(@post.thumb_small.url) if @post.image?
+        = f.label         :image
+        = f.file_field    :image, :id => "image"
+        = f.hidden_field  :image_cache
     %p.actions
-      = f.submit
+      = f.submit "Post"
 

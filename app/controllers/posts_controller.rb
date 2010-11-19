@@ -13,9 +13,8 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.paginate :page => params[:page],
-                                  :per_page => 13,
-                                  :order => 'created_at DESC'
+    @posts = @user.posts.desc(:created_at).paginate
+    @post = @user.posts.new
 
     @title = "#{@user.first_name}'s posts"
     respond_with(@user, @posts)
@@ -58,7 +57,20 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.create!(params[:post])
-    respond_with(@user, @post)
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to(user_posts_path(@user),
+                             :notice => 'Post was successfully created!') }
+        format.xml  { render :xml => @post,
+                             :status => :created,
+                             :location => @post }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @post.errors,
+                             :status => :unprocessable_entity }
+      end
+    end
+#      respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/edit
