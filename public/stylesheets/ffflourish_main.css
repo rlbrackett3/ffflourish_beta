@@ -4,265 +4,191 @@
 html {background: #E2F7E2;}
 
 body {
-	margin:0px auto; 
-	padding:0px; 
-	width:960px; 
-	text-align:center; 
-	font-family:"Georgia", Times New Roman, Times, serif; 
+	margin:0px auto;
+	padding:0px;
+	width:1024px;
+	text-align:center;
+	font-family:"Georgia", Times New Roman, Times, serif;
 	font-size:12px;
 }
 
-/* TOP - FOR FFFLOURISH LOGO AND ACCOUNT
-/////////////////////////////////////*/
-
-#top {
-	width: 700px;
-	height: 165px;
-	position: relative;
-	margin: 0px 0px 0px 15px;
+/* --------------------- MAIN SECTION -------------------------*/
+#main {
+	position: absolute;
+	width: 960px;
+	margin-top: 80px;
+	background-color: white;
 }
 
-nav {
-  font-family: "Georgia", Times New Roman, Times, serif;
-	font-size: 14px;
-	font-style: italic;
-	color: #C1C6C3;
-	letter-spacing: 1px;
-}
-
-.account_buttons {
-	width: 90px;
-  height: 20px;
-	background: #333;
-	float: right;
-	margin: 20px 0px 0px 0px;
-	padding: 2px 0px 0px 0px;
-}
-
-/* ROW OF BUTTONS
-/////////////////////////////////////*/
-
-#button_bar{
-	position: relative;
-	width: 700px;
-	height: 33px;
-	margin: 0px 0px 0px 15px;
-	background-color: #E2F7E2;
-}
-
-
-.tab_left{
-	width: 88px;
-    height: 33px;
-	color: #C1C6C3;
-	background: #333;
-	margin: 0px 1px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-size: 14px;
-	font-style:italic;
-	letter-spacing: 0px;
-	line-height: 30px;
-	float: left;
-}
-	
-
-.tab_right{
-	width: 70px;
-    height: 33px;
-	color: #666666;
-	background: #C1C6C3;
-	margin: 0px 1px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-size: 14px;
-	font-style:italic;
-	letter-spacing: 0px;
-	line-height: 30px;
-	float: right;
-}
-
-/* CONTENT
-/////////////////////////////////////*/
-
-#content {
-  position: relative;
-	float: left;
-	width: 700px;
-	margin: 0px 0px 0px 15px;
-	background-color: #FFF;
-}
-
-/* CONTENT IN PROFILE
-/////////////////////////////////////*/
-
-#top_profile_section{
-	position: relative;
-	float: left;
-	width: 700px;
-	height: 285px;
-	padding: 0px 0px 0px 0px;
-	background-color: #FFF;
-	border-bottom: 1px dotted #666;
-}
-
-#user_photo{
-	float: left;
-	width: 200px;
-	height: 200px;
+/*  HEADER  */
+#header {
+	background-color: white;
 	overflow: hidden;
-	margin: 50px 0px 0px 15px;
 }
 
-#user_name{
+h1{
 	text-align:left;
-	height: 12px;
-	margin: 50px 0px 0px 230px;
+	width: 960px;
+	height: 25px;
+	margin: 10px 0px 0px 9px;
 	font: Georgia, serif;
-	font-size:14px;
+	font-size:18px;
 	font-style:italic;
 	font-weight:bold;
 	color: #666;
 }
 
+/*  LEFT COLUMN  */
+#left_column{
+	width: 702px;
+	margin-left: 10px;
+	background-color: white;
+	float: left;
+}
+
+#user_photo{
+	float: left;
+	width: 228px;
+	height: 243px;
+	outline: 1px solid gray;
+	margin: 15px 0px 0px 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 #about_me{
-	text-align:left;
-	height: 100px;
-	margin: 0px 0px 0px 230px;
+	width: 386px;
+	height: 128px;
+	margin-left: 9px;
+	margin-top: 15px;
+	float: left;
+	text-align: left;
 	font: Times, serif;
 	font-size:12px;
 	color: #666;
 }
 
 #profile_table{
-	margin: 0px 0px 0px 230px;
-	padding: 0px 0px 0px 0px;
-}
-
-
-
-#user_website, #user_website2, #user_location, #user_birthday{
-	text-align:left;
-	margin: 0px 0px 0px 130px;
-	ont: Times, serif;
+	width: 386px;
+	height: 116px;
+	margin: 0px 0px 0px 9px;
+	float: left;
+	text-align: left;
+	font: Times, serif;
 	font-size:12px;
 	color: #666;
 }
 
-#title_website, #title_website2, #title_location, #title_birthday{
+.user_info{
+	margin-left: 100px;
+}
+
+/*  RIGHT COLUMN  */
+#right_column{
+	width: 228px;
+	margin-right: 10px;
+	margin-left: 10px;
+	float: right;
+}
+
+#ffflourish_stats{
+	width: 228px;
+	height: 243px;
+	background-color: #CCC;
+	margin-top: 15px;
+}
+
+#stats_tab{
+	width: 228px;
+	height: 24px;
+	background-color: #333;
+}
+
+#stats_text{
+	line-height: 26px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-style:italic;
+	color: #FFF;
+	letter-spacing: 1px;
+	text-align: right;
+}
+
+#stats_arrow{
+	float: right;
+	text-align: left;
+	color: #FFF;
+	font-size: 10px;
+	line-height: 30px;
+	margin-left: 5px;
+	margin-right: 50px;
+}
+
+#stats_table{
+	padding-top: 10px;
+	line-height: 20px;
+}
+
+#stat_title{
 	font: Georgia, serif;
 	font-size:11px;
 	font-style:italic;
 	color: #666;
+	text-align: left;
+	margin-left: 15px;
 }
 
-
-
-
-/* CONTENT IN MID PROFILE
-/////////////////////////////////////*/
-
-
-#user_stats {
-	position:relative;
-	width: 700px;
-	height: 200px;
-	float:left;
-	margin: 0px 0px 0px 15px;
-	padding: 0px 0px 0px 0px;
-	background-color: #FFF;
-}
-
-#like_title{
-	text-align:left;
-	margin: 0px 0px 0px 235px;
-	font-variant:small-caps;
-	color: #CCC;
-	font: Times, serif;
-	font-size: 18px;
-}
-
-#like_table{
-	margin: 0px 0px 0px 235px;
+#stat_value{
+	font: Georgia, serif;
+	font-size:14px;
+	font-style: bold;
 	color: #666;
+	text-align: left;
+	margin-left: 30px;
 }
 
-#interests{
-	font: Georgia, "Times New Roman", Times, serif;
-	font-size: 12px;
-	font-style:italic;
-	font-weight:bold;
+#bottom_strip{
+	clear: both;
+	background-color: white;
+	height: 20px;
+	width: 960px;
 }
 
-#dotted_line{
-	width: 113px;
-	border-bottom: 1px dotted #666;
-}
-
-#dotted_line_small{
-	width: 10px;
-	border-bottom: 1px dotted #666;
-}
-
-#count{
-	font-style:italic;
-	font: "Times New Roman", Times, serif;
-	font-size: 14px;
-	color: #666;
-}
-
-#date{
-	color: #CCC;
-	font-style:italic;
-	font-size: 10px;
-}
-
-
-
-
-
-/* CONTENT IN FOOTER
-/////////////////////////////////////*/
-footer {
-  font-family: Georgia, "Times New Roman", Times, serif;
+/*  FOOTER  */
+#footer{
+	/* background: gray; */
+	background: #D9FFFC;
+	clear: both;
+	min-height: 28px;
+	font: Georgia, serif;
 	font-size:12px;
 	font-style:italic;
 	color: #999;
-	text-align:center;
+	padding-left: 200px;
+	padding-top: 5px;
+	/* outline: 1px solid gray; */
 }
 
-#bottom{
-	
-	position: relative;
-	float: left;
-	width: 700px;
-	height: 20px;
-	margin: 0px 0px 0px 15px;
-	padding: 0px 0px 0px 0px;
-	background-color: #FFF;
+.footer_last{
+	margin-left: 10px;
+}
+
+.footer_first{
+	font-weight: bold;
 }
 
 
 
-table.bottom_table{
-	margin: 0px 0px 0px 90px;
-}
 
-td.nav_cell {
-  margin: 0px 10px 0px 10px;
-  padding: 0px 10px 0px 10px;
-}
 
-#copyright, #about, #terms, #privacy, #advertise, #jobs, #contact, #blog{
-	margin: 0px 10px 0px 10px;
-}
 
 
 /* CONTENT ON THE VERY BOTTOM
 /////////////////////////////////////*/
 
 
-/* NOTIVE AND ALERT MESSAGES FOR DEVISE
+/* NOTICE AND ALERT MESSAGES FOR DEVISE
 /////////////////////////////////////*/
 
 

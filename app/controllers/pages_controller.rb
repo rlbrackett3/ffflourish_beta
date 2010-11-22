@@ -21,6 +21,9 @@ class PagesController < ApplicationController
   #--GET /about.json                                      HTML and AJAX
   #-------------------------------------------------------------------#
   def about
+    if user_signed_in?
+      @user = current_user
+    end
     @title = "about"
   end
   #--GET /tour

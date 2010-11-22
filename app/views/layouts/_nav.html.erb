@@ -1,0 +1,56 @@
+<ul id="nav">
+<!--FEED-->
+	<li id="feed">
+		<div class="menu_feed">
+			<div class="menu_title"> feed </div>
+			<div class="menu_arrow">&#x25BC;</div>
+		</div>
+		<ul id="dropdown_feed">
+			<li><%= link_to 'me', user_posts_path(current_user) %></li>
+			<li><%= link_to 'me + following', root_path %></li>
+			<li class="last"><%= link_to 'ffflourish', '#' %></li>
+		</ul>
+	</li>
+
+<!--PROFILE-->
+	<li id="profile">
+		<div class="menu_item">
+			<%= link_to 'profile', user_profile_path(@user, @user.profile) %>
+		</div>
+	</li>
+
+<!--SEARCH-->
+	<li id="search">
+		<div class="menu_item">
+			<div id="account_gray">
+        <div id="arrow_search"> &#x25BC; </div>
+      </div>
+		</div>
+		<ul id="dropdown_search">
+			<li><%= link_to 'people', '#' %></li>
+			<li><%= link_to 'posts', '#' %></li>
+			<li class="last"><%= link_to 'profile index', '#' %></li>
+		</ul>
+	</li>
+
+<!--SEARCH FIELD-->
+	<li id="search_field">
+		<div id="search_word"> &nbsp; search </div>
+	</li>
+
+<!--ACCOUNT-->
+	<li id="account">
+		<div class="menu_item">
+			<div class="menu_title">
+				<div id="account_icon"><%= image_tag 'account_icon.png', :size => '22x22', :alt => 'account' %></div>
+			</div>
+			<div class="menu_arrow">&#x25BC;</div>
+		</div>
+		<ul id="dropdown_account">
+			<li><%= link_to 'settings', edit_user_registration_path(current_user) %></li>
+			<li><%= link_to 'help', '/about' %></li>
+			<li class="last"><%= link_to 'logout', signout_path, :method => :delete %></li>
+		</ul>
+	</li>
+</ul>
+

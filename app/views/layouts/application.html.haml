@@ -6,18 +6,15 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
+    /ACCOUNT NAVIGATION
     #top
-      = render 'layouts/header'
+      - if user_signed_in?
+        = render 'layouts/nav'
     /ZONE FOR NOTICE AND ALERT MESSAGES
-    //////////////////////////////////////////////////////////
-    %p.notice= notice
-    %p.alert= alert
-    /NAVIGATION TABS
-    //////////////////////////////////////////////////////////
-    - if user_signed_in?
-      =render 'layouts/tabs'
+    #notifications
+      %p.notice= notice
+      %p.alert= alert
     /PAGE CONTENT
-    //////////////////////////////////////////////////////////
     #content
 
       = yield
