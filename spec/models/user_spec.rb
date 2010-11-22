@@ -124,6 +124,38 @@ describe User do
     end
   end
   #------------------------------------------------# 
-  
+  #--mongoid tests--#
+  describe "Mongoid" do
+    #------------------------------------------------# 
+    describe "fields" do
+      it { should have_field :email }
+      #--Devise--#
+#      it { should have_field :email_confirmation }
+#      it { should have_field :password }
+#      it { should have_field :password_confirmation}
+    end
+    #------------------------------------------------# 
+    describe 'associations' do
+      it { should embed_one :profile }
+      #it { should accept_nested_attributes_for :profile }
+      it { should reference_many(:posts).stored_as(:array) }
+      it { should reference_many(:comments).stored_as(:array) }
+    end
+    #------------------------------------------------# 
+    describe 'validations' do
+      
+      it { should validate_associated :profile }
+      
+      it { should validate_presence_of :email }
+      it { should validate_confirmation_of :email }
+      it { should validate_uniqueness_of :email }
+      it { should validate_format_of :email}
+      
+      describe 'password' do
+        it { should validate_presence_of :password }
+      end
+      
+    end
+  end
 #------------------------------------------------# 
 end

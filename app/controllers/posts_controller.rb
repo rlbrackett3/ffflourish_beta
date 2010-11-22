@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include ActiveModel::Validations
   #-- Filters --#
   before_filter :authenticate_user!
 
@@ -43,7 +44,6 @@ class PostsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @post = @user.posts.new
-    #@post.images.build
 
     @title = "new post"
 
@@ -56,21 +56,24 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find(params[:user_id])
-    @post = @user.posts.create!(params[:post])
+    @posts = @user.posts.desc(:created_at).paginate #to redirect to index
+    @post = @user.posts.build(params[:post])
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to(user_posts_path(@user),
-                             :notice => 'Post was successfully created!') }
+                             :notice => 'Post created successfully!') }
         format.xml  { render :xml => @post,
                              :status => :created,
                              :location => @post }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => 'index' }
         format.xml  { render :xml => @post.errors,
                              :status => :unprocessable_entity }
       end
     end
-#      respond_with(@user, @post)
+#    flash[:notice] = 'Post created successfully!' if @post.valid?
+#    respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/edit

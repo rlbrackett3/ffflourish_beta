@@ -20,8 +20,7 @@ class User
 
   #--User Blog--#
   references_many   :posts, :stored_as => :array, :inverse_of => :user
-  references_many   :comments
-#  references_many   :images, :stored_as => :array, :inverse_of => :user
+  references_many   :comments, :stored_as => :array, :inverse_of => :user
 
   #--callbacks--#
   after_create :seed_profile
@@ -37,7 +36,7 @@ class User
   validates :email,         :presence => true,
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }
-
+  validates :profile,       :associated => true
 #--Combine first and last name to user's full name--#
   def full_name
     [first_name, last_name].join(" ")

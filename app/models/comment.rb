@@ -5,12 +5,11 @@ class Comment
   attr_protected  :_id
   #--Associations--#
   referenced_in   :user
-  referenced_in   :post
-
+  embedded_in     :post, :inverse_of => :comments
   #--data fields--#
   field          :content
-  
-  validates :content, :presence => true
+  #--validations--#
+  validates :content, :presence => true, :length => { :within => 3..255 }
 
 end
 

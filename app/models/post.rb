@@ -7,7 +7,7 @@ class Post
   attr_protected  :_id
   #--Associations--#
   referenced_in   :user
-  references_many :comments
+  embeds_many     :comments
 #  embeds_many     :images, :cascade_callbacks => true
 #  accepts_nested_attributes_for :images
   mount_uploader :image, ImageUploader
@@ -22,8 +22,12 @@ class Post
   field           :content
 
   #--validations--#
-  validates       :title, :presence => true, :length => { :within => 5..140 }
-  validates       :content, :length => { :within => 2..512, :allow_nil => true }
+  validates       :title,
+                  :presence => { :message => "Your post is empty, what are you doing?" },
+                  :length => { :within => 2..140 } 
+  validates       :content, 
+                  :length => { :within => 2..512 }, 
+                  :allow_blank => true
 
 #  after_save  :resave_child_if_has_attachment
 

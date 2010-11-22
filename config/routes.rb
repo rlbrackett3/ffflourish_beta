@@ -16,7 +16,7 @@ Ffflourish::Application.routes.draw do
       member do
         match 'like'
       end
-      resources :comments, :only => [:create]
+      resources :comments, :only => [:create, :destroy]
     end
   end
   resources :stats, :only => [:edit, :update] #nest stat in profile

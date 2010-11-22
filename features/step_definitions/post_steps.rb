@@ -11,13 +11,21 @@ end
 
 Given /^I have posts titled (.+)$/ do |titles|
   titles.split(', ').each do |title|
-    @me.posts.create!(:title => title)
+    @me.posts.create!(:title => title,
+                      :created_at => "19.11.2010 12:55:20")
   end
 end
 
 Given /^I have a post for "([^"]*)"$/ do |email|
   user = User.first(:conditions => { :email => email })
-  user.posts.create!(:title => "test")
+  user.posts.create!(:title => "title",
+                     :created_at => "19.11.2010 12:55:20")
+end
+#---------------fragile and not working well---------------#
+Given /^my post has (\d+) comments$/ do |number|
+  user = User.first
+  post = user.posts.first
+  post.comments.create!(:content => "blah blah blah")
 end
 
 Given /^the following (.+) records$/ do |factory, table|
@@ -26,10 +34,27 @@ Given /^the following (.+) records$/ do |factory, table|
   end
 end
 
-When /^I visit posts for "([^\"]*)"$/ do |email|  
+When /^I visit posts for "([^\"]*)"$/ do |email|
   user = User.first(:conditions => { :email => email })
-  visit user_posts_path(user._id.to_s) 
-end  
+  visit user_posts_path(user._id.to_s)
+end
+
+When /^I visit a post by "([^"]*)"$/ do |email|
+  user = User.first(:conditions => { :email => email })
+  post = user.posts.first
+  visit user_post_path(user, post)
+end
+
+When /^there are no comments$/ do
+  post = Post.first(:conditions => { :title => "title" })
+  post.comments.count.should == 0
+end
+
+When /^there are comments$/ do
+  post = Post.first(:conditions => { :title => "title" })
+  post.comments.count.should > 0
+end
+
 
 Then /^I should have (\d+) posts$/ do |posts|
   post = Post.count.to_s.should == posts

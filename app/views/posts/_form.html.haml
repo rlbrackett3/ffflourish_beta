@@ -12,7 +12,7 @@
         = f.text_area     :content, :id => "content", :rows => 5
     #post_image
       %p.field
-        = image_tag(@post.thumb_small.url) if @post.image?
+        /= image_tag(@post.thumb_small.url) if @post.image?
         = f.label         :image
         = f.file_field    :image, :id => "image"
         = f.hidden_field  :image_cache

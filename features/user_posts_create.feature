@@ -10,7 +10,9 @@ Feature: Creating user's blog posts
     And I fill in "title" with "I am posting"
     And I press "Post"
     Then I should be on my posts page
+    And I should see "Post created successfully!" within "p.notice"
     And I should see "I am posting" within "div#post_title a"
+    And I should see " @ " within "div.created"
 
   Scenario: creating a valid post with content
     Given I am signed in
@@ -46,5 +48,15 @@ Feature: Creating user's blog posts
     And I should see "A description of my image." within "div#post_content p.body_text"
 
     Scenario: creating an invalid post
-      Given write a test
+      Given I am signed in
+      And I am on my posts page
+      When I fill in "title" with "I"
+      And I press "Post"
+      Then I should be on my posts page
+      And I should see "Title is too short (minimum is 2 characters)" within "div#error_explanation" #update for better error messages
+      And the "title" field within "div#post_title" should contain "I"
+      When I fill in "title" with ""
+      And I press "Post"
+      Then I should be on my posts page
+      And I should see "Title Your post is empty, what are you doing?" within "div#error_explanation" #update for better error messages
 

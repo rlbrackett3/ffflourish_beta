@@ -18,7 +18,12 @@ module NavigationHelpers
     when /^my post(?:'s)? page$/
       post = Post.first
       user_post_path(@me.id.to_s, post)
-      
+    #--users/x/posts/ paths--#
+    when /^(.+?)(?:'s) (.+?)(?:'s)? page$/
+      user = User.first(:conditions => { :email => $1 })
+      post = user.posts.first
+      user_post_path(user, post)
+
     # the following are examples using path_to_pickle
 
     when /^#{capture_model}(?:'s)? page$/                           # eg. the forum's page
@@ -53,3 +58,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
+
