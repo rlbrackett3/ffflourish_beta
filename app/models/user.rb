@@ -15,7 +15,7 @@ class User
   mount_uploader :avatar, AvatarUploader
 
   #--User Profile --#
-  embeds_one        :profile
+  embeds_one        :profile, :cascade_callbacks => true
   accepts_nested_attributes_for :profile
 
   #--User Blog--#

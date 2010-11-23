@@ -1,7 +1,0 @@
-#stats_forms
-  %h2= "ffflourish.stats | #{current_user.first_name}"
-  %p.fields
-    %h3 Likes
-    = f.fields_for :stats do |stat|
-      = render 'likes_form', :f => stat
-

@@ -1,8 +1,9 @@
 @charset "UTF-8";
 /* CSS Document */
 
-html {background: #E2F7E2;}
+html { background: #D9FFFC; }
 
+/* --------------------- General -------------------------*/
 body {
 	margin:0px auto;
 	padding:0px;
@@ -11,6 +12,19 @@ body {
 	font-family:"Georgia", Times New Roman, Times, serif;
 	font-size:12px;
 }
+
+a {
+	color: #999;
+	text-decoration: none;
+	font-style: none;
+	font-weight: normal;
+}
+
+a:visited {
+	color: #666;
+}
+
+a:hover { color: #31F48E; }
 
 /* --------------------- MAIN SECTION -------------------------*/
 #main {
@@ -184,16 +198,12 @@ h1{
 
 
 
-/* CONTENT ON THE VERY BOTTOM
-/////////////////////////////////////*/
+/* CONTENT ON THE VERY BOTTOM */
 
+/* NOTICE AND ALERT MESSAGES FOR DEVISE */
 
-/* NOTICE AND ALERT MESSAGES FOR DEVISE
-/////////////////////////////////////*/
+/* ERROR MESSAGES */
 
-
-/* ERROR MESSAGES
-/////////////////////////////////////*/
 #error_explanation {
   width: 450px;
   border: 2px solid red;

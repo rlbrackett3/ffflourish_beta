@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <!--Account Navigation-->
+    <div id="top">
+      <% if user_signed_in? %>
+        <%= render 'layouts/nav' %>
+      <% end %>
+    </div>
+    <!--Devise Notice and Alert Messages-->
+    <div id="notifications">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <!---------Main--------->
+    <div id="main">
+      <%= yield %>
+      <!--Footer with Site Navigation Links-->
+      <div id="footer">
+        <%= render 'layouts/footer' %>
+        <% if Rails.env.development? %>
+          <%= debug(params) %>
+          <%= debug(session) %>
+        <% end %>
+      </div>
+  </body>
+</html>
+

@@ -4,4 +4,9 @@
   = render 'formbase_stats', :f => f
   /= render 'stats_form', :f => f
   .actions= f.submit
+<%= form_for(@user.profile, :url => user_profile_path) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'formbase_stats', :f => f %>
+  <%= f.submit :class => 'actions' %>
+​<% end %>
 
