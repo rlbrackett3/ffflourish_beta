@@ -25,18 +25,8 @@
         #like= link_to "likes", like_user_post_path(@user, post)
         #like_score= "(#{post.vote_count})"
         - if @user == current_user
-          %div.post_links= link_to "edit post", edit_user_post_path(@user, post)
+          %div.post_links= link_to "edit post", edit_user_post_path(@user, post), :id => 'edit'
           %div.post_links= link_to "destroy post", edit_user_post_path(@user, post), :confirm => "Are you sure", :id => "destroy", :method => :delete
-      %table#post_stats
-        %tr
-          %td= post.created_at.strftime("%m.%d.%Y %H:%M:%S")
-          %td#like= link_to "likes", like_user_post_path(@user, post)
-          %td#like_score= "(#{post.vote_count})"
-          -if user_signed_in? && @user == current_user
-            %td= link_to "edit post", edit_user_post_path(@user, post)
-            %td= link_to "destroy post", user_post_path(@user, post),
-              :confirm => "Are you sure",
-              :method => :delete
     = will_paginate @posts
 - else
   #get_posting

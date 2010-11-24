@@ -14,7 +14,7 @@ Feature: Comments on Posts
   Scenario: being first to comment on a user's post
     Given I am signed in as "user1@test.com" with password "secret"
     When I visit a post by "user2@test.com"
-    And there are no comments
+    And there are 0 comments
     Then I should see "comments(0)" within "div#comment_count"
     When I fill in "content" with "Wow, that's an awesome post!"
     And I press "Comment"
@@ -26,10 +26,10 @@ Feature: Comments on Posts
     And I should see " @ " within "div.created"
 
   Scenario: managing comments on my posts #very fragile test
-    Given I am signed in
-    And my post has 3 comments
+    Given I am signed in as "user1@test.com" with password "secret"
     When I am on my post's page
-    Then I should see "destroy comment" within "div#destroy_comment a"
-    When I follow "destroy comment"
+    And there are 3 comments
+    Then I should see "destroy_comment" within "#destroy"
+    When I follow "destroy comment" within "div#destroy_comment a#destroy"
     Then I should be on my post's page
-    And my post should have 2 comments
+    And there are 2 comments

@@ -54,9 +54,9 @@ describe Post do
       @user = Factory(:user)
     end
 
-    it "should delete a posts comments on destroy" do
+    it "should delete a post's comments on destroy" do
       post = Factory(:post)
-      @user.comments.create "comment", :on => post
+      post.comments.create(:content => "comment")
       post.destroy
       Post.all(:id => post.id).empty?.should == true
       Comment.all(:text => "comment").empty?.should == true

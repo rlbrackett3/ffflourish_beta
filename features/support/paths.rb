@@ -12,17 +12,26 @@ module NavigationHelpers
       '/'
     #--users/1/posts/ paths--#
     when /^my posts page$/
-      user_posts_path(@me)
+      user = User.first
+      user_posts_path(user)
     when /^my new post page$/
-      new_user_post_path(@me)
+      user = User.first
+      new_user_post_path(user)
+    when /^my edit post page$/
+      user = User.first
+      post = user.posts.first
+      edit_user_post_path(user, post)
     when /^my post(?:'s)? page$/
+      user = User.first
       post = Post.first
-      user_post_path(@me.id.to_s, post)
+      user_post_path(user, post)
+#      user_post_path(@me.id.to_s, post)
     #--users/x/posts/ paths--#
     when /^(.+?)(?:'s) (.+?)(?:'s)? page$/
       user = User.first(:conditions => { :email => $1 })
       post = user.posts.first
       user_post_path(user, post)
+
 
     # the following are examples using path_to_pickle
 

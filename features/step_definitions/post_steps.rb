@@ -11,21 +11,26 @@ end
 
 Given /^I have posts titled (.+)$/ do |titles|
   titles.split(', ').each do |title|
-    @me.posts.create!(:title => title,
-                      :created_at => "19.11.2010 12:55:20")
+    @me.posts.create!(:title => title)
   end
 end
 
 Given /^I have a post for "([^"]*)"$/ do |email|
   user = User.first(:conditions => { :email => email })
-  user.posts.create!(:title => "title",
-                     :created_at => "19.11.2010 12:55:20")
+  user.posts.create!(:title => "title", :content => "content")
 end
+
 #---------------fragile and not working well---------------#
-Given /^my post has (\d+) comments$/ do |number|
+Given /^there are (\d+) comments$/ do |count|
   user = User.first
-  post = user.posts.first
-  post.comments.create!(:content => "blah blah blah")
+  post = user.posts.create(:title => "Title")
+  post.save
+  n = count.to_i
+  n.times do
+    c = post.comments.create!(:content => "comment #{n}")
+    c.save
+  end
+  post.comments.count.should == n
 end
 
 Given /^the following (.+) records$/ do |factory, table|
@@ -43,6 +48,12 @@ When /^I visit a post by "([^"]*)"$/ do |email|
   user = User.first(:conditions => { :email => email })
   post = user.posts.first
   visit user_post_path(user, post)
+end
+
+When /^I visit edit post by "([^"]*)"$/ do |email|
+  user = User.first(:conditions => { :email => email })
+  post = user.posts.first
+  visit edit_user_post_path(user, post)
 end
 
 When /^there are no comments$/ do
