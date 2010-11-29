@@ -11,6 +11,10 @@ Ffflourish::Application.routes.draw do
   #match '/profile/:id' => 'profiles#show', :as => 'profile'
 
   resources :users do
+    member do
+      match :follow
+      get :following, :followers
+    end
     resources :profile, :only => [:show, :edit, :update]
     resources :posts do
       member do

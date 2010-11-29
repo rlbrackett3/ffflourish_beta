@@ -1,7 +1,7 @@
 Factory.define :user do |user|
   user.first_name             "Bair"
   user.last_name              "DeBair"
-  user.sequence(:email)       { |n| "user#{n}@example.com"}
+  user.email                  "user@example.com"
   user.email_confirmation     { |u| u.email }
   user.password               "foobar"
   user.password_confirmation  { |u| u.password }
@@ -14,9 +14,9 @@ end
 #  profile.birthday            ""
 #end
 
-#Factory.sequence :email do |n|
-#  "person-#{n}@example.com"
-#end
+Factory.sequence :email do |n|
+  "user#{n}@example.com"
+end
 
 Factory.define :post do |post|
   post.association :user, :factory => :user

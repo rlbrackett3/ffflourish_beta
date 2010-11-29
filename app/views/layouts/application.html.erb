@@ -21,7 +21,15 @@
     </div>
     <!---------Main--------->
     <div id="main">
-      <%= yield %>
+      <div id="left_column">
+        <%= yield %>
+      </div>
+      <% if user_signed_in? %>
+        <div id="right_side_column">
+          <%= render 'layouts/right_column' %>
+        </div>
+      <% end %>
+      
       <!--Footer with Site Navigation Links-->
       <div id="footer">
         <%= render 'layouts/footer' %>
@@ -30,6 +38,7 @@
           <%= debug(session) %>
         <% end %>
       </div>
+    </div>
   </body>
 </html>
 

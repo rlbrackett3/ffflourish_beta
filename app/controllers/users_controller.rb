@@ -47,5 +47,18 @@ class UsersController < ApplicationController
   end
 #----------------------------------------------------------------------#
 
+  def follow
+    @user = User.find(params[:id])
+    unless @user == current_user
+      @me = current_user
+    end
+    @me.follow!(@user)
+    
+    if @me.update_attributes(params[:user])
+      redirect_to user_profile_path(@user)
+    end
+    
+  end
+
 end
 
