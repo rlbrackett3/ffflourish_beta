@@ -25,17 +25,22 @@ describe PagesController do
   #------------------------------------------------#
     describe 'when signed in' do
       before(:each) do
-        @user = sign_in(Factory(:user))
-        other_user = Factory(:user, :email => Factory.next(:email))
-        other_user.follow!(@user)
+        @user = (Factory(:user))
+        @other_user = Factory(:user, :email => Factory.next(:email))
+        @other_user.follow!(@user)
+        sign_in@user
       end
 
       it 'should have follower/following counts' do
         get :home
         response.should have_selector('a', :href => following_user_path(@user),
-                                          :content => "following(0)")
+                                           :content => "following")
         response.should have_selector('a', :href => followers_user_path(@user),
-                                          :content => "followers(1)")
+                                           :content => "followers")
+        response.should have_selector('div#following_count',
+                                           :content => "0")
+        response.should have_selector('div#followers_count',
+                                           :content => "1")
       end
 
     end

@@ -1,4 +1,0 @@
-<%= form_for current_user.follow!(@user), :remote => true do |f| %>
-  <div><%= f.hidden_field :following %></div>
-  <div class="actions"><%= f.submit "Follow" %></div>
-<% end %>

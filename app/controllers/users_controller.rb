@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def edit
     @user = User.find(params[:id])
-    
+
     @user.avatar.build if ! @user.avatar?
-    
+
     @title = "#{@user.first_name}'s avatar"
     respond_with(@user)
   end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @profile = @user.profile
-    
+
     flash[:notice] = "Avatar successfully updated!" if @user.update_attributes(params[:user])
     respond_with(@user, @profile)
 #    if @user.update_attributes(params[:user])
@@ -46,19 +46,34 @@ class UsersController < ApplicationController
 #    end
   end
 #----------------------------------------------------------------------#
-
+  #actins for folloeing users
+  #----------------------------------------------------------------------#
   def follow
     @user = User.find(params[:id])
     unless @user == current_user
       @me = current_user
     end
+
     @me.follow!(@user)
-    
+
     if @me.update_attributes(params[:user])
       redirect_to user_profile_path(@user)
     end
-    
   end
-
+  #----------------------------------------------------------------------#
+  def following
+    @title = "following"
+    @user = User.find(params[:id])
+    @users = @user.following.desc(:name).paginate
+    render 'show_follow'
+  end
+  #----------------------------------------------------------------------#
+  def followers
+    @title = "following"
+    @user = User.find(params[:id])
+    @users = @user.followers.desc(:name).paginate
+    render 'show_follow'
+  end
+#----------------------------------------------------------------------#
 end
 

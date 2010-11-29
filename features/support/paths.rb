@@ -25,7 +25,6 @@ module NavigationHelpers
       user = User.first
       post = Post.first
       user_post_path(user, post)
-#      user_post_path(@me.id.to_s, post)
     #--users/x/posts/ paths--#
     when /^(.+?)(?:'s) (.+?)(?:'s)? page$/
       user = User.first(:conditions => { :email => $1 })

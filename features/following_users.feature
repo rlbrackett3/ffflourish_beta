@@ -14,11 +14,12 @@ Feature: Following the posts of other users
   Scenario:following from a users public profile
     Given I am signed in as "user1@test.com" with password "secret"
     When I visit "user2@test.com" public profile
-    Then I should see "follow" within "div#follow_me a"
-    And I should see "discover more about Laura" within "div#follow_me"
-    When I click "follow"
-    Then I should be on "user2@test.com" following profile
-    And I should see "You are following Laura." within "div#following"
+    Then I should see "follow" within "div#following a"
+    And I should see "0" within "div#following_count"
+    When I follow "follow" within "div#following"
+    #Then I should be on "user2@test.com" following profile
+    Then I should see "unfollow" within "div#following a"
+    And I should see "1" within "div#following_count"
 
   Scenario:following from a users public posts
 
