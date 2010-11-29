@@ -133,6 +133,8 @@ describe User do
 #      it { should have_field :email_confirmation }
 #      it { should have_field :password }
 #      it { should have_field :password_confirmation}
+      it { should have_field :following_ids }
+      it { should have_field :follower_ids }
     end
     #------------------------------------------------# 
     describe 'associations' do
@@ -140,6 +142,12 @@ describe User do
       #it { should accept_nested_attributes_for :profile }
       it { should reference_many(:posts).stored_as(:array) }
       it { should reference_many(:comments).stored_as(:array) }
+      
+      it { should reference_many(:following).stored_as(:array) }
+#      it { should be_referenced_in(:followers).as_inverse_of(:following) }
+      it { should reference_many(:followers).stored_as(:array) }
+#      it { should be_referenced_in(:following).as_inverse_of(:followers) }
+      
     end
     #------------------------------------------------# 
     describe 'validations' do
@@ -156,6 +164,61 @@ describe User do
       end
       
     end
+  end
+  #------------------------------------------------# 
+  describe 'following' do
+    before do
+      @u1 = Factory(:user)
+      @u2 = Factory(:user, :email => Factory.next(:email))
+    end
+    
+    it "should have a follow! method" do
+      @u1.should respond_to(:follow!)
+    end
+    
+    it "should have a following? method" do
+      @u1.should respond_to(:following?)
+    end
+    
+    it "should have an unfollow! method" do
+      @u1.should respond_to(:unfollow!)
+    end
+    
+    it "should add a user's id to following array" do
+      @u1.follow!(@u2)
+      @u1.following.include?(@u2).should be_true
+    end
+    
+    it "should check if a user is already followed" do
+      @u1.follow!(@u2)
+      @u1.following?(@u2).should be_true
+    end
+    
+    it "should remove a user's id from following" do
+      @u1.follow!(@u2)
+      @u1.unfollow!(@u2)
+      @u1.should_not be_following(@u2)
+    end
+    
+  end
+  #------------------------------------------------# 
+  describe 'followers' do
+    before do
+      @u1 = Factory(:user)
+      @u2 = Factory(:user, :email => Factory.next(:email))
+    end
+    
+    it 'should add a user id to followers' do
+      @u1.follow!(@u2)
+      @u2.followers.include?(@u1).should be_true
+    end
+    
+    it "should remove a user's id from followers" do
+      @u1.follow!(@u2)
+      @u1.unfollow!(@u2)
+      @u2.followers.include?(@u1).should_not be_true
+    end
+    
   end
 #------------------------------------------------# 
 end

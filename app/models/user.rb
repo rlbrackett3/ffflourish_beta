@@ -8,20 +8,31 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_protected    :_id
-
+  #--fields--#
   field :first_name
   field :last_name
   field :likes, :type => Array, :default => []
   mount_uploader :avatar, AvatarUploader
+  #--indecies--#
+  index :email
 
   #--User Profile --#
   embeds_one        :profile, :cascade_callbacks => true
   accepts_nested_attributes_for :profile
 
   #--User Blog--#
-  references_many   :posts, :stored_as => :array, :inverse_of => :user
-  references_many   :comments, :stored_as => :array, :inverse_of => :user
-
+  references_many   :posts, :stored_as => :array,
+                            :inverse_of => :user,
+                            :dependent => :delete
+  references_many   :comments, :stored_as => :array,
+                               :inverse_of => :user
+  references_many   :following, :stored_as => :array,
+                                :class_name => 'User',
+                                :inverse_of => :followers
+  references_many   :followers, :stored_as => :array,
+                                :class_name => 'User',
+                                :inverse_of => :following
+  
   #--callbacks--#
   after_create :seed_profile
 
@@ -46,6 +57,27 @@ class User
     [first_name, last_name].join()
   end
 
+  def add_likes(likes)
+
+  end
+  
+  def follow!(user)
+    following << user
+    self.save
+  end
+  
+  def following?(user)
+    following_ids.include? user.id
+  end
+  
+  def unfollow!(user)
+    following_ids.delete user.id
+    user.follower_ids.delete self.id
+    user.save!
+    self.save!
+  end
+
+protected
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
     self.profile = Profile.new( :user_name => full_name,
