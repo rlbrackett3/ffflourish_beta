@@ -21,7 +21,7 @@
       #post_content
         %p.body_text= post.content
       #post_stats
-        %div.created= post.created_at.strftime("%m.%d.%Y @ %H:%M:%S")
+        %div.created= time_ago_in_words(post.created_at, :include_seconds => true)
         #like= link_to "likes", like_user_post_path(@user, post)
         #like_score= "(#{post.vote_count})"
         - if @user == current_user

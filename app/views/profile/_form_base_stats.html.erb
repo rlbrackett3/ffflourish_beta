@@ -14,7 +14,9 @@
 </p>
 <p class="field">
   <h3>Birthday</h3>
-  <%= f.date_select  :birthday %>
+  <%= f.date_select  :birthday, :start_year => Time.now.year - 90, 
+                                :end_year => Time.now.year,
+                                :order => [:month, :day, :year] %>
 </p>
 <p class="field">
   <h3>Location</h3>

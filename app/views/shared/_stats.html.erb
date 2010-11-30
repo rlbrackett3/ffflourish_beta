@@ -9,8 +9,12 @@
 		<td><div class="stat_value"> 23 </div></td>
 	</tr>
 	<tr>
-		<td><div class="stat_title"> reposts: </div></td>
-		<td><div class="stat_value"> 42 </div></td>
+		<td><div class="stat_title"> posts: </div></td>
+		<td>
+		  <div class="stat_value">
+		    <%= current_user.posts.count %>
+		  </div>
+		</td>
 	</tr>
 	<tr>
 		<td><div class="stat_title"> comments: </div></td>
