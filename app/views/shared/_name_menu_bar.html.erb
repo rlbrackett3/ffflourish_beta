@@ -1,0 +1,24 @@
+
+<div id="user_page_title">
+  <div id="user_name"><%= @user.full_name %></div>
+  <div id="personal_title"></div>
+  <div id="name_menu">
+    <div id="posts">
+      <%= link_to 'posts', user_posts_path(@user) %>
+    </div>
+    <div id="profile">
+      <%= link_to 'profile', user_profile_path(@user, @user.profile) %>
+    </div>
+    <!--Following-->
+    <% unless @user == current_user %>
+      <div id="following">
+        <% if @user.followers.include?(current_user) %>
+          <%= link_to "unfollow", unfollow_user_path(@user), :id => 'unfollow_me' %>
+        <% else %>
+          <%= link_to "follow", follow_user_path(@user), :id => 'follow_me' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

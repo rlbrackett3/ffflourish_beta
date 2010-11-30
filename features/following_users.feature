@@ -33,4 +33,12 @@ Feature: Following the posts of other users
 
 
   Scenario:unfollowing a user
+    Given I am signed in as "user1@test.com" with password "secret"
+    And I am following "user2@test.com"
+    When I visit "user2@test.com" public posts page
+    Then I should see "unfollow" within "div#following a"
+    And I should see "1" within "div#following_count"
+    When I follow "unfollow" within "div#following"
+    Then I should be on the home page
+    And I should see "0" within "div#following_count"
 

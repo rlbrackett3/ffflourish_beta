@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     @me.unfollow!(@user)
 
     if @me.update_attributes(params[:user])
-      redirect_to following_user_path(@me)
+      redirect_to root_path
     end
   end
   #----------------------------------------------------------------------#

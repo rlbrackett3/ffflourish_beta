@@ -15,7 +15,7 @@
 <!--PROFILE-->
 	<li id="profile">
 		<div class="menu_item">
-			<%= link_to 'profile', user_profile_path(@user, @user.profile) %>
+			<%= link_to 'profile', user_profile_path(current_user, current_user.profile) %>
 		</div>
 	</li>
 
