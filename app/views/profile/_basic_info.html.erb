@@ -27,7 +27,9 @@
   <table>
     <tr>
       <td class="profile_title">birthday:</td>
-      <td><%= @user.profile.birthday.strftime("%B %dth, %Y") %></td>
+      <% unless @user.profile.birthday == nil %>
+        <td><%= @user.profile.birthday.strftime("%B %dth, %Y") %></td>
+      <% end %>
     </tr>
     <% @user.profile.locations.each do |loc| %>
       <tr>
