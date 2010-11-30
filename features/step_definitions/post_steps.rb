@@ -34,6 +34,7 @@ Given /^there are (\d+) comments$/ do |count|
 end
 
 Given /^the following (.+) records$/ do |factory, table|
+  user = User.first
   table.hashes.each do |hash|
     Factory(factory, hash)
   end
