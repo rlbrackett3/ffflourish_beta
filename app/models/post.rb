@@ -29,6 +29,11 @@ class Post
                   :length => { :within => 2..512 }, 
                   :allow_blank => true
 
+  def add_user_likes(user, post)
+    user.likes << post
+    user.save
+  end
+
 #  after_save  :resave_child_if_has_attachment
 
 #  def resave_child_if_has_attachment

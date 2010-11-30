@@ -115,6 +115,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.vote 1, current_user
+    @post.add_user_likes(current_user, @post.id)
 
     if @post.update_attributes(params[:post])
       redirect_to user_posts_path

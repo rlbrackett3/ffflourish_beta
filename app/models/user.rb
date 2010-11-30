@@ -56,10 +56,6 @@ class User
   def url_name
     [first_name, last_name].join()
   end
-
-  def add_likes(likes)
-
-  end
   
   def follow!(user)
     following << user
