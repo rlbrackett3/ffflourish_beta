@@ -61,6 +61,19 @@ class UsersController < ApplicationController
     end
   end
   #----------------------------------------------------------------------#
+  def unfollow
+    @user = User.find(params[:id])
+    unless @user == current_user
+      @me = current_user
+    end
+
+    @me.unfollow!(@user)
+
+    if @me.update_attributes(params[:user])
+      redirect_to following_user_path(@me)
+    end
+  end
+  #----------------------------------------------------------------------#
   def following
     @title = "following"
     @user = User.find(params[:id])
@@ -69,7 +82,7 @@ class UsersController < ApplicationController
   end
   #----------------------------------------------------------------------#
   def followers
-    @title = "following"
+    @title = "followers"
     @user = User.find(params[:id])
     @users = @user.followers.desc(:name).paginate
     render 'show_follow'

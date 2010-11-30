@@ -14,9 +14,7 @@ Factory.find_definitions
 require 'remarkable/active_model'
 require 'remarkable/mongoid'
 require 'database_cleaner'
-require 'fabrication'
-
-include Devise::TestHelpers
+#require 'fabrication'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -33,6 +31,8 @@ Spork.each_run do
     
     #--mongoid-rspec--#
     config.include Mongoid::Matchers
+    #--devise-rspec--#
+#    config.include Devise::TestHelpers
     
     # config.before :each do
     #   Mongoid.master.collections.select{|c| c.name !~ /system/ }.each(&:drop)

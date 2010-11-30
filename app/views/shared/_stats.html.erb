@@ -14,39 +14,47 @@
 	</tr>
 	<tr>
 		<td><div class="stat_title"> comments: </div></td>
-		<td><div class="stat_value"> 2 </div></td>
+		<td><div class="stat_value"><%= current_user.comments.count %></div></td>
 	</tr>
 	<tr>
 		<td>
 		  <div class="stat_title">
-		    <%= link_to 'following', following_user_path(@user) %>
+		    <%= link_to 'following', following_user_path(current_user) %>
 		  </div>
 		</td>
 		<td>
 		  <div id="following_count" class="stat_value">
-		    <%= @user.following.count %>
+		    <%= current_user.following.count %>
 		  </div>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		  <div class="stat_title">
-		    <%= link_to 'followers', followers_user_path(@user) %>
+		    <%= link_to 'followers', followers_user_path(current_user) %>
 		  </div>
 		</td>
 		<td>
 		  <div id="followers_count" class="stat_value">
-		    <%= @user.followers.count %>
+		    <%= current_user.followers.count %>
 		  </div>
 		</td>
 	</tr>
 	<tr>
 		<td><div class="stat_title"> member since: </div></td>
-		<td><div class="stat_value"> 11.02.10 </div></td>
+		<td>
+		  <div class="stat_value">
+		    <%= time_ago_in_words(current_user.created_at) %>
+		  </div>
+		</td>
 	</tr>
 	<tr>
 		<td><div class="stat_title"> last login: </div></td>
-		<td><div class="stat_value"> 11.08.10 </div></td>
+		<td>
+		  <div class="stat_value">
+		    <%= time_ago_in_words(current_user.last_sign_in_at) %>
+		  </div>
+		</td>
 	</tr>
 </table>
 

@@ -108,9 +108,13 @@ describe UsersController do
       it 'should paginate user followers' do
         pending
       end
-
+    #------------------------------------------------#
       describe 'follow action' do
-
+        pending
+      end
+    #------------------------------------------------#
+      describe 'unfollow action' do
+        pending
       end
 
     end

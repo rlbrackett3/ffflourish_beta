@@ -29,7 +29,8 @@ Feature: Comments on Posts
     Given I am signed in as "user1@test.com" with password "secret"
     When I am on my post's page
     And there are 3 comments
-    Then I should see "destroy comment" within "a#destroy"
+    Then show me the page
+    Then I should see "destroy comment" within "div#destroy_comment a"
     When I follow "destroy comment" within "div#destroy_comment a#destroy"
     Then I should be on my post's page
     And there are 2 comments

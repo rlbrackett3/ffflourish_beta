@@ -5,4 +5,6 @@
   'spec','factories','*.rb'))].each {|f| require f}
 #--Hooks for fabrication--#
 #  require 'fabrication'
+#--adjusting capybara--#
+  Capybara.default_wait_time = 5
 
