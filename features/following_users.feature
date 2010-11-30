@@ -42,3 +42,20 @@ Feature: Following the posts of other users
     Then I should be on the home page
     And I should see "0" within "div#following_count"
 
+  Scenario:followed by a user
+    Given I am signed in as "user1@test.com" with password "secret"
+    When I am on the home page
+    Then I should see "0" within "div#followers_count"
+    When I am followed by "user2@test.com"
+    And I go to the home page
+    Then I should see "1" within "div#followers_count"
+
+  Scenario:followed by a user
+    Given I am signed in as "user1@test.com" with password "secret"
+    And I am followed by "user2@test.com"
+    When I am on the home page
+    Then I should see "1" within "div#followers_count"
+    When I am unfollowed by "user2@test.com"
+    And I go to the home page
+    Then I should see "0" within "div#followers_count"
+
