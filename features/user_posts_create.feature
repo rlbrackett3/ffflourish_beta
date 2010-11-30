@@ -12,7 +12,7 @@ Feature: Creating user's blog posts
     Then I should be on my posts page
     And I should see "Post created successfully!" within "p.notice"
     And I should see "I am posting" within "div#post_title a"
-    And I should see " @ " within "div.created"
+    And I should see "less than 5 seconds" within "div.created"
 
   Scenario: creating a valid post with content
     Given I am signed in
@@ -53,10 +53,10 @@ Feature: Creating user's blog posts
       When I fill in "title" with "I"
       And I press "Post"
       Then I should be on my posts page
-      And I should see "Title is too short (minimum is 2 characters)" within "div#error_explanation" #update for better error messages
+      And I should see "Title is too short (minimum is 2 characters)" within "div#error_explanation"
       And the "title" field within "div#post_title" should contain "I"
       When I fill in "title" with ""
       And I press "Post"
       Then I should be on my posts page
-      And I should see "Title Your post is empty, what are you doing?" within "div#error_explanation" #update for better error messages
+      And I should see "Title Your post is empty, what are you doing?" within "div#error_explanation"
 
