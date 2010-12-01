@@ -25,12 +25,14 @@ Feature: Comments on Posts
     And I should see "Wow, that's an awesome post!" within "div#comment_content"
     And I should see " @ " within "div.created"
 
-  Scenario: managing comments on my posts #very fragile test
+  Scenario: managing comments on my posts
     Given I am signed in as "user1@test.com" with password "secret"
-    When I am on my post's page
     And there are 3 comments
+    When I go to my post's page
+    Then I should see "comments(3)" within "div#comment_count"
     Then show me the page
     Then I should see "destroy comment" within "div#destroy_comment a"
     When I follow "destroy comment" within "div#destroy_comment a#destroy"
     Then I should be on my post's page
     And there are 2 comments
+

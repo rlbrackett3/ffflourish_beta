@@ -23,11 +23,11 @@ Factory.define :post do |post|
   post.title                  "Title"
   post.content                "Content"
   post.image_filename         "rails.png"
-  #post.comment { |p| Factory(:comment)}
+  post.comments { |p| Factory(:comment)}
 end
 
 Factory.define :comment do |c|
-  c.association :user, :factory => :post
+  c.association :user, :factory => :user
   c.content                   { |n| "This is #{n} comment" }
 end
 

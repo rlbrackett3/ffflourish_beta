@@ -23,12 +23,15 @@ end
 #---------------fragile and not working well---------------#
 Given /^there are (\d+) comments$/ do |count|
   user = User.first
-  post = user.posts.create(:title => "Title")
-  post.save
+  post = user.posts.first
   n = count.to_i
-  n.times do
-    c = post.comments.create!(:content => "comment #{n}")
-    c.save
+#  n.times do
+#    post.comments.create!(:content => "blank")
+#  end
+  unless n == 0
+    c1 = post.comments.create!(:content => "comment 1")
+    c2 = post.comments.create!(:content => "comment 2")
+    c3 = post.comments.create!(:content => "comment 3")
   end
   post.comments.count.should == n
 end

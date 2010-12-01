@@ -23,7 +23,7 @@ module NavigationHelpers
       edit_user_post_path(user, post)
     when /^my post(?:'s)? page$/
       user = User.first
-      post = Post.first
+      post = user.posts.first #changed from Post.first
       user_post_path(user, post)
     #--users/x/posts/ paths--#
     when /^(.+?)(?:'s) (.+?)(?:'s)? page$/
