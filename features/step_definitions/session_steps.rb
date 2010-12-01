@@ -1,3 +1,10 @@
+Given /^I am signed in as "([^"]*)" with password "([^"]*)"$/ do |email, password|
+  visit new_user_session_path
+  fill_in "Email", :with => email
+  fill_in "Password", :with => password
+  click_button "Sign in"
+end
+
 Given /^I am signed in as the following (\w+):$/ do |role, table|
   Given %(the following #{role}:), table
   @me = @it
@@ -24,3 +31,4 @@ When /^I sign in as "([^"]*)"$/ do |email|
   @me.password ||= 'password'
   Given 'I am signed in'
 end
+
