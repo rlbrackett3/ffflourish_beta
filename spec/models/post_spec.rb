@@ -45,9 +45,9 @@ describe Post do
 
   end
 #------------------------------------------------#
-  describe "build post" do
-
-  end
+#  describe "build post" do
+#    pending
+#  end
 #------------------------------------------------#
   describe "deleting dependencies" do
     before do
@@ -55,11 +55,42 @@ describe Post do
     end
 
     it "should delete a post's comments on destroy" do
-      post = Factory(:post)
-      post.comments.create(:content => "comment")
+      post = @user.posts.create!(:title => 'hello', :content => 'world')
+      post.comments.create!(:content => "comment")
       post.destroy
       Post.all(:id => post.id).empty?.should == true
       Comment.all(:text => "comment").empty?.should == true
+    end
+
+  end
+#------------------------------------------------#
+  describe 'from_users_followed_by' do
+    before(:each) do
+      @user = Factory(:user)
+      @other_user = Factory(:user, :email => Factory.next(:email))
+      @third_user = Factory(:user, :email => Factory.next(:email))
+
+      @user_post = @user.posts.create!(:title => "Hello", :content => "foo")
+      @other_post = @other_user.posts.create!(:title => "Hello", :content => "foo")
+      @third_post = @third_user.posts.create!(:title => "Hello", :content => "foo")
+
+      @user.follow!(@other_user)
+    end
+
+    it 'it should have a from_users_followed_by class method' do
+      Post.should respond_to(:from_users_followed_by)
+    end
+
+    it "should invlude the followed user's posts" do
+      Post.from_users_followed_by(@user).should include(@other_post)
+    end
+
+    it "should include the user's own posts" do
+      Post.from_users_followed_by(@user).should include(@user_post)
+    end
+
+    it "should not include an unfollowed user's posts" do
+      Post.from_users_followed_by(@user).should_not include(@third_post)
     end
 
   end

@@ -7,19 +7,12 @@ Factory.define :user do |user|
   user.password_confirmation  { |u| u.password }
 end
 
-#Factory.define :profile do |profile|
-#  profile.association :user
-#  profile.user_name           "Bair DeBair"
-#  profile.about_me            "Describe yourself"
-#  profile.birthday            ""
-#end
-
 Factory.sequence :email do |n|
   "user#{n}@example.com"
 end
 
 Factory.define :post do |post|
-  post.association :user, :factory => :user
+  post.association :user#, :factory => :user
   post.title                  "Title"
   post.content                "Content"
   post.image_filename         "rails.png"

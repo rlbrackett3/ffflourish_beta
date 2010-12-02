@@ -73,6 +73,12 @@ class User
     self.save!
   end
 
+#--Method for feed me + following--#
+  def following_feed
+    Post.from_users_followed_by(self)
+  end
+  
+
 protected
 #--Seed the user's profile with a name and nil data--#
   def seed_profile

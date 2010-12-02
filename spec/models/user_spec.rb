@@ -240,5 +240,40 @@ describe User do
 
   end
 #------------------------------------------------#
+  describe "feed me + following" do
+    before(:each) do
+      @user = Factory(:user)
+      @other_user = Factory(:user, :email => Factory.next(:email))
+
+      @p1 = @user.posts.create!(:title => 'foo', :content => 'bar')
+      @p2 = @user.posts.create!(:title => 'hello', :content => 'world')
+      @p3 = Post.create!(:title => "foo", 
+                         :content => "bar",
+                         :user_id => @other_user._id.to_s)
+    end
+
+    it "should have a following_feed" do
+      @user.should respond_to(:following_feed)
+    end
+
+    it "should include a user's posts" do
+      @user.following_feed.should include(@p1)
+      @user.following_feed.should include(@p2)
+    end
+
+    it "should not include a different user's posts" do
+#      p3 = Factory(:post, :user => Factory(:user, :email => Factory.next(:email)))
+      @user.following_feed.should_not include(@p3)
+    end
+
+    it "should include the posts of followed users" do
+      followed = @other_user #Factory(:user, :email => Factory.next(:email))
+#      p3 = Factory(:post, :user => followed)
+      @user.follow!(followed)
+      @user.following_feed.should include(@p3)
+    end
+
+  end
+#------------------------------------------------#
 end
 

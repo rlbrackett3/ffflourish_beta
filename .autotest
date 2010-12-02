@@ -8,11 +8,11 @@ module Autotest::Notify
     output = results.slice(/(\d+)\s+examples?,\s*(\d+)\s+failures?(,\s*(\d+)\s+pending)?/)
     folder = "~/Pictures/rails/"
     if output  =~ /([123456789]|[\d]{2,})\sfailures?/
-      notify "FAIL:", "#{output}", folder+"rails_fail.png", 'critical', 10000
+      notify "FAIL:", "#{output}", folder+"fail.png", 'critical', 10000
     elsif output  =~ /[1-9]\d*\spending?/
-      notify "PENDING:", "#{output}", folder+"rails_pending.png", 'normal', 10000
+      notify "PENDING:", "#{output}", folder+"pending.png", 'normal', 10000
     else
-      notify "PASS:", "#{output}", folder+"rails_ok.png"
+      notify "PASS:", "#{output}", folder+"pass.png"
     end
   end
 end

@@ -24,12 +24,18 @@ class Post
   #--validations--#
   validates       :title,
                   :presence => { :message => "Your post is empty, what are you doing?" },
-                  :length => { :within => 2..140 } 
-  validates       :content, 
-                  :length => { :within => 2..512 }, 
+                  :length => { :within => 2..140 }
+  validates       :content,
+                  :length => { :within => 2..512 },
                   :allow_blank => true
 
-  def add_user_likes(user, post)
+#--Scopes--#
+#  default_scope :order => Post.desc(:created_at)
+
+  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).desc(:created_at) }
+
+#--Mthods--#
+  def add_user_likes(user, post) #add tests for me!!!!!
     user.likes << post
     user.save
   end
@@ -42,6 +48,12 @@ class Post
 #    end
 #  end
 
+  private
+#    class << self
+#      def followed_by(user)
+#        criteria.where(:user_id.in => user.following.only(:_id).map{ |user| user.id } << user.id)
+#      end
+#    end
 
 end
 
