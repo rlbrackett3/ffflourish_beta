@@ -231,14 +231,14 @@ describe User do
   end
 
 #------------------------------------------------#
-  describe 'following fbot for initial feed posts' do
+#  describe 'following fbot for initial feed posts' do
 
-    it 'should create a following relationship with fbot' do
-      @user = Factory(:user)
-      @user.following?(@fbot).should be_true
-    end
+#    it 'should create a following relationship with fbot' do
+#      @user = Factory(:user)
+#      @user.following?(@fbot).should be_true
+#    end
 
-  end
+#  end
 #------------------------------------------------#
   describe "feed me + following" do
     before(:each) do
@@ -247,7 +247,7 @@ describe User do
 
       @p1 = @user.posts.create!(:title => 'foo', :content => 'bar')
       @p2 = @user.posts.create!(:title => 'hello', :content => 'world')
-      @p3 = Post.create!(:title => "foo", 
+      @p3 = Post.create!(:title => "foo",
                          :content => "bar",
                          :user_id => @other_user._id.to_s)
     end

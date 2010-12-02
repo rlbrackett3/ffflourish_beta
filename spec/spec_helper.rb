@@ -10,7 +10,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'mongoid-rspec'
 require 'factory_girl'
-#require 'factory_girl_rails'
+require 'factory_girl_rails'
 #Factory.find_definitions
 require 'remarkable/active_model'
 require 'remarkable/mongoid'
@@ -55,9 +55,9 @@ Spork.each_run do
       DatabaseCleaner.clean
     end
 
-    config.before(:each) do
-      @fbot = Factory(:fbot)
-    end
+#    config.before(:each) do
+#      @fbot = Factory(:fbot)
+#    end
 
     #--My Nethods--#
 

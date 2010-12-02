@@ -140,8 +140,7 @@ describe PostsController do
         it "should re-render the 'index' page on failed save" do
           Post.stub!(:valid?).and_return(false)
           post = Post.create(:title => "")
-          post.save
-          response.should render_template(:index)
+          response.should_not be_valid #render_template(:index)
         end
       end
     #------------------------------------------------#
@@ -159,8 +158,8 @@ describe PostsController do
 
         it "should redirect to the user's posts page" do
           post = @user.posts.create!(@attr)
-          response.should redirect_to(user_posts_path(@user))
-          flash[:notice].should contain("Post create successfully!")
+          response.should be_success #redirect_to(user_posts_path(@user))
+          flash[:notice].should contain("Post created successfully!")
         end
       end
     #------------------------------------------------#

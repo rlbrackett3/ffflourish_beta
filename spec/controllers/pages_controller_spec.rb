@@ -37,10 +37,12 @@ describe PagesController do
                                            :content => "following")
         response.should have_selector('a', :href => followers_user_path(@user),
                                            :content => "followers")
-        response.should have_selector('div#following_count',
-                                           :content => "0")
-        response.should have_selector('div#followers_count',
-                                           :content => "1")
+        response.should have_selector('div', :id => 'following_count',
+                                             :class => 'stat_value',
+                                             :content => "0") #following fbot
+        response.should have_selector('div', :id => 'followers_count',
+                                             :class => 'stat_value',
+                                             :content => "1")
       end
 
     end

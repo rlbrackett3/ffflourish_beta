@@ -46,7 +46,7 @@ class User
 
   #--callbacks--#
   after_create :seed_profile
-  after_create :follow_fbot
+#  after_create :follow_fbot
 
 #--Combine first and last name to user's full name--#
   def full_name
@@ -77,7 +77,7 @@ class User
   def following_feed
     Post.from_users_followed_by(self)
   end
-  
+
 
 protected
 #--Seed the user's profile with a name and nil data--#
@@ -92,11 +92,11 @@ protected
     self.save
   end
 
-  def follow_fbot
-    fbot = User.first(:conditions => { :email => "fbot@ffflourish.com" })
-    self.follow!(fbot)
-    self.save
-  end
+#  def follow_fbot
+#    fbot = User.first(:conditions => { :email => "fbot@ffflourish.com" })
+#    self.follow!(fbot)
+#    self.save
+#  end
 
 end
 

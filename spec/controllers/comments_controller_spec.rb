@@ -29,7 +29,7 @@ describe CommentsController do
         sign_in@user
       end
 
-      it 'should POST "create"' do #stub validations
+      it 'should POST "create"' do #stub validations or mock model
         post :create, :user_id => @user._id.to_s, :post_id => @post._id.to_s
         response.should be_success
       end
