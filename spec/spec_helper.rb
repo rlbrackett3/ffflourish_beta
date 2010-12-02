@@ -8,9 +8,10 @@ Spork.prefork do
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'mongoid-rspec'
 require 'factory_girl'
-require 'factory_girl_rails'
-Factory.find_definitions
+#require 'factory_girl_rails'
+#Factory.find_definitions
 require 'remarkable/active_model'
 require 'remarkable/mongoid'
 require 'database_cleaner'
@@ -59,10 +60,6 @@ Spork.each_run do
     end
 
     #--My Nethods--#
-
-    def test_sign_in(user)
-      controller.current_user = user
-    end
 
   end
 

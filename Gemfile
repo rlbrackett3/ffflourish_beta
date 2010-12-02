@@ -45,8 +45,8 @@ group :development, :test do
   gem 'spork'
   gem 'launchy' # So you can do Then show me the page
   #--generating test and sample data--#
-  gem 'fabrication'
-  gem 'factory_girl'
+  #gem 'fabrication'
+  #gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'faker'
   #--Ruby debugger--#

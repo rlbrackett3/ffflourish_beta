@@ -25,7 +25,7 @@ describe UsersController do
 
       before(:each) do
         @user = Factory(:user)
-        sign_in @user
+        sign_in@user
       end
 
       it "should be successful" do
