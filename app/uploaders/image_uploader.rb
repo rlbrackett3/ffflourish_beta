@@ -29,7 +29,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   #--Images for posts--#
   version :post_image do
-    process :resize_to_fit => [600, 600]
+    process :resize_to_fit => [544, 544]
   end
 
   #--Image file extension white list--#

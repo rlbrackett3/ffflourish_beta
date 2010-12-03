@@ -14,7 +14,7 @@
   #user_blog
     -@posts.each do |post|
       - if post.image?
-        = link_to (image_tag "#{post.image.large.url}",
+        = link_to (image_tag "#{post.image.post_image.url}",
           :id => "post_image_thumb"), user_post_path(@user, post)
       #post_title
         = link_to post.title, user_post_path(@user, post)

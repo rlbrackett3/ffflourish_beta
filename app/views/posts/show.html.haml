@@ -1,5 +1,6 @@
 #post_image
-  /= link_to (image_tag "#{@post.image.post_image.url}"), user_post_path(@user, @post)
+  - if @post.image?
+    = link_to (image_tag @post.image.post_image.url), @post.image.url
 #post_title= @post.title
 #post_content= @post.content
 -if @user == current_user
@@ -16,10 +17,10 @@
       #comment_content
         %p= comment.content
       %div.created= comment.created_at.strftime("%m.%d.%Y @ %H:%M:%S")
-      #destroy_comment= link_to "destroy comment", 
-                                user_post_comment_path(@user, comment), 
-                                :confirm => "Are you sure", 
-                                :id => "destroy", 
+      #destroy_comment= link_to "destroy comment",
+                                user_post_comment_path(@user, comment),
+                                :confirm => "Are you sure",
+                                :id => "destroy",
                                 :method => :delete
 %h2 New Comment
 = form_for [@user, @post, Comment.new] do |f|
