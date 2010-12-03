@@ -23,7 +23,8 @@ class User
   #--User Blog--#
   references_many   :posts,     :stored_as => :array,
                                 :inverse_of => :user,
-                                :dependent => :delete
+                                :dependent => :delete,
+                                :index => true
   references_many   :comments,  :stored_as => :array,
                                 :inverse_of => :user
   references_many   :following, :stored_as => :array,

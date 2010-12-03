@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.desc(:created_at).paginate
+    @posts = @user.posts.desc(:created_at).paginate(:page => params[:page])
     @post = @user.posts.new
 
     @title = "#{@user.first_name}'s posts"
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.desc(:created_at).paginate #to redirect to index
     @post = @user.posts.build(params[:post])
-    
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to(user_posts_path(@user),

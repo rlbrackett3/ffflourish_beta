@@ -9,7 +9,8 @@ class PagesController < ApplicationController
       @user = current_user
       @followed = @user.following_ids
       @profile = @user.profile
-      @feed_items = @user.following_feed.paginate(:per_page => 10)
+      @feed_items = @user.following_feed.paginate(:page => params[:page],
+                                                  :per_page => 10)
       #listing all users for development
       @users = User.all
       #--Page Title--#
