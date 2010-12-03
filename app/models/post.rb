@@ -16,15 +16,24 @@ class Post
   field           :public,      :type => Boolean, :default => false
   field           :followers,   :type => Boolean, :default => true
   field           :private,     :type => Boolean, :default => false
-
   #--data fields--#
   field           :title
   field           :content
+  #--source fields--#
+  field           :source_name
+  field           :source_url
+  field           :image_source_name
+  field           :image_source_url
+
+  #--indicies--#
+  index           :created_at
+  index           :updated_at
+  index           :user_id
 
   #--validations--#
   validates       :title,
-                  :presence => { :message => "Your post is empty, what are you doing?" },
-                  :length => { :within => 2..140 }
+                  :length => { :within => 2..140, :message => "is too short." },
+                  :allow_blank => true
   validates       :content,
                   :length => { :within => 2..512 },
                   :allow_blank => true
@@ -34,7 +43,7 @@ class Post
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).desc(:created_at) }
 
-#--Mthods--#
+#--Methods--#
   def add_user_likes(user, post) #add tests for me!!!!!
     user.likes << post
     user.save
@@ -49,11 +58,6 @@ class Post
 #  end
 
   private
-#    class << self
-#      def followed_by(user)
-#        criteria.where(:user_id.in => user.following.only(:_id).map{ |user| user.id } << user.id)
-#      end
-#    end
 
 end
 

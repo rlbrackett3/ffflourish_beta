@@ -15,6 +15,11 @@ describe Post do
     it { should have_field :updated_at }
     it { should have_field :user_id }
 
+    it { should have_field :image_source_name }
+    it { should have_field :image_source_url }
+    it { should have_field :source_name }
+    it { should have_field :source_url }
+
     it { should have_field :image_filename }
 
     describe "voting" do
@@ -39,7 +44,7 @@ describe Post do
 #------------------------------------------------#
   describe "validations" do
 
-    it { should validate_presence_of :title }
+#    it { should validate_presence_of :title }
     it { should validate_length_of :title }
     it { should validate_length_of :content }
 

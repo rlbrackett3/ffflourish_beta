@@ -6,10 +6,8 @@
   %p Already a member?
   .session_links= link_to "Sign in", signin_path
 - else
-  %h1= "Welcome #{current_user.first_name}"
+  = render 'shared/name_menu_bar'
   - if @user.sign_in_count <= 5
     %p= link_to "Set up your profile", edit_user_profile_path(@user, @profile)
-  %p User feed should be displayed here
-  - @users.each do |user|
-    %p= link_to user.full_name, user
+  = render 'shared/feed'
 

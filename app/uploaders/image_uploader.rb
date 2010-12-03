@@ -16,15 +16,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   #--Create different versions of your uploaded files--#
   #--Thumnails--#
   version :small do
-    process :resize_to_fill => [24, 24]
+    process :resize_to_fit => [24, 24]
   end
 
   version :medium do
-    process :resize_to_fill => [48, 48]
+    process :resize_to_fit => [48, 48]
   end
 
   version :large do
-    process :resize_to_fill => [96, 96]
+    process :resize_to_fit => [96, 96]
   end
 
   #--Images for posts--#

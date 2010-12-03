@@ -29,6 +29,15 @@ describe PagesController do
         @other_user = Factory(:user, :email => Factory.next(:email))
         @other_user.follow!(@user)
         sign_in@user
+
+        30.times do
+          Factory(:post, :user => @other_user)
+        end
+      end
+
+      it "should display the correct title" do
+        get :home
+        response.should have_selector("title", :content => @base_title+ " | #{@user.first_name}'s feed me+following")
       end
 
       it 'should have follower/following counts' do
@@ -39,10 +48,21 @@ describe PagesController do
                                            :content => "followers")
         response.should have_selector('div', :id => 'following_count',
                                              :class => 'stat_value',
-                                             :content => "0") #following fbot
+                                             :content => "1") #following fbot
         response.should have_selector('div', :id => 'followers_count',
                                              :class => 'stat_value',
                                              :content => "1")
+      end
+
+      it "should paginate feed items" do
+        @user.follow!(@other_user)
+        get :home
+        response.should have_selector("div.pagination")
+        response.should have_selector("span.disabled", :content => "Previous")
+        response.should have_selector("a",  :href => "/?page=2",
+                                            :content => "2")
+        response.should have_selector("a",  :href => "/?page=2",
+                                            :content => "Next")
       end
 
     end

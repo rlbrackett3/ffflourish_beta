@@ -7,11 +7,13 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       @user = current_user
+      @followed = @user.following_ids
       @profile = @user.profile
+      @feed_items = @user.following_feed.paginate(:per_page => 10)
       #listing all users for development
       @users = User.all
       #--Page Title--#
-      @title = "#{current_user.first_name}'s home"
+      @title = "#{current_user.first_name}'s feed me+following"
     else
       @title = "home"
     end

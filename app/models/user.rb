@@ -12,7 +12,7 @@ class User
   field :first_name
   field :last_name
   field :likes, :type => Array, :default => []
-  mount_uploader :avatar, AvatarUploader
+#  mount_uploader :avatar, AvatarUploader
   #--indecies--#
   index :email
 
@@ -21,11 +21,11 @@ class User
   accepts_nested_attributes_for :profile
 
   #--User Blog--#
-  references_many   :posts, :stored_as => :array,
-                            :inverse_of => :user,
-                            :dependent => :delete
-  references_many   :comments, :stored_as => :array,
-                               :inverse_of => :user
+  references_many   :posts,     :stored_as => :array,
+                                :inverse_of => :user,
+                                :dependent => :delete
+  references_many   :comments,  :stored_as => :array,
+                                :inverse_of => :user
   references_many   :following, :stored_as => :array,
                                 :class_name => 'User',
                                 :inverse_of => :followers

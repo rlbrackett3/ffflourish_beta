@@ -12,14 +12,16 @@ class Profile
   field :about_me
   field :birthday,        :type => Date
 
+  mount_uploader :avatar, AvatarUploader
+
   index :user_name
 
   embeds_many     :locations
   embeds_many     :websites
   embeds_many     :stats
 
-  after_create :seed_stats
-
+  after_create  :seed_stats
+  
 protected
 
   def seed_stats

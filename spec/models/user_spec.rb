@@ -28,6 +28,11 @@ describe User do
     no_name_user.should_not be_valid
   end
 
+  it "should respond to a full_name method" do
+    user = User.create!(@attr)
+    user.should respond_to(:full_name)
+  end
+
   it "should require an email address" do
     no_name_user = User.new(@attr.merge(:email => ""))
     no_name_user.should_not be_valid
@@ -239,6 +244,31 @@ describe User do
 #    end
 
 #  end
+#------------------------------------------------#
+  describe "post feed" do
+    before(:each) do
+      @user = Factory(:user)
+
+      @p1 = @user.posts.create!(:title => 'foo', :content => 'bar')
+      @p2 = @user.posts.create!(:title => 'hello', :content => 'world')
+    end
+
+    it "should have a feed" do
+      @user.should respond_to(:following_feed)
+    end
+
+    it "should include a user's posts" do
+      @user.following_feed.include?(@p1).should be_true
+      @user.following_feed.include?(@p2).should be_true
+    end
+
+    it "should not include a different user's posts" do
+      p3 = Factory(:post,
+                    :user => Factory(:user, :email => Factory.next(:email)))
+      @user.following_feed.include?(p3).should be_false
+    end
+
+  end
 #------------------------------------------------#
   describe "feed me + following" do
     before(:each) do
