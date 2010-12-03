@@ -27,6 +27,7 @@ class User
                                 :index => true
   references_many   :comments,  :stored_as => :array,
                                 :inverse_of => :user
+                                :index => true
   references_many   :following, :stored_as => :array,
                                 :class_name => 'User',
                                 :inverse_of => :followers
