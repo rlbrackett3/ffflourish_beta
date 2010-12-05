@@ -71,6 +71,7 @@ textarea:focus{
 	position: relative;
 	
 	width: 960px;
+	height: 600px;
 	margin-top: 80px;
 	margin-left: 32px;
 	float: left;
@@ -131,7 +132,7 @@ textarea:focus{
 
 #question_background{
 	width: 702px;
-	height: 218px;
+	height: 182px;
 	background-color: #E5E5E5; /* lightest gray */
 	margin-left: 10px;
 	-webkit-border-radius: 5px;
@@ -164,48 +165,32 @@ textarea:focus{
 	border-radius: 5px;
 }
 
+/*
 #post_option_icons{
 	width: 680px;
 	height: 43px;
-	/* background-color: red; */
+	
 	margin-left: 10px;
 	margin-top: 20px;
 }
+*/
 
+/*
 .post_type{
 	background: #999;
-	background: #c1c3c9; /* second lightest gray */
+	background: #c1c3c9; 
 	float:left;
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;
 	margin-right: 2px;
 }
-
-#post_buttons_bottom{
-	/* background-color: red; */
-	width: 680px;
-	margin-left: 10px;
-	margin-top: 20px;
-	height: 25px;
-}
-
-.privacy_icon{
-	background: #999;
-	background: #c1c3c9; /* second lightest gray */
-	float:left;
-	-webkit-border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-	border-radius: 2.5px;
-	margin-right: 2px;
-	margin-left: 5px;
-	margin-top: 3px;
-}
+*/
 
 #post_privacy_control{
 	text-align: left;
-	background-color: white;
-	width: 81px;
+	background-color: #c1c3c9;
+	width: 25px;
 	height: 25px;
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
@@ -215,25 +200,30 @@ textarea:focus{
 	font-style: italic;
 	font-size: 1em;
 	line-height: 22px;
+	float:right;
+	margin-top: 18px;
+	margin-right: 2px;
+}
+
+#post_buttons_bottom{
+	/* background-color: yellow; */
+	float: right;
 }
 
 #post_button{
 	height: 25px;
 	width: 50px;
 	float: right;
-	background-color: white;
+	background-color: #66CC99;
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;
 	font-family: Georgia, serif;
-	color: #666;
+	color: white;
 	font-style: italic;
-	font-size: 1em;
+	font-size: 1.2em;
 	line-height: 22px;	
-}
-
-#post_button:hover{
-	color: #31F48E; /*bright lime green arrow*/
+	margin-top:  18px;
 }
 
 /* FEED CONTENT STARTS HERE */
@@ -388,7 +378,7 @@ textarea:focus{
 #left_column{
 	float: left;
 	width: 712px;
-	/*height: 600px;*/ 
+	/* height: 600px; */ 
 }
 
 #border{

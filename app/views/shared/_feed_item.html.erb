@@ -1,6 +1,7 @@
 <!--#################start photo feed entry##################-->
+<div id="three_column_feed_entry_format">
 <div id="user_photo_small">
-  <%= link_to (image_tag feed_item.user.profile.avatar.thumb.url), 
+  <%= link_to (image_tag feed_item.user.profile.avatar.thumb.url),
                                 user_posts_path(feed_item.user) %>
 </div>
 <div id="feed_entry_content">
@@ -55,7 +56,7 @@
 </div><!-- end 3 feed_entry_content -->
 <% if feed_item.image? %>
   <div id="photo_preview">
-    <%= link_to (image_tag feed_item.image.large.url), 
+    <%= link_to (image_tag feed_item.image.large.url),
         feed_item.image.url %>
     <% if feed_item.image_source_name? %>
       <div class="feed_entry_05">
@@ -73,4 +74,5 @@
 
 <div id="border"> </div>
 <!-- #################end photo feed entry################ -->
+</div><!-- end 3 column_feed_entry_format -->
 

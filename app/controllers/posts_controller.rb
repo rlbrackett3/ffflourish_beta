@@ -58,10 +58,10 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.desc(:created_at).paginate #to redirect to index
     @post = @user.posts.build(params[:post])
-
+    
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(user_posts_path(@user),
+        format.html { redirect_to(root_path,
                              :notice => 'Post created successfully!') }
         format.xml  { render :xml => @post,
                              :status => :created,

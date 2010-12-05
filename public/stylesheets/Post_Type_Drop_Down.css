@@ -1,0 +1,113 @@
+/* ---------- POST OPTIONS DROP DOWN MENU ----------*/
+
+
+#post_options_container{
+	margin-left: 10px;
+	width: 680px;
+	height: 63px;
+	margin-top: 20px;
+	padding-left: 0px;
+	/* background-color: red; */
+	list-style:none;
+	overflow: hidden;
+}
+
+/*
+#post_options_container a{
+	float: left;
+}
+*/
+
+.post_type_dropdown{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+	overflow: hidden;
+	position: absolute;
+	display: none;
+	z-index: 50;
+	background: #99FFFF; /* BRIGHT LIGHT BLUE*/
+	-webkit-border-bottom-right-radius: 2.5px;
+	-moz-border-radius-bottomright: 2.5px;
+	border-bottom-right-radius: 2.5px;
+	-webkit-border-bottom-left-radius: 2.5px;
+	-moz-border-radius-bottomleft: 2.5px;
+	border-bottom-left-radius: 2.5px;
+}
+
+
+.post_type{
+	float: left;
+	margin-right: 5px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	overflow: hidden;
+	background-color: #C1C3C9;
+	list-style: none;
+}
+
+.post_type:hover{
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+	background: #99FFFF;
+}
+
+
+.post_type_dropdown li{
+	float: none;
+}
+
+.post_type_dropdown li a{
+	font-size: 1.2em;
+	text-align: center;
+	font-family: Georgia, serif;
+	font-style: italic;
+	text-decoration: none;
+	height: 20px;
+	width: 43px;
+}
+
+#post_options_container li{
+	float: left;
+}
+
+#post_options_container li a{
+	/* padding: 0.5em; */
+	/* margin-right:5px; */
+	color: #1B9E6F; /* DARK GREEN WHEN OVER ICONS*/
+	display: block;
+	cursor: default;
+}
+
+#post_options_container li a:hover{
+	color: #1B9E6F; /* DARK GREEN */
+	/* color: #31F48E; */ /* lime green */
+}
+
+.post_type:hover .post_type_dropdown{
+	display: block;
+}
+
+.icon_background{
+	width: 43px;
+	height:43px;
+	/* background-color: #C1C3C9; */ /* LIGHT GRAY */
+	cursor: default;
+}
+
+.icon_background:hover{
+	width: 43px;
+	height:43px;
+	/* background-color: #99FFFF; */ /* BRIGHT LIGHT BLUE*/
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+}

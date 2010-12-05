@@ -6,6 +6,7 @@
   %p Already a member?
   .session_links= link_to "Sign in", signin_path
 - else
+  = render 'shared/feed_form'
   = render 'shared/name_menu_bar'
   - if @user.sign_in_count <= 5
     %p= link_to "Set up your profile", edit_user_profile_path(@user, @profile)

@@ -1,0 +1,76 @@
+<div id="question_background"> 
+	<div id="question"> 
+		What are you doing right now that's healthy for you? 
+	</div>
+	<%= form_for [@user, @post] do |f| %>
+	  <div id="question_field"> 
+	    <%=f.text_area :content %>
+	  </div>
+	
+	  <!-- ################# POST TYPE DROP DOWN #################### -->
+	  <ul id="post_options_container">
+	    
+	    <a href="#">
+	    	<li class="post_type">
+	    		<div class="icon_background">
+	    			<img src="images/text.png" width="43" height="43">
+	    			<ul class="post_type_dropdown">
+	    				<li><a href="#">text</a></li>
+	    			</ul>
+	    		</div>
+	    	</li>
+	    </a>	  
+	    <a href="#">
+	    	<li class="post_type">
+	    		<div class="icon_background">
+	    			<img src="images/photo.png" width="43" height="43">
+	    			<ul class="post_type_dropdown">
+	    				<li><a href="#">photo</a></li>
+	    			</ul>
+	    		</div>
+	    	</li>
+	    </a>	  
+	    <a href="#">
+	    	<li class="post_type">
+	    		<div class="icon_background">
+	    			<img src="images/video.png" width="43" height="43">
+	    			<ul class="post_type_dropdown">
+	    				<li><a href="#">video</a></li>
+	    			</ul>
+	    		</div>
+	    	</li>
+	    </a>	  
+	    <a href="#">
+	    	<li class="post_type">
+	    		<div class="icon_background">
+	    			<img src="images/audio.png" width="43" height="43">
+	    			<ul class="post_type_dropdown">
+	    				<li><a href="#">audio</a></li>
+	    			</ul>
+	    		</div>
+	    	</li>
+	    </a>	  
+	    <a href="#">
+	    	<li class="post_type">
+	    		<div class="icon_background">
+	    			<img src="images/message.png" width="43" height="43">
+	    			<ul class="post_type_dropdown">
+	    				<li><a href="#">note</a></li>
+	    			</ul>
+	    		</div>
+	    	</li>
+	    </a>	
+	  
+	    <div id="post_buttons_bottom"> 
+	      <div id="post_button"> 
+	      	<%= f.submit "post" %> 
+	      </div>
+	      <div id="post_privacy_control">
+	      	<div class="privacy_icon"> 
+	      		<img src="images/midprivacy.png" width="25" height="25"/> 
+	      	</div>
+	      </div>	
+	    </div>
+    </ul>
+  <% end %>
+</div> 
