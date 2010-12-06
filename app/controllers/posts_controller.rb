@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.desc(:created_at).paginate #to redirect to index
     @post = @user.posts.build(params[:post])
-    
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to(root_path,
@@ -107,8 +107,13 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.destroy
+
+#    if @post.destroy
+#      flash[:notice] = "Post successfully deleted!"
+#      redirect_to user_posts_path(@user)
+#    end
 #    flash[:notice] = "Post successfully deleted!" if @post.update_attributes(params[:post])
-    respond_with(@user, :location => user_posts_path)
+    respond_with(@user, :location => user_posts_path(@user))
   end
 
   def like
@@ -118,7 +123,7 @@ class PostsController < ApplicationController
     @post.add_user_likes(current_user, @post.id)
 
     if @post.update_attributes(params[:post])
-      redirect_to user_posts_path
+      redirect_to user_posts_path(@user)
     end
   end
 

@@ -26,7 +26,7 @@
         #like_score= "(#{post.vote_count})"
         - if @user == current_user
           %div.post_links= link_to "edit post", edit_user_post_path(@user, post), :id => 'edit'
-          %div.post_links= link_to "destroy post", edit_user_post_path(@user, post), :confirm => "Are you sure", :id => "destroy", :method => :delete
+          %div.post_links= link_to "destroy post", user_post_path(@user, post), :confirm => "Are you sure", :id => "destroy", :method => :delete
     = will_paginate @posts
 - else
   #get_posting

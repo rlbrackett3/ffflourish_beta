@@ -53,8 +53,8 @@ group :development, :test do
   #--Ruby debugger--#
   # gem 'ruby-debug19'
   #--Autotest--#
-  gem 'autotest'#, '4.4.1'
-  gem 'autotest-rails'#, '4.1.0'
+  gem 'autotest', '4.4.1'
+  gem 'autotest-rails', '4.1.0'
   gem 'autotest-notification'
   gem 'parallel_tests'
 end

@@ -38,8 +38,7 @@ GEM
     activesupport (3.0.3)
     annotate-models (1.0.4)
     arel (2.0.6)
-    autotest (4.4.6)
-      ZenTest (>= 4.4.1)
+    autotest (4.4.1)
     autotest-notification (2.3.1)
       autotest (~> 4.3)
     autotest-rails (4.1.0)
@@ -262,9 +261,9 @@ PLATFORMS
 
 DEPENDENCIES
   annotate-models
-  autotest
+  autotest (= 4.4.1)
   autotest-notification
-  autotest-rails
+  autotest-rails (= 4.1.0)
   aws-s3
   bson_ext
   capybara
