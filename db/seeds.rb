@@ -5,7 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-require 'faker'
+#require 'faker'
+require 'ffaker'
 require File.expand_path("config/randomtime.rb")
 puts 'EMPTY THE MONGODB DATABASE'
 Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)

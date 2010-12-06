@@ -108,10 +108,10 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="faker" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
-      </requirement>
-      <source from="Gemfile" />
-    </requirement>
+<!--        <dependency name="faker" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />-->
+<!--      </requirement>-->
+<!--      <source from="Gemfile" />-->
+<!--    </requirement>-->
     <requirement>
       <requirement>
         <dependency name="fog" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
@@ -310,7 +310,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] jquery-rails (v0.2.4, C:/Ruby192/lib/ruby/gems/1.9.1/gems/jquery-rails-0.2.4)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] haml-rails (v0.3.4, C:/Ruby192/lib/ruby/gems/1.9.1/gems/haml-rails-0.3.4)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] will_paginate (v3.0.pre2, C:/Ruby192/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.pre2)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] faker (v0.3.1, C:/Ruby192/lib/ruby/gems/1.9.1/gems/faker-0.3.1)" level="application" />
+<!--    <orderEntry type="library" scope="PROVIDED" name="[gem] faker (v0.3.1, C:/Ruby192/lib/ruby/gems/1.9.1/gems/faker-0.3.1)" level="application" />-->
     <orderEntry type="library" scope="PROVIDED" name="[gem] autotest (v4.4.1, C:/Ruby192/lib/ruby/gems/1.9.1/gems/autotest-4.4.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] factory_girl_rails (v1.0, C:/Ruby192/lib/ruby/gems/1.9.1/gems/factory_girl_rails-1.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rspec (v2.0.0, C:/Ruby192/lib/ruby/gems/1.9.1/gems/rspec-2.0.0)" level="application" />

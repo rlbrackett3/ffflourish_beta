@@ -1,4 +1,5 @@
-require 'faker'
+
+require 'ffaker'#require 'faker'
 
 namespace :db do
   desc "Fill database with sample users with posts"

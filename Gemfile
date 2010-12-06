@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 #--Rails--#
-gem 'rails', '3.0.1'
-gem 'mongrel', '>=1.2.0.pre2'
+gem 'rails', '3.0.3'
+
 
 #--Deploy with Heroku--#
 gem 'heroku'
@@ -32,9 +32,9 @@ gem 'jquery-rails'
 gem 'haml'
 
 group :development, :test do
+  gem 'mongrel', '>=1.2.0.pre2'
   #--Rspec--#
-  gem 'rspec'
-  gem 'rspec-rails'
+  gem "rspec-rails", '2.0.1'
   gem 'fuubar'
   #--Cucumber--#
   gem 'cucumber'
@@ -48,7 +48,8 @@ group :development, :test do
   #gem 'fabrication'
   #gem 'factory_girl'
   gem 'factory_girl_rails'
-  gem 'faker'
+#  gem 'faker'
+  gem 'ffaker'
   #--Ruby debugger--#
   # gem 'ruby-debug19'
   #--Autotest--#
@@ -71,7 +72,7 @@ end
 group :test do
   #--Rspec Helpers--#
   gem 'mongoid-rspec'
-  gem 'remarkable_activemodel', '>=4.0.0.alpha2'
+  gem 'remarkable_activemodel', '4.0.0.alpha4'
   gem 'remarkable_mongoid'
   #--Browser simulation--#
   gem 'webrat' #for Rspec controller specs with views
