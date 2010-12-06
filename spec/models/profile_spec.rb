@@ -4,6 +4,7 @@ describe Profile do
 
   describe 'fields' do
     it { should have_field :user_name }
+    it { should have_field :handle }
     it { should have_field :avatar_filename }
     it { should have_field :about_me }
     it { should have_field(:birthday).of_type(Date) }
@@ -16,6 +17,6 @@ describe Profile do
     it { should embed_many :websites }
 
   end
-  
+
 end
 

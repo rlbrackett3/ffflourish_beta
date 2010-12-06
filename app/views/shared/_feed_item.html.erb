@@ -9,34 +9,44 @@
     <%= link_to feed_item.user.full_name, user_posts_path(feed_item.user) %>
   </div>
   <div id="feed_entry_02_reposted"></div>
-  <div id="feed_entry_03_title">
-     <%= feed_item.title %>
-  </div>
-  <div id="feed_entry_04_text">
-     <%= feed_item.content %>
-   </div>
-  <div class="feed_entry_05_source">
-  	<div class="feed_entry_05_source_text">
-  	  source:
+  <% if feed_item.title? %>
+    <div id="feed_entry_03_title">
+      <%= feed_item.title %>
     </div>
-  	<div class="feed_entry_05_source_text_link">
-  	  g0lubka
-  	</div>
-  </div>
+  <% end %>
+  <% if feed_item.content %>
+    <div id="feed_entry_04_text">
+      <%= feed_item.content %>
+    </div>
+  <% end %>
+  <% if feed_item.source_name? %>
+    <div class="feed_entry_05_source">
+      <div class="feed_entry_05">
+	  	  <div class="feed_entry_05_source_text">
+	  	    source:
+	  	  </div>
+	  	  <div class="feed_entry_05_source_text_link">
+	  	    <%= link_to feed_items.source_name, feed_item.source_url %>
+	  	  </div>
+	    </div>
+	  </div>
+  <% end %>
+ 
 	<div id="date">
 	  <%= "#{time_ago_in_words(feed_item.created_at)} ago" %>
 	</div>
 	<div class="activity_images">
-	  <img src="images/like.png" width="14" height="15" />
+	  <%= link_to (image_tag "like.png", :width => 14, :height => 15), 
+	              like_user_post_path(feed_item.user, feed_item) %>
 	</div>
 	<div class="activity_count">
-	  10
+	  <%= feed_item.votes %>
 	</div>
 	<div class="activity_images">
 	  <img src="images/comment.png" width="14" height="15" />
 	</div>
   <div class="activity_count">
-    20
+    <%= feed_item.comments.count %>
   </div>
   <div class="activity_images">
     <img src="images/repost.png" width="14" height="15" />
@@ -50,9 +60,11 @@
   <div class="activity_count">
     40
   </div>
-	<div id="expand_arrow_field">
-	  <div id = "expand_arrow"> &#x25BC;</div>
-	</div>
+  <% if feed_item.content.length > 180 %>
+	  <div id="expand_arrow_field">
+	    <div id = "expand_arrow"> &#x25BC;</div>
+	  </div>
+	<% end %>
 </div><!-- end 3 feed_entry_content -->
 <% if feed_item.image? %>
   <div id="photo_preview">

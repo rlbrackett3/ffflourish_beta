@@ -8,6 +8,7 @@ class Profile
   accepts_nested_attributes_for :locations, :websites, :stats
 
   field :user_name
+  field :handle
   field :status,          :type => Integer
   field :about_me
   field :birthday,        :type => Date
@@ -21,7 +22,7 @@ class Profile
   embeds_many     :stats
 
   after_create  :seed_stats
-  
+
 protected
 
   def seed_stats

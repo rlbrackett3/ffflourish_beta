@@ -14,14 +14,14 @@
   #user_blog
     -@posts.each do |post|
       - if post.image?
-        = link_to (image_tag "#{post.image.post_image.url}",
-          :id => "post_image_thumb"), user_post_path(@user, post)
-      #post_title
-        = link_to post.title, user_post_path(@user, post)
+        = link_to (image_tag "#{post.image.post_image.url}", :id => "post_image_thumb"), user_post_path(@user, post)
+      - if post.title?
+        #post_title
+          = link_to post.title, user_post_path(@user, post)
       #post_content
         %p.body_text= post.content
       #post_stats
-        %div.created= time_ago_in_words(post.created_at, :include_seconds => true)
+        %div.created= "#{time_ago_in_words(post.created_at, :include_seconds => true) } ago"
         #like= link_to "likes", like_user_post_path(@user, post)
         #like_score= "(#{post.vote_count})"
         - if @user == current_user
