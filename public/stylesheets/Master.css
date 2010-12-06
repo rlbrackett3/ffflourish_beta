@@ -69,12 +69,11 @@ textarea:focus{
 /////////////////////////////////////*/
 #main{
 	position: relative;
-	
-	width: 960px;
-	height: 600px;
-	margin-top: 80px;
-	margin-left: 32px;
 	float: left;
+	width: 960px;
+/*	height: 600px;*/
+  margin: 80px 0px 0px 32px;
+  padding: 0px 0px 20px 0px;
 	background-color: #FFF;
 	border-bottom: 1px dotted #666;
 	-webkit-border-top-left-radius: 10px;
@@ -474,20 +473,27 @@ textarea:focus{
 
 /* CONTENT IN BOTTOM 
 /////////////////////////////////////*/
+/*bottom_profile_section*/
 
-
-#bottom_profile_section{	
-	position: relative;
-	float: left;
+#footer {	
+  position: relative;
+  float: left;
 	width: 960px;
-	height: 20px;
-	margin: 0px 0px 0px 32px;
-	padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 32px;
+	height: 25px;
 	background-color: #FFF;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-bottom-left-radius: 10px;
+	-moz-border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 #bottom_table{
-	margin: 0px 0px 0px 0px;
+  position: relative;
+  float: left;
+	margin: 0px auto;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size:12px;
 	font-style:italic;
@@ -528,6 +534,11 @@ textarea:focus{
   list-style: square;
 }
 
+#debug {
+  position: relative;
+  float: left;
+  margin: 20px auto;
+}
 
 
 

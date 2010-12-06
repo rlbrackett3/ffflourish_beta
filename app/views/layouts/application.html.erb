@@ -29,15 +29,17 @@
           <%= render 'layouts/right_column' %>
         </div>
       <% end %>
-
       <!--Footer with Site Navigation Links-->
-      <div id="footer">
+      
+    </div>
+    <div id="footer">
         <%= render 'layouts/footer' %>
-        <% if Rails.env.development? %>
-          <%= debug(params) %>
-          <%= debug(session) %>
-        <% end %>
-      </div>
+    </div>
+    <div id="debug">
+      <% if Rails.env.development? %>
+        <%= debug(params) %>
+        <%= debug(session) %>
+      <% end %>
     </div>
   </body>
 </html>

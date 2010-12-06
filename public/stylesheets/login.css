@@ -1,0 +1,112 @@
+#signin {
+  width: 420px;
+  height: 100px;
+  margin: 20px auto 0px 20px;
+  background-color: #999;
+  -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#signin_form {
+  width: 540px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 0px;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:12px;
+	color:#333;
+	text-align:left;
+}
+
+.page_title {
+  margin: 5px 0px 0px 5px;
+  text-align:left; 
+  font-family:"Georgia", Times New Roman, Times, serif; 
+  font-size: 16px;
+  font-style: italic;
+  color: #333;
+}
+
+.field {
+  position: relative;
+  font-family:"Georgia", Times New Roman, Times, serif;
+  font-style:italic;
+  font-size:12px;
+	
+}
+
+.signin_field {
+  font-family:"Georgia", Times New Roman, Times, serif;
+  font-style:italic;
+  font-size:12px;
+  position: relative;
+  float: left;
+}
+
+
+.user_email {
+  clear: both;
+  width: 150px;
+  margin-left: 0px;
+  background-color:#FFF;
+  padding: 3px 6px 3px 6px;
+	overflow: visible;
+	border-style: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.user_password {
+  clear: both;
+  width: 150px;
+  margin-left: 2px;
+  background-color:#FFF;
+  padding: 3px 6px 3px 6px;
+	overflow: visible;
+	border-style: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#remember_me{
+  position: absolute;
+  float: left;
+  margin: 30px 0px 0px 0px;
+}
+
+.signin_btn {
+	position: relative;
+	float: left;
+	margin: 2px 0px 0px 2px;
+  color:#fff;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-style:italic;
+	font-weight:normal;
+	font-size: 12px;
+	padding: 3px 6px 4px 6px;
+	clear: right;
+	border: none;
+	background-color: #6C9;
+	overflow: hidden;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.signin_btn:hover {
+  background-color: #666;
+  cursor: default;
+}
+
+#signin_links {
+  margin: 20px auto 20px 25px;
+  position: relative;
+  float: left;
+  text-align: left;
+}
+
+
+
