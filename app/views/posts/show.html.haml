@@ -1,14 +1,5 @@
-#post_image
-  - if @post.image?
-    = link_to (image_tag @post.image.post_image.url), @post.image.url
-#post_title= @post.title
-#post_content= @post.content
--if @user == current_user
-  = link_to 'Edit', edit_user_post_path(@user, @post)
-= link_to 'Back', user_posts_path
-#like= link_to "#{ make_this_plural(@post.votes, "like") }(#{ @post.votes })",
-                    like_user_post_path(@user, @post)
-#comment_count= "#{ make_this_plural(@post.comments.count, "comment") }(#{ @post.comments.count })"
+= render 'blog_post', :f => @post
+/#comment_count= "#{ make_this_plural(@post.comments.count, "comment") }(#{ @post.comments.count })"
 #comments
   - if @post.comments.size > 0
     %h2 Comments
@@ -22,8 +13,8 @@
                                 :confirm => "Are you sure",
                                 :id => "destroy",
                                 :method => :delete
-%h2 New Comment
-= form_for [@user, @post, Comment.new] do |f|
-  %p= f.text_area :content, :id => 'content', :rows => 5
-  %p= f.submit
+  %h2 New Comment
+  = form_for [@user, @post, Comment.new] do |f|
+    %p= f.text_area :content, :id => 'content', :rows => 5
+    %p= f.submit
 

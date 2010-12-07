@@ -12,7 +12,8 @@ class PagesController < ApplicationController
                                                   :per_page => 10)
       @post = @user.posts.new
       #--Page Title--#
-      @title = "#{current_user.first_name}'s feed me+following"
+      @title = "#{current_user.first_name}'s feed | me+following"
+      @page_title = "following"
     else
       @title = "home"
     end

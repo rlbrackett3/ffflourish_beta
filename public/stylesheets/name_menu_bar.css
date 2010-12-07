@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#user_page_header {
+  height: 37px;
+  margin: 10px 0px 0px 10px;
+}
+
+#user_name {
+	text-align:left;
+	font: Georgia, serif;
+	font-size:1.5em;
+	font-style:italic;
+	font-weight:bold;
+	color: #444;
+	position: relative;
+	float: left;
+	/* background-color: yellow; */
+}
+
+#user_handle {
+  position: absolute;
+  float: left;
+  margin: 20px 0px 0px 0px;
+	font: Times, serif;
+	font-style: none;
+	font-weight: none;
+	font-size:10px;
+	color: #999;	
+}
+
+#page_title {
+  font: Georgia, serif;
+	font-style: normal;
+	font-weight: normal;
+	color: #999;
+	font-size: 1em;
+	position: relative;
+	float: left;
+	/* background-color: gray; */
+	margin: 6px 0px 0px 3px;
+}
+
+#local_nav {
+  position: relative;
+  float: right;
+}
+
+#local_nav a.local_nav_link{
+  float: right;
+  color: #FFF;
+  background-color: #999;
+  text-decoration: none;
+  padding: 3px 6px 4px 6px;
+  font-family:"Georgia", Times New Roman, Times, serif;
+  font-size: 1em;
+  font-style:italic;
+  margin: 3px 0px 0px 2px;
+  -webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+}
+
+#local_nav a.local_nav_link:hover {
+  background-color: #66CC99;
+}
+

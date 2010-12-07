@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#user_blog {
+}
+
+#blog_post {
+  position: relative;
+  float: left;
+  margin: 20px auto 0px 87px;
+  width: 544px;
+}
+
+#blog_post_edit {
+  position: relative;
+  float: left;
+  margin: 20px auto 0px 87px;
+  width: 544px;
+  background-color: #999;
+  padding: 10px 20px 20px 20px;
+  -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#post_fields {
+  width: 544;
+  position: relative;
+  float: left;
+  clear: both;
+
+}
+
+#post_image {
+  position: relative;
+  margin: 0px auto 0px auto;
+}
+
+#post_image_source {
+  position: relative;
+  float: left;
+  clear: both;
+}
+
+#post_source {
+  position: relative;
+  float: left;
+  clear: both;
+}
+
+#post_title {
+  position: relative;
+  float: left;
+  clear: both;
+  height: 20px;
+	font-family: Georgia, serif;
+	font-style: italic;
+	font-size: 1.2em;
+	color: #666;
+	text-align: left;
+	padding-top: 2.5px;
+}
+
+#post_content {
+  position: relative;
+  float: left;
+  clear: both;
+  text-align: left;
+	font-family: Verdana, sans serif;
+	font-size: 1em;
+	line-height:  1.25em;
+/*	word-spacing: 1em;*/
+	color: #999;
+	padding-top: 0px;
+	margin: 5px 0px 0px 0px;
+}
+
+#text_source {
+  position: relative;
+  float: left;
+  clear: both;
+  margin: 5px 0px 0px 0px;
+}
+
+#post_stats {
+  position: relative;
+  float: left;
+  clear: both;
+  margin: 5px 0px 0px 0px;
+}
+
+#post_management {
+  position: relative;
+  float: right;
+  clear: both;
+}
+
+.field{
+  position: relative;
+  float: left;
+  width: 350px;
+  clear: both;
+  margin: 2px 0px 2px 0px;
+}
+
+.edit_post_label {
+  position: relative;
+  float: left;
+  margin: 5px 0px 0px 0px;
+  color: #fff;
+}
+
+.edit_post_field {
+  position: relative;
+  float: right;
+  width: 250px;
+  color: #999;
+  background-color: #fff;
+  border-style: none;
+  -webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+}
+

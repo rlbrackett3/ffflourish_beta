@@ -36,7 +36,7 @@ class Post
                   :length => { :within => 2..140, :message => "is too short." },
                   :allow_blank => true
   validates       :content,
-                  :length => { :within => 2..512 },
+                  :length => { :within => 2..2048 },
                   :allow_blank => true
 
 #--Scopes--#
