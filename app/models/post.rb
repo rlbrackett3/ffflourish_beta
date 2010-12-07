@@ -29,7 +29,7 @@ class Post
   index           :created_at
   index           :updated_at
   index           :user_id
-  index "commnets.created_at"
+  index "comments.created_at"
 
   #--validations--#
   validates       :title,
