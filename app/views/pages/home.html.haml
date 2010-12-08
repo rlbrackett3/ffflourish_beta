@@ -1,10 +1,5 @@
 - if ! user_signed_in?
-  %h1 Welcome to ffflourish
-  = link_to "Join ffflourish", new_user_registration_path
-
-  %p Public feed examples should be displayed here
-  %p Already a member?
-  .session_links= link_to "Sign in", signin_path
+  = render 'landing'
 - else
   = render 'shared/name_menu_bar'
   = render 'shared/feed_form'

@@ -28,7 +28,18 @@ a:hover { color: #31F48E; }
 /* Guides.css */
 
 /* Top_Navigation.css */
+#ffflourish_logo {
+  position: relative;
+  float: left;
+  margin: 55px 0px 0px 2px;
+}
 
+#notifications {
+  position: relative;
+  float: left;
+  margin: 45px 0px 0px 90px;
+  color: #666;
+}
 
 /* TEXT BOX /////////////////////////////////////*/
 
@@ -339,6 +350,32 @@ a:hover { color: #31F48E; }
 
 /* RIGHT COLUMN
 /////////////////////////////////////*/
+
+/* not signed in */
+/* ////////////////////////////////// */
+
+#right_side_info {
+  position: relative;
+  float: right;
+  width: 228px;
+  height: 480px;
+  margin: 20px 20px 0px 0px;
+  background-color: #efefef;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+#fff_info {
+  width:200px;
+  margin: 10px auto 10px auto;
+  text-align: left;
+  color: #666;
+}
+
+/* signed in */
+/* ////////////////////////////////// */
+
 #right_side_column{
 	float: left;
 	width: 248px;

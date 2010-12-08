@@ -1,0 +1,54 @@
+<div id="landing_backdrop">
+  <div id="landing">
+    <div id="icons">
+      <div id="icon_01">
+        <%= image_tag "connect_v01.png",  :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "connect",
+                                          :mouseover => "connect_v02.png" %>
+        connect.
+      </div>
+      <div id="icon_02">
+        <%= image_tag 'track_v01.png',    :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "track"  %>track.
+      </div>
+      <div id="icon_03">
+        <%= image_tag 'share_v01.png',    :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "share"  %>
+        share.
+      </div>
+      <div id="icon_04">
+        <%= image_tag 'thrive_v01.png',   :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "thrive"  %>
+        thrive.
+      </div>
+    </div>
+    <div id="join">
+      <%= link_to "join", new_user_registration_path, :class => 'new_member' %>
+      <%= link_to "sign in", signin_path, :class => 'member' %>
+    </div>
+    <!--<div id="members">
+      <p> Already a member? </p>
+      <div id="session_links">
+        <%= link_to "Sign in", signin_path %>
+      </div>
+    </div>-->
+    
+    <div id="logo">
+      <%=link_to (image_tag 'logo.png',   :size => "439x125",
+                                          :alt => "ffflourish"), 
+                                          new_user_registration_path %>
+    </div> 
+    
+    <!--<div id="description">
+      <i><font color="#99FFFF" >ffflourish</font></i> is a new, free social networking utility dedicated to natural health. <i><font color="#99FFFF">ffflourish</font></i> allows you to create a profile, connect with friends, track your goals, share your passion and thrive in an inspiring community dedicated to what makes you feel your best. 
+     <BR/><BR/>
+     <i><font color="#99FFFF">ffflourish</font></i> is for everyone. go ahead and <i><font color="#99FFFF">ffflourish!</font></i>
+    </div>-->
+    
+    
+  </div>
+</div>

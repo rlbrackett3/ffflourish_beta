@@ -1,0 +1,113 @@
+#landing_backdrop {
+  position: relative;
+  float: left;
+  width: 640px;
+  height: 480px;
+  margin: 20px 0px 0px 20px;
+  background-color: #efefef;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+#landing {
+  position: relative;
+  width: 381px;
+  height: 381px;
+  margin: 30px auto 50px auto;
+  overflow: visible;
+}
+
+/*icons*/
+#icons {
+  position: relative;
+  float: left;
+}
+
+#icon_01 {
+	margin-left:10px;
+}
+
+#icon_01, #icon_02, #icon_03, #icon_04 {
+  width: 92px;
+  position: relative;
+	float:left;
+	margin-top: 10px;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:12px;
+	color:#666;
+	font-style:italic;
+	text-align:left;
+	line-height: 1px;
+}
+
+#icon_02, #icon_03, #icon_04 {
+	margin-left: 1px;
+}
+
+
+#join a{
+  position: relative;
+  float: left;
+  margin: 50px 0px 30px 75px;
+  padding: 27px 0px 0px 0px;
+  width: 77px;
+  height: 50px;
+/*  background-color: #C1C3C9;*/
+  background-color: #666;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-family:"Georgia", Times New Roman, Times, serif;
+  font-size: 1.5em;
+  font-style: italic;
+  color: #fff;
+  overflow: hidden;
+  -moz-box-shadow: 5px 5px 7px #fff;
+  -webkit-box-shadow: 5px 5px 7px #fff;
+  box-shadow: 5px 5px 7px #fff;
+}
+
+#join a:hover {
+  background: #99FFFF;
+}
+
+/*descrition*/
+#description{
+	width: 180px;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	padding: 10px;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	color: #fff;
+	font-size:12px;
+	font-style: normal;
+	text-align: left;
+	line-height: 18px;
+	background-color: #666;
+	-webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+/*name logo*/
+#logo{
+	float:left;
+	margin-left: -33px;
+	margin-top: 20px;
+	font-family: "Georgia", Times New Roman, Times, serif;
+	color:#FFF;
+	font-size:96px;
+	font-style:italic;
+	text-align:center;
+	bottom: 10px;
+}
+
+#members {
+/*  position: relative;*/
+/*  float: left;*/
+  clear: both;
+  margin: 20px auto 20px auto;
+  
+}

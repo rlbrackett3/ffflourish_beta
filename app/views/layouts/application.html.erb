@@ -10,14 +10,18 @@
   <body>
     <!--Account Navigation-->
     <div id="top">
+      <div id="ffflourish_logo">
+        <%= link_to (image_tag 'logo.png', :size => "132x36",
+                                           :alt => "ffflourish"), root_path %>
+      </div>
+      <!--Devise Notice and Alert Messages-->
+      <div id="notifications">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
       <% if user_signed_in? %>
         <%= render 'layouts/nav' %>
       <% end %>
-    </div>
-    <!--Devise Notice and Alert Messages-->
-    <div id="notifications">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
     </div>
     <!---------Main--------->
     <div id="main">
@@ -27,6 +31,10 @@
       <% if user_signed_in? %>
         <div id="right_side_column">
           <%= render 'layouts/right_column' %>
+        </div>
+      <% else %>
+        <div id="right_side_info">
+          <%= render 'layouts/right_info' %>
         </div>
       <% end %>
       <!--Footer with Site Navigation Links-->
