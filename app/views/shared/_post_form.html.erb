@@ -1,0 +1,36 @@
+<div id="post_fields_container">
+  <div id="photo_post_preview">
+    <%= image_tag(@post.image.large.url) if @post.image? %>
+  </div>
+  <div id="photo_post_upload">
+    <%= f.file_field :image, :id => "image",
+              :value => "upload photo (5 MB max, .jpg, .gif, .png, .bmp)" %>
+    <%= f.hidden_field  :image_cache %>
+  </div>
+  <!-- post title -->
+  <div id="post_form_first_title_container">
+    <div id="post_form_first_heading"><%= f.label "Title:" %></div>
+		<div id="post_form_first_heading_note">(optional)</div>
+  </div>
+  <%= f.text_field :title,  :class =>"post_form_title_entry" %>
+  <!-- post source -->
+  <div class="post_form_title_container">
+		<div class="post_form_heading"><%= f.label "Content Source:" %></div>
+		<div class="post_form_heading_note">(optional)</div>
+	</div>
+	<%= f.text_field :source_name,  :class =>"post_form_source_entry" %>
+	<%= f.url_field  :source_url,   :class =>"post_form_source_entry" %>
+	<!-- post tags -->
+	<div class="post_form_title_container">
+		<div class="post_form_heading"><%= f.label "Tags:" %></div>
+		<div class="post_form_heading_note">(separate with commas)</div>
+	</div>
+	<%= f.text_area :tags, :size => "404x50", :class => "post_form_tags_entry" %>
+	<!--post image click through link -->
+	<div class="post_form_title_container">
+		<div class="post_form_heading">Set a click-through link:</div>
+		<div class="post_form_heading_note">(optional)</div>
+	</div>
+	<%= f.url_field :link, :class => "post_form_title_entry" %>
+</div>
+

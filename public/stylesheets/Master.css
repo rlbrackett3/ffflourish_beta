@@ -13,10 +13,15 @@ body {
 }
 
 a {
-	color: #999;
+  color: #999;
 	text-decoration: none;
 	font-style: none;
 	font-weight: normal;
+	border: none;
+}
+
+a img {
+  border: none;
 }
 
 a:visited {
@@ -41,33 +46,6 @@ a:hover { color: #31F48E; }
   color: #666;
 }
 
-/* TEXT BOX /////////////////////////////////////*/
-
-
-.ffflourish_box_editor{
-	/* -webkit-box-shadow: white 0px 1px; */
-	border: 1px solid #FFF;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	color: #222;
-	height: 45px;
-	max-width: 660px;
-	/* outline: none; */
-	overflow: hidden;
-	padding: 8px;
-	width: 660px;
-	font-family: Verdana, sans serif;
-	font-size: 1.1em;
-	line-height:  1.25em;
-	word-spacing: 0.09em;
-	/* color: #666; */
-	color: #666;
-	text-align: left;
-}
-
-
-
 /* MAIN
 /////////////////////////////////////*/
 #main{
@@ -90,6 +68,12 @@ a:hover { color: #31F48E; }
 /* LEFT COLUMN
 /////////////////////////////////////*/
 
+#left_column{
+	float: left;
+	width: 712px;
+	/* height: 600px; */
+}
+
 /* User page header outsourced to name_menu_bar*/
 
 /* Posting fields */
@@ -109,7 +93,7 @@ a:hover { color: #31F48E; }
 
 #question{
 	width: 702px;
-	height: 25px;
+	height: 20px;
 	padding-top: 5px;
 	margin-left: 10px;
 	margin-top: 0px;
@@ -121,18 +105,34 @@ a:hover { color: #31F48E; }
 	font-style: italic;
 }
 
-#question_field{
-/*	width: 680px;*/
-/*	height: 60px;*/
-/*	background-color: #FFF;*/
-	margin-left: 10px;
-	/* margin-top: 15px; */
+/* TEXT BOX /////////////////////////////////////*/
+
+#question_field {
+  margin: 0px 0px 0px 10px;
+}
+
+#post_content {
+  float: left;
+  height: 60px;
+  width: 660px;
+	max-width: 660px;
+  padding: 10px;
+	border: 1px solid #FFF;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	color: #222;
+	overflow: hidden;
+	font-family: Verdana, sans serif;
+	font-size: 1.1em;
+	line-height:  1.25em;
+	word-spacing: 0.09em;
+	color: #666;
+	text-align: left;`
 }
 
-/* Post type select outsourced to Post_Type_Drop_Down */
+/* Post type select outsourced to posting_icons */
+
 /* Post submit button and pivacy */
 #post_buttons_bottom {
 	/* background-color: yellow; */
@@ -184,9 +184,18 @@ a:hover { color: #31F48E; }
   cursor: default;
 }
 
+/* posting forms outsources to posting_forms */
+
 /* FEED CONTENT STARTS HERE */
 
+#three_column_feed_entry_format{
+  width: 712px;
+  position: relative;
+  float: left;
+}
+
 #user_photo_small{
+  position: relative;
 	float:left;
 	width: 50px;
 	height: 50px;
@@ -197,6 +206,7 @@ a:hover { color: #31F48E; }
 }
 
 #feed_entry_content{
+  position: relative;
 	width: 483px;
 	/* height: 95px; */
 	/* background-color: aqua; */
@@ -325,19 +335,16 @@ a:hover { color: #31F48E; }
 }
 
 #photo_preview{
+  position: relative;
 	float:right;
 	width: 125px;
-	height: 95px;
+/*	height: 95px;*/
 	margin-top: 15px;
-	background-color: #F2F2F2;
+/*	background-color: #F2F2F2;*/
 	/* outline: 1px solid gray; */
 }
 
-#left_column{
-	float: left;
-	width: 712px;
-	/* height: 600px; */
-}
+
 
 #border{
 	border-bottom: 1px dotted;
@@ -346,6 +353,7 @@ a:hover { color: #31F48E; }
 	height: 15px;
 	margin-left: 10px;
 }
+
 
 
 /* RIGHT COLUMN

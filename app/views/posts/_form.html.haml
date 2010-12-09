@@ -1,30 +1,7 @@
 #blog_post_edit
   = form_for [@user, @post], :html => {:multipart => true} do |f|
     = render 'shared/error_messages', :object => f.object
-    #post_image
-      = image_tag(@post.image.post_image.url) if @post.image?
-      %p.field
-        = f.label         :image, :class => "edit_post_label"
-        = f.file_field    :image, :id => "image", :class => "edit_post_field"
-        = f.hidden_field  :image_cache
-    #post_fields
-      %p.field
-        = f.label "click through link", :class => "edit_post_label"
-        = f.text_field    :image_source_url, :class => "edit_post_field"
-      %p.field
-        = f.label         :title, :class => "edit_post_label"
-        = f.text_field    :title, :id => "title", :class => "edit_post_field"
-      %p.field
-        = f.label         :content, :class => "edit_post_label"
-        = f.text_area     :content, :id => "content",
-                                    :class => "edit_post_field",
-                                    :rows => 5
-      %p.field
-        = f.label "text source:", :class => "edit_post_label"
-        = f.text_field    :source_name, :class => "edit_post_field"
-      %p.field
-        = f.label "http://", :class => "edit_post_label"
-        = f.text_field    :source_url, :class => "edit_post_field"
+    = render 'shared/post_form', :f => f
     %p.actions
       = f.submit "Post"
 

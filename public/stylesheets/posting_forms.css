@@ -1,0 +1,146 @@
+/* TEXT POST FIELD */
+
+#post_fields_container{
+  position: relative;
+  float: left;
+  clear: both;
+	margin: 25px 0px 0px 10px;
+	width: 410px;
+/*	height: 618px;*/
+	/* background-color: aqua; */
+}
+
+#photo_post_preview{
+	background-color: white;
+	width: 404px;
+	height: 308px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+}
+
+#photo_post_upload{
+	width: 404px;
+	height: 25px;
+	background-color: #99FFFF; /* light blue */
+	margin: 5px 0px 15px 0px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	font-family: Verdana, sans serif;
+	color: #1B9E6F;  /* dark green */
+	font-size: 1.1em;
+	text-align: center;
+	line-height: 1.9em;
+}
+
+#post_form_first_title_container{
+	width: 404px;
+	height: 15px;
+	/* background-color: yellow; */
+	margin-left: 2px;
+}
+
+#post_form_first_heading{
+	float:left;
+	font-family: Verdana, sans serif;
+	color: #444;
+	font-size: 0.8em;
+	text-align: left;
+	margin-left: 2px;
+}
+
+#post_form_first_heading_note{
+	float:left;
+	font-family: Verdana, sans serif;
+	color: #999;
+	font-size: 0.8em;
+	text-align: left;
+	margin-left: 2px;
+}
+
+.post_form_title_container{
+  clear: both;
+	width: 404px;
+	height: 30px;
+	/* background-color: yellow; */
+}
+
+.post_form_heading{
+	float:left;
+	font-family: Verdana, sans serif;
+	color: #444;
+	font-size: 0.8em;
+	text-align: left;
+	margin-left: 2px;
+	padding-top: 15px;
+	padding-bottom: 2px;
+}
+
+.post_form_heading_note{
+	float:left;
+	font-family: Verdana, sans serif;
+	color: #999;
+	font-size: 0.8em;
+	text-align: left;
+	margin-left: 2px;
+	padding-top: 15px;
+	padding-bottom: 2px;
+}
+
+.post_form_title_entry{
+	width: 404px;
+	height: 25px;
+	background-color: white;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	border: none;
+	text-align:left;
+	font-family: Verdana, sans serif;
+	font-size: 1.1em;
+	line-height:  1.25em;
+	word-spacing: 0.09em;
+	color: #999;
+}
+
+.post_form_source_entry{
+	width: 200px;
+	height: 25px;
+	background-color: white;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	border: none;
+	text-align:left;
+	font-family: Verdana, sans serif;
+	font-size: 1.1em;
+	line-height:  1.25em;
+	word-spacing: 0.09em;
+	color: #999;
+	float: left;
+	margin-left: 2px;
+}
+
+.post_form_tags_entry{
+	width: 404px;
+	max-width: 404px;
+	height: 50px;
+	background-color: white;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	border: none;
+	text-align:left;
+	font-family: Verdana, sans serif;
+	font-size: 1.1em;
+	line-height:  1.25em;
+	word-spacing: 0.09em;
+	color: #999;
+	/* vertical-align: top; */
+}
+
+input#image{
+  color: red;
+}
+

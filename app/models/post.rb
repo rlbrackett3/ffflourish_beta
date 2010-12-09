@@ -3,6 +3,7 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Voteable
+  include Mongoid::Taggable
 
   attr_protected  :_id
   #--Associations--#
@@ -19,13 +20,12 @@ class Post
   #--data fields--#
   field           :title
   field           :content
+  field           :link
   #--source fields--#
   field           :source_name
   field           :source_url
-  field           :image_source_name
-  field           :image_source_url
 
-  #--indicies--#
+  #--indexes--#
   index           :created_at
   index           :updated_at
   index           :user_id

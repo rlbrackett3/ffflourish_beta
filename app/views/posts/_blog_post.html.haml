@@ -6,7 +6,7 @@
     #post_title
       = link_to f.title, user_post_path(@user, f)
   - if f.content?
-    #post_content
+    #post_body
       = f.content
   - if f.source_name?
     #text_source

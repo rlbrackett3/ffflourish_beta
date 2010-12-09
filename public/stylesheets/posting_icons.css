@@ -1,23 +1,28 @@
 /* ---------- POST OPTIONS DROP DOWN MENU ----------*/
 
 #post_options_container {
-/*  position: relative;*/
+  position: relative;
   float: left;
-	margin: 25px 0px 0px 10px;
-	margin-top: 20px;
-	padding-left: 0px;
+  clear: both;
+	margin: 20px 0px 0px 10px;
+	height: 43px;
 /*	background-color: red; */
 	list-style: none;
-	overflow: hidden;
+}
+
+#post_options_container ul {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 #post_options_container li{
+	margin-right:5px; 
 	float: left;
 }
 
 #post_options_container li a {
-	/* padding: 0.5em; */
-	/* margin-right:5px; */
+/*	 padding: 0.5em; */
+/*	 margin-right:5px; */
 	color: #1B9E6F; /* DARK GREEN WHEN OVER ICONS*/
 	display: block;
 	cursor: default;
@@ -49,10 +54,10 @@
 }
 
 .post_type_dropdown {
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 	list-style: none;
-	overflow: hidden;
+/*	overflow: hidden;*/
 	position: absolute;
 	display: none;
 	z-index: 50;
@@ -67,9 +72,6 @@
 
 .post_type_dropdown li {
 	float: none;
-}
-
-.post_type_dropdown li a {
 	font-size: 1.2em;
 	text-align: center;
 	font-family: Georgia, serif;
@@ -77,6 +79,7 @@
 	text-decoration: none;
 	height: 20px;
 	width: 43px;
+	list-style: none;
 }
 
 .post_type:hover .post_type_dropdown {
