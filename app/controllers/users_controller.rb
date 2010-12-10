@@ -7,6 +7,17 @@ class UsersController < ApplicationController
 
 #-- Methods --#
 #----------------------------------------------------------------------#
+  #--GET /users
+  #--GET /users.xml
+  #--GET /users.json                                       HTML and AJAX
+  #----------------------------------------------------------------------#
+  def index
+    @users = User.search(params[:search]).asc(:first_name).paginate(:page => params[:page])
+    @title = "members"
+
+    respond_with(@users)
+  end
+#----------------------------------------------------------------------#
   #--GET /users/1
   #--GET /users/1.xml
   #--GET /users/1.json                                       HTML and AJAX

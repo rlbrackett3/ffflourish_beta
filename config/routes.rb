@@ -23,11 +23,6 @@ Ffflourish::Application.routes.draw do
       resources :comments, :only => [:create, :destroy]
     end
   end
-  resources :stats, :only => [:edit, :update] #nest stat in profile
-
-
-
-
 
   match '/about'        => 'pages#about'
   match '/tour'         => 'pages#tour'

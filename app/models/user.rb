@@ -2,6 +2,7 @@ require 'carrierwave/orm/mongoid'
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable, :invitable
   devise :database_authenticatable, :registerable,
@@ -12,12 +13,15 @@ class User
   field :first_name
   field :last_name
   field :likes, :type => Array, :default => []
-#  mount_uploader :avatar, AvatarUploader
+
+  key   :first_name, :last_name
+
+  search_in(:first_name, :last_name, :email, { :allow_empty_search => true })
   #--indecies--#
   index :email
 
   #--User Profile --#
-  embeds_one        :profile, :cascade_callbacks => true
+  embeds_one        :profile,   :cascade_callbacks => true
   accepts_nested_attributes_for :profile
 
   #--User Blog--#

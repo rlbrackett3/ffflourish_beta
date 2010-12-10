@@ -1,0 +1,24 @@
+<div id="users_list">
+  <div id="users_search">
+    <%= form_tag users_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "search", :name => nil %>
+    <% end %>
+  </div>
+  <%= will_paginate @users %>
+  <% @users.each do |user| %>
+    <div id="member">
+      <%= link_to user.profile.user_name, user_posts_path(user) %>
+      <div id="user_stats">
+        <%= "member since: #{time_ago_in_words(user.created_at)} ago | " %>
+        <%= "posts: #{user.posts.count} | " %>
+        <%= "comments: #{user.comments.count}" %>
+      </div>
+      <div id="user_recent_posts">
+        <%= user.posts.first.title %>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate @users %>
+</div>
+

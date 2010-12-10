@@ -1,8 +1,0 @@
-= form_for @user, :html => {:multipart => true} do |f|
-  = render 'shared/error_messages', :object => f.object
-  = f.label :avatar
-  = f.file_field :avatar
-  = f.hidden_field :avatar_cache
-  .actions
-    = f.submit
-

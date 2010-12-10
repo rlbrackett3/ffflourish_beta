@@ -15,8 +15,9 @@ gem 'devise_invitable'#, '~> 0.3.4'
 gem 'mongoid', '~> 2.0.0.beta.20'
 gem 'bson_ext'
 gem 'mongoid_voteable'
-gem 'mongoid_slug', :require => 'mongoid/slug'
+#gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'mongoid_taggable'
+gem 'mongoid_search', :git => 'https://github.com/mauriciozaffari/mongoid_search.git'
 
 #--Image uploads and storage--#
 gem 'carrierwave', :git => 'http://github.com/jnicklas/carrierwave.git'
