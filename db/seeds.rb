@@ -9,7 +9,7 @@
 require 'ffaker'
 require File.expand_path("config/randomtime.rb")
 puts 'EMPTY THE MONGODB DATABASE'
-Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
+#Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
 #puts 'SETTING UP FBOT MESSENGER'
 #fbot = User.create  :first_name => 'fbot',
 #                    :last_name => 'messenger',

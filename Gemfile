@@ -6,6 +6,7 @@ gem 'rails', '3.0.3'
 #--Deploy with Heroku--#
 gem 'heroku'
 gem 'heroku-rails'
+gem 'taps'
 
 #--Authentication with Devise--#
 gem 'devise'#, '~>1.1.3'
