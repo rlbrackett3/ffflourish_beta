@@ -6,10 +6,10 @@ class PagesController < ApplicationController
   #-------------------------------------------------------------------#
   def home
     if user_signed_in?
+      @search_path = root_path
       @user = current_user
       @profile = @user.profile
-      @feed_items = @user.following_feed.paginate(:page => params[:page],
-                                                  :per_page => 10)
+      @feed_items = @user.following_feed.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
       @post = @user.posts.new
       #--Page Title--#
       @title = "#{current_user.first_name}'s feed | me+following"

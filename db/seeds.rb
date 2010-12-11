@@ -30,12 +30,12 @@ user = User.create  :first_name => 'Robert',
                     :email => 'user@test.com',
                     :email_confirmation => "user@test.com",
                     :password => 'foobar', :password_confirmation => 'foobar'
-
-p1 = Post.create    :title => Faker::Lorem.sentence,
-                    :content => Faker::Lorem.paragraph,
-                    :created_at => Time.random,
-                    :updated_at => Time.random
-user.posts << p1
+5.times do
+  p1 = user.posts.create    :title => Faker::Lorem.sentence,
+                          :content => Faker::Lorem.paragraph,
+                          :created_at => Time.random,
+                          :updated_at => Time.random
+end
 user.save
 puts "New account created for first user: " << user.full_name
 
@@ -46,11 +46,10 @@ puts 'CREATING A BUNCH OF PEOPLE'
                   :email      => Faker::Internet.email,
                   :password => 'foobar', :password_confirmation => 'foobar'
   5.times do
-    p = Post.create :title      => Faker::Lorem.sentence,
-                    :content    => Faker::Lorem.paragraph,
-                    :created_at => Time.random,
-                    :updated_at => Time.random
-    u.posts << p
+    p = u.posts.create  :title      => Faker::Lorem.sentence,
+                        :content    => Faker::Lorem.paragraph,
+                        :created_at => Time.random,
+                        :updated_at => Time.random
   end
   u.save
   user.follow!(u)

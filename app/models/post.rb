@@ -4,13 +4,12 @@ class Post
   include Mongoid::Timestamps
   include Mongoid::Voteable
   include Mongoid::Taggable
+  include Mongoid::Search
 
   attr_protected  :_id
   #--Associations--#
   referenced_in   :user
   embeds_many     :comments
-#  embeds_many     :images, :cascade_callbacks => true
-#  accepts_nested_attributes_for :images
   mount_uploader :image, ImageUploader
 
   #--boolean values for controlling visability of posts--#
@@ -24,6 +23,13 @@ class Post
   #--source fields--#
   field           :source_name
   field           :source_url
+
+  #-- search on --#
+  search_in(:title,
+            :content,
+            { :user => :first_name },
+            { :user => :last_name },
+            { :allow_empty_search => true})
 
   #--indexes--#
   index           :created_at

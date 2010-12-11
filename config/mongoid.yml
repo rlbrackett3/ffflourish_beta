@@ -9,14 +9,17 @@ defaults: &defaults
 development:
   <<: *defaults
   database: ffflourish_development
+  autocreate_indexes: true
 
 test:
   <<: *defaults
   database: ffflourish_test
+  autocreate_indexes: true
   
 cucumber:
   <<: *defaults
   database: ffflourish_cucumber
+  autocreate_indexes: true
 
 # set these environment variables on your prod server
 production:

@@ -69,14 +69,6 @@
 	font-style: normal;
 }
 
-/* ARROW IN SEARCH BOX */
-#arrow_search{
-	position: relative;
-	font-size: 9px;
-	padding: 0px 0px 0px 2px; /* space arrow from word */
-	font-style: normal;
-}
-
 /* PROFILE */
 #profile{
 	padding-left: 24px;
@@ -95,7 +87,6 @@
 	margin-top: 7px;
 	margin-right: 10px;
 	line-height: 26px;
-
 	-webkit-border-top-right-radius: 2.5px;
 	-webkit-border-bottom-right-radius: 2.5px;
 	-moz-border-radius-topright: 2.5px;
@@ -103,6 +94,52 @@
 	border-top-right-radius: 2.5px;
 	border-bottom-right-radius: 2.5px;
 }
+
+/* ARROW IN SEARCH BOX */
+#arrow_search{
+	position: relative;
+	font-size: 9px;
+	padding: 0px 0px 0px 2px; /* space arrow from word */
+	font-style: normal;
+}
+
+#search_word {
+  position: relative;
+  float: left;
+
+}
+
+#search_form {
+  position: relative;
+  float: right;
+  width: 75%;
+}
+#search_form input{
+  float: right;
+  width: 100%;
+  margin: 2px 2px 0px 0px;
+  display: inline;
+  border: none;
+  background-color: #fff;
+  -webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	-webkit-box-shadow: 0 2px #666666;
+  -moz-box-shadow: 0 2px #666666;
+  box-shadow: 0 2px #666666;
+  
+}
+
+#search_form input:hover {
+  background-color: #cccccc; 
+}
+#search_form input.active {
+  background-color: #eeeeee; 
+}
+/*#search_form input[type='search'] {*/
+/*  width: 200px;*/
+/*  padding: 4px; */
+/*}*/
 
 #account_gray{
 	width: 22px;

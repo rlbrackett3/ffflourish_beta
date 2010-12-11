@@ -16,7 +16,12 @@ class User
 
   key   :first_name, :last_name
 
-  search_in(:first_name, :last_name, :email, { :allow_empty_search => true })
+  search_in(:first_name,
+            :last_name,
+            :email,
+#            { :posts => :title },
+#            { :posts => :content },
+            { :allow_empty_search => true })
   #--indecies--#
   index :email
 
@@ -60,7 +65,7 @@ class User
   end
 
   def url_name
-    [first_name, last_name].join()
+    [first_name, last_name].strip!.join()
   end
 #--Methods for following and unfollowing users--#
   def follow!(user)

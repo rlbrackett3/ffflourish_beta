@@ -13,8 +13,10 @@ class PostsController < ApplicationController
   #--GET /users/1/posts.json                                HTML and AJAX
   #---------------------------------------------------------------------#
   def index
+    @search_path = user_posts_path
     @user = User.find(params[:user_id])
-    @posts = @user.posts.desc(:created_at).paginate(:page => params[:page])
+    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10)
+#    @posts = Post.search(params[:search]).where(:user_id => @user._id).desc(:created_at).paginate(:page => params[:page])
     @post = @user.posts.new
 
     @title = "#{@user.first_name}'s posts"

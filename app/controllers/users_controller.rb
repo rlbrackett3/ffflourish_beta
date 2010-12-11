@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   #--GET /users.json                                       HTML and AJAX
   #----------------------------------------------------------------------#
   def index
-    @users = User.search(params[:search]).asc(:first_name).paginate(:page => params[:page])
+    @search_path = users_path
+    @users = User.search(params[:search]).asc(:first_name).paginate(:page => params[:page], :per_page => 10)
     @title = "members"
 
     respond_with(@users)
@@ -86,16 +87,18 @@ class UsersController < ApplicationController
   end
   #----------------------------------------------------------------------#
   def following
+    @search_path = following_user_path
     @title = "following"
     @user = User.find(params[:id])
-    @users = @user.following.desc(:name).paginate
+    @users = @user.following.search(params[:search]).desc(:name).paginate
     render 'show_follow'
   end
   #----------------------------------------------------------------------#
   def followers
+    @search_path = followers_user_path
     @title = "followers"
     @user = User.find(params[:id])
-    @users = @user.followers.desc(:name).paginate
+    @users = @user.followers.search(params[:search]).desc(:name).paginate
     render 'show_follow'
   end
 #----------------------------------------------------------------------#

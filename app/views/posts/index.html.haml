@@ -11,7 +11,8 @@
       = render 'blog_post', :f => post
     = will_paginate @posts
 - else
-  #get_posting
-    %p You have no posts yet!
-    %p Answer the question above to get started.
+  - if @user == current_user
+    #get_posting
+      %p You have no posts yet!
+      %p Answer the question above to get started.
 

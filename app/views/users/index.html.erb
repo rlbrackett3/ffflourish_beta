@@ -1,10 +1,4 @@
 <div id="users_list">
-  <div id="users_search">
-    <%= form_tag users_path, :method => 'get' do %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "search", :name => nil %>
-    <% end %>
-  </div>
   <%= will_paginate @users %>
   <% @users.each do |user| %>
     <div id="member">
@@ -15,7 +9,9 @@
         <%= "comments: #{user.comments.count}" %>
       </div>
       <div id="user_recent_posts">
-        <%= user.posts.first.title %>
+        <% if user.posts.any? %>
+            <%= user.posts.first.title %>
+        <% end %>
       </div>
     </div>
   <% end %>
