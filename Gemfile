@@ -28,6 +28,7 @@ gem 'mini_magick'
 #--General Utility Gems--#
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'jquery-rails'
+gem 'ffaker'
 
 #--HAML support--#
 gem 'haml'
@@ -50,7 +51,6 @@ group :development, :test do
   #gem 'factory_girl'
   gem 'factory_girl_rails'
 #  gem 'faker'
-  gem 'ffaker'
   #--Ruby debugger--#
   # gem 'ruby-debug19'
   #--Autotest--#
