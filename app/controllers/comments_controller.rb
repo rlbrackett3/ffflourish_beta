@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.create!(params[:comment])
     current_user.comments << @comment
-    @post.comments << @comment
+#    @post.comments << @comment
 
     flash[:notice] = "Comment created successfully!" if @comment.save(params[:comment])
     respond_with(@user, @post)

@@ -1,9 +1,12 @@
-<% unless @users.empty? %>
-  <ul class="follow_users">
-    <% @users.each do |user| %>
-      <ul><%= link_to user.full_name, user_posts_path(user) %></ul>
-    <% end %>
-  </ul>
-  <%= will_paginate @users %>
-<% end %>
+<%= render 'shared/name_menu_bar' %>
+<div id="relationships">
+  <% unless @users.empty? %>
+    <ul class="follow_users">
+      <% @users.each do |user| %>
+        <ul><%= link_to user.full_name, user_posts_path(user) %></ul>
+      <% end %>
+    </ul>
+    <%= will_paginate @users %>
+  <% end %>
+</div>  
 

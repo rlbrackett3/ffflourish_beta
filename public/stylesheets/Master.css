@@ -30,6 +30,18 @@ a:visited {
 
 a:hover { color: #31F48E; }
 
+.field{
+  position: relative;
+  float: left;
+  width: 100%;
+  clear: both;
+  margin: 2px 0px 2px 0px;
+}
+
+ul {
+  -webkit-padding-start: 0px;
+}
+
 /* Guides.css */
 
 /* Top_Navigation.css */

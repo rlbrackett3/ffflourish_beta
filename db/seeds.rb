@@ -9,7 +9,7 @@
 require 'ffaker'
 require File.expand_path("config/randomtime.rb")
 puts 'EMPTY THE MONGODB DATABASE'
-#Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
+Mongoid.master.collections.reject { |c| c.name == 'system.indexes'}.each(&:drop)
 #puts 'SETTING UP FBOT MESSENGER'
 #fbot = User.create  :first_name => 'fbot',
 #                    :last_name => 'messenger',
@@ -31,7 +31,7 @@ user = User.create  :first_name => 'Robert',
                     :email_confirmation => "user@test.com",
                     :password => 'foobar', :password_confirmation => 'foobar'
 5.times do
-  p1 = user.posts.create    :title => Faker::Lorem.sentence,
+  p1 = user.posts.create  :title => Faker::Lorem.sentence,
                           :content => Faker::Lorem.paragraph,
                           :created_at => Time.random,
                           :updated_at => Time.random

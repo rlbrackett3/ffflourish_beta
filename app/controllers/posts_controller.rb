@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find(params[:user_id])
-    @posts = @user.posts.desc(:created_at).paginate #to redirect to index
+    @posts = @user.posts.desc(:created_at).paginate(:page => params[:page]) #to redirect to index
     @post = @user.posts.build(params[:post])
 
     respond_to do |format|
@@ -85,6 +85,9 @@ class PostsController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
+    
+    @post_title = "editing your post"
+    @title = "editing #{@post.title}" if @post.title?
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#

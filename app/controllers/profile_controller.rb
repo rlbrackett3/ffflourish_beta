@@ -38,8 +38,8 @@ class ProfileController < ApplicationController
 #    @profile.stats.where(:like => true).each do |like|
 #      @likes = like.find(params[:id])
 #    end
-
-    @title = "updating #{current_user.first_name}'s ffflourish.stats"
+    @page_title = "updating your profile"
+    @title = "updating #{current_user.first_name}'s profile"
 
     respond_with(@user, @profile)
   end

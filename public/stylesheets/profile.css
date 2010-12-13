@@ -1,0 +1,139 @@
+/* user profile page */
+
+#top_profile_section {
+  position: relative;
+  float: left;
+  width: 712px
+}
+
+#profile_avatar {
+  position: relative;
+  float: left;
+  margin: 0px 0px 0px 10px;
+  overflow: hidden;
+}
+
+#profile_avatar img{
+  -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* form for uploading a new avatar image */
+#avatar_form {
+  width: 250px;
+}
+
+#avatar_form input#avatar{
+  width: 175px;
+}
+
+/* general information */
+#general_info {
+  position: relative;
+  float: left;
+  width: 300px;
+  margin: 5px 0px 0px 10px;
+  
+}
+
+#about_me {
+  position: relative;
+  float: left;
+  margin: 0px 0px 10px 0px;
+  text-align: left;
+	font: Georgia, serif;
+	font-size: 1.15em;
+	font-style :italic;
+	font-weight: normal;
+	color: #444;
+  
+}
+
+.attribute {
+  position: relative;
+  float: left;
+  width: 300px;
+  text-align:left;
+	font: Georgia, serif;
+	font-size:1.15em;
+	font-style:italic;
+	font-weight: normal;
+	color: #444;
+}
+
+.title {
+  position: relative;
+  float: left;
+  width: 100px;
+}
+
+.vaule {
+  position: relative;
+  float: left;
+  width: 200px;
+}
+
+/* editing profile page */
+
+#edit_profile_container {
+  position: relative;
+  float: left;
+	width: 702px;
+	background-color: #E5E5E5; /* lightest gray */
+	margin: 0px 0px 0px 10px;
+	padding: 10px 0px 20px 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#user_info {
+  position: relative;
+  float: left;
+  width: 400px;
+  margin: 0px 0px 0px 10px;
+  background-color: #FFF; /* lightest gray */
+  -webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	-moz-box-shadow: 1px 1px 3px #999;
+  -webkit-box-shadow: 1px 1px 3px #999;
+  box-shadow: 1px 1px 3px #999;
+}
+
+#user_info ul li {
+  position: relative;
+  float: left;
+  list-style: none;
+  margin: 0px 0px 0px 20px;
+}
+
+#edit_profile_fields {
+  position: relative;
+  float: left;
+  width: 400px;
+  margin: 10px 0px 0px 10px;
+  padding: 10px;
+}
+
+.profile_label {
+  position: relative;
+  float: left;
+  padding: 4px 0px 0px 0px;
+}
+
+.profile_field {
+  position: relative;
+  float: right;
+  width: 250px;
+  max-width: 250px;
+  background-color:#FFF;
+  padding: 3px 6px 3px 6px;
+	overflow: visible;
+	border-style: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+

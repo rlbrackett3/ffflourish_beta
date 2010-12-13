@@ -30,34 +30,6 @@ class UsersController < ApplicationController
     respond_with(@user)
   end
 #----------------------------------------------------------------------#
-  #--GET /users/1/avatar
-  #--GET /users/1/avatar.xml
-  #--GET /users/1/avatar.json                                HTML and AJAX
-  #----------------------------------------------------------------------#
-  def edit
-    @user = User.find(params[:id])
-
-    @user.avatar.build if ! @user.avatar?
-
-    @title = "#{@user.first_name}'s avatar"
-    respond_with(@user)
-  end
-#----------------------------------------------------------------------#
-  #--POST /users/1/avatar
-  #--POST /users/1/avatar.xml
-  #--POST /users/1/avatar.json                               HTML and AJAX
-  #----------------------------------------------------------------------#
-  def update
-    @user = User.find(params[:id])
-    @profile = @user.profile
-
-    flash[:notice] = "Avatar successfully updated!" if @user.update_attributes(params[:user])
-    respond_with(@user, @profile)
-#    if @user.update_attributes(params[:user])
-#      redirect_to user_profile_path(@user, @profile)
-#    end
-  end
-#----------------------------------------------------------------------#
   #actins for folloeing users
   #----------------------------------------------------------------------#
   def follow
@@ -88,17 +60,19 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def following
     @search_path = following_user_path
+    @page_title = "is following"
     @title = "following"
     @user = User.find(params[:id])
-    @users = @user.following.search(params[:search]).desc(:name).paginate
+    @users = @user.following.search(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
     render 'show_follow'
   end
   #----------------------------------------------------------------------#
   def followers
     @search_path = followers_user_path
+    @page_title = "is followed by"
     @title = "followers"
     @user = User.find(params[:id])
-    @users = @user.followers.search(params[:search]).desc(:name).paginate
+    @users = @user.followers.search(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
     render 'show_follow'
   end
 #----------------------------------------------------------------------#

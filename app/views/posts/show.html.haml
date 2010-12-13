@@ -1,18 +1,14 @@
 = render 'blog_post', :f => @post
 /#comment_count= "#{ make_this_plural(@post.comments.count, "comment") }(#{ @post.comments.count })"
 #comments
-  - if @post.comments.size > 0
+  - if @post.comments.any?
     %h2 Comments
     - @post.comments.each do |comment|
-      #commenter= link_to "#{comment.user.full_name}", user_path(comment.user)
+      #commenter= link_to comment.user.full_name, user_path(comment.user)
       #comment_content
         %p= comment.content
       %div.created= comment.created_at.strftime("%m.%d.%Y @ %H:%M:%S")
-      #destroy_comment= link_to "destroy comment",
-                                user_post_comment_path(@user, comment),
-                                :confirm => "Are you sure",
-                                :id => "destroy",
-                                :method => :delete
+      #destroy_comment= link_to "destroy comment", user_post_comment_path(@user, comment), :confirm => "Are you sure", :id => "destroy", :method => :delete
   %h2 New Comment
   = form_for [@user, @post, Comment.new] do |f|
     %p= f.text_area :content, :id => 'content', :rows => 5

@@ -96,14 +96,6 @@
   clear: both;
 }
 
-.field{
-  position: relative;
-  float: left;
-  width: 350px;
-  clear: both;
-  margin: 2px 0px 2px 0px;
-}
-
 .edit_post_label {
   position: relative;
   float: left;
