@@ -16,11 +16,12 @@ $(document).ready(function(){
   });
   
   $('img#post_text').click(function() {
-    $('.post_text_fields').toggle('slow', function() {});
+    $('.post_text_fields').toggle('slow');
   });
   
   $('img#post_image').click(function() {
     $('.post_image_fields').toggle('slow', function() {});
+    $('.post_text_fields').fadeIn(2000);
   });
 
 });
