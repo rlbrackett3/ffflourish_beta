@@ -1,5 +1,5 @@
 <div id="profile_avatar">
-  <%= link_to (image_tag "#{@user.profile.avatar.profile_image.url}"), edit_user_profile_path(@user, @user.profile) %>
+  <%= image_tag @user.profile.avatar.profile_image.url %>
   <% if current_user == @user %>
     <div id="avatar_form">
       <%= form_for [@user, @user.profile], :html => {:multipart => true} do |f| %>
