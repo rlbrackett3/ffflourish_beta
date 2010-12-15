@@ -25,8 +25,8 @@
 
 #photo_post_preview{
 	background-color: white;
-/*	width: 404px;*/
-/*	height: 308px;*/
+	width: 404px;
+	height: 308px;
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;
