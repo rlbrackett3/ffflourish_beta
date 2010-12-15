@@ -13,9 +13,10 @@ class Post
   mount_uploader :image, ImageUploader
 
   #--boolean values for controlling visability of posts--#
-  field           :public,      :type => Boolean, :default => false
-  field           :followers,   :type => Boolean, :default => true
-  field           :private,     :type => Boolean, :default => false
+#  field           :public,      :type => Boolean, :default => false
+#  field           :followers,   :type => Boolean, :default => true
+#  field           :private,     :type => Boolean, :default => false
+  field           :permissions, :type => Integer, :default => 2
   #--data fields--#
   field           :title
   field           :content
@@ -48,7 +49,9 @@ class Post
 #--Scopes--#
 #  default_scope :order => Post.desc(:created_at)
 
-  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).desc(:created_at) }
+  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
+
+#  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids, :permissions => 2 || 3).desc(:created_at)}
 
 #--Methods--#
   def add_user_likes(user, post) #add tests for me!!!!!

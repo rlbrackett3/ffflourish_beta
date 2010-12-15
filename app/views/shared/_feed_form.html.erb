@@ -6,17 +6,17 @@
 	  <div id="question_field">
 	    <%=f.text_area :content, :class => 'ffflourish_box_editor' %>
 	  </div>
-	  <!-- POST TYPE DROP DOWN -->
-    <%= render 'shared/feed_form_icons' %>
-    <div id="post_buttons_bottom">
-      <%= f.submit "post" %>
-	    <div id="post_privacy_control">
-	      <div class="privacy_icon">
-	    	  <%= link_to (image_tag 'midprivacy.png', :size => "25x25"), "#" %>
-        </div><!-- /privacy_icon -->
-      </div><!-- /post_privacy_control -->
-    </div><!-- /post_buttons_bottom -->
-    <%= render 'shared/post_form', :f => f %>
+	  <div id="posting_options">
+	    <!-- POST TYPE DROP DOWN -->
+	    <%= render 'shared/feed_form_icons' %>
+	    <div id="post_buttons_bottom">
+	      <%= f.submit "post" %>
+	      <div id="post_privacy_control">
+	        <%= f.select(:permissions, [["me", 1], ['following', 2], ['ffflourish', 3]]) %>
+	      </div><!-- /post_privacy_control -->
+	    </div><!-- /post_buttons_bottom -->
+	  </div>
+	  <%= render 'shared/post_form', :f => f %>
   <% end %>
 </div>
 

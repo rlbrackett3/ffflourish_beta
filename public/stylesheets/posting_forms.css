@@ -1,6 +1,19 @@
 /* TEXT POST FIELD */
 
+#posting_options {
+  display: none;
+}
+
+.post_text_fields {
+  display: none;
+}
+
+.post_image_fields {
+  display: none;
+}
+
 #post_fields_container{
+  display: none;
   position: relative;
   float: left;
   clear: both;
@@ -12,8 +25,8 @@
 
 #photo_post_preview{
 	background-color: white;
-	width: 404px;
-	height: 308px;
+/*	width: 404px;*/
+/*	height: 308px;*/
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;

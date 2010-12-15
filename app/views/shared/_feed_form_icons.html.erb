@@ -1,8 +1,8 @@
 <div id="post_options_container">
 <ul>
-  <li class="post_type">
-  	<div class="icon_background">
-  	  <%= link_to (image_tag 'text.png', :size => '43x43'), "#text" %>
+  <li class="post_type" >
+  	<div class="icon_background" >
+  	  <%= image_tag 'text.png', :id => 'post_text', :size => '43x43' %>
   		<ul class="post_type_dropdown">
   			<li>text</li>
   		</ul>
@@ -10,7 +10,7 @@
   </li>
   <li class="post_type">
   	<div class="icon_background">
-  	  <%= link_to (image_tag 'photo.png', :size => '43x43'), "#photo" %>
+  	  <%= image_tag 'photo.png', :size => '43x43', :id => 'post_image' %>
   		<ul class="post_type_dropdown">
   			<li>photo</li>
   		</ul>

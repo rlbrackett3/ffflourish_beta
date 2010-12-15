@@ -3,6 +3,25 @@
   <% unless @users.empty? %>
     <ul class="follow_users">
       <% @users.each do |user| %>
+        <div id="user_list_item">
+          <div id="user_avatar">
+            <%= link_to (image_tag user.profile.avatar.thumb.url), user_profile_path(user, user.profile) %>
+          </div>
+          <div id="user_info">
+            <ul class="user_stats_compact">
+              <li><%= link_to user.full_name, user_posts_path(user) %></li>
+              <li>likes:</li>
+              <li>following:</li>
+              <li>followers:</li>
+            </ul>
+          </div>
+          <div id="recent_posts">
+            <% user.posts.each.desc(:created_at).limit(3) do |p| %>
+              
+            <% end %>
+          </div>
+        </div>
+      
         <ul><%= link_to user.full_name, user_posts_path(user) %></ul>
       <% end %>
     </ul>

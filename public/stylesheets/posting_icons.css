@@ -1,6 +1,7 @@
 /* ---------- POST OPTIONS DROP DOWN MENU ----------*/
 
 #post_options_container {
+  display: none;
   position: relative;
   float: left;
   clear: both;
