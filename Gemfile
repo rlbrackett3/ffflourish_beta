@@ -18,10 +18,10 @@ gem 'bson_ext'
 gem 'mongoid_voteable'
 #gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'mongoid_taggable'
-gem 'mongoid_search', :git => 'https://github.com/mauriciozaffari/mongoid_search.git'
+gem 'mongoid_search', :git => 'git://github.com/mauriciozaffari/mongoid_search.git'
 
 #--Image uploads and storage--#
-gem 'carrierwave', :git => 'http://github.com/jnicklas/carrierwave.git'
+gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git'
 gem 'fog'
 gem 'aws-s3'
 gem 'mini_magick'

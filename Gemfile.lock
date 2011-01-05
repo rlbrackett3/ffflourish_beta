@@ -1,13 +1,13 @@
 GIT
-  remote: http://github.com/jnicklas/carrierwave.git
+  remote: git://github.com/jnicklas/carrierwave.git
   revision: 85ddee1014806dd4ccea7d122fe23d14f0adc43e
   specs:
     carrierwave (0.5.1)
       activesupport (~> 3.0)
 
 GIT
-  remote: https://github.com/mauriciozaffari/mongoid_search.git
-  revision: 0308b155220b930b37c633f4ee958bf3ed0035e5
+  remote: git://github.com/mauriciozaffari/mongoid_search.git
+  revision: 721d17afddcfd93b587602125c692fb535ea277e
   specs:
     mongoid_search (0.1.2)
       mongoid (~> 2.0.0.beta)
