@@ -9,12 +9,12 @@ gem 'heroku-rails'
 gem 'taps'
 
 #--Authentication with Devise--#
-gem 'devise'#, '~>1.1.3'
-gem 'devise_invitable'#, '~> 0.3.4'
+gem 'devise', '~>1.1.5'
+gem 'devise_invitable', '~> 0.3.5'
 
 #--Mongoid and MongoDB specific gems--#
 gem 'mongoid', '~> 2.0.0.beta.20'
-gem 'bson_ext'
+gem 'bson_ext', '1.1.5'
 gem 'mongoid_voteable'
 #gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'mongoid_taggable'
@@ -37,23 +37,22 @@ gem 'haml'
 group :development, :test do
   gem 'mongrel', '>=1.2.0.pre2'
   #--Rspec--#
-  gem "rspec-rails", '>=2.0.1'
+  gem "rspec-rails", '>=2.4.1'
   gem 'fuubar'
   #--Cucumber--#
-  gem 'cucumber'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', '~>0.3.2'
+  gem 'fuubar-cucumber'
+  gem 'slowhandcuke'
   #--Cucumber extras--#
   gem 'pickle'
   gem 'pickle-mongoid'
-  gem 'spork'
+  gem 'spork', :git => "git://github.com/chrismdp/spork.git"
   gem 'launchy' # So you can do Then show me the page
   #--generating test and sample data--#
-  #gem 'fabrication'
-  #gem 'factory_girl'
-  gem 'factory_girl_rails'
-#  gem 'faker'
+  gem 'factory_girl_rails', '>=1.0.1'
   #--Ruby debugger--#
-  # gem 'ruby-debug19'
+  gem 'ruby-debug19' if RUBY_VERSION.include? "1.9"
+  gem 'ruby-debug' if RUBY_VERSION.include? "1.8"
   #--Autotest--#
   gem 'autotest', '>=4.4.1'
   gem 'autotest-rails', '>=4.1.0'

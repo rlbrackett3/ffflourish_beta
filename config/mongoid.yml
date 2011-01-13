@@ -9,17 +9,17 @@ defaults: &defaults
 development:
   <<: *defaults
   database: ffflourish_development
-  autocreate_indexes: true
+  autocreate_indexes: false
 
 test:
   <<: *defaults
   database: ffflourish_test
-  autocreate_indexes: true
-  
+  autocreate_indexes: false
+
 cucumber:
   <<: *defaults
   database: ffflourish_cucumber
-  autocreate_indexes: true
+  autocreate_indexes: false
 
 # set these environment variables on your prod server
 production:
@@ -28,3 +28,4 @@ production:
   username: <%= ENV['MONGOID_USERNAME'] %>
   password: <%= ENV['MONGOID_PASSWORD'] %>
   database: <%= ENV['MONGOID_DATABASE'] %>
+

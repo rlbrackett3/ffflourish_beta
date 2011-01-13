@@ -1,12 +1,12 @@
 <!--#################start photo feed entry##################-->
 <div id="three_column_feed_entry_format">
   <div id="user_photo_small">
-    <%= link_to (image_tag feed_item.user.profile.avatar.thumb.url),
+    <%= link_to (image_tag feed_item.user.profile.avatar.thumb.url, :id => "avatar_small"),
                                   user_posts_path(feed_item.user) %>
   </div>
   <div id="feed_entry_content">
     <div id="feed_entry_01_author">
-      <%= link_to feed_item.user.full_name, user_posts_path(feed_item.user) %>
+      <%= link_to feed_item.user.full_name, user_posts_path(feed_item.user), :id => 'post_author' %>
     </div>
     <div id="feed_entry_02_reposted"></div>
     <% if feed_item.title? %>

@@ -4,6 +4,12 @@ Given /^I am following "([^"]*)"$/ do |email|
   user1.follow!(user2)
 end
 
+When /^"([^"]*)" is following "([^"]*)"$/ do |email1, email2|
+  user1 = User.first(:conditions => { :email => email1 })
+  user2 = User.first(:conditions => { :email => email2 })
+  user1.follow!(user2)
+end
+
 When /^I am followed by "([^"]*)"$/ do |email|
   user1 = User.first
   user2 = User.first(:conditions => { :email => email})

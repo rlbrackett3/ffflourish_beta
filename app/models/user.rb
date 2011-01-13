@@ -15,6 +15,7 @@ class User
   field :likes, :type => Array, :default => []
 
   key   :first_name, :last_name
+  validates :_id, :uniqueness => true
 
   search_in(:first_name,
             :last_name,
