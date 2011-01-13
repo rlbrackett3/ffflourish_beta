@@ -46,7 +46,7 @@
 }
 
 #edit_signup_fields {
-	width: 370px;
+	width: 373px;
 	position: relative;
 	float: left;
 	margin: 10px 0px 0px 10px;
