@@ -13,9 +13,6 @@ class Post
   mount_uploader :image, ImageUploader
 
   #--boolean values for controlling visability of posts--#
-#  field           :public,      :type => Boolean, :default => false
-#  field           :followers,   :type => Boolean, :default => true
-#  field           :private,     :type => Boolean, :default => false
   field           :permissions, :type => Integer, :default => 2
   #--data fields--#
   field           :title
@@ -28,8 +25,8 @@ class Post
   #-- search on --#
   search_in(:title,
             :content,
-            { :user => :first_name },
-            { :user => :last_name },
+            { :user => :name },
+            { :user => :username},
             { :allow_empty_search => true})
 
   #--indexes--#

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def index
     @search_path = users_path
-    @users = User.search(params[:search]).asc(:first_name).paginate(:page => params[:page], :per_page => 10)
+    @users = User.search(params[:search]).asc(:name).paginate(:page => params[:page], :per_page => 10)
     @title = "members"
 
     respond_with(@users)
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def show
     @user = User.find(params[:id])
-    @title = @user.first_name
+    @title = @user.name
 
     respond_with(@user)
   end

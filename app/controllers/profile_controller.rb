@@ -16,7 +16,7 @@ class ProfileController < ApplicationController
     @profile = @user.profile
     @likes = @profile.stats.where(:like => true)
 
-    @title = "#{current_user.first_name}'s Profile"
+    @title = "#{current_user.name}'s Profile"
 
     respond_with(@user, @profile)
   end
@@ -39,7 +39,7 @@ class ProfileController < ApplicationController
 #      @likes = like.find(params[:id])
 #    end
     @page_title = "updating your profile"
-    @title = "updating #{current_user.first_name}'s profile"
+    @title = "updating #{current_user.name}'s profile"
 
     respond_with(@user, @profile)
   end

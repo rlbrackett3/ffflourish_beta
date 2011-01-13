@@ -4,20 +4,20 @@
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     /= devise_error_messages!
     %p.field
+      = f.label :username, :class => "reg_label"
+      = f.text_field :username, :class => "reg_field"
+      %br
+    %p.field
+      = f.label :name, :class => "reg_label"
+      = f.text_field :name, :class => "reg_field"
+      %br
+    %p.field
       = f.label :email, :class => "reg_label"
       = f.text_field :email, :class => "reg_field"
       %br
     %p.field
       = f.label :email_confirmation, :class => "reg_label"
       = f.text_field :email_confirmation, :class => "reg_field"
-      %br
-    %p.field
-      =f.label :first_name, :class => "reg_label"
-      = f.text_field :first_name, :class => "reg_field"
-      %br
-    %p.field
-      =f.label :last_name, :class => "reg_label"
-      = f.text_field :last_name, :class => "reg_field"
       %br
     %p.field
       = f.label :password, :class => "reg_label"
@@ -29,3 +29,4 @@
       %br
     %p.actions= f.submit "Sign up", :class => "signup_btn"
   #signup_links= render :partial => "devise/shared/links"
+

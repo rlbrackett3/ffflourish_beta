@@ -7,7 +7,7 @@ class Profile
   attr_protected  :_id
   accepts_nested_attributes_for :locations, :websites, :stats
 
-  field :user_name
+#  field :user_name
   field :handle
   field :status,          :type => Integer
   field :about_me
@@ -15,7 +15,7 @@ class Profile
 
   mount_uploader :avatar, AvatarUploader
 
-  index :user_name
+#  index :user_name
 
   embeds_many     :locations
   embeds_many     :websites

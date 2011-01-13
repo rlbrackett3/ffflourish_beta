@@ -10,18 +10,16 @@ class User
 
   attr_protected    :_id
   #--fields--#
-  field :first_name
-  field :last_name
+  field :username
+  field :name
   field :likes, :type => Array, :default => []
 
-  key   :first_name, :last_name
+  key   :username
   validates :_id, :uniqueness => true
 
-  search_in(:first_name,
-            :last_name,
+  search_in(:name,
+            :username,
             :email,
-#            { :posts => :title },
-#            { :posts => :content },
             { :allow_empty_search => true })
   #--indecies--#
   index :email
@@ -47,9 +45,9 @@ class User
 #--Email contents validation--##
   # email_regex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 #--Validations--#
-  validates :first_name,    :presence => true,
-                            :length => { :maximum => 60 }
-  validates :last_name,     :presence => true,
+  validates :username,      :uniqueness => true,
+                            :length => 5..16
+  validates :name,          :presence => true,
                             :length => { :maximum => 60 }
   validates :email,         :presence => true,
                             :confirmation => true,
@@ -61,13 +59,13 @@ class User
 #  after_create :follow_fbot
 
 #--Combine first and last name to user's full name--#
-  def full_name
-    [first_name, last_name].join(" ")
-  end
+#  def full_name
+#    [first_name, last_name].join(" ")
+#  end
 
-  def url_name
-    [first_name, last_name].strip!.join()
-  end
+#  def url_name
+#    [first_name, last_name].strip!.join()
+#  end
 #--Methods for following and unfollowing users--#
   def follow!(user)
     following << user
@@ -94,7 +92,7 @@ class User
 protected
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
-    self.profile = Profile.new( :user_name => full_name,
+    self.profile = Profile.new(
                                 :about_me => "Describe yourself",
                                 :birthday => ""
                                 )

@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 #    @posts = Post.search(params[:search]).where(:user_id => @user._id).desc(:created_at).paginate(:page => params[:page])
     @post = @user.posts.new
 
-    @title = "#{@user.first_name}'s posts"
+    @title = "#{@user.name}'s posts"
     respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#
@@ -85,7 +85,7 @@ class PostsController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-    
+
     @post_title = "editing your post"
     @title = "editing #{@post.title}" if @post.title?
     respond_with(@user, @post)

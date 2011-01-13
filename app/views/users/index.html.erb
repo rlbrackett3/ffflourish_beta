@@ -2,7 +2,7 @@
   <%= will_paginate @users %>
   <% @users.each do |user| %>
     <div id="member">
-      <%= link_to user.profile.user_name, user_posts_path(user) %>
+      <%= link_to user.username, user_posts_path(user) %>
       <div id="user_stats">
         <%= "member since: #{time_ago_in_words(user.created_at)} ago | " %>
         <%= "posts: #{user.posts.count} | " %>
