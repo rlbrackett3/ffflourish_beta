@@ -1,9 +1,9 @@
 <!--<% @user ||= current_user %>-->
 <table border="0">
-	<tr>
+	<!--<tr>
 		<td><div class="stat_title"> status: </div> </td>
 		<td><div class="stat_value"> **** </div> </td>
-	</tr>
+	</tr>-->
 	<tr>
 		<td><div class="stat_title"> likes: </div></td>
 		<td>
@@ -27,24 +27,26 @@
 	<tr>
 		<td>
 		  <div class="stat_title">
-		    <%= link_to 'following:', following_user_path(current_user) %>
+		    <!--<%= link_to 'following:', following_user_path(current_user) %>-->
+		    following
 		  </div>
 		</td>
 		<td>
 		  <div id="following_count" class="stat_value">
-		    <%= current_user.following.count %>
+		    <%= current_user.following_count %>
 		  </div>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		  <div class="stat_title">
-		    <%= link_to 'followers:', followers_user_path(current_user) %>
+		    <!--<%= link_to 'followers:', followers_user_path(current_user) %>-->
+		    followers
 		  </div>
 		</td>
 		<td>
 		  <div id="followers_count" class="stat_value">
-		    <%= current_user.followers.count %>
+		    <%= current_user.followers_count %>
 		  </div>
 		</td>
 	</tr>

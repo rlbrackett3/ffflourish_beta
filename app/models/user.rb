@@ -83,6 +83,14 @@ class User
     self.save!
   end
 
+  def following_count
+    following.count
+  end
+
+  def followers_count
+    followers.count
+  end
+
 #--Method for feed me + following--#
   def following_feed
     Post.from_users_followed_by(self)
@@ -92,13 +100,18 @@ class User
 protected
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
-    self.profile = Profile.new(
-                                :about_me => "Describe yourself",
-                                :birthday => ""
+    self.profile = Profile.new( :handle => "new ffflourisher",
+                                 :about_me => "Tell us a little about yourself."
                                 )
-    self.profile.locations.create!
-    self.profile.websites.create!
-    self.profile.stats.create!
+    self.profile.locations.create!( :city => "City",
+                                     :state => "State",
+                                     :country => "Country",
+                                     :postal_code => 11111
+                                    )
+    self.profile.websites.create!( :name => "The name of my awesome website or blog.",
+                                    :url => "www.example.com",
+                                    :info => "Why my website is awesome."
+                                   )
     self.save
   end
 

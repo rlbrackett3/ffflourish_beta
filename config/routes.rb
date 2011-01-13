@@ -10,7 +10,7 @@ Ffflourish::Application.routes.draw do
       match :follow, :unfollow
       get :following, :followers
     end
-    resources :profile, :only => [:show, :edit, :update]
+    resource :profile, :only => [:show, :edit, :update]
     resources :posts do
       member do
         match 'like'
@@ -33,14 +33,20 @@ Ffflourish::Application.routes.draw do
     match "/signout"  => "devise/sessions#destroy"
     get "/signup"     => "devise/registrations#new"
   end
-#  match '/:id' => 'users#show', :as => 'user_root'
 
-  match '/:user_id/profile' => 'profile#show'
+  # named routes for user resources
   match '/:id'          => 'users#show', :as => 'user'
-  match '/about'        => 'pages#about'
-  match '/tour'         => 'pages#tour'
-  match '/terms'        => 'pages#terms'
-  match '/contact'      => 'pages#contact'
+  match '/:id/following'=> 'pages#home', :as => 'user_following'
+
+  # named routes for user profile
+  get '/:user_id/profile' => 'profile#show', :as => 'user_profile'
+  match '/:user_id/profile/edit' => 'profile#edit', :as => 'edit_user_profile'
+
+  # general routes
+  get '/ffflourish/about'        => 'pages#about',    :as => 'about'
+  get '/ffflourish/tour'         => 'pages#tour',     :as => 'tour'
+  get '/ffflourish/terms'        => 'pages#terms',    :as => 'terms'
+  match '/ffflourish/contact'    => 'pages#contact',  :as => 'contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

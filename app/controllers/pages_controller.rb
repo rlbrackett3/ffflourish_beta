@@ -12,7 +12,7 @@ class PagesController < ApplicationController
       @feed_items = @user.following_feed.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
       @post = @user.posts.new
       #--Page Title--#
-      @title = "#{current_user.username}'s feed | me+following"
+      @title = "#{current_user.username}'s feed | following"
       @page_title = "following"
     else
       @title = "home"
@@ -23,9 +23,6 @@ class PagesController < ApplicationController
   #--GET /about.json                                      HTML and AJAX
   #-------------------------------------------------------------------#
   def about
-    if user_signed_in?
-      @user = current_user
-    end
     @title = "about"
   end
   #--GET /tour

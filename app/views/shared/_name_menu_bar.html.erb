@@ -12,7 +12,7 @@
   </div>
   <div id="local_nav">
     <% if current_user == @user %>
-      <%= link_to 'edit', edit_user_profile_path(@user, @user.profile),
+      <%= link_to 'edit', edit_user_profile_path(@user),
                               :class => "local_nav_link" %>
     <% else %>
       <!--Following-->
@@ -25,7 +25,7 @@
       </div>
       <%= link_to 'posts', user_posts_path(@user),
                               :class => "local_nav_link" %>
-      <%= link_to 'profile', user_profile_path(@user, @user.profile),
+      <%= link_to 'profile', user_profile_path(@user),
                               :class => "local_nav_link" %>
     <% end %>
   </div>

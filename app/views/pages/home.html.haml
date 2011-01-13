@@ -3,7 +3,5 @@
 - else
   = render 'shared/name_menu_bar'
   = render 'shared/feed_form'
-  - if @user.sign_in_count <= 5
-    %p= link_to "Set up your profile", edit_user_profile_path(@user, @profile)
   = render 'shared/feed'
 

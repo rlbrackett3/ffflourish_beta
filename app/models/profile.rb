@@ -5,7 +5,7 @@ class Profile
   embedded_in :user, :inverse_of => :profile
 
   attr_protected  :_id
-  accepts_nested_attributes_for :locations, :websites, :stats
+  accepts_nested_attributes_for :locations, :websites
 
 #  field :user_name
   field :handle
@@ -21,24 +21,6 @@ class Profile
   embeds_many     :websites
   embeds_many     :stats
 
-  after_create  :seed_stats
-
-protected
-
-  def seed_stats
-  #--Likes--#
-    self.stats << Stat.new(:title => "Interests", :content => ["cheese", "eggs", "pears"], :like => true)
-    self.stats << Stat.new(:title => "Links", :content => [], :like => true)
-    self.stats << Stat.new(:title => "Blogs", :content => [], :like => true)
-  #--Activities--#
-    self.stats << Stat.new(:title => "Activities", :content => [], :act => true)
-  #--Nourishment--#
-    self.stats << Stat.new(:title => "Superfood", :content => [], :eat => true)
-  #--Personal--#
-    self.stats << Stat.new(:title => "Research", :content => [], :personal => true)
-    self.save
-  end
-
 end
 
 
@@ -50,7 +32,7 @@ class Location
   field :city
   field :state
   field :country
-  field :postal_code
+  field :postal_code, :type => Integer
 
   embedded_in :profile,  :inverse_of => :locations
 
