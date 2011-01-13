@@ -15,7 +15,7 @@ class User
   field :likes, :type => Array, :default => []
 
   key   :username
-  validates :_id, :uniqueness => true
+  #validates :_id, :uniqueness => true
 
   search_in(:name,
             :username,
@@ -56,7 +56,6 @@ class User
 
   #--callbacks--#
   after_create :seed_profile
-#  after_create :follow_fbot
 
 #--Combine first and last name to user's full name--#
 #  def full_name
@@ -66,6 +65,7 @@ class User
 #  def url_name
 #    [first_name, last_name].strip!.join()
 #  end
+
 #--Methods for following and unfollowing users--#
   def follow!(user)
     following << user
@@ -106,7 +106,7 @@ protected
     self.profile.locations.create!( :city => "City",
                                      :state => "State",
                                      :country => "Country",
-                                     :postal_code => 11111
+                                     :postal_code => "00000"
                                     )
     self.profile.websites.create!( :name => "The name of my awesome website or blog.",
                                     :url => "www.example.com",
@@ -114,12 +114,6 @@ protected
                                    )
     self.save
   end
-
-#  def follow_fbot
-#    fbot = User.first(:conditions => { :email => "fbot@ffflourish.com" })
-#    self.follow!(fbot)
-#    self.save
-#  end
 
 end
 

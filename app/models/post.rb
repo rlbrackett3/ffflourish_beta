@@ -10,7 +10,7 @@ class Post
   #--Associations--#
   referenced_in   :user
   embeds_many     :comments
-  mount_uploader :image, ImageUploader
+  mount_uploader  :image, ImageUploader
 
   #--boolean values for controlling visability of posts--#
   field           :permissions, :type => Integer, :default => 2
@@ -46,23 +46,17 @@ class Post
 #--Scopes--#
 #  default_scope :order => Post.desc(:created_at)
 
-  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
+#  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
 
-#  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids, :permissions => 2 || 3).desc(:created_at)}
+  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
+
+  scope :newest_posts, where(:created_at.gt => 1.day.ago).desc(:created_at)
 
 #--Methods--#
   def add_user_likes(user, post) #add tests for me!!!!!
     user.likes << post
     user.save
   end
-
-#  after_save  :resave_child_if_has_attachment
-
-#  def resave_child_if_has_attachment
-#    self.images.each do |cf|
-#      cf.save if cf.image?
-#    end
-#  end
 
   private
 

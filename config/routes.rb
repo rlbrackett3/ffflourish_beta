@@ -7,7 +7,7 @@ Ffflourish::Application.routes.draw do
 
   resources :users do
     member do
-      match :follow, :unfollow
+      match 'follow', 'unfollow'
       get :following, :followers
     end
     resource :profile, :only => [:show, :edit, :update]

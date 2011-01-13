@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     respond_with(@user)
   end
 #----------------------------------------------------------------------#
-  #actins for folloeing users
+  # actions for following users
   #----------------------------------------------------------------------#
   def follow
     @user = User.find(params[:id])
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @me.follow!(@user)
 
     if @me.update_attributes(params[:user])
-      redirect_to user_profile_path(@user)
+      redirect_to user_following_path(@me)
     end
   end
   #----------------------------------------------------------------------#

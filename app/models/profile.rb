@@ -32,7 +32,7 @@ class Location
   field :city
   field :state
   field :country
-  field :postal_code, :type => Integer
+  field :postal_code
 
   embedded_in :profile,  :inverse_of => :locations
 

@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(root_path,
+        format.html { redirect_to(@user,
                              :notice => 'Post created successfully!') }
         format.xml  { render :xml => @post,
                              :status => :created,
