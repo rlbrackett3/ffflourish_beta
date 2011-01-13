@@ -6,10 +6,8 @@
   </div>
 </div>
 <div id="user_info">
-  <ul>
-    <li><%= @user.email %></li>
-    <li class="link"><%= link_to "Edit Account Settings", edit_user_registration_path(@user) %></li>
-  </ul>
+  <div id="current_email"><%= @user.email %></div>
+  <%= link_to "Edit Account Settings", edit_user_registration_path(@user), :id => "edit_account" %>
 </div>
 <div id="edit_profile_fields">
   <p class="field">
@@ -23,7 +21,7 @@
   <p class="field">
     <%= f.label       :birthday,  :class => "profile_label"  %>
     <%= f.date_select :birthday,  :class => "profile_field",
-                                  :start_year => Time.now.year - 90, 
+                                  :start_year => Time.now.year - 90,
                                   :end_year => Time.now.year,
                                   :order => [:month, :day, :year] %>
   </p>
@@ -40,3 +38,4 @@
     <% end %>
   </p>
 </div>
+

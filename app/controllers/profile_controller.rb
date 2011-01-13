@@ -34,10 +34,6 @@ class ProfileController < ApplicationController
     @user.profile.websites.build if @user.profile.websites.empty?
     @user.profile.stats.build if @user.profile.stats.empty?
 
-    @likes = @user.profile.stats.where(:like => true)
-#    @profile.stats.where(:like => true).each do |like|
-#      @likes = like.find(params[:id])
-#    end
     @page_title = "updating your profile"
     @title = "updating #{current_user.name}'s profile"
 
@@ -54,7 +50,8 @@ class ProfileController < ApplicationController
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
     flash[:notice] = "Profile successfully updated!" if @user.profile.update_attributes(params[:profile])
-    respond_with(@user, @profile)
+#    respond_with(@user, @profile)
+    respond_with(@user)
   end
 #---------------------------------------------------------------------#
 end

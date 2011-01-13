@@ -1,10 +1,5 @@
 Ffflourish::Application.routes.draw do
 
-  devise_scope :user do
-    get "/signin"     => "devise/sessions#new"
-    match "/signout"  => "devise/sessions#destroy"
-    get "/signup"     => "devise/registrations#new"
-  end
   devise_for :users
   #  How To: Redirect to a specific page on successful sign in
   #  redirect to another namespace that is outside of the user namespace
@@ -24,6 +19,23 @@ Ffflourish::Application.routes.draw do
     end
   end
 
+  resources :posts do
+    member do
+      match 'like'
+    end
+    resources :comments, :only => [:create, :destroy]
+  end
+
+  resources :profile, :only => [:show, :edit, :update]
+
+  devise_scope :user do
+    get "/signin"     => "devise/sessions#new"
+    match "/signout"  => "devise/sessions#destroy"
+    get "/signup"     => "devise/registrations#new"
+  end
+#  match '/:id' => 'users#show', :as => 'user_root'
+
+  match '/:id'          => 'users#show', :as => 'user'
   match '/about'        => 'pages#about'
   match '/tour'         => 'pages#tour'
   match '/terms'        => 'pages#terms'
