@@ -26,7 +26,7 @@ class Post
   search_in(:title,
             :content,
             { :user => :name },
-            { :user => :username},
+            { :user => :urlname},
             { :allow_empty_search => true})
 
   #--indexes--#

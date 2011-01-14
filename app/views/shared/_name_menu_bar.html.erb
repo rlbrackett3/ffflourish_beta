@@ -1,9 +1,13 @@
 <div id="user_page_header">
   <div id="username">
-    <%= @user.username %>
+    <%= @user.name %>
   </div>
   <div id="user_handle">
-    <%= @user.profile.handle if @user.profile.handle? %>
+    <% if @user == current_user %>
+      <%= link_to @user.profile.handle, edit_user_profile_path(@user) %>
+    <% else %>
+      <%= @user.profile.handle if @user.profile.handle? %>
+    <% end %>
   </div>
   <div id="page_title">
     <% unless @page_title == nil %>

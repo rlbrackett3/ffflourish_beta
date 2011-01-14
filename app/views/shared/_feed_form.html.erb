@@ -1,22 +1,24 @@
 <div id="question_background">
 	<div id="question">
-		What are you doing right now that's healthy for you?
+		<!--What are you doing right now that's healthy for you?-->
 	</div>
 	<%= form_for [@user, @post], :html => {:multipart => true} do |f| %>
 	  <div id="question_field">
-	    <%=f.text_area :content, :class => 'ffflourish_box_editor' %>
+	    <%=f.text_area :content, :class => 'ffflourish_box_editor',
+	                             :value => "testing" %>
 	  </div>
 	  <div id="posting_options">
+	    <div id="countdown">
+	      <div id="countdown_title">Characters remaining:</div>
+	      <div id="counter"></div>
+	    </div>
 	    <!-- POST TYPE DROP DOWN -->
 	    <%= render 'shared/feed_form_icons' %>
+	    <%= render 'shared/post_form', :f => f %>
 	    <div id="post_buttons_bottom">
 	      <%= f.submit "post" %>
-	      <div id="post_privacy_control">
-	        <%= f.select(:permissions, [["me", 1], ['following', 2], ['ffflourish', 3]]) %>
-	      </div><!-- /post_privacy_control -->
 	    </div><!-- /post_buttons_bottom -->
 	  </div>
-	  <%= render 'shared/post_form', :f => f %>
   <% end %>
 </div>
 

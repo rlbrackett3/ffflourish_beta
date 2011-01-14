@@ -177,7 +177,7 @@ input#image{
 }
 
 #countdown_title {
-	position: relative;
+	/*position: relative;*/
 	float: left;
 	text-align: left;
 	}
@@ -185,8 +185,7 @@ input#image{
 	
 #counter {
 	position: relative;
-	float: left;
-	margin: 0px 0px 0px 10px;
+	float: right;
 	
 	}
 

@@ -4,7 +4,7 @@
   display: none;
   position: relative;
   float: left;
-	clear: both;
+/*  clear: both;*/
 	margin: 20px 0px 0px 10px;
 	height: 43px;
 /*	background-color: red; */

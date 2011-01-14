@@ -8,17 +8,16 @@ module ApplicationHelper
       "#{base_title} | #{@title}"                     # String interpolation
     end
   end
+
   #--Making text pluralized--#
   def make_this_plural(number, text)
     return text.pluralize if number != 1
     text
   end
 
-  def setup_stat(stat)
-    returning(stat) do |s|
-      s.locations.build if s.locations.empty?
-      s.websites.build if s.websites.empty?
-    end
+  # mark required form fields with an asterix
+  def mark_required(object, attribute)
+    "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
   def user_url(user)
@@ -30,6 +29,7 @@ module ApplicationHelper
     end
   end
 
+  # determines where the logo link reqirects users
   def logo_path
     if user_signed_in?
       user_path(current_user)

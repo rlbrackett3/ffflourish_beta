@@ -10,15 +10,15 @@ class User
 
   attr_protected    :_id
   #--fields--#
-  field :username
+  field :urlname
   field :name
   field :likes, :type => Array, :default => []
 
-  key   :username
+  key   :urlname
   #validates :_id, :uniqueness => true
 
   search_in(:name,
-            :username,
+            :urlname,
             :email,
             { :allow_empty_search => true })
   #--indecies--#
@@ -45,8 +45,8 @@ class User
 #--Email contents validation--##
   # email_regex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 #--Validations--#
-  validates :username,      :uniqueness => true,
-                            :length => 5..16
+  validates :urlname,       :uniqueness => true,
+                            :length => 5..20
   validates :name,          :presence => true,
                             :length => { :maximum => 60 }
   validates :email,         :presence => true,

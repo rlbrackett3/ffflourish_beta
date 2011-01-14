@@ -205,7 +205,7 @@ select#post_permissions option {
 
 #post_submit:hover {
   background-color: #C1C3C9;
-  cursor: default;
+  cursor: crosshair;
 }
 
 /* posting forms outsources to posting_forms */
