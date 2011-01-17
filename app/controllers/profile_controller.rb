@@ -7,43 +7,32 @@ class ProfileController < ApplicationController
 
 #-- Methods --#
 #----------------------------------------------------------------------#
-  #--GET /profile/1
-  #--GET /profile/1.xml
-  #--GET /profile/1.json                                    HTML and AJAX
-  #---------------------------------------------------------------------#
   def show
     @user = User.find(params[:user_id])
     @profile = @user.profile
-    @likes = @profile.stats.where(:like => true)
 
     @title = "#{current_user.name}'s Profile"
 
     respond_with(@user, @profile)
   end
 #----------------------------------------------------------------------#
-
-#---------------------------------------------------------------------#
-  #--GET /profile/(1)user_name/edit
-  #--GET /profile/(1)user_name/edit.xml
-  #--GET /profile/(1)user_name/edit.json                    HTML AND AJAX
-  #---------------------------------------------------------------------#
   def edit
     @user = User.find(params[:user_id])
-    @profile = @user.profile
-    @user.profile.locations.build if @user.profile.locations.empty?
-    @user.profile.websites.build if @user.profile.websites.empty?
-    @user.profile.stats.build if @user.profile.stats.empty?
+    if @user == current_user
+      @profile = @user.profile
+      @user.profile.locations.build if @user.profile.locations.empty?
+      @user.profile.websites.build if @user.profile.websites.empty?
+
+      respond_with(@user, @profile)
+    else
+      redirect_to(root_path, :alert => "You may not update another users profile.")
+    end
 
     @page_title = "updating your profile"
     @title = "updating #{current_user.name}'s profile"
 
-    respond_with(@user, @profile)
   end
 #---------------------------------------------------------------------#
-  #--PUT /profile/1
-  #--PUT /profile/1.xml
-  #--PUT /profile/1.json                                      HTML AND AJAX
-  #---------------------------------------------------------------------#
   def update
     @user = User.find(params[:user_id])
     @profile = @user.profile
