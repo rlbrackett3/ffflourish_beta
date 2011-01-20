@@ -26,7 +26,7 @@ Ffflourish::Application.routes.draw do
     resources :comments, :only => [:create, :destroy]
   end
 
-  resource :profile, :only => [:show, :edit, :update]
+#  resource :profile, :only => [:show, :edit, :update]
 
   devise_scope :user do
     get "/signin"     => "devise/sessions#new"
@@ -40,6 +40,7 @@ Ffflourish::Application.routes.draw do
 
   # named routes for user profile
   get '/:user_id/profile' => 'profile#show', :as => 'user_profile'
+  put '/:user_id/profile' => 'profile#update', :as => 'user_profile'
   match '/:user_id/profile/edit' => 'profile#edit', :as => 'edit_user_profile'
 
   # general routes

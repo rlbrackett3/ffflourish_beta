@@ -7,3 +7,9 @@ Haml::Template.options[:ugly] = true
 
 # Initialize the rails application
 Ffflourish::Application.initialize!
+
+#make rails aware of middleware folder
+#%w(middleware).each do |dir|
+#  config.load_paths << "#{RAILS_ROOT}/app/#{dir}"
+#end
+

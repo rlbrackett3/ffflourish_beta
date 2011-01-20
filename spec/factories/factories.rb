@@ -1,6 +1,6 @@
 Factory.define :user do |user|
   user.name                   "Bair DeBair"
-  user.urlname               { Factory.next(:urlname) }
+  user.urlname                { Factory.next(:urlname) }
   user.email                  { Factory.next(:email) }#"user@example.com"
   user.email_confirmation     { |u| u.email }
   user.password               "foobar"

@@ -1,0 +1,8 @@
+#User likes count increases if they keep clicking the like link
+
+Set up the like button to do a remote submit and render just the stats partial
+
+Vote count should load a partial with avatars of people who like the post
+
+Set post content limit to 200 characters
+

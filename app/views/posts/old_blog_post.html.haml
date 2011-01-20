@@ -1,0 +1,25 @@
+#blog_post
+  - if f.image?
+    #post_image
+      = link_to (image_tag "#{f.image.post_image.url}", :id => "post_image_thumb"), user_post_path(@user, f)
+  - if f.title?
+    #post_title
+      = link_to f.title, user_post_path(@user, f)
+  - if f.content?
+    #post_body
+      = f.content
+  - if f.source_name?
+    #text_source
+      .feed_entry_05_source
+        .feed_entry_05
+          .feed_entry_05_source_text
+            source:
+          .feed_entry_05_source_text_link
+            = link_to f.source_name, f.source_url, :target => "blank"
+  #post_stats
+    = render 'shared/post_item_info', :f => f
+#post_management
+  - if @user == current_user
+    = link_to "edit post", edit_user_post_path(@user, f), :id => 'edit', :class => 'post_links'
+    = link_to "destroy post", user_post_path(@user, f), :confirm => "Are you sure", :id => "destroy", :method => :delete, :class => 'post_links'
+

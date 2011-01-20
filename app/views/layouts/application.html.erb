@@ -3,9 +3,7 @@
   <head>
     <title><%= title %></title>
     <%= render 'layouts/stylesheets' %>
-    <%= javascript_include_tag :defaults %>
-    <%= javascript_include_tag 'jquery.ba-hashchange.js' %>
-    <%= javascript_include_tag 'jquery.easytabs.js' %>
+    <%= render 'layouts/jscript' %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>

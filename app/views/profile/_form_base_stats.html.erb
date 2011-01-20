@@ -1,41 +1,37 @@
 <div id="profile_avatar">
-  <%= link_to (image_tag "#{@user.profile.avatar.profile_image.url}"), edit_user_profile_path(@user, @user.profile) %>
-  <div id="avatar_form">
-    <%= f.file_field    :avatar, :id => "avatar" %>
+  <%= link_to (image_tag @user.profile.avatar.profile_image.url), edit_user_profile_path(@user), :class => "avatar_img" %>
+  <div id="photo_upload">
+    <%= f.file_field    :avatar, :id => "file_upload" %>
     <%= f.hidden_field  :avatar_cache %>
   </div>
 </div>
-<div id="user_info">
-  <div id="current_email"><%= @user.email %></div>
-  <%= link_to "Edit Account Settings", edit_user_registration_path(@user), :id => "edit_account" %>
-</div>
 <div id="edit_profile_fields">
   <p class="field">
-    <%= f.label       :handle, :class => "profile_label" %>
+    <%= f.label       :name, :class => "profile_label" %>
+    <%= f.text_field  :name, :class => "profile_field" %>
+  </p>
+  </br></br>
+  <p class="field">
+    <%= f.label       "Personal description", :class => "profile_label" %>
     <%= f.text_field  :handle, :class => "profile_field" %>
   </p>
+  </br></br>
   <p class="field">
-    <%= f.label       "Bio",      :class => "profile_label"  %>
-    <%= f.text_area   :about_me,  :class => "profile_field", :rows => 5 %>
+    <%= link_to "Edit your email address",
+          edit_user_registration_path(@user),
+          :class => "profile_label" %>
+    <span class="profile_field"> <%= @user.email %> </span>
   </p>
+  </br></br>
   <p class="field">
-    <%= f.label       :birthday,  :class => "profile_label"  %>
-    <%= f.date_select :birthday,  :class => "profile_field",
-                                  :start_year => Time.now.year - 90,
-                                  :end_year => Time.now.year,
-                                  :order => [:month, :day, :year] %>
+    <%= link_to "Edit your password",
+          edit_user_registration_path(@user),
+          :class => "profile_label" %>
+    <span class="profile_field"> ************** </span>
   </p>
-  <p class="field">
-    <h3>Location</h3>
-    <%= f.fields_for :locations do |loc| %>
-      <%= render 'form_location', :f => loc %>
-    <% end %>
-  </p>
-  <p class="field">
-    <h3>Websites</h3>
-    <%= f.fields_for :websites do |website| %>
-      <%= render 'form_website', :f => website %>
-    <% end %>
-  </p>
+  </br></br>
 </div>
+
+
+<!--<%= photo_uploadify %>-->
 

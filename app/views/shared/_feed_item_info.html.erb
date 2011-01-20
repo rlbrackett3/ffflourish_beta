@@ -1,0 +1,38 @@
+<div id="date">
+  <%= "#{time_ago_in_words(f.created_at)} ago" %>
+</div>
+<div id="post_likes">
+  <span class="activity_images">
+    <% if f.votes == 0 and f.user != current_user %>
+      <%= link_to (image_tag "like.png", :width => 14,
+                                         :height => 15,
+                                         :mouseover => "like_red.png"),
+                like_user_post_path(f.user, f),
+
+                :id => "like_post_link" %>
+    <% elsif f.user != current_user %>
+      <%= link_to (image_tag "like_red.png", :width => 14, :height => 15),
+                like_user_post_path(f.user, f),
+
+                :id => "like_post_link" %>
+    <% else %>
+      <%= image_tag "like.png", :width => 14, :height => 15 %>
+    <% end %>
+  </span>
+</div>
+<div class="activity_count">
+  <%= link_to f.votes,
+              "#",
+
+              :id => "like_count" %>
+</div>
+<div id="post_comments">
+  <span class="activity_images">
+    <%= link_to (image_tag "comment.png", :width => 14, :height => 15),
+                user_post_path(f.user, f) %>
+  </span>
+  <span class="activity_count">
+    <%= f.comments.count %>
+  </span>
+</div>
+

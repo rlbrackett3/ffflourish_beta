@@ -6,28 +6,6 @@
   width: 712px
 }
 
-#profile_avatar {
-  position: relative;
-  float: left;
-  margin: 0px 0px 0px 10px;
-  overflow: hidden;
-}
-
-#profile_avatar img{
-  -webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-/* form for uploading a new avatar image */
-#avatar_form {
-  width: 250px;
-}
-
-#avatar_form input#avatar{
-  width: 175px;
-}
-
 /* general information */
 #general_info {
   position: relative;
@@ -82,10 +60,76 @@
 	width: 702px;
 	background-color: #E5E5E5; /* lightest gray */
 	margin: 0px 0px 0px 10px;
-	padding: 10px 0px 20px 0px;
+	padding: 10px 10px 20px 0px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+#profile_avatar {
+  position: relative;
+  float: left;
+  margin: 0px 0px 0px 10px;
+  overflow: hidden;
+}
+
+#profile_avatar img {
+  -webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.avatar_img{
+	position: relative;
+	float: left;
+	clear: both;
+  	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	background-color: none;
+}
+
+/* form for uploading a new avatar image */
+
+
+#photo_upload{
+	float: left;
+	width: 200px;
+	height: 35px;
+	clear: both;
+	padding: 10px 0px 0px 0px;
+	margin: 10px 0px 0px 0px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	font-family: Verdana, sans serif;
+	font-size: 1.1em;
+	text-align: center;
+	line-height: 1.9em;
+}
+
+input#file_upload {
+	width: 200px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: #FFF;
+	font-size: 12px;
+	font-style: italic;
+	border: none;
+}
+
+/*#photo_upload:hover{
+	background-color: #99FFFF; /* light blue */
+}
+*/
+#avatar_form input#avatar{
+  	
+}
+
+#base_stats {
+	position: relative;
+	float: left;
+	clear: both;
+	width: 702px;
 }
 
 #user_info {
@@ -93,13 +137,6 @@
   float: left;
   width: 400px;
   margin: 0px 0px 0px 20px;
-  background-color: #FFF; /* lightest gray */
-  -webkit-border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-	border-radius: 2.5px;
-	-moz-box-shadow: 1px 1px 3px #999;
-  -webkit-box-shadow: 1px 1px 3px #999;
-  box-shadow: 1px 1px 3px #999;
 }
 
 #current_email {
@@ -116,10 +153,10 @@
 
 #edit_profile_fields {
   position: relative;
-  float: left;
-  width: 400px;
-  margin: 10px 0px 0px 10px;
-  padding: 10px;
+  float: right;
+  width: 440px;
+  margin: 0px 0px 0px 10px;
+/*  padding: 10px;*/
 }
 
 .profile_label {
@@ -140,5 +177,13 @@
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+}
+
+#update_profile_btn {
+	clear: both;
+	position: relative;
+	float: right;
+	height: 43px;
+	width: 86px;
 }
 

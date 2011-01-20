@@ -6,12 +6,8 @@
       <div id="user_stats">
         <%= "member since: #{time_ago_in_words(user.created_at)} ago | " %>
         <%= "posts: #{user.posts.count} | " %>
+        <%= "likes: #{user.likes.count} |" %>
         <%= "comments: #{user.comments.count}" %>
-      </div>
-      <div id="user_recent_posts">
-        <% if user.posts.any? %>
-            <%= user.posts.first.title %>
-        <% end %>
       </div>
     </div>
   <% end %>

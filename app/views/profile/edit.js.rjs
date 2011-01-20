@@ -1,0 +1,2 @@
+== $('.photos').append('#{escape_javascript(render(@profile.avatar.avatar.url))}');
+

@@ -20,6 +20,7 @@ module ApplicationHelper
     "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
+
   def user_url(user)
     case user.class.to_s
     when "User"
@@ -37,6 +38,7 @@ module ApplicationHelper
       root_path
     end
   end
+
 
 end
 

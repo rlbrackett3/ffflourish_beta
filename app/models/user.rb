@@ -8,14 +8,13 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_protected    :_id
+  attr_accessible :name, :urlname, :likes, :email, :profile, :password
   #--fields--#
   field :urlname
   field :name
   field :likes, :type => Array, :default => []
 
   key   :urlname
-  #validates :_id, :uniqueness => true
 
   search_in(:name,
             :urlname,
@@ -25,7 +24,7 @@ class User
   index :email
 
   #--User Profile --#
-  embeds_one        :profile,   :cascade_callbacks => true
+  embeds_one        :profile#,   :cascade_callbacks => true
   accepts_nested_attributes_for :profile
 
   #--User Blog--#
@@ -42,20 +41,24 @@ class User
   references_many   :followers, :stored_as => :array,
                                 :class_name => 'User',
                                 :inverse_of => :following
-#--Email contents validation--##
-  # email_regex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+
 #--Validations--#
   validates :urlname,       :uniqueness => true,
                             :length => 5..20
   validates :name,          :presence => true,
-                            :length => { :maximum => 60 }
+                            :length => 2..25
   validates :email,         :presence => true,
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }
   validates :profile,       :associated => true
 
   #--callbacks--#
-  after_create :seed_profile
+  after_create  :seed_profile
+  after_update    :update_name
+
+  def update_name
+    self.name = self.profile.name
+  end
 
 #--Combine first and last name to user's full name--#
 #  def full_name
@@ -98,10 +101,12 @@ class User
 
 
 protected
+
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
-    self.profile = Profile.new( :handle => "new ffflourisher",
-                                 :about_me => "Tell us a little about yourself."
+    self.profile = Profile.new(:name => self.name,
+                                :handle => "new ffflourisher",
+                                :about_me => "Tell us a little about yourself."
                                 )
     self.profile.locations.create!( :city => "City",
                                      :state => "State",

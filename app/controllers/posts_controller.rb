@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
 
   #-- Responders --#
-  respond_to :html, :xml, :json
+  respond_to :js, :html, :xml, :json
 
   #-- Methods --#
 #----------------------------------------------------------------------#
@@ -16,10 +16,9 @@ class PostsController < ApplicationController
     @search_path = user_posts_path
     @user = User.find(params[:user_id])
     @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10)
-#    @posts = Post.search(params[:search]).where(:user_id => @user._id).desc(:created_at).paginate(:page => params[:page])
     @post = @user.posts.new
 
-    @title = "#{@user.name}'s posts"
+    @title = "#{@user.profile.name}'s posts"
     respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#
@@ -33,7 +32,7 @@ class PostsController < ApplicationController
     @image = @post.image
     @comments = @post.comments.all
 
-    @title = @post.title
+#    @title = @post.title
 
     respond_with(@user, @post)
 
@@ -87,7 +86,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
 
     @post_title = "editing your post"
-    @title = "editing #{@post.title}" if @post.title?
+#    @title = "editing #{@post.title}" if @post.title?
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
@@ -113,11 +112,6 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
     @post.destroy
 
-#    if @post.destroy
-#      flash[:notice] = "Post successfully deleted!"
-#      redirect_to user_posts_path(@user)
-#    end
-#    flash[:notice] = "Post successfully deleted!" if @post.update_attributes(params[:post])
     respond_with(@user, :location => user_posts_path(@user))
   end
 
@@ -125,10 +119,11 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.vote 1, current_user
-    @post.add_user_likes(current_user, @post.id)
+    @post.add_user_likes(current_user, @post)
 
     if @post.update_attributes(params[:post])
-      redirect_to user_posts_path(@user)
+      redirect_to(user_following_path(@user))
+#      respond_with(@user, :location => user_following_path(@user)) #, :layout => request.xhr?
     end
   end
 

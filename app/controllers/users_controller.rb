@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10)
     @post = @user.posts.new
-    @title = @user.name
+    @title = @user.profile.name
 
     respond_with(@user)
   end

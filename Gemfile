@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 #--Rails--#
 gem 'rails', '3.0.3'
 
-
 #--Deploy with Heroku--#
 gem 'heroku'
 gem 'heroku-rails'
@@ -23,6 +22,7 @@ gem 'mongoid_search', :git => 'git://github.com/mauriciozaffari/mongoid_search.g
 #--Image uploads and storage--#
 gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git'
 gem 'fog'
+#gem 'aws'
 gem 'aws-s3'
 gem 'mini_magick'
 

@@ -3,7 +3,7 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Voteable
-  include Mongoid::Taggable
+#  include Mongoid::Taggable
   include Mongoid::Search
 
   attr_protected  :_id
@@ -12,22 +12,21 @@ class Post
   embeds_many     :comments
   mount_uploader  :image, ImageUploader
 
-  #--boolean values for controlling visability of posts--#
-  field           :permissions, :type => Integer, :default => 2
+#  field           :permissions, :type => Integer, :default => 2
   #--data fields--#
-  field           :title
+#  field           :title
   field           :content
-  field           :link
+#  field           :link
   #--source fields--#
-  field           :source_name
-  field           :source_url
+#  field           :source_name
+#  field           :source_url
 
   #-- search on --#
-  search_in(:title,
-            :content,
+  search_in(:content,
             { :user => :name },
             { :user => :urlname},
-            { :allow_empty_search => true})
+            { :allow_empty_search => true}
+            )
 
   #--indexes--#
   index           :created_at
@@ -36,12 +35,11 @@ class Post
   index "comments.created_at"
 
   #--validations--#
-  validates       :title,
-                  :length => { :within => 2..140, :message => "is too short." },
-                  :allow_blank => true
+#  validates       :title,
+#                  :length => { :within => 2..140, :message => "is too short." },
+#                  :allow_blank => true
   validates       :content,
-                  :length => { :within => 2..2048 },
-                  :allow_blank => true
+                  :length => { :within => 2..201 }
 
 #--Scopes--#
 #  default_scope :order => Post.desc(:created_at)
@@ -54,8 +52,10 @@ class Post
 
 #--Methods--#
   def add_user_likes(user, post) #add tests for me!!!!!
-    user.likes << post
-    user.save
+    if post.voted?(user) == false
+      user.likes << post.id
+      user.save
+    end
   end
 
   private

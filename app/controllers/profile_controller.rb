@@ -3,7 +3,7 @@ class ProfileController < ApplicationController
   before_filter :authenticate_user!
 
 #-- Responders --#
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js
 
 #-- Methods --#
 #----------------------------------------------------------------------#
@@ -17,6 +17,8 @@ class ProfileController < ApplicationController
   end
 #----------------------------------------------------------------------#
   def edit
+    @page_title = "updating your profile"
+    @title = "updating #{current_user.name}'s profile"
     @user = User.find(params[:user_id])
     if @user == current_user
       @profile = @user.profile
@@ -27,20 +29,16 @@ class ProfileController < ApplicationController
     else
       redirect_to(root_path, :alert => "You may not update another users profile.")
     end
-
-    @page_title = "updating your profile"
-    @title = "updating #{current_user.name}'s profile"
-
   end
 #---------------------------------------------------------------------#
   def update
     @user = User.find(params[:user_id])
     @profile = @user.profile
-
+#    @avatar = @profile.avatar.build(params[:avatar])
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
-    flash[:notice] = "Profile successfully updated!" if @user.profile.update_attributes(params[:profile])
-#    respond_with(@user, @profile)
+    flash[:notice] = "Profile successfully updated!" if @profile.update_attributes(params[:profile])
     respond_with(@user)
+#    respond_with(@profile)
   end
 #---------------------------------------------------------------------#
 end

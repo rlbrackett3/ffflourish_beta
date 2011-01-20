@@ -4,7 +4,7 @@
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     /= devise_error_messages!
     %p.field
-      = f.label "http://www.ffflourish.com/\__", :class => "reg_label"
+      = f.label "http://www.ffflourish.com/_", :class => "reg_label"
       = f.text_field :urlname, :class => "reg_field"
       %br
       %p.field Choose a unique url name between 5 and 20 characters.
@@ -16,12 +16,12 @@
     %p.field
       = f.label :email, :class => "reg_label"
       /= mark_required(@user, :email)
-      = f.text_field :email, :class => "reg_field"
+      = f.email_field :email, :class => "reg_field"
       %br
     %p.field
       = f.label :email_confirmation, :class => "reg_label"
       /= mark_required(@user, :email)
-      = f.text_field :email_confirmation, :class => "reg_field"
+      = f.email_field :email_confirmation, :class => "reg_field"
       %br
     %p.field
       = f.label :password, :class => "reg_label"

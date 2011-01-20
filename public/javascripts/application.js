@@ -50,22 +50,12 @@ $(document).ready(function(){
 	    });
   });
 
-//  $('textarea').focus(function(){
-//    var newValue = $(this).val();
-//    if($(this).val() == 'your desc'){
-//      $(this).attr('value','');
-//    } else {
-//      $(this).val(newValue);
-//    }
-//  })
-
-//  $('textarea').blur(function(){
-//    var newValue = $(this).val();
-//    if($(this).val() == ''){
-//      $(this).attr('value','your desc');
-//    } else {
-//      $(this).val(newValue);
-//    }
+//  $('#file_upload').uploadify({
+//    'uploader'  : '/uploadify/uploadify.swf',
+//    'script'    : '/uploadify/uploadify.php',
+//    'cancelImg' : '/uploadify/cancel.png',
+//    'folder'    : '/uploads',
+//    'auto'      : true
 //  });
 
 });

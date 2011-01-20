@@ -63,6 +63,11 @@ module Ffflourish
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
+
+    # Add additional load paths for your own custom dirs
+#    %w(observers mailers middleware).each do |dir|
+#      config.autoload_paths << "#{config.root}/app/#{dir}"
+#    end
   end
 end
 

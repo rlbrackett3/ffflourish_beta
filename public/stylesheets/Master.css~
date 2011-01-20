@@ -188,6 +188,10 @@ select#post_permissions option {
 	position: relative;
 	float: left;
 	margin: 0px 10px 0px 2px;
+	clear: right;
+}
+
+.actions {
 	background-color: #66CC99;
   	color:#fff;
 	font-family:"Georgia", Times New Roman, Times, serif;
@@ -195,17 +199,15 @@ select#post_permissions option {
 	font-weight: normal;
 	font-size: 1.2em;
 	line-height: 22px;
-	clear: right;
 	border: none;
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;
-
 }
 
 #post_submit:hover {
   background-color: #C1C3C9;
-  cursor: crosshair;
+  cursor: default;
 }
 
 /* posting forms outsources to posting_forms */

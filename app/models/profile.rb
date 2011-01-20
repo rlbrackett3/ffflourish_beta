@@ -4,10 +4,10 @@ class Profile
 
   embedded_in :user, :inverse_of => :profile
 
-  attr_protected  :_id
+  attr_accessible  :name, :handle, :status, :about_me, :birthday, :avatar, :locations, :websites
   accepts_nested_attributes_for :locations, :websites
 
-#  field :user_name
+  field :name
   field :handle
   field :status,          :type => Integer
   field :about_me
@@ -15,11 +15,16 @@ class Profile
 
   mount_uploader :avatar, AvatarUploader
 
-#  index :user_name
+  index :name
 
   embeds_many     :locations
   embeds_many     :websites
-  embeds_many     :stats
+
+  validates :name,        :presence => true,
+                          :length => 2..25
+  validates :handle,      :length => { :maximum => 240,
+                                       :message => " is too long." },
+                          :allow_blank => true
 
 end
 
@@ -27,7 +32,7 @@ end
 class Location
   include Mongoid::Document
   include Mongoid::Timestamps
-  attr_protected  :_id
+  attr_accessible :city, :state, :country, :postal_code
 
   field :city
   field :state
@@ -37,7 +42,7 @@ class Location
   embedded_in :profile,  :inverse_of => :locations
 
 #  def locale
-#    if not postal_code.blank? and (city.blank? or state.blank?)
+#    if ! postal_code.blank? and (city.blank? or state.blank?)
 #      lookup = GeoDatum.find_by_zip_code(postal_code)
 #      if lookup
 #        self.city  = lookup.city.capitalize_each if city.blank?
@@ -52,7 +57,7 @@ end
 class Website
   include Mongoid::Document
   include Mongoid::Timestamps
-  attr_protected  :_id
+  attr_accessible :name, :url, :info
 
   field :name
   field :url
