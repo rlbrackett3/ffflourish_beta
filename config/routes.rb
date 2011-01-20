@@ -1,5 +1,12 @@
 Ffflourish::Application.routes.draw do
 
+
+  # named routes for feeds
+  get '/popular' => 'popular_posts#index', :as => 'popular'
+  get "popular_posts/index"
+  get "popular_posts/show"
+
+
   devise_for :users
   #  How To: Redirect to a specific page on successful sign in
   #  redirect to another namespace that is outside of the user namespace

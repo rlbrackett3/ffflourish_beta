@@ -18,7 +18,6 @@ end
 
 Factory.define :post do |post|
   post.association :user, :factory => :user
-  post.title                  "Title"
   post.content                "Content"
   post.image_filename         "rails.png"
 end

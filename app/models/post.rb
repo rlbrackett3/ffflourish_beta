@@ -50,6 +50,8 @@ class Post
 
   scope :newest_posts, where(:created_at.gt => 1.day.ago).desc(:created_at)
 
+  scope :pop_posts, order_by(:votes.desc)
+
 #--Methods--#
   def add_user_likes(user, post) #add tests for me!!!!!
     if post.voted?(user) == false
