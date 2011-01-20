@@ -5,8 +5,7 @@
 #edit_signup_form
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
     #reg_avatar
-      = link_to (image_tag "#{@user.profile.avatar.profile_image.url}"), edit_user_profile_path(@user, @user.profile)
-      %p Click to change your avatar.
+      = link_to (image_tag "#{@user.profile.avatar.profile_image.url}"), edit_user_profile_path(@user, @profile)
     #edit_signup_fields
       %p.field
         = f.label :email, :class => "reg_label"

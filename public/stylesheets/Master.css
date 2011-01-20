@@ -166,12 +166,12 @@ select#post_permissions{
   width: 100px;
   height: 25px;
   font-family: Verdana, sans serif;
-	font-size: 1em;	
+	font-size: 1em;
 	color: #fff;
 	background-color: #c1c3c9;
 	border: 0px;
 	border-color: #fff;
-	
+
 	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;
@@ -179,7 +179,7 @@ select#post_permissions{
 
 select#post_permissions option {
   line-height: double;
-  
+
 }
 
 #post_submit {
@@ -307,7 +307,7 @@ select#post_permissions option {
 }
 
 
-#date{
+#post_date{
 	font-family: Verdana, sans serif;
 	color: #999;
 	font-size: 0.8em;
@@ -317,7 +317,7 @@ select#post_permissions option {
 	float: left;
 }
 
-#date:hover{
+#post_date:hover{
 	color: #31F48E; /* lime green hover color */
 }
 
