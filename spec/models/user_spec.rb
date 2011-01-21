@@ -305,5 +305,13 @@ describe User do
 
   end
 #------------------------------------------------#
+  describe 'likes' do
+    let(:user) { Factory(:user) }
+    let(:post) { Facotry(:post) }
+
+    it { should respond_to(:likes) }
+    it { should respond_to(:likes_count) }
+  end
+#------------------------------------------------#
 end
 

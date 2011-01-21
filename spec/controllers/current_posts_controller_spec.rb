@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PopularPostsController do
+describe CurrentPostsController do
   include Devise::TestHelpers
   render_views
 
@@ -31,28 +31,23 @@ describe PopularPostsController do
       sign_in  @user
     end
 
-    describe 'index' do
-      describe "GET 'index'" do
-        it "should be successful" do
-          get 'index'
-          response.should be_success
-        end
+    describe "GET 'index'" do
+      it "should be successful" do
+        get 'index'
+        response.should be_success
+      end
 
-        it "should have the correct title" do
-          get 'index'
-          response.should have_selector("title",
-              :content => "ffflourish | popular posts")
-        end
+      it "should have the correct title" do
+        get 'index'
+        response.should have_selector("title", :content => "ffflourish | newest posts")
       end
     end
+  end
 
-    describe 'show' do
-      describe "GET 'show'" do
-        it "should be successful" do
-          get 'show'
-          response.should be_success
-        end
-      end
+  describe "GET 'show'" do
+    it "should be successful" do
+      get 'show'
+      response.should be_success
     end
   end
 

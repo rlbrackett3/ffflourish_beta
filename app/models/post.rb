@@ -6,7 +6,7 @@ class Post
 #  include Mongoid::Taggable
   include Mongoid::Search
 
-  attr_protected  :_id
+  attr_accessible :content
   #--Associations--#
   referenced_in   :user
   embeds_many     :comments
@@ -14,12 +14,7 @@ class Post
 
 #  field           :permissions, :type => Integer, :default => 2
   #--data fields--#
-#  field           :title
   field           :content
-#  field           :link
-  #--source fields--#
-#  field           :source_name
-#  field           :source_url
 
   #-- search on --#
   search_in(:content,
@@ -40,23 +35,31 @@ class Post
 #                  :allow_blank => true
   validates       :content,
                   :length => { :within => 2..201 }
+  validate :content_or_image_present?
 
 #--Scopes--#
-#  default_scope :order => Post.desc(:created_at)
-
 #  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
 
-  scope :newest_posts, where(:created_at.gt => 1.day.ago).desc(:created_at)
+  scope :current, where(:created_at.lt => 3.days.ago).desc(:created_at)
 
-  scope :pop_posts, order_by(:votes.desc)
+  scope :popular, order_by(:votes.desc)
 
 #--Methods--#
-  def add_user_likes(user, post) #add tests for me!!!!!
-    if post.voted?(user) == false
-      user.likes << post.id
+
+  def add_user_likes(user)
+    if self.voted?(user) == true && user.likes.include?(self.id) == false
+      user.likes << self.id
       user.save
+    end
+  end
+
+  protected
+
+  def content_or_image_present?
+    if self.content.blank? && self.image == []
+      errors[:base] << 'Post must contain content or an image'
     end
   end
 

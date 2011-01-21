@@ -119,7 +119,11 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.vote 1, current_user
-    @post.add_user_likes(current_user, @post)
+    unless @post.voted?(current_user) == false
+      @post.add_user_likes(current_user)
+    else
+      flase[:notice] = "You may only like a post once."
+    end
 
     if @post.update_attributes(params[:post])
       redirect_to(user_following_path(@user))

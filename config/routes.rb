@@ -1,6 +1,10 @@
 Ffflourish::Application.routes.draw do
 
 
+  get "current_posts/index"
+
+  get "current_posts/show"
+
   # named routes for feeds
   get '/popular' => 'popular_posts#index', :as => 'popular'
   get "popular_posts/index"
