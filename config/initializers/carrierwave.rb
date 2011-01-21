@@ -1,6 +1,7 @@
 CarrierWave.configure do |config|
 #  if Rails.env.production?
-  if ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET']
+#  if ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET']
+  if Rails.env.production?
     config.storage = :s3
     config.s3_access_key_id = ENV['S3_KEY']
     config.s3_secret_access_key = ENV['S3_SECRET']
