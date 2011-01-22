@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-describe Location do
+describe Website do
    describe 'fields' do
-    it { should have_field :city }
-    it { should have_field :state }
-    it { should have_field :country }
-    it { should have_field :postal_code }
+    it { should have_field :name }
+    it { should have_field :url }
+    it { should have_field :info }
     it { should have_fields(:created_at, :updated_at) }
   end
 
