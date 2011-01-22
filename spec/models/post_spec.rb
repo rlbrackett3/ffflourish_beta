@@ -122,6 +122,7 @@ describe Post do
       end
     end
     #------------------------------------------------#
+    # more tests here
     describe 'popular' do
 
       it 'should have a current_posts class method' do

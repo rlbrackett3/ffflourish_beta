@@ -4,8 +4,8 @@ describe User do
 #------------------------------------------------#
   # Defines a sample user with the following attributes
   before(:each) do
-    @attr = { :first_name                 => "Robert",
-              :last_name                  => "Brackett",
+    @attr = { :urlname                    => "Robert",
+              :name                       => "Robert Brackett",
               :email                      => "rob@test.com",
               :email_confirmation         => "rob@test.com",
               :password                   => "foobar",
@@ -18,20 +18,20 @@ describe User do
     User.create!(@attr)
   end
 
-  it "should require a first name" do
-    no_name_user = User.new(@attr.merge(:first_name => ""))
+  it "should require a urlname" do
+    no_name_user = User.new(@attr.merge(:urlname => ""))
     no_name_user.should_not be_valid
   end
 
-  it "should require a last name" do
-    no_name_user = User.new(@attr.merge(:last_name => ""))
+  it "should require a name" do
+    no_name_user = User.new(@attr.merge(:name => ""))
     no_name_user.should_not be_valid
   end
 
-  it "should respond to a full_name method" do
-    user = User.create!(@attr)
-    user.should respond_to(:full_name)
-  end
+#  it "should respond to a full_name method" do
+#    user = User.create!(@attr)
+#    user.should respond_to(:full_name)
+#  end
 
   it "should require an email address" do
     no_name_user = User.new(@attr.merge(:email => ""))
@@ -55,16 +55,32 @@ describe User do
   #------------------------------------------------#
   describe "name validations" do
 
-    it "should reject first names that are too long" do
-      long_name = "a" * 61
-      long_name_user = User.new(@attr.merge(:first_name => long_name))
-      long_name_user.should_not be_valid
+    describe 'long names' do
+      it "should reject urlnames that are too long" do
+        long_name = "a" * 21
+        long_name_user = User.new(@attr.merge(:urlname => long_name))
+        long_name_user.should_not be_valid
+      end
+
+      it "should reject names that are too long" do
+        long_name = "a" * 41
+        long_name_user = User.new(@attr.merge(:name => long_name))
+        long_name_user.should_not be_valid
+      end
     end
 
-    it "should reject first names that are too long" do
-      long_name = "a" * 61
-      long_name_user = User.new(@attr.merge(:last_name => long_name))
-      long_name_user.should_not be_valid
+    describe 'short names' do
+      it "should reject urlnames that are too short" do
+        long_name = "a" * 3
+        long_name_user = User.new(@attr.merge(:urlname => long_name))
+        long_name_user.should_not be_valid
+      end
+
+      it "should reject names that are too short" do
+        long_name = "a" * 1
+        long_name_user = User.new(@attr.merge(:name => long_name))
+        long_name_user.should_not be_valid
+      end
     end
   end
 
@@ -142,13 +158,16 @@ describe User do
   describe "Mongoid" do
     #------------------------------------------------#
     describe "fields" do
+      it { should have_field :urlname }
+      it { should have_field :name }
       it { should have_field :email }
+      it { should have_field :following_ids }
+      it { should have_field :follower_ids }
       #--Devise--#
 #      it { should have_field :email_confirmation }
 #      it { should have_field :password }
 #      it { should have_field :password_confirmation}
-      it { should have_field :following_ids }
-      it { should have_field :follower_ids }
+
     end
     #------------------------------------------------#
     describe 'associations' do
@@ -167,11 +186,12 @@ describe User do
     describe 'validations' do
 
       it { should validate_associated :profile }
-
-      it { should validate_presence_of :email }
-      it { should validate_confirmation_of :email }
-      it { should validate_uniqueness_of :email }
-      it { should validate_format_of :email}
+      describe 'email' do
+        it { should validate_presence_of :email }
+        it { should validate_confirmation_of :email }
+        it { should validate_uniqueness_of :email }
+        it { should validate_format_of :email}
+      end
 
       describe 'password' do
         it { should validate_presence_of :password }
@@ -249,8 +269,8 @@ describe User do
     before(:each) do
       @user = Factory(:user)
 
-      @p1 = @user.posts.create!(:title => 'foo', :content => 'bar')
-      @p2 = @user.posts.create!(:title => 'hello', :content => 'world')
+      @p1 = @user.posts.create!(:content => 'bar')
+      @p2 = @user.posts.create!(:content => 'world')
     end
 
     it "should have a feed" do
@@ -258,14 +278,14 @@ describe User do
     end
 
     it "should include a user's posts" do
-      @user.following_feed.include?(@p1).should be_true
-      @user.following_feed.include?(@p2).should be_true
+      @user.posts.include?(@p1).should be_true
+      @user.posts.include?(@p2).should be_true
     end
 
     it "should not include a different user's posts" do
       p3 = Factory(:post,
                     :user => Factory(:user, :email => Factory.next(:email)))
-      @user.following_feed.include?(p3).should be_false
+      @user.posts.include?(p3).should be_false
     end
 
   end
@@ -275,30 +295,26 @@ describe User do
       @user = Factory(:user)
       @other_user = Factory(:user, :email => Factory.next(:email))
 
-      @p1 = @user.posts.create!(:title => 'foo', :content => 'bar')
-      @p2 = @user.posts.create!(:title => 'hello', :content => 'world')
-      @p3 = Post.create!(:title => "foo",
-                         :content => "bar",
-                         :user_id => @other_user._id.to_s)
+      @p1 = @user.posts.create!(:content => 'bar')
+      @p2 = @user.posts.create!(:content => 'world')
+      @p3 = @other_user.posts.create!(:content => "bar")
     end
 
     it "should have a following_feed" do
       @user.should respond_to(:following_feed)
     end
 
-    it "should include a user's posts" do
-      @user.following_feed.should include(@p1)
-      @user.following_feed.should include(@p2)
+    it "should not include the user's posts" do
+      @user.following_feed.should_not include(@p1)
+      @user.following_feed.should_not include(@p2)
     end
 
-    it "should not include a different user's posts" do
-#      p3 = Factory(:post, :user => Factory(:user, :email => Factory.next(:email)))
+    it "should not include posts fron non-followed users" do
       @user.following_feed.should_not include(@p3)
     end
 
     it "should include the posts of followed users" do
-      followed = @other_user #Factory(:user, :email => Factory.next(:email))
-#      p3 = Factory(:post, :user => followed)
+      followed = @other_user
       @user.follow!(followed)
       @user.following_feed.should include(@p3)
     end
@@ -307,10 +323,18 @@ describe User do
 #------------------------------------------------#
   describe 'likes' do
     let(:user) { Factory(:user) }
-    let(:post) { Facotry(:post) }
+    let(:post) { Factory(:post) }
 
     it { should respond_to(:likes) }
     it { should respond_to(:likes_count) }
+    
+    describe 'adding post ids to likes' do
+      it 'increment likes_count when a user likes a post' do
+        post.vote(1, user)
+        post.add_user_likes(user)
+        user.likes_count.should == 1
+      end
+    end
   end
 #------------------------------------------------#
 end

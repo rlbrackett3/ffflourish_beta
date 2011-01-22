@@ -15,22 +15,18 @@
       %br
     %p.field
       = f.label :email, :class => "reg_label"
-      /= mark_required(@user, :email)
       = f.email_field :email, :class => "reg_field"
       %br
     %p.field
       = f.label :email_confirmation, :class => "reg_label"
-      /= mark_required(@user, :email)
       = f.email_field :email_confirmation, :class => "reg_field"
       %br
     %p.field
       = f.label :password, :class => "reg_label"
-      /= mark_required(@user, :password)
       = f.password_field :password, :class => "reg_field"
       %br
     %p.field
       = f.label :password_confirmation, :class => "reg_label"
-      /= mark_required(@user, :password)
       = f.password_field :password_confirmation, :class => "reg_field"
       %br
     %p.actions= f.submit "Sign up", :class => "signup_btn"

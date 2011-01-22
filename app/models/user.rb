@@ -4,11 +4,12 @@ class User
   include Mongoid::Timestamps
   include Mongoid::Search
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable, :timeoutable, :invitable
+  # :token_authenticatable, :confirmable, :timeoutable, :invitable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  attr_accessible :name, :urlname, :likes, :email, :profile, :password
+  attr_accessible :name, :urlname, :likes, :email, :email_confirmation,
+                  :profile, :password, :password_confirmation
   #--fields--#
   field :urlname
   field :name
@@ -20,14 +21,13 @@ class User
             :urlname,
             :email,
             { :allow_empty_search => true })
-  #--indecies--#
-  index :email
+#--Indexed fields--#
 
-  #--User Profile --#
+#--User Profile --#
   embeds_one        :profile#,   :cascade_callbacks => true
   accepts_nested_attributes_for :profile
 
-  #--User Blog--#
+#--User Blog--#
   references_many   :posts,     :stored_as => :array,
                                 :inverse_of => :user,
                                 :dependent => :delete,
@@ -44,21 +44,19 @@ class User
 
 #--Validations--#
   validates :urlname,       :uniqueness => true,
-                            :length => 5..20
+                            :length => 5..20,
+                            :format => { :with => /^[\w ]*$/, :on => :create }
   validates :name,          :presence => true,
-                            :length => 2..25
+                            :length => 2..40,
+                            :format => { :with => /^[A-Za-z ]*$/ }
   validates :email,         :presence => true,
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }
   validates :profile,       :associated => true
 
-  #--callbacks--#
+#--Callbacks--#
   after_create  :seed_profile
   after_update    :update_name
-
-  def update_name
-    self.name = self.profile.name
-  end
 
 #--Combine first and last name to user's full name--#
 #  def full_name
@@ -68,6 +66,10 @@ class User
 #  def url_name
 #    [first_name, last_name].strip!.join()
 #  end
+
+  def likes_count
+    likes.count
+  end
 
 #--Methods for following and unfollowing users--#
   def follow!(user)
@@ -101,6 +103,10 @@ class User
 
 
 protected
+
+  def update_name
+    self.name = self.profile.name
+  end
 
 #--Seed the user's profile with a name and nil data--#
   def seed_profile

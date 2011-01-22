@@ -35,7 +35,7 @@ class Post
 #                  :allow_blank => true
   validates       :content,
                   :length => { :within => 2..201 }
-  validate :content_or_image_present?
+#  validate :content_or_image_present?
 
 #--Scopes--#
 #  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
@@ -57,11 +57,11 @@ class Post
 
   protected
 
-  def content_or_image_present?
-    if self.content.blank? && self.image == []
-      errors[:base] << 'Post must contain content or an image'
-    end
-  end
+#  def content_or_image_present?
+#    if self.content.blank? && self.image == []
+#      errors[:base] << 'Post must contain content or an image'
+#    end
+#  end
 
   private
 
