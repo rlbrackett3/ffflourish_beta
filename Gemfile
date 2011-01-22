@@ -30,6 +30,7 @@ gem 'mini_magick'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'jquery-rails'
 gem 'ffaker'
+gem 'RedCloth'
 
 #--HAML support--#
 gem 'haml'

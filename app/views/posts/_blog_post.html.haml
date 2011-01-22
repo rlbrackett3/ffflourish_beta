@@ -4,7 +4,7 @@
       = link_to (image_tag "#{f.image.post_image.url}", :id => "post_image_thumb"), user_post_path(@user, f)
   - if f.content?
     #post_body
-      = f.content
+      %span.content= f.content
   #post_stats
     = render 'shared/feed_item_info', :f => f
 #post_management

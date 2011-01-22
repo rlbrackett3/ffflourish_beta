@@ -10,7 +10,7 @@
     </div>
     <% if feed_item.content? %>
       <div id="feed_entry_04_text">
-        <%= feed_item.content %>
+        <span class="content"><%= feed_item.content %></span>
       </div>
     <% end %>
     <%= render 'shared/feed_item_info', :f => feed_item %>

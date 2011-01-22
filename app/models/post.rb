@@ -54,6 +54,11 @@ class Post
       user.save
     end
   end
+  
+  def hyperlink_regex(text)
+    regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
+    text.gsub!( regex, '<a href="\1">\1</a>' )
+  end
 
   protected
 

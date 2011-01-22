@@ -57,6 +57,9 @@ $(document).ready(function(){
 //    'folder'    : '/uploads',
 //    'auto'      : true
 //  });
+  
+  $('.content').linkify();
+  $('#post_body').linkify(); 
 
 });
 
