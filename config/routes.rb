@@ -1,15 +1,16 @@
 Ffflourish::Application.routes.draw do
 
-
-  get "current_posts/index"
-
-  get "current_posts/show"
-
   # named routes for feeds
-  get '/popular' => 'popular_posts#index', :as => 'popular'
+  # feed of most popular posts
   get "popular_posts/index"
   get "popular_posts/show"
-
+  get '/popular' => 'popular_posts#index', :as => 'popular'
+  # feed of followed users
+  get "following_posts/index"
+  match '/:id/following'=> 'following_posts#index', :as => 'user_following'
+  # feed of most current posts
+  get "current_posts/index"
+  get "current_posts/show"
 
   devise_for :users
   #  How To: Redirect to a specific page on successful sign in
@@ -47,7 +48,6 @@ Ffflourish::Application.routes.draw do
 
   # named routes for user resources
   match '/:id'          => 'users#show', :as => 'user'
-  match '/:id/following'=> 'pages#home', :as => 'user_following'
 
   # named routes for user profile
   get '/:user_id/profile' => 'profile#show', :as => 'user_profile'

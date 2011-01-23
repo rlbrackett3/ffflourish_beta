@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-
+  include PostsHelper
+  before_filter :initialize_new_post, :only => :home
   #--GET /home
   #--GET /home.xml
   #--GET /home.json                                       HTML and AJAX
@@ -9,8 +10,7 @@ class PagesController < ApplicationController
       @search_path = root_path
       @user = current_user
       @profile = @user.profile
-      @feed_items = @user.following_feed.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
-      @post = @user.posts.new
+#      @feed_items = @user.following_feed.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
       #--Page Title--#
       @title = "#{current_user.name}'s feed | following"
       @page_title = "following"
