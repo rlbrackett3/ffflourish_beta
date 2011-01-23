@@ -1,8 +1,8 @@
 <% unless @feed_items.empty? %>
   <%= will_paginate @feed_items %>
-  <div id="following_feed">
+  <ul class="feed">
     <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
-  </div><!-- end 3 column_feed_entry_format -->
+  </ul>
   <%= will_paginate @feed_items %>
 <% end %>
 

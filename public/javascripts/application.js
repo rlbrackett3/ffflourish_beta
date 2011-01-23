@@ -26,14 +26,14 @@ $(document).ready(function(){
 
   //textarea countdown function
   $('textarea').keyup(function(){
-    if(this.value.length >= 240) {
+    if(this.value.length >= 200) {
       //handle the over the limit part here
       $(this).addClass('overlimit');
-      this.value = this.value.substring(0, 240);
+      this.value = this.value.substring(0, 200);
     } else {
       $(this).removeClass('overlimit');
     }
-    $('#counter').text(240-this.value.length);
+    $('#counter').text(200-this.value.length);
   });
 
   //onblur and onfocus functions
@@ -59,7 +59,7 @@ $(document).ready(function(){
 //  });
   
   $('.content').linkify();
-  $('#post_body').linkify(); 
+  $('.feed_entry_text').linkify(); 
 
 });
 

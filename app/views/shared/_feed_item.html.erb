@@ -1,35 +1,40 @@
-<!--#################start photo feed entry##################-->
-<div id="three_column_feed_entry_format">
-  <div id="user_photo_small">
-    <%= link_to (image_tag feed_item.user.profile.avatar.avatar.url, :id => "avatar_small"),
-                                  user_posts_path(feed_item.user) %>
+<!--feed item-->
+<li class="feed_entry">
+  <div class="feed_entry_left">
+    <%= link_to (image_tag feed_item.user.profile.avatar.avatar.url, 
+                                                :class => "avatar_small"),
+                                       user_posts_path(feed_item.user) %>
+    <span class="feed_entry_following_links">
+      <% if feed_item.user.followers.include?(current_user) %>
+        <%= link_to "unfollow", unfollow_user_path(@user), 
+                                  :class => 'unfollow_me', 
+                                  :confirm => "are you sure you want to unfollow #{@user.profile.name}" %>
+      <% else %>
+        <%= link_to "follow", follow_user_path(@user), :class => 'follow_me' %>
+      <% end %>
+    </span>
   </div>
-  <div id="feed_entry_content">
-    <div id="feed_entry_01_author">
-      <%= link_to feed_item.user.name, user_posts_path(feed_item.user), :id => 'post_author' %>
-    </div>
-    <% if feed_item.content? %>
-      <div id="feed_entry_04_text">
-        <span class="content"><%= feed_item.content %></span>
-      </div>
+  <div class="feed_entry_center">
+    <span class="feed_entry_content">
+      <p class="feed_entry_author">
+        <%= link_to feed_item.user.name, user_posts_path(feed_item.user), 
+                                                        :class => 'post_author' %>
+      </p>
+      <p class="feed_entry_text">
+        <%= feed_item.content %>
+      </p>
+    </span>
+    <div class="feed_entry_info">
+      <%= render 'shared/feed_item_info', :f => feed_item %>
+     </div>
+  </div>
+  <div class="feed_entry_right">
+    <% if feed_item.image? %>
+      <%= link_to (image_tag feed_item.image.medium.url, :class => "photo_preview"),
+                                                        feed_item.image.url %>
     <% end %>
-    <%= render 'shared/feed_item_info', :f => feed_item %>
-  	<% if feed_item.content.length > 120 %>
-      <div id="expand_arrow_field">
-        <div id = "expand_arrow">
-          &#x25BC;
-        </div>
-      </div>
-    <% end %>
-  </div><!-- end 3 feed_entry_content -->
-  <% if feed_item.image? %>
-    <div id="photo_preview">
-      <%= link_to (image_tag feed_item.image.medium.url),
-          feed_item.image.url %>
-    </div>
-  <% end %>
+  </div> 
+  <div class="border"></div>
+</li>
 
-  <div id="border"> </div>
-<!-- #################end photo feed entry################ -->
-</div><!-- end 3 column_feed_entry_format -->
 

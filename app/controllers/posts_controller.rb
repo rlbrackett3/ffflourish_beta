@@ -68,9 +68,10 @@ class PostsController < ApplicationController
                              :status => :created,
                              :location => @post }
       else
-        format.html { render :action => 'index' }
-        format.xml  { render :xml => @post.errors,
-                             :status => :unprocessable_entity }
+#        format.html { render :action => 'index' }
+#        format.xml  { render :xml => @post.errors,
+#                             :status => :unprocessable_entity }
+        respond_with(@user)
       end
     end
 #    flash[:notice] = 'Post created successfully!' if @post.valid?
