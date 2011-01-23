@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
   include ActiveModel::Validations
+  include PostsHelper
   #-- Filters --#
   before_filter :authenticate_user!
+  before_filter :initialize_new_post, :only => :index, :new
 
   #-- Responders --#
   respond_to :js, :html, :xml, :json
@@ -44,7 +46,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def new
     @user = User.find(params[:user_id])
-    @post = @user.posts.new
+#    @post = @user.posts.new
 
     @title = "new post"
 

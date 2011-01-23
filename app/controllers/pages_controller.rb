@@ -6,17 +6,7 @@ class PagesController < ApplicationController
   #--GET /home.json                                       HTML and AJAX
   #-------------------------------------------------------------------#
   def home
-    if user_signed_in?
-      @search_path = root_path
-      @user = current_user
-      @profile = @user.profile
-#      @feed_items = @user.following_feed.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
-      #--Page Title--#
-      @title = "#{current_user.name}'s feed | following"
-      @page_title = "following"
-    else
-      @title = "home"
-    end
+    @title = "home"
   end
   #--GET /about
   #--GET /about.xml
