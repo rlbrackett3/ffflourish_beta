@@ -59,7 +59,12 @@ $(document).ready(function(){
 //  });
   
   $('.content').linkify();
-  $('.feed_entry_text').linkify(); 
-
+  $('.feed_entry_text').linkify();
+  
+  //endless page with jquery.pageless
+//  $('#results').pageless({ totalPages: 20
+//                           , url: '/:id/following/'
+//                           , loaderMsg: 'Loading more results'
+//                           });
 });
 

@@ -6,7 +6,7 @@ Ffflourish::Application.routes.draw do
   get "popular_posts/show"
   match '/popular' => 'popular_posts#index', :as => 'popular'
   # feed of followed users
-  get "following_posts/index"
+#  get "/following_posts/index"
   match '/:id/following'=> 'following_posts#index', :as => 'user_following'
   # feed of most current posts
   get "current_posts/index"

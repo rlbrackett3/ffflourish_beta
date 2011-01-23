@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  include PostsHelper
-  before_filter :initialize_new_post, :only => :home
   #--GET /home
   #--GET /home.xml
   #--GET /home.json                                       HTML and AJAX

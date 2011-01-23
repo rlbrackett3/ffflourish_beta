@@ -1,23 +1,27 @@
 <% @user ||= current_user %>
 <div id="user_page_header">
-  <div id="user_avatar">
-  <%= link_to (image_tag @user.profile.avatar.avatar.url), edit_user_profile_path(@user), :class => "avatar_img" %>
-  </div>
-  <div id="username">
-    <%= @user.profile.name %>
-  </div>
-  <div id="page_title">
-    <% unless @page_title == nil %>
-      <%= "+ #{@page_title}" %>
-    <% end %>
-  </div>
-  <div id="user_handle">
-    <% if @user == current_user %>
-      <%= link_to @user.profile.handle, edit_user_profile_path(@user) %>
-    <% else %>
-      <%= @user.profile.handle if @user.profile.handle? %>
-    <% end %>
-  </div>
+  <span id="user_avatar">
+  <%= link_to (image_tag @user.profile.avatar.profile_image.url), 
+                edit_user_profile_path(@user), 
+                :class => "profile_img" %>
+  </span>
+  <span id="user_information">
+    <p id="username">
+      <%= @user.profile.name %>
+    </p>
+    <p id="page_title">
+      <% unless @page_title == nil %>
+        <%= "+ #{@page_title}" %>
+      <% end %>
+    </p>
+    <p id="user_handle">
+      <% if @user == current_user %>
+        <%= link_to @user.profile.handle, edit_user_profile_path(@user) %>
+      <% else %>
+        <%= @user.profile.handle if @user.profile.handle? %>
+      <% end %>
+    </p>
+  </span>
   <div id="local_nav">
     <% if current_user == @user %>
       <!--<%= link_to 'edit', edit_user_profile_path(@user),

@@ -38,6 +38,22 @@ module ApplicationHelper
       root_path
     end
   end
+  
+  # setting for the jquery.pageless endless page lugin
+  def pageless(total_pages, url=nil, container=nil)
+    opts = {
+      :totalPages => total_pages,
+      :url        => url,
+      :loaderMsg  => 'Loading more results',
+      :end    => 'Now more pages',
+      :distance   => 1000
+      
+    }
+    
+    container && opts[:container] ||= container
+    
+    javascript_tag("$('#results').pageless(#{opts.to_json});")
+  end
 
 
 end
