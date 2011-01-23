@@ -1,5 +1,5 @@
 Factory.define :user do |user|
-  user.name                   "Bair DeBair"
+  user.name                   { Factory.next(:name) }
   user.urlname                { Factory.next(:urlname) }
   user.email                  { Factory.next(:email) }#"user@example.com"
   user.email_confirmation     { |u| u.email }
@@ -16,6 +16,10 @@ Factory.sequence :urlname do |n|
   "urlname#{n}"
 end
 
+Factory.sequence :name do |n|
+  "name#{n}"
+end
+
 Factory.define :post do |post|
   post.association :user, :factory => :user
   post.content                "Content"
@@ -24,7 +28,6 @@ end
 
 Factory.define :user_post, :class => Post do |uc|
   uc.association :user, :factory => :user
-  uc.title                  "Title"
   uc.content                "Content"
 end
 

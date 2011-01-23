@@ -3,6 +3,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Search
+  include Mongoid::Slug
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :timeoutable, :invitable
   devise :database_authenticatable, :registerable,
@@ -15,7 +16,7 @@ class User
   field :name
   field :likes, :type => Array, :default => []
 
-  key   :urlname
+  slug  :urlname, :index => true
 
   search_in(:name,
             :urlname,
@@ -56,7 +57,7 @@ class User
 
 #--Callbacks--#
   after_create  :seed_profile
-  after_update    :update_name
+  after_update  :update_name
 
 #--Combine first and last name to user's full name--#
 #  def full_name
@@ -110,7 +111,7 @@ protected
 
 #--Seed the user's profile with a name and nil data--#
   def seed_profile
-    self.profile = Profile.new(:name => self.name,
+    self.profile = Profile.new( :name => self.name,
                                 :handle => "new ffflourisher",
                                 :about_me => "Tell us a little about yourself."
                                 )

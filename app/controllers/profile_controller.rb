@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
 #-- Methods --#
 #----------------------------------------------------------------------#
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @profile = @user.profile
 
     @title = "#{current_user.name}'s Profile"
@@ -19,7 +19,7 @@ class ProfileController < ApplicationController
   def edit
     @page_title = "updating your profile"
     @title = "updating #{current_user.name}'s profile"
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     if @user == current_user
       @profile = @user.profile
       @user.profile.locations.build if @user.profile.locations.empty?
@@ -32,7 +32,7 @@ class ProfileController < ApplicationController
   end
 #---------------------------------------------------------------------#
   def update
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @profile = @user.profile
 #    @avatar = @profile.avatar.build(params[:avatar])
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??

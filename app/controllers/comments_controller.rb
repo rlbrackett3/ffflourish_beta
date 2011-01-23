@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   #--GET /users/posts/comments.json                         HTML and AJAX
   #---------------------------------------------------------------------#
   def create
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.create!(params[:comment])
     current_user.comments << @comment

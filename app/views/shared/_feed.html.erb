@@ -6,5 +6,5 @@
     </div>
   <%= pageless(@feed_items.total_pages, user_following_path) %>
 <% end %>
-<div class="pagination"><%= will_paginate @feed_items %></div>
+<%= will_paginate @feed_items %>
 

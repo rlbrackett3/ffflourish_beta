@@ -41,9 +41,9 @@ puts "New account created for first user: " << user.name
 
 puts 'CREATING A BUNCH OF PEOPLE'
 20.times do
-  u = User.create :urlname => Factory.next(:urlname),
-                  :name  => Faker::Name.name,
-                  :email      => Faker::Internet.email,
+  u = User.create :urlname  => Factory.next(:urlname),
+                  :name     => Faker::Name.name,
+                  :email    => Faker::Internet.email,
                   :password => 'foobar', :password_confirmation => 'foobar'
   5.times do
     p = u.posts.create  :content    => Faker::Lorem.paragraph,
@@ -51,6 +51,7 @@ puts 'CREATING A BUNCH OF PEOPLE'
                         :updated_at => Time.random
   end
   u.save
+  puts u.to_param
   user.follow!(u)
   u.follow!(user)
 end

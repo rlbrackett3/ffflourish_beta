@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   include PostsHelper
   #-- Filters --#
   before_filter :authenticate_user!
-  before_filter :initialize_new_post, :only => :index, :new
+  before_filter :initialize_new_post, :only => [:index, :new]
 
   #-- Responders --#
   respond_to :js, :html, :xml, :json
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def index
     @search_path = user_posts_path
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10)
     @post = @user.posts.new
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/1.json                              HTML and AJAX
   #---------------------------------------------------------------------#
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
     @image = @post.image
     @comments = @post.comments.all
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/new.json                            HTML and AJAX
   #---------------------------------------------------------------------#
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
 #    @post = @user.posts.new
 
     @title = "new post"
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts.json                                HTML and AJAX
   #---------------------------------------------------------------------#
   def create
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @posts = @user.posts.desc(:created_at).paginate(:page => params[:page]) #to redirect to index
     @post = @user.posts.build(params[:post])
 
@@ -85,7 +85,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/edit.json                           HTML and AJAX
   #---------------------------------------------------------------------#
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
 
     @post_title = "editing your post"
@@ -98,7 +98,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/1.json                              HTML and AJAX
   #---------------------------------------------------------------------#
   def update
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
@@ -111,7 +111,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/1.json                              HTML and AJAX
   #---------------------------------------------------------------------#
   def destroy
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.destroy
 
@@ -119,7 +119,7 @@ class PostsController < ApplicationController
   end
 
   def like
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.vote 1, current_user
     unless @post.voted?(current_user) == false

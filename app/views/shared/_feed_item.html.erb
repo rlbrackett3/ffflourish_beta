@@ -36,5 +36,20 @@
   </div> 
   <div class="border"></div>
 </li>
+<% if feed_item.voters? %>
+  <li>
+    <div id="liked_by">
+      <% feed_item.voters.each do |liked| %>
+        <%= liked %>
+        
+      <% end %>
+    </div>
+  </li>
+<% end %>
+<% if feed_item.comments.any? %>
+  <li>
+  
+  </li>
+<% end %>
 
 

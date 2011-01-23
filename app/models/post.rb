@@ -39,6 +39,7 @@ class Post
 
 #--Scopes--#
 #  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
+  scope :liked_by, lambda { |user| where(:votes.in => user.id)}
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
 
@@ -54,6 +55,12 @@ class Post
       user.save
     end
   end
+  
+#  def liked_by
+#    voters.each do |u|
+#      BSON::ObjectId.from_string(u.to_params)
+#    end
+#  end
   
   def hyperlink_regex(text)
     regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'

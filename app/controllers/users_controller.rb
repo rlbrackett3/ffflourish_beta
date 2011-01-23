@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   #--GET /users/1.json                                       HTML and AJAX
   #----------------------------------------------------------------------#
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10)
     @post = @user.posts.new
     @title = @user.profile.name
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   # actions for following users
   #----------------------------------------------------------------------#
   def follow
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     unless @user == current_user
       @me = current_user
     end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
   #----------------------------------------------------------------------#
   def unfollow
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     unless @user == current_user
       @me = current_user
     end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @search_path = following_user_path
     @page_title = "is following"
     @title = "following"
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     @users = @user.following.search(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
     render 'show_follow'
   end
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     @search_path = followers_user_path
     @page_title = "is followed by"
     @title = "followers"
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     @users = @user.followers.search(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
     render 'show_follow'
   end

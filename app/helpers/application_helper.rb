@@ -45,9 +45,7 @@ module ApplicationHelper
       :totalPages => total_pages,
       :url        => url,
       :loaderMsg  => 'Loading more results',
-      :end    => 'Now more pages',
-      :distance   => 1000
-      
+      :distance   => 2000
     }
     
     container && opts[:container] ||= container
