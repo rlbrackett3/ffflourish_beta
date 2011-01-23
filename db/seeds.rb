@@ -32,7 +32,7 @@ user = User.create  :urlname => 'rlblood',
                     :email_confirmation => "user@test.com",
                     :password => 'foobar', :password_confirmation => 'foobar'
 5.times do
-  p1 = user.posts.create  :content => Faker::Lorem.paragraph,
+  p1 = user.posts.create  :content => Faker::Lorem.sentence,
                           :created_at => Time.random,
                           :updated_at => Time.random
 end
@@ -41,16 +41,18 @@ puts "New account created for first user: " << user.name
 
 puts 'CREATING A BUNCH OF PEOPLE'
 20.times do
-  u = User.create :urlname  => Factory.next(:urlname),
+  u = User.create :urlname  => (Faker::Name.first_name + Faker::Name.last_name),
                   :name     => Faker::Name.name,
                   :email    => Faker::Internet.email,
                   :password => 'foobar', :password_confirmation => 'foobar'
+  u.save!
   5.times do
-    p = u.posts.create  :content    => Faker::Lorem.paragraph,
+    p = u.posts.create  :content    => Faker::Lorem.sentence,
                         :created_at => Time.random,
                         :updated_at => Time.random
+    p.save!
   end
-  u.save
+  
   puts u.to_param
   user.follow!(u)
   u.follow!(user)

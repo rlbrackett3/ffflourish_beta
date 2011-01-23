@@ -45,11 +45,11 @@ class User
 
 #--Validations--#
   validates :urlname,       :uniqueness => true,
-                            :length => 5..20,
-                            :format => { :with => /^[\w ]*$/, :on => :create }
+                            :length => 5..60,
+                            :format => { :with => /^[A-Za-z _]*$/ }
   validates :name,          :presence => true,
-                            :length => 2..40,
-                            :format => { :with => /^[A-Za-z ]*$/ }
+                            :length => 2..60,
+                            :format => { :with => /^[A-Za-z .]*$/ }
   validates :email,         :presence => true,
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }
