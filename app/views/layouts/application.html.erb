@@ -26,6 +26,9 @@
     <!---------Main--------->
     <div id="main">
       <div id="left_column">
+        <% if user_signed_in? %>
+          <%= render 'shared/name_menu_bar' %>
+        <% end %>
         <%= yield %>
       </div>
       <% if user_signed_in? %>
