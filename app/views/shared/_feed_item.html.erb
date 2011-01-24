@@ -10,7 +10,11 @@
                                   :class => 'unfollow_me', 
                                   :confirm => "are you sure you want to unfollow #{@user.profile.name}" %>
       <% else %>
-        <%= link_to "follow", follow_user_path(@user), :class => 'follow_me' %>
+        <% if @user != current_user %>
+          <span class="follow_me_link">
+            <%= link_to "Follow", follow_user_path(@user), :class => 'follow_me' %>
+          </span>
+        <% end %>
       <% end %>
     </span>
   </div>

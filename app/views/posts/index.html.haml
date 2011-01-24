@@ -7,7 +7,7 @@
 - if @posts.count > 0
   #user_blog
     -@posts.each do |post|
-      = render 'blog_post', :f => post
+      = render 'posts/blog_post', :f => post
     = will_paginate @posts
 - else
   - if @user == current_user
