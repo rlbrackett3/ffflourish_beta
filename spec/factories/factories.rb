@@ -17,7 +17,7 @@ Factory.sequence :urlname do |n|
 end
 
 Factory.sequence :name do |n|
-  "name#{n}"
+  "firstname#{n} lastname#{n}"
 end
 
 Factory.define :post do |post|

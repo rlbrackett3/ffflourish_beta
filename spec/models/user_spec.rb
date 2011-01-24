@@ -57,13 +57,13 @@ describe User do
 
     describe 'long names' do
       it "should reject urlnames that are too long" do
-        long_name = "a" * 21
+        long_name = "a" * 61
         long_name_user = User.new(@attr.merge(:urlname => long_name))
         long_name_user.should_not be_valid
       end
 
       it "should reject names that are too long" do
-        long_name = "a" * 41
+        long_name = "a" * 61
         long_name_user = User.new(@attr.merge(:name => long_name))
         long_name_user.should_not be_valid
       end

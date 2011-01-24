@@ -46,10 +46,10 @@ class User
 #--Validations--#
   validates :urlname,       :uniqueness => true,
                             :length => 5..60,
-                            :format => { :with => /^[A-Za-z _]*$/ }
+                            :format => { :with => /^[\w \.\-@]+$/ }
   validates :name,          :presence => true,
                             :length => 2..60,
-                            :format => { :with => /^[A-Za-z .]*$/ }
+                            :format => { :with => /^[\w \.\-@]+$/ }
   validates :email,         :presence => true,
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }

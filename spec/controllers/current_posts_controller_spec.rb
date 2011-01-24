@@ -9,6 +9,7 @@ describe CurrentPostsController do
     before do
       @user = Factory(:user)
       @post = Factory(:post, :user => @user)
+
     end
 
     it "should deny access to 'index'" do
@@ -39,17 +40,16 @@ describe CurrentPostsController do
 
       it "should have the correct title" do
         get 'index'
-        response.should have_selector("title", :content => "ffflourish | newest posts")
+        response.should have_selector("title", :content => "ffflourish | recent posts")
+      end
+    end
+
+    describe "GET 'show'" do
+      it "should be successful" do
+        get 'show'
+        response.should be_success
       end
     end
   end
-
-  describe "GET 'show'" do
-    it "should be successful" do
-      get 'show'
-      response.should be_success
-    end
-  end
-
 end
 

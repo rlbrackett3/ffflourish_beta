@@ -1,11 +1,12 @@
 class FollowingPostsController < ApplicationController
   include PostsHelper
-  before_filter :initialize_new_post, :only => :index
   before_filter :authenticate_user!
+  before_filter :initialize_new_post, :only => :index
+  
   
   def index
     @search_path = user_following_path(@user)
-    @user = current_user
+    @user = User.find_by_slug(params[:id])
     @profile = @user.profile
     @feed_items = @user.following_feed.search(params[:search]).paginate(:page => params[:page], :per_page => 50)
     if request.xhr?
@@ -13,7 +14,7 @@ class FollowingPostsController < ApplicationController
       render :partial => "shared/feed"
     end
     #--Page Title--#
-    @title = "#{current_user.name}'s | following feed"
+    @title = "#{@profile.name}'s | following feed"
     @page_title = "following"
   end
 

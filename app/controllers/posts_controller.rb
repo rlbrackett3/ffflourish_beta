@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     @image = @post.image
     @comments = @post.comments.all
 
-#    @title = @post.title
+    @title = @post.created_at
 
     respond_with(@user, @post)
 

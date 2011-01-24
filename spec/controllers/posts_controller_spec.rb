@@ -5,23 +5,23 @@ describe PostsController do
   render_views
 #------------------------------------------------#
   def get_user_post_id(action)
-    get action, :user_id => @user._id.to_s, :id => @post._id.to_s
+    get action, :user_id => @user.slug, :id => @post._id.to_s
   end
 
   def get_user_post(action)
-    get action, :user_id => @user._id.to_s
+    get action, :user_id => @user.slug
   end
 
   def post_user_post(action)
-    post action, :user_id => @user._id.to_s
+    post action, :user_id => @user.slug
   end
 
    def put_user_post(action)
-    put action, :user_id => @user._id.to_s, :id => @post._id.to_s
+    put action, :user_id => @user.slug, :id => @post._id.to_s
   end
 
   def delete_user_post(action)
-    delete action, :user_id => @user._id.to_s, :id => @post._id.to_s
+    delete action, :user_id => @user.slug, :id => @post._id.to_s
   end
 #------------------------------------------------#
   describe "Access Control" do
@@ -89,7 +89,7 @@ describe PostsController do
       it "should have the correct title" do
         get_user_post(:index)
         response.should have_selector("title",
-              :content => "ffflourish | #{@user.first_name}'s posts")
+              :content => "ffflourish | #{@user.profile.name}'s posts")
       end
     end
   #------------------------------------------------#
@@ -103,7 +103,7 @@ describe PostsController do
       it "should have the correct title" do
         get_user_post_id(:show)
         response.should have_selector("title",
-            :content => "ffflourish | #{@post.title}")
+            :content => "ffflourish | #{@post.created_at}")
       end
     end
   #------------------------------------------------#
@@ -125,7 +125,7 @@ describe PostsController do
     #------------------------------------------------#
       describe "failure" do
         before do
-          @attr = {:title => "", :content => "" }
+          @attr = { :content => "" }
         end
 
         it "should not create a post" do
@@ -133,32 +133,32 @@ describe PostsController do
 #            post 'create', :user_id => @user._id.to_s
 #          end.should_not change(Post, :count)
           lambda do
-            post = Post.create(:title => "")
+            post = Post.create(:content => "x")
           end.should_not change(Post, :count)
         end
 
         it "should re-render the 'index' page on failed save" do
           Post.stub!(:valid?).and_return(false)
-          post = Post.create(:title => "")
+          post = Post.create(:content => "x")
           response.should_not be_valid #render_template(:index)
         end
       end
     #------------------------------------------------#
       describe "success" do
         before do
-          @attr = { :title => "New post", :content => "Post content" }
+          @attr = { :content => "Post content", :user_id => @user }
         end
 
         it "create a new post" do
           lambda do
-            post = Post.new(@attr)
+            post = Factory(:post, :user => @user)#Post.new(@attr)#
             post.save
           end.should change(Post, :count).by(1)
         end
 
         it "should redirect to the user's posts page" do
           post = @user.posts.create!(@attr)
-          response.should be_success #redirect_to(user_posts_path(@user))
+          redirect_to(user_posts_path(@user))#response.should be_success #
           flash[:notice].should contain("Post created successfully!")
         end
       end

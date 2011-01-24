@@ -14,7 +14,7 @@ describe UsersController do
       end
 
       it "should deny access" do
-        get :show, :id => @user._id.to_s
+        get :show, :id => @user.slug
         response.should redirect_to(new_user_session_path)
         flash[:alert].should =~ /sign in/
       end
@@ -25,27 +25,47 @@ describe UsersController do
 
       before(:each) do
         @user = Factory(:user)
+        @other_user = Factory(:user, :email => Factory.next(:email))
         sign_in@user
       end
-
-      it "should be successful" do
-        get :show, :id => @user._id.to_s
-        response.should be_success
+      
+      describe 'index action' do
+        it 'should be successful' do
+          get :index
+          response.should be_success
+        end
+        
+        it 'should have the correct title' do
+          get :index
+          response.should have_selector("title",
+                    :content => "ffflourish | members")
+        end
+        
+        it 'should display a list of users' do
+          get :index
+          response.should have_selector('a', :href => user_posts_path(@other_user),
+                                             :content => @other_user.profile.name)
+        end
       end
 
-      it "should find the correct user" do
-        get :show,  :id => @user._id.to_s
-        assigns(:user).should == @user
-      end
+      describe 'show action' do
+        it "should be successful" do
+          get :show, :id => @user.slug
+          response.should be_success
+        end
 
-      it "should have the correct title" do
-        get :show,  :id => @user._id.to_s
-        response.should have_selector("title",
-                    :content => "ffflourish | #{@user.first_name}")
-      end
+        it "should find the correct user" do
+          get :show,  :id => @user.slug
+          assigns(:user).should == @user
+        end
 
+        it "should have the correct title" do
+          get :show,  :id => @user.slug
+          response.should have_selector("title",
+                    :content => "ffflourish | #{@user.profile.name}")
+        end
+      end
     end
-
   end
 #------------------------------------------------#
   describe 'follow pages' do
@@ -78,25 +98,25 @@ describe UsersController do
       end
 
       it 'should show user following' do
-        get :following, :id => @user._id.to_s
+        get :following, :id => @user.slug
         response.should have_selector('a',  :href => user_posts_path(@other_user),
-                                            :content => @other_user.full_name)
+                                            :content => @other_user.profile.name)
       end
 
       it 'should have the correct title for following' do
-        get :following, :id => @user._id.to_s
+        get :following, :id => @user.slug
         response.should have_selector('title',
                               :content => "ffflourish | following")
       end
 
       it 'should show user followers' do
-        get :followers, :id => @other_user._id.to_s
+        get :followers, :id => @other_user.slug
         response.should have_selector('a',  :href => user_posts_path(@user),
-                                            :content => @user.full_name)
+                                            :content => @user.profile.name)
       end
 
       it 'should have the correct title for following' do
-        get :followers, :id => @user._id.to_s
+        get :followers, :id => @user.slug
         response.should have_selector('title',
                               :content => "ffflourish | followers")
       end
