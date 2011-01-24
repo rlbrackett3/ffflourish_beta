@@ -1,22 +1,7 @@
 <!--feed item-->
 <li class="feed_entry">
   <div class="feed_entry_left">
-    <%= link_to (image_tag feed_item.user.profile.avatar.avatar.url, 
-                                                :class => "avatar_small"),
-                                       user_posts_path(feed_item.user) %>
-    <span class="feed_entry_following_links">
-      <% if feed_item.user.followers.include?(current_user) %>
-        <%= link_to "unfollow", unfollow_user_path(@user), 
-                                  :class => 'unfollow_me', 
-                                  :confirm => "are you sure you want to unfollow #{@user.profile.name}" %>
-      <% else %>
-        <% if @user != current_user %>
-          <span class="follow_me_link">
-            <%= link_to "Follow", follow_user_path(@user), :class => 'follow_me' %>
-          </span>
-        <% end %>
-      <% end %>
-    </span>
+    <%= render "shared/feed_avatar_follow", :f => feed_item %>
   </div>
   <div class="feed_entry_center">
     <span class="feed_entry_content">
@@ -38,7 +23,6 @@
                                                         feed_item.image.url %>
     <% end %>
   </div> 
-  <div class="border"></div>
 </li>
 <% if feed_item.voters? %>
   <li>
@@ -50,10 +34,9 @@
     </div>
   </li>
 <% end %>
-<% if feed_item.comments.any? %>
-  <li>
-  
-  </li>
-<% end %>
+<li class="feed_entry_comments">
+  <%= render "shared/feed_comments", :p => feed_item %>
+</li>
+<div class="border"></div>
 
 

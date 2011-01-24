@@ -151,6 +151,7 @@ a.post_author {
 	color: #999;
 	font-size: 0.6em;
 	text-align: left;
+	vertical-align: bottom;
 }
 
 .post_stat {
@@ -185,7 +186,126 @@ a.post_author {
 	color: #666;
 	/* background-color: gray; */
 }
+/* /////////////////////////////////////////////////////// */
+/* feed entry commnets */
+li.feed_entry_comments {
+    width: 380px;
+    position: relative;
+    float: right;
+    clear: both;
+    margin: 0px 20px 5px 0px;
+    list-style: none; 
+}
 
+.comment_form {
+    width: 100%;
+    height: 128px;
+    position: inherit;
+    float: inherit;
+    clear: both;
+    margin: 0px 0px 5px 0px;
+    background-color: #E5E5E5;
+}
+
+/* comment form items */
+    .comment_field {
+        width: 90%;
+        height: 60px;
+        position: relative;
+        float: right;
+        margin: 20px 20px 0px 0px;
+        border: none;
+        padding: 3px;
+        font-family: Verdana, sans serif;
+    	font-size: 1.0em;
+    	color: #666;
+        -webkit-border-radius: 5px;
+    	-moz-border-radius: 5px;
+    	border-radius: 5px;
+    }
+    
+    input#comment_submit {
+        width: 86px;
+        height: 23px;
+        position: relative;
+        float: right;
+        margin: 10px 20px 15px 0px;
+        font-family: Verdana, sans serif;
+    	font-size: 0.75em;
+    	color: #FFF;
+    	font-weight: bold;
+    	font-style: normal;
+    	text-align: center;
+    	vertical-align: top;
+    }
+
+li.comment {
+    width: 100%;
+    position: relative;
+    float: left;
+    margin: 10px 0px 0px 0px;
+    list-style: none;
+}
+
+/* top bar of a comment with user info */
+.comment_stats {
+    width: 320px;
+    height: 15px;
+    position: relative;
+    float:left;
+    margin: 0px 0px 0px 10px;
+}
+
+    .commenter {
+        position: relative;
+        float: left;
+        margin: 0px 5px 0px 0px;
+        font-family: Verdana, sans serif;
+    	font-size: 0.75em;
+    	color: #666;
+    	font-weight: bold;
+    	font-style: normal;
+    	text-align: left;
+    	vertical-align: top;
+    }
+    
+    .comment_date {
+        width: 120px;
+        position: relative;
+        float: left;
+        margin: 3px 5px 0px 0px;
+    	font-family: Verdana, sans serif;
+    	color: #999;
+    	font-size: 0.6em;
+    	text-align: left;
+    	vertical-align: bottom;
+    }
+    
+    a.delete_comment {
+        width: 40px;
+        position: relative;
+        float: right;
+        font-family: Verdana, sans serif;
+    	font-size: 0.6em;
+    	text-align: right;
+    	text-decoration: underline;
+    	vertical-align: bottom;
+    }
+
+/*comment content */
+.comment_content {
+    width: 100%
+    position: relative;
+    float: left;
+    margin: 5px 0px 0px 10px;
+    font-family: Verdana, sans serif;
+    font-size: 0.75em;
+    color: #666;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    vertical-align: top;
+}
 
 /* /////////////////////////////////////////////////////// */
 /* feed entry right column */
@@ -205,6 +325,13 @@ a.post_author {
 	float:right;
 }
 
+
+
+
+
+
+
+/* ///////////////////////////////////////////////////////////// */
 /* old stuff */
 #feed_entry_title {
 	width: 483px;
