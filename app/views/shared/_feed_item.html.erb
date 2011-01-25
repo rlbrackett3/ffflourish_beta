@@ -6,13 +6,14 @@
   <div class="feed_entry_center">
     <span class="feed_entry_content">
       <p class="feed_entry_author">
-        <%= link_to feed_item.user.name, user_posts_path(feed_item.user), 
+        <%= link_to feed_item.user.name, user_path(feed_item.user),
                                                         :class => 'post_author' %>
       </p>
       <p class="feed_entry_text">
         <%= feed_item.content %>
       </p>
     </span>
+    <!--post information and stats-->
     <div class="feed_entry_info">
       <%= render 'shared/feed_item_info', :f => feed_item %>
      </div>
@@ -22,14 +23,14 @@
       <%= link_to (image_tag feed_item.image.medium.url, :class => "photo_preview"),
                                                         feed_item.image.url %>
     <% end %>
-  </div> 
+  </div>
 </li>
 <% if feed_item.voters? %>
   <li>
     <div id="liked_by">
-      <% feed_item.voters.each do |liked| %>
-        <%= liked %>
-        
+      <% feed_item.liked_by.each do |u| %>
+        <%= image_tag u.profile.avatar.avatar.url %>
+
       <% end %>
     </div>
   </li>
@@ -38,5 +39,4 @@
   <%= render "shared/feed_comments", :p => feed_item %>
 </li>
 <div class="border"></div>
-
 

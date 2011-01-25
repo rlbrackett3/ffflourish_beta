@@ -6,7 +6,7 @@ class Post
 #  include Mongoid::Taggable
   include Mongoid::Search
 #  attr_protected :_id
-  attr_accessible :content, :image, :image_filename, :image_cache
+  attr_accessible :content, :image, :image_filename, :image_cache, :created_at
   #--Associations--#
   referenced_in   :user
   embeds_many     :comments
@@ -15,7 +15,6 @@ class Post
 #  field           :permissions, :type => Integer, :default => 2
   #--data fields--#
   field           :content
-
   #-- search on --#
   search_in(:content,
             { :user => :name },
@@ -39,7 +38,7 @@ class Post
 
 #--Scopes--#
 #  scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids << user.id).and(:permissions.gt => 1 ).desc(:created_at) }
-  scope :liked_by, lambda { |user| where(:votes.in => user.id)}
+#  scope :liked_by, lambda { |user| where(:voters.in => user.id)}
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
 
@@ -49,19 +48,25 @@ class Post
 
 #--Methods--#
 
+  def comments_count
+    self.comments.count
+  end
+
   def add_user_likes(user)
     if self.voted?(user) == true && user.likes.include?(self.id) == false
       user.likes << self.id
       user.save
     end
   end
-  
-#  def liked_by
-#    voters.each do |u|
-#      BSON::ObjectId.from_string(u.to_params)
-#    end
-#  end
-  
+
+  def liked_by
+    if self.voters.any?
+      User.find(self.voters)
+    else
+      nil
+    end
+  end
+
   def hyperlink_regex(text)
     regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
     text.gsub!( regex, '<a href="\1">\1</a>' )

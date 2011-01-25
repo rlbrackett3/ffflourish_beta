@@ -33,8 +33,8 @@ user = User.create  :urlname => 'rlblood',
                     :password => 'foobar', :password_confirmation => 'foobar'
 5.times do
   p1 = user.posts.create  :content => Faker::Lorem.sentence,
-                          :created_at => Time.random,
-                          :updated_at => Time.random
+                          :created_at => Time.random(2),
+                          :updated_at => Time.random(1)
 end
 user.save
 puts "New account created for first user: " << user.name
@@ -45,14 +45,13 @@ puts 'CREATING A BUNCH OF PEOPLE'
                   :name     => Faker::Name.name,
                   :email    => Faker::Internet.email,
                   :password => 'foobar', :password_confirmation => 'foobar'
-  u.save!
   5.times do
-    p = u.posts.create  :content    => Faker::Lorem.sentence,
-                        :created_at => Time.random,
-                        :updated_at => Time.random
+    p = u.posts.create!  :content    => Faker::Lorem.sentence,
+                        :created_at => Time.random(2),
+                        :updated_at => Time.random(1)
     p.save!
   end
-  
+  u.save!
   puts u.to_param
   user.follow!(u)
   u.follow!(user)

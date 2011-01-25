@@ -16,14 +16,16 @@
     float: left;
     margin: 0px 0px 0px 0px;
     overflow: hidden;
+    -webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+a.profile_img {
     -webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-}
 
-a.profile_image {
-    width: 64px;
-    height: 64px;
 }
 
 #user_information {
@@ -46,7 +48,7 @@ a.profile_image {
 	font-weight:bold;
 	color: #444;
 	vertical-align: top;
-	
+
 	/* background-color: yellow; */
 }
 

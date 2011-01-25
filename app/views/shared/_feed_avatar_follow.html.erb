@@ -1,16 +1,17 @@
-<%= link_to (image_tag f.user.profile.avatar.avatar.url, 
+<%= link_to (image_tag f.user.profile.avatar.avatar.url,
                                                 :class => "avatar_small"),
                                        user_posts_path(f.user) %>
     <span class="feed_entry_following_links">
       <% if f.user.followers.include?(current_user) %>
-        <%= link_to "unfollow", unfollow_user_path(@user), 
-                                  :class => 'unfollow_me', 
+        <%= link_to "unfollow", unfollow_user_path(f.user),
+                                  :class => 'unfollow_me',
                                   :confirm => "are you sure you want to unfollow #{@user.profile.name}" %>
       <% else %>
-        <% if @user != current_user %>
+        <% if f.user != current_user %>
           <span class="follow_me_link">
-            <%= link_to "Follow", follow_user_path(@user), :class => 'follow_me' %>
+            <%= link_to "Follow", follow_user_path(f.user), :class => 'follow_me' %>
           </span>
         <% end %>
       <% end %>
     </span>
+

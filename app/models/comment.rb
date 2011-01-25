@@ -2,7 +2,7 @@ class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  attr_protected  :_id
+  attr_accessible :content
   #--Associations--#
   referenced_in   :user, :stored_as => :array,
                          :inverse_of => :comments,
@@ -12,7 +12,7 @@ class Comment
   field           :content
   #--validations--#
   validates :content, :presence => true,
-                      :length => { :within => 3..255 }
+                      :length => { :within => 3..201 }
 
 end
 

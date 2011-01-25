@@ -38,7 +38,7 @@ module ApplicationHelper
       root_path
     end
   end
-  
+
   # setting for the jquery.pageless endless page lugin
   def pageless(total_pages, url=nil, container=nil)
     opts = {
@@ -47,10 +47,19 @@ module ApplicationHelper
       :loaderMsg  => 'Loading more results',
       :distance   => 2000
     }
-    
+
     container && opts[:container] ||= container
-    
+
     javascript_tag("$('#results').pageless(#{opts.to_json});")
+  end
+
+  class Time
+    def self.random(years_back=1)
+      year = Time.now.year - rand(years_back) - 1
+      month = rand(12) + 1
+      day = rand(31) + 1
+      Time.local(year, month, day)
+    end
   end
 
 

@@ -16,12 +16,9 @@
     <% end %>
   </span>
   <span class="activity_count">
-    <%= link_to f.votes,
-                "#",
-                :class => "like_count" %>
+    <%= f.votes %>
   </span>
 </div>
-
 <div class="post_stat">
   <span class="activity_images">
     <%= link_to (image_tag "comment.png", :width => 20, :height => 20),
@@ -29,7 +26,7 @@
                 :class => "comment_post_link" %>
   </span>
   <span class="activity_count">
-    <%= link_to f.comments.count,
+    <%= link_to f.comments_count,
                 "#",
                 :class => "comment_count" %>
   </span>
