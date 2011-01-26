@@ -24,10 +24,13 @@ class CommentsController < ApplicationController
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.create!(params[:comment])
-    current_user.comments << @comment #test and move to model
-    @user.profile.increment_comments_count#test and move to model
 
-    flash[:notice] = "Comment created successfully!" if @comment.save(params[:comment])
+    if @comment.save(params[:comment])
+      current_user.comments << @comment #test and move to model?
+      @comment.commenter = current_user.profile.name#test and move to model?
+      current_user.profile.increment_comments_count#test and move to model?
+      flash[:notice] = "Comment created successfully!"
+    end
 #    respond_with(@user, :location => user_following_path(@user))
     respond_with(@post, @comment, :layout => !request.xhr?)
   end

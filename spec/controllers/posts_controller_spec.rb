@@ -148,18 +148,31 @@ describe PostsController do
         before do
           @attr = { :content => "Post content", :user_id => @user }
         end
+        let(:user)          { Factory(:user) }
+        let(:other_user)    { Factory(:user, :email => Factory.next(:email)) }
+        let(:post)          { Factory(:post, :user => other_user)}
 
         it "create a new post" do
           lambda do
-            post = Factory(:post, :user => @user)#Post.new(@attr)#
-            post.save
+            p = Factory(:post, :user => user)#Post.new(@attr)#
+            p.save
           end.should change(Post, :count).by(1)
         end
 
         it "should redirect to the user's posts page" do
-          post = @user.posts.create!(@attr)
+          post = Factory(:post, :user => user)
           redirect_to(user_posts_path(@user))#response.should be_success #
           flash[:notice].should contain("Post created successfully!")
+        end
+
+        describe 'posts count' do
+
+          it 'should increment a users posts count on create' do
+            p = Post.create!(:content => "bairs", :user_id => user)
+            p.save
+            user.profile.posts_count.should == 1
+          end
+
         end
       end
     #------------------------------------------------#

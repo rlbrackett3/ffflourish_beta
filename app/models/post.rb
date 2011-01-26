@@ -10,7 +10,7 @@ class Post
   attr_accessible :content, :image, :image_filename, :image_cache, :created_at, :comments
 
   #--Associations--#
-  referenced_in   :user
+  referenced_in   :user, :inverse_of => :posts, :index => true
   embeds_many     :comments
   accepts_nested_attributes_for :comments
 

@@ -89,13 +89,13 @@ class User
     self.save!
   end
 
-  def following_count
-    following.count
-  end
+#  def following_count
+#    following.count
+#  end
 
-  def followers_count
-    followers.count
-  end
+#  def followers_count
+#    followers.count
+#  end
 
 #--Method for feed me + following--#
   def following_feed

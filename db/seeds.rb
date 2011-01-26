@@ -35,8 +35,10 @@ user = User.create  :urlname => 'rlblood',
   p1 = user.posts.create  :content => Faker::Lorem.sentence,
                           :created_at => Time.random(2),
                           :updated_at => Time.random(1)
+  user.profile.increment_posts_count
+  p1.save!
 end
-user.save
+user.save!
 puts "New account created for first user: " << user.name
 
 puts 'CREATING A BUNCH OF PEOPLE'
@@ -46,15 +48,20 @@ puts 'CREATING A BUNCH OF PEOPLE'
                   :email    => Faker::Internet.email,
                   :password => 'foobar', :password_confirmation => 'foobar'
   5.times do
-    p = u.posts.create!  :content    => Faker::Lorem.sentence,
+    p = u.posts.create! :content    => Faker::Lorem.sentence,
                         :created_at => Time.random(2),
                         :updated_at => Time.random(1)
+    u.profile.increment_posts_count
     p.save!
   end
   u.save!
   puts u.to_param
   user.follow!(u)
+  user.profile.increment_following_count
+  u.profile.increment_follower_count
   u.follow!(user)
+  u.profile.increment_following_count
+  user.profile.increment_follower_count
 end
 puts "lots of new test users created!!!!"
 

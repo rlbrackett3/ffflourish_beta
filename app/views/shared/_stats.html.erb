@@ -8,7 +8,7 @@
 		<td><div class="stat_title"> likes: </div></td>
 		<td>
 		  <div class="stat_value">
-		    <%= @user.likes.count %>
+		    <%= @user.profile.likes_count %>
 		  </div>
 		</td>
 	</tr>
@@ -16,13 +16,13 @@
 		<td><div class="stat_title"> posts: </div></td>
 		<td>
 		  <div class="stat_value">
-		    <%= @user.posts.count %>
+		    <%= @user.profile.posts_count %>
 		  </div>
 		</td>
 	</tr>
 	<tr>
 		<td><div class="stat_title"> comments: </div></td>
-		<td><div class="stat_value"><%= @user.comments.count %></div></td>
+		<td><div class="stat_value"><%= @user.profile.comments_count %></div></td>
 	</tr>
 	<tr>
 		<td>
@@ -32,7 +32,7 @@
 		</td>
 		<td>
 		  <div id="following_count" class="stat_value">
-		    <%= @user.following_count %>
+		    <%= @user.profile.following_count %>
 		  </div>
 		</td>
 	</tr>
@@ -44,7 +44,7 @@
 		</td>
 		<td>
 		  <div id="followers_count" class="stat_value">
-		    <%= @user.followers_count %>
+		    <%= @user.profile.follower_count %>
 		  </div>
 		</td>
 	</tr>
