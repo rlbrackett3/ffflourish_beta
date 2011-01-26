@@ -2,21 +2,14 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function(){
-  //$('#tab-container').easytabs();
 
-//posting options dialog
-//  $('.post_text_fields').hide();
-//  $('.post_image_fields').hide();
-
+//////////////////////////////////////////////////////////////
+  // toggle post options icons
   $('#post_content').focus(function() {
     $('#posting_options').show('slow', function() {
       $('#post_options_container').show(1000);
-      $('#post_fields_container').show('slow');
+      $('#post_fields_container').show('fast');
     });
-  });
-
-  $('img#post_text').click(function() {
-    $('.post_text_fields').toggle('slow');
   });
 
   $('img#post_image').click(function() {
@@ -24,7 +17,8 @@ $(document).ready(function(){
     $('.post_text_fields').fadeIn(2000);
   });
 
-  //textarea countdown function
+//////////////////////////////////////////////////////////////
+  // textarea countdown function
   $('textarea').keyup(function(){
     if(this.value.length >= 200) {
       //handle the over the limit part here
@@ -36,10 +30,12 @@ $(document).ready(function(){
     $('#counter').text(200-this.value.length);
   });
 
-  //onblur and onfocus functions
-
+//////////////////////////////////////////////////////////////
+  // onblur and onfocus functions or text areas
   $(function() {
+
     var defaultText = "What are you doing right now that's healthy for you?";
+
     $('#post_content')
 	    .val(defaultText)
 	    .focus(function() {
@@ -48,23 +44,57 @@ $(document).ready(function(){
 	    .blur(function() {
 	      if ( !$.trim( this.value ) ) this.value = defaultText
 	    });
+
+	  $('#post_submit').click(function() {
+
+	    $('.errors').hide();
+	    var postFormVal = $('#post_content').val();
+
+	    if ( postFormVal == '' ) {
+	      $('#question_field').after('<span class="error">Oops! please let us know something you are doing.</span>');
+	      hasError = true;
+	    }
+	    else if( postFormVal == defaultText ) {
+	      $('#question_field').after('<span class="error">That is what we are asking you.</span>');
+	      hasError = true;
+	    }
+
+	    return flase;
+	  });
   });
 
-//  $('#file_upload').uploadify({
-//    'uploader'  : '/uploadify/uploadify.swf',
-//    'script'    : '/uploadify/uploadify.php',
-//    'cancelImg' : '/uploadify/cancel.png',
-//    'folder'    : '/uploads',
-//    'auto'      : true
+//////////////////////////////////////////////////////////////
+  //dynamicly generated id for form fields
+  $(function showHide(objID) {
+    if (document.getElementById(objID)) {
+      if (document.getElementById('show_comments'+objID).style.display != 'none') {
+         document.getElementById('show_comments'+objID).style.display = 'none';
+         document.getElementById(objID).style.display = 'block';
+      }
+      else {
+         document.getElementById('show_comments'+objID).style.display = 'inline';
+         document.getElementById(objID).style.display = 'none';
+      }
+   }
+  });
+
+//  $(function(){
+//    $('a.comment_count').like('click', function() {
+
+//      var new_id = new Date().getTime();
+//      var regexp = new RegExp("new_" + association, "g")
+
+//      $(this).parent().before(content
+//    });
+
 //  });
-  
+
+//////////////////////////////////////////////////////////////
+  // linkify for links in posts
   $('.content').linkify();
   $('.feed_entry_text').linkify();
-  
-  //endless page with jquery.pageless
-//  $('#results').pageless({ totalPages: 20
-//                           , url: '/:id/following/'
-//                           , loaderMsg: 'Loading more results'
-//                           });
+
+
+
 });
 

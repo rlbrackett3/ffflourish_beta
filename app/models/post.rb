@@ -5,16 +5,21 @@ class Post
   include Mongoid::Voteable
 #  include Mongoid::Taggable
   include Mongoid::Search
+
 #  attr_protected :_id
-  attr_accessible :content, :image, :image_filename, :image_cache, :created_at
+  attr_accessible :content, :image, :image_filename, :image_cache, :created_at, :comments
+
   #--Associations--#
   referenced_in   :user
   embeds_many     :comments
+  accepts_nested_attributes_for :comments
+
   mount_uploader  :image, ImageUploader
 
 #  field           :permissions, :type => Integer, :default => 2
   #--data fields--#
   field           :content
+
   #-- search on --#
   search_in(:content,
             { :user => :name },
@@ -34,6 +39,8 @@ class Post
 #                  :allow_blank => true
   validates       :content,
                   :length => { :within => 2..201 }
+  validates       :comments,
+                  :associated => true
   validate :content_or_image_present?
 
 #--Scopes--#
@@ -42,24 +49,24 @@ class Post
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
 
-  scope :current, where(:created_at.lt => 3.days.ago).desc(:created_at)
+  scope :current, where(:created_at.lt => 3.days.ago).desc(:created_at)#write tests for me
 
-  scope :popular, order_by(:votes.desc)
+  scope :popular, order_by(:votes.desc)#write tests for me
 
 #--Methods--#
 
-  def comments_count
+  def comments_count #write tests for me
     self.comments.count
   end
 
-  def add_user_likes(user)
+  def add_user_likes(user) #write tests for me
     if self.voted?(user) == true && user.likes.include?(self.id) == false
       user.likes << self.id
       user.save
     end
   end
 
-  def liked_by
+  def liked_by #write tests for me
     if self.voters.any?
       User.find(self.voters)
     else
@@ -74,7 +81,7 @@ class Post
 
   protected
 
-  def content_or_image_present?
+  def content_or_image_present? #should be a custom validator??
     if self.content.blank? && self.image == []
       errors[:base] << 'Post must contain content or an image'
     end

@@ -28,7 +28,8 @@
   <span class="activity_count">
     <%= link_to f.comments_count,
                 "#",
-                :class => "comment_count" %>
+                :remote => true,
+                :class => "comment_count_#{f.id}" %>
   </span>
 </div>
 

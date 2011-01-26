@@ -6,6 +6,16 @@ class CommentsController < ApplicationController
   respond_to :html, :xml, :json, :js
   #-- Methods --#
 #----------------------------------------------------------------------#
+  def index
+    @user = User.find_by_slug(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
+    @comments = @post.comments.all
+  end
+#----------------------------------------------------------------------#
+  def new
+    @comment = Comment.new
+  end
+#----------------------------------------------------------------------#
   #--GET /users/posts/comments
   #--GET /users/posts/comments.xml
   #--GET /users/posts/comments.json                         HTML and AJAX
@@ -14,10 +24,12 @@ class CommentsController < ApplicationController
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.create!(params[:comment])
-    current_user.comments << @comment
+    current_user.comments << @comment #test and move to model
+    @user.profile.increment_comments_count#test and move to model
 
     flash[:notice] = "Comment created successfully!" if @comment.save(params[:comment])
-    respond_with(@user, :location => user_following_path(@user))
+#    respond_with(@user, :location => user_following_path(@user))
+    respond_with(@post, @comment, :layout => !request.xhr?)
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/1/comments/1
@@ -29,6 +41,8 @@ class CommentsController < ApplicationController
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
+
+    @user.profile.decrement_comments_count
 
     respond_with(@user, :location => user_following_path(@user))
   end

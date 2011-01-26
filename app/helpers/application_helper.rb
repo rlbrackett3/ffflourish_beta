@@ -20,16 +20,6 @@ module ApplicationHelper
     "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
-
-  def user_url(user)
-    case user.class.to_s
-    when "User"
-      user_path(user)
-    else
-      I18n.t('application.helper.unknown_person')
-    end
-  end
-
   # determines where the logo link reqirects users
   def logo_path
     if user_signed_in?

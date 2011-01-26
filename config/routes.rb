@@ -28,7 +28,7 @@ Ffflourish::Application.routes.draw do
       member do
         match 'like'
       end
-      resources :comments, :only => [:create, :destroy]
+      resources :comments
     end
   end
 
@@ -36,7 +36,7 @@ Ffflourish::Application.routes.draw do
     member do
       match 'like'
     end
-    resources :comments, :only => [:create, :destroy]
+    resources :comments
   end
 
 #  resource :profile, :only => [:show, :edit, :update]

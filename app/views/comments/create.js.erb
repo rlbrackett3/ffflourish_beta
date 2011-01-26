@@ -1,0 +1,29 @@
+var el = $('#<%= escape_javascript("new_comment_form_#{@comment.post.id}")%>');
+
+<% if @comment.errors.any? %>
+
+  // Create a list of errors
+  var errors = $('<ul />');
+
+  <% @test_comment.errors.full_messages.each do |error| %>
+    errors.append('<li><%= escape_javascript( error ) %></li>');
+  <% end %>
+
+  // Display errors on form
+  el.find('.errors').html(errors);
+
+<% else %>
+
+  // We could also render a partial to display the comment here
+  $('#<%= escape_javascript("comments_#{@comment.post.id}") %>').append("<%= escape_javascript(
+      render  :partial => "comments/show",
+              :locals => { :p => @post }
+    ) %>");
+
+  // Clear form
+  el.find('input:text,textarea').val('');
+  el.find('.errors').empty();
+
+<% end %>
+//"new_comment_#{@comment.post.id}"
+

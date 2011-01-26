@@ -1,4 +1,0 @@
-example/log/*.log
-example/tmp/**/*
-.DS_Store
-example/.rake_tasks~

@@ -13,7 +13,8 @@ gem 'devise_invitable', '~> 0.3.5'
 
 #--Mongoid and MongoDB specific gems--#
 gem 'mongoid', '~> 2.0.0.beta.20'
-gem 'bson_ext', '1.1.5'
+gem 'mongo', '1.2.0'
+gem 'bson_ext', '1.2.0'
 gem 'mongoid_voteable'
 gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'mongoid_taggable'

@@ -1,0 +1,21 @@
+<% @post.comments.each do |c| %>
+  <li class="comment">
+    <div class="feed_entry_left">
+      <%= render "shared/feed_avatar_follow", :f => c %>
+    </div>
+    <div class="comment_stats">
+      <span class="commenter"><%= c.user.name %></span>
+      <span class="comment_date">
+        <%="said #{time_ago_in_words(c.created_at)} ago" %>
+      </span>
+      <% if c.post.user == current_user %>
+        <%= link_to "delete",
+                        user_post_comment_path(current_user, c.post, c),
+                        :confirm => "Really delete this comment?",
+                        :class => "delete_comment",
+                        :method => :delete %>
+      <% end %></div>
+    <span class="comment_content"><%= c.content %></span>
+  </li>
+<% end %>
+
