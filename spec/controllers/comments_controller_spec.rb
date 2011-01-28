@@ -6,16 +6,13 @@ describe CommentsController do
   render_views
 #------------------------------------------------#
   describe "POST 'create'" do
+    let(:user) { Factory(:user) }
+    let(:post) { Factory(:post, :user => user) }
   #------------------------------------------------#
     describe "for non-signed-in users" do
 
-      before(:each) do
-        @user = Factory(:user)
-        @post = Factory(:post, :user => @user)
-      end
-
       it "should deny access" do
-        post :create, :user_id => @user._id.to_s, :post_id => @post._id.to_s
+        post :create
         response.should redirect_to(new_user_session_path)
         flash[:alert].should =~ /sign in/
       end
@@ -23,14 +20,12 @@ describe CommentsController do
     end
   #------------------------------------------------#
     describe 'for signed in users' do
-      before(:each) do
-        @user = Factory(:user)
-        @post = Factory(:post, :user => @user)
-        sign_in@user
+      before do
+        sign_in(user)
       end
-
-      it 'should POST "create"' do #stub validations or mock model
-        post :create, :user_id => @user._id.to_s, :post_id => @post._id.to_s
+      
+      it 'should POST "create"' do 
+        post :create
         response.should be_success
       end
 
@@ -38,14 +33,29 @@ describe CommentsController do
   #------------------------------------------------#
   end
 #------------------------------------------------#
+  describe "GET 'destroy'" do
+    let(:user) { Factory(:user) }
+    let(:post) { Factory(:post, :user => user) }
+    
+    describe "for non-signed-in users" do
 
+      it "should deny access" do
+        get :destroy
+        response.should redirect_to(new_user_session_path)
+        flash[:alert].should =~ /sign in/
+      end
+    end
 
-#  describe "GET 'destroy'" do
-#    it "should be successful" do
-#      get 'destroy'
-#      response.should be_success
-#    end
-#  end
-
+    describe "for signed in user" do
+      before do
+        sign_in(user)
+      end
+      
+      it "should be successful" do
+        get :destroy
+        response.should be_success
+      end
+    end
+  end
 end
 

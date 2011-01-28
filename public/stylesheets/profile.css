@@ -16,26 +16,26 @@
 }
 
 #about_me {
-  position: relative;
-  float: left;
-  margin: 0px 0px 10px 0px;
-  text-align: left;
-	font: Georgia, serif;
+  	position: relative;
+  	float: left;
+  	margin: 0px 0px 10px 0px;
+  	text-align: left;
+	font-family: Georgia, serif;
 	font-size: 1.15em;
-	font-style :italic;
+	font-style: italic;
 	font-weight: normal;
 	color: #444;
   
 }
 
 .attribute {
-  position: relative;
-  float: left;
-  width: 300px;
-  text-align:left;
-	font: Georgia, serif;
+  	position: relative;
+  	float: left;
+  	width: 300px;
+  	text-align: left;
+	font-family: Georgia, serif;
 	font-size:1.15em;
-	font-style:italic;
+	font-style: italic;
 	font-weight: normal;
 	color: #444;
 }
@@ -86,7 +86,7 @@
   	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	background-color: none;
+	background-color: transparent;
 }
 
 /* form for uploading a new avatar image */
@@ -120,7 +120,7 @@ input#file_upload {
 /*#photo_upload:hover{
 	background-color: #99FFFF; /* light blue */
 }
-*/
+
 #avatar_form input#avatar{
   	
 }

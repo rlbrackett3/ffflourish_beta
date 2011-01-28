@@ -31,7 +31,7 @@ $(document).ready(function(){
   });
 
 //////////////////////////////////////////////////////////////
-  // onblur and onfocus functions or text areas
+  // onblur and onfocus functions for text areas
   $(function() {
 
     var defaultText = "What are you doing right now that's healthy for you?";
@@ -65,21 +65,40 @@ $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
   //dynamicly generated id for form fields
-  $(function showHide(objID) {
-    if (document.getElementById(objID)) {
-      if (document.getElementById('show_comments'+objID).style.display != 'none') {
-         document.getElementById('show_comments'+objID).style.display = 'none';
-         document.getElementById(objID).style.display = 'block';
-      }
-      else {
-         document.getElementById('show_comments'+objID).style.display = 'inline';
-         document.getElementById(objID).style.display = 'none';
-      }
-   }
-  });
+//  $('.hidden').hide();
+
+//  $(function showHide(objID) {
+//    if (document.getElementById(objID)) {
+//      if (document.getElementById('show_comments'+objID).style.display != 'none') {
+//         document.getElementById('show_comments'+objID).style.display = 'none';
+//         document.getElementById(objID).style.display = 'block';
+//      }
+//      else {
+//         document.getElementById('show_comments'+objID).style.display = 'inline';
+//         document.getElementById(objID).style.display = 'none';
+//      }
+//   }
+//  });
+
+//  $('.comments_count').click(function(){
+//    var post_id = $(this).attr("data-id");
+//    $('#show_comments_'+post_id).prev('.hidden_comments').toggle('slow', function() {});
+//  });
+//  function showHide(objID) {
+//    $('#show_comments_'+objID).hide()
+//    $('#comment_count_'+objID).click(function() {
+//      $('#show_comments_'+objID).toggle('slow', function() {});
+//    });
+//  }
+
+//  $('.feed_entry_comments').hide()
+//  $('.comment_post_link').click(function() {
+//    $('.feed_entry_comments').toggle('slow', function() {});
+//
+//  });
 
 //  $(function(){
-//    $('a.comment_count').like('click', function() {
+//    $('a.comment_count').live('click', function() {
 
 //      var new_id = new Date().getTime();
 //      var regexp = new RegExp("new_" + association, "g")

@@ -40,8 +40,8 @@
 }
 
 #feed{
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 18px;
+	padding-right: 6px;
 	padding-top: 4px;  /* spacing profile from top of black bar */
 }
 

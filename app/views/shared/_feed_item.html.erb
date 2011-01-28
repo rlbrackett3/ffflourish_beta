@@ -7,7 +7,7 @@
     <span class="feed_entry_content">
       <p class="feed_entry_author">
         <%= link_to feed_item.user.name, user_path(feed_item.user),
-                                                        :class => 'post_author' %>
+                                        :class => 'post_author' %>
       </p>
       <p class="feed_entry_text">
         <%= feed_item.content %>
@@ -20,8 +20,9 @@
   </div>
   <div class="feed_entry_right">
     <% if feed_item.image? %>
-      <%= link_to (image_tag feed_item.image.medium.url, :class => "photo_preview"),
-                                                        feed_item.image.url %>
+      <%= link_to (image_tag feed_item.image.medium.url,
+                                        :class => "photo_preview"),
+                                        feed_item.image.url %>
     <% end %>
   </div>
 </li>
@@ -35,33 +36,23 @@
     </div>
   </li>
 <% end %>
-<li class="feed_entry_comments">
-  <div id='<%= "show_comments_#{feed_item.id}" %>'>
-    <div class="comment_form" id='<%= "new_comment_form_#{feed_item.id}" %>'>
-        <%= form_for [current_user, feed_item, Comment.new],
-                                      :remote => true,
-                                      :disable_with => "processing...",
-                                      :html => { :id => "#{ feed_item.id }" } do |f| %>
-          <p class="field">
-            <%= f.text_area :content, :class => "comment_field",
-                                      :rows => 5,
-                                      :value => "Support this ffflourish!" %>
-          </p>
-          <div class="comment_countdown">
-    	        <div class="comment_countdown_title">Characters remaining:</div>
-    	        <div class="comment_text_counter"></div>
-    	      </div>
-          <p>
-            <%= f.submit "comment", :class => "actions" %>
-          </p>
-        <% end %>
-    </div>
-    <ul class="comments" id='<%= "comments_#{feed_item.id}" %>'>
-      <% if feed_item.comments.any? %>
-        <%= render 'shared/feed_comments', :p => feed_item %>
-      <% end %>
-    </ul>
+<li class="feed_entry_comments" id="feeditem_comments_<%= feed_item.id %>">
+  <div class="comment_form" id="new_comment_form_<%= feed_item.id %>">
+    <%= form_for [current_user, feed_item, Comment.new],
+                                    :remote => true,
+                                    :disable_with => "processing...",
+                                    :html => { :id => "comment_form_#{ feed_item.id }" } do |f| %>
+      <p class="field">
+        <%= f.text_area :content, :class => "comment_field",
+                                    :rows => 5,
+                                    :value => "Support this ffflourish!" %>
+      </p>
+      <p>
+        <%= f.submit "comment", :class => "actions" %>
+      </p>
+    <% end %>
   </div>
+  <div id="comments_container_<%= feed_item.id %>"></div>
 </li>
 <div class="border"></div>
 

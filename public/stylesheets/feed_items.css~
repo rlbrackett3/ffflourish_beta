@@ -194,11 +194,8 @@ li.feed_entry_comments {
     float: right;
     clear: both;
     margin: 0px 20px 5px 0px;
-    list-style: none;
-    display: none; 
+    list-style: none; 
 }
-
-
 
 .comment_form {
     width: 100%;

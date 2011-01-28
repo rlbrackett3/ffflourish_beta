@@ -15,7 +15,7 @@ body {
 a {
     color: #999;
 	text-decoration: none;
-	font-style: none;
+	font-style: normal;
 	font-weight: normal;
 	border: none;
 	margin: 0px;
@@ -112,8 +112,8 @@ ul {
 	margin-left: 10px;
 	margin-top: 0px;
 	text-align: left;
-	background-color: none;
-	font: Times, serif;
+	background-color: transparent;
+	font-family: Times, serif;
 	font-size:14px;
 	color: #666;
 	font-style: italic;
@@ -142,7 +142,7 @@ ul {
 	line-height:  1.25em;
 	word-spacing: 0.09em;
 	color: #666;
-	text-align: left;`
+	text-align: left;
 }
 
 /* Post type select outsourced to posting_icons */
@@ -260,18 +260,18 @@ ul {
 }
 
 .stat_title{
-	font: Georgia, serif;
-	font-size:11px;
-	font-style:italic;
+	font-family: Georgia, serif;
+	font-size: 11px;
+	font-style: italic;
 	color: #666;
 	text-align: left;
 	margin-left: 15px;
 }
 
 .stat_value{
-	font: Georgia, serif;
+	font-family: Georgia, serif;
 	font-size:14px;
-	font-style: bold;
+	font-weight: bold;
 	color: #666;
 	text-align: left;
 	margin-left: 30px;
@@ -283,10 +283,10 @@ ul {
 /*bottom_profile_section*/
 
 #footer {
-  position: relative;
-  float: left;
+  	position: relative;
+  	float: left;
 	width: 960px;
-  margin: 0px 0px 0px 32px;
+  	margin: 0px 0px 0px 32px;
 	height: 25px;
 	background-color: #FFF;
 	-webkit-border-bottom-left-radius: 10px;

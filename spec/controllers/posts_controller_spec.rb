@@ -154,7 +154,7 @@ describe PostsController do
 
         it "create a new post" do
           lambda do
-            p = Factory(:post, :user => user)#Post.new(@attr)#
+            p = Factory(:post, :user => user)
             p.save
           end.should change(Post, :count).by(1)
         end

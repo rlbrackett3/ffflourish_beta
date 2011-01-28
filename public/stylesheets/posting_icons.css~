@@ -4,7 +4,7 @@
   display: none;
   position: relative;
   float: left;
-/*  clear: both;*/
+	clear: both;
 	margin: 20px 0px 0px 10px;
 	height: 43px;
 /*	background-color: red; */
@@ -103,4 +103,49 @@
 	-webkit-border-bottom-left-radius: 0px;
 	-moz-border-radius-bottomleft: 0px;
 	border-bottom-left-radius: 0px;
+}
+
+/* Post submit button and pivacy */
+#post_buttons_bottom {
+	/* background-color: yellow; */
+	float: right;
+	margin-top: 20px;
+}
+
+#post_privacy_control{
+	text-align: left;
+	color: #666;
+	font-style: italic;
+	font-size: 1em;
+/*	line-height: 22px;*/
+	float:right;
+	margin-right: 2px;
+}
+
+select#post_permissions{
+    width: 100px;
+    height: 25px;
+    font-family: Verdana, sans serif;
+	font-size: 1em;
+	color: #fff;
+	background-color: #c1c3c9;
+	border: 0px;
+	border-color: #fff;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+}
+
+select#post_permissions option {
+  line-height: double;
+
+}
+
+#post_submit {
+	height: 43px;
+	width: 43px;
+	position: relative;
+	float: left;
+	margin: 0px 10px 0px 2px;
+	clear: right;
 }

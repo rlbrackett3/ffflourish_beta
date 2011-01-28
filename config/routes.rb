@@ -38,6 +38,8 @@ Ffflourish::Application.routes.draw do
     end
     resources :comments
   end
+  
+  resources :comments
 
 #  resource :profile, :only => [:show, :edit, :update]
 

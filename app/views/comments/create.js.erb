@@ -1,4 +1,4 @@
-var el = $('#<%= escape_javascript("new_comment_form_#{@comment.post.id}")%>');
+var el = $('#<%= escape_javascript("new_comment_form_#{@post.id}")%>');
 
 <% if @comment.errors.any? %>
 
@@ -13,11 +13,9 @@ var el = $('#<%= escape_javascript("new_comment_form_#{@comment.post.id}")%>');
   el.find('.errors').html(errors);
 
 <% else %>
-
-  // We could also render a partial to display the comment here
-  $('#<%= escape_javascript("comments_#{@comment.post.id}") %>').append("<%= escape_javascript(
-      render  :partial => "comments/show",
-              :locals => { :p => @post }
+  // render partial to display comment
+  $('#<%= escape_javascript("comments_#{@comment.post.id}") %>').prepend("<%= escape_javascript(
+      render  :partial => "comments/show"
     ) %>");
 
   // Clear form
@@ -25,5 +23,4 @@ var el = $('#<%= escape_javascript("new_comment_form_#{@comment.post.id}")%>');
   el.find('.errors').empty();
 
 <% end %>
-//"new_comment_#{@comment.post.id}"
 

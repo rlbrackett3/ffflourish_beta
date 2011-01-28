@@ -19,7 +19,7 @@
     <%= f.votes %>
   </span>
 </div>
-<div class="post_stat">
+<div class="post_stat" id="post_comments_stats_<%= f.id %>">
   <span class="activity_images">
     <%= link_to (image_tag "comment.png", :width => 20, :height => 20),
                 "#",
@@ -27,9 +27,11 @@
   </span>
   <span class="activity_count">
     <%= link_to f.comments_count,
-                "#",
+                user_post_comments_path(f.user, f),
+                'data-id' => f.id.to_s,
                 :remote => true,
-                :class => "comment_count_#{f.id}" %>
+                :id => "feeditem_comments_link_#{f.id}",
+                :class => "comment_count" %>
   </span>
 </div>
 

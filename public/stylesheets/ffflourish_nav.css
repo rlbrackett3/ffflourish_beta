@@ -15,8 +15,8 @@
 	color: white;
 	line-height: 28px;
 	width: 466px;
-  height: 36px;
-  -webkit-border-radius: 5px;
+  	height: 36px;
+  	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	padding: 0px;
@@ -31,7 +31,7 @@
 .menu_item {
 	height: 30px;
 	padding-top: 2px;
-	background-color: none;
+	background-color: transparent;
 }
 
 .menu_item:hover{

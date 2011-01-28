@@ -5,7 +5,9 @@ describe Comment do
   describe "fields" do
 
     it { should have_field :content }
+    it { should have_field :commenter}
     it { should have_field :created_at }
+    it { should have_field :updated_at }
     it { should have_field :user_id }
 
   end
@@ -21,6 +23,7 @@ describe Comment do
 
     it { should validate_presence_of :content }
     it { should validate_length_of :content }
+    it { should validate_presence_of :commenter }
 
   end
 #------------------------------------------------#

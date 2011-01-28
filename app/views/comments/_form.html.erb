@@ -1,0 +1,20 @@
+<div class="comment_form" id='<%= "new_comment_form_#{feed_item.id}" %>'>
+  <%= form_for [current_user, feed_item, Comment.new],
+                                  :remote => true,
+                                  :disable_with => "processing...",
+                                  :html => { :id => "#{ feed_item.id }" } do |f| %>
+    <p class="field">
+      <%= f.text_area :content, :class => "comment_field",
+                                  :rows => 5,
+                                  :value => "Support this ffflourish!" %>
+    </p>
+    <div class="comment_countdown">
+	     <div class="comment_countdown_title">Characters remaining:</div>
+	     <div class="comment_text_counter"></div>
+	  </div>
+    <p>
+      <%= f.submit "comment", :class => "actions" %>
+    </p>
+  <% end %>
+</div>
+
