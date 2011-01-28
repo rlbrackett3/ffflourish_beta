@@ -21,12 +21,14 @@
 </div>
 <div class="post_stat" id="post_comments_stats_<%= f.id %>">
   <span class="activity_images">
-    <% if f.comments_count > 0 %>
+    <% if f.commenters(current_user) == true %>
       <%= image_tag "comment_blue.png", :size => "20x20",
-                                        :class => "comment_post_link" %>
+                                        :class => "comment_post_link",
+                                        :id => "feeditem_comments_img_#{f.id}" %>
     <% else %>
       <%= image_tag "comment.png", :size => "20x20",
-                                   :class => "comment_post_link" %>
+                                   :class => "comment_post_link",
+                                   :id => "feeditem_comments_img_#{f.id}" %>
     <% end %>
   </span>
   <span class="activity_count">
@@ -34,7 +36,7 @@
                 user_post_comments_path(f.user, f),
                 'data-id' => f.id.to_s,
                 :remote => true,
-                :id => "feeditem_comments_link_#{f.id}",
+                :id => "feeditem_comments_count_#{f.id}",
                 :class => "comment_count" %>
   </span>
 </div>

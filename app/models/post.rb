@@ -59,6 +59,16 @@ class Post
     self.comments.count
   end
 
+  def commenters(user) #write tests for me
+    self.comments.each do |c|
+      if c.user_id == user.id
+        return true
+      else
+        nil
+      end
+    end
+  end
+
   def add_user_likes(user) #write tests for me
     if self.voted?(user) == true && user.likes.include?(self.id) == false
       user.likes << self.id

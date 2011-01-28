@@ -1,27 +1,29 @@
-var el = $('#<%= escape_javascript("comment_form_#{@post.id}")%>');
+var el = $('<%= escape_javascript("#comment_form_#{@post.id}")%>');
 
 <% if @comment.errors.any? %>
   // Create a list of errors
-  var errors = $('<ul />');sd
+  var errors = $('<ul></ul>');
 
   <% @comment.errors.full_messages.each do |error| %>
     errors.append('<li><%= escape_javascript( error ) %></li>');
   <% end %>
   // Display errors on form
-  el.find('.errors').html(errors);
+  el.find('p.errors').html(errors);
 
 <% else %>
   // store element IDs in variables
-  var commentsList = $('#<%= escape_javascript("comments_#{@comment.post.id}") %>');
-  var commentStats = $('a#<%= escape_javascript("feeditem_comments_link_#{@comment.post.id}") %>');
-  
+  var commentsList = $('#<%= escape_javascript("comments_#{@post.id}") %>');
+  var commentCount = $('a#<%= escape_javascript("feeditem_comments_count_#{@post.id}") %>');
+  var commentImage = $('#<%= escape_javascript("feeditem_comments_img_#{@post.id}") %>');
+
   // render partial to display comment
   $(commentsList).prepend("<%= escape_javascript(render 'comments/show') %>");
-  
-  // update comment totals
-  var count = $("<%= escape_javascript(@post.comments_count.to_s) %>");
-  
-  $(commentStats).text("<%= escape_javascript(@post.comments_count.to_s) %>");
+
+  // update comment count
+  $(commentCount).text("<%= escape_javascript(@post.comments_count.to_s) %>");
+
+  var d = new Date();
+  $(commentImage).attr("src", "/images/comment_blue.png?"+d.getTime());
 
   // Clear forms
   el.find('input:text,textarea').val('');
