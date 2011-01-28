@@ -1,24 +1,29 @@
-var el = $('#<%= escape_javascript("new_comment_form_#{@post.id}")%>');
+var el = $('#<%= escape_javascript("comment_form_#{@post.id}")%>');
 
 <% if @comment.errors.any? %>
-
   // Create a list of errors
-  var errors = $('<ul />');
+  var errors = $('<ul />');sd
 
-  <% @test_comment.errors.full_messages.each do |error| %>
+  <% @comment.errors.full_messages.each do |error| %>
     errors.append('<li><%= escape_javascript( error ) %></li>');
   <% end %>
-
   // Display errors on form
   el.find('.errors').html(errors);
 
 <% else %>
+  // store element IDs in variables
+  var commentsList = $('#<%= escape_javascript("comments_#{@comment.post.id}") %>');
+  var commentStats = $('a#<%= escape_javascript("feeditem_comments_link_#{@comment.post.id}") %>');
+  
   // render partial to display comment
-  $('#<%= escape_javascript("comments_#{@comment.post.id}") %>').prepend("<%= escape_javascript(
-      render  :partial => "comments/show"
-    ) %>");
+  $(commentsList).prepend("<%= escape_javascript(render 'comments/show') %>");
+  
+  // update comment totals
+  var count = $("<%= escape_javascript(@post.comments_count.to_s) %>");
+  
+  $(commentStats).text("<%= escape_javascript(@post.comments_count.to_s) %>");
 
-  // Clear form
+  // Clear forms
   el.find('input:text,textarea').val('');
   el.find('.errors').empty();
 
