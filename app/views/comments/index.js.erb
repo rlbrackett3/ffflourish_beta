@@ -3,6 +3,8 @@ var feeditemComments = $('<%= escape_javascript("#feeditem_comments_#{@post.id}"
 var commentsContainer = $('<%= escape_javascript("#comments_container_#{@post.id}")%>');
 var showComments = $('<%= escape_javascript("#feeditem_comments_link_#{@post.id}")%>');
 var commentForm = $('<%= escape_javascript("#comment_form_#{@post.id}")%>');
+
+$(commentForm).find('p.errors').empty();
 // store the display value of the feeditem comments div
 var displayValue = $(feeditemComments).css('display');
 
@@ -12,9 +14,9 @@ if (displayValue == 'none') {
     $(commentsContainer).replaceWith("<%= escape_javascript(render :partial => 'comments/index') %>");
   });
   }
-  else {
-    $(feeditemComments).hide('slow', function() {
-      $(commentsContainer).empty();
-    });
-  };
+else {
+  $(feeditemComments).hide('slow', function() {
+    $(commentsContainer).empty();
+  });
+};
 

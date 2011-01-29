@@ -5,8 +5,9 @@
 	<%= form_for [@user, @post], :html => {:multipart => true} do |f| %>
 	  <div id="question_field">
 	    <%=f.text_area :content, :class => 'ffflourish_box_editor',
-	                             :value => "testing" %>
+	                             :value => "What are you doing right now that's healthy for you?" %>
 	  </div>
+	  <p class="errors"></p>
 	  <div id="posting_options">
 	    <div id="countdown">
 	      <div id="countdown_title">Characters remaining:</div>
@@ -16,7 +17,7 @@
 	    <%= render 'shared/feed_form_icons' %>
 	    <%= render 'shared/post_form', :f => f %>
 	    <div id="post_buttons_bottom">
-	      <%= f.submit "post", :class => 'actions' %>
+	      <%= f.submit "post", :class => [ "actions", "submit_btn" ], :disable_with => "..." %>
 	    </div><!-- /post_buttons_bottom -->
 	  </div>
   <% end %>

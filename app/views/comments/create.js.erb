@@ -8,7 +8,7 @@ var el = $('<%= escape_javascript("#comment_form_#{@post.id}")%>');
     errors.append('<li><%= escape_javascript( error ) %></li>');
   <% end %>
   // Display errors on form
-  el.find('p.errors').html(errors);
+  el.find('p.errors').html(errors).fadeIn(1000);
 
 <% else %>
   // store element IDs in variables

@@ -40,15 +40,16 @@
   <div class="comment_form" id="new_comment_form_<%= feed_item.id %>">
     <%= form_for [current_user, feed_item, Comment.new],
                                     :remote => true,
-                                    :disable_with => "processing...",
                                     :html => { :id => "comment_form_#{ feed_item.id }" } do |f| %>
       <p class="field">
         <%= f.text_area :content, :class => "comment_field",
-                                    :rows => 5,
-                                    :value => "Support this ffflourish!" %>
+                                  :id => "comment_content_#{ feed_item.id }",
+                                  :rows => 5,
+                                  :value => "Support this ffflourish!" %>
       </p>
       <p>
-        <%= f.submit "comment", :class => "actions" %>
+        <%= f.submit "comment", :class => [ "actions", "comment_submit" ],
+                                :disable_with => "..." %>
       </p>
       <p class="errors"></p><!-- format this -->
     <% end %>

@@ -18,6 +18,14 @@ $(document).ready(function(){
   });
 
 //////////////////////////////////////////////////////////////
+  // disable form submit buttons for 5 seconds to avoid double submits
+//  $('form').submit(function() {
+//    //On submit disable its submit button
+//    $('input[type=submit]', this).attr('disabled', 'disabled');
+//    $('input[type=submit]', this).setTimeout(5000).attr("disabled", false);
+//  });
+
+//////////////////////////////////////////////////////////////
   // textarea countdown function
   $('textarea').keyup(function(){
     if(this.value.length >= 200) {
@@ -32,34 +40,94 @@ $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
   // onblur and onfocus functions for text areas
+
   $(function() {
 
-    var defaultText = "What are you doing right now that's healthy for you?";
+    var postText = $('#post_content').val();
 
-    $('#post_content')
-	    .val(defaultText)
-	    .focus(function() {
-	      if ( this.value == defaultText ) this.value = ''
-	    })
-	    .blur(function() {
-	      if ( !$.trim( this.value ) ) this.value = defaultText
+    $('#post_content').focus(function() {
+	      if ( this.value == postText ) {
+	        this.value = ''
+	      }
+      }).blur(function() {
+	      if ( !$.trim( this.value ) ) {
+	        this.value = postText
+	      }
 	    });
-
+	    
+    // error handling for textarea value
 	  $('#post_submit').click(function() {
-
-	    $('.errors').hide();
+      $('.errors').hide();
 	    var postFormVal = $('#post_content').val();
 
 	    if ( postFormVal == '' ) {
-	      $('#question_field').after('<span class="error">Oops! please let us know something you are doing.</span>');
-	      hasError = true;
+	      $('p.errors').replaceWith('<p class="errors">Oops! your post was empty.</p>').show();
+        hasError = true;
+        $('p.errors').fadeOut(2000);
 	    }
-	    else if( postFormVal == defaultText ) {
-	      $('#question_field').after('<span class="error">That is what we are asking you.</span>');
-	      hasError = true;
+	    else if ( postFormVal.length <= 5 ) {
+	      $('p.errors').replaceWith('<p class="errors">Oops! your post was to short.</p>').slideDown(2000);
+        hasError = true;
+        $('p.errors').fadeOut(2000).delay(3000).slideUp(1000);
 	    }
+	    else if( postFormVal == postText ) {
+	      $('p.errors').replaceWith('<p class="errors">That\'s what we are asking you.</p>').show();
+	      hasError = true;
+	      $('p.errors').fadeOut(3000).delay(2000).slideUp(1000);
+	    };
+      if (hasError == true) {
+        hasError = false;
+        return false;
+      }
+      else {
+        return true;
+      };
+      
+	  });
+  });
 
-	    return flase;
+  // comment form
+  $(function() {
+    var hasError = false;
+    var commentText = $('.comment_field').val();
+
+    $('.comment_field')
+      .val(commentText)
+      .focus(function() {
+        if ( this.value == commentText ) this.value = ''
+      })
+      .blur(function() {
+        if ( !$.trim( this.value ) ) this.value = commentText
+      });
+    
+    // error handling for textarea value
+    // this does not work yet, perhaps it is a unique id issue
+    $('#comment_submit').click(function() {
+      $('.errors').hide();
+	    var postFormVal = $('#post_content').val();
+
+	    if ( postFormVal == '' ) {
+	      $('.errors').replaceWith('<p class="errors">Oops! your comment was empty.</p>');
+        hasError = true;
+	    }
+	    else if ( postFormVal.length <= 5 ) {
+	      $('p.errors').replaceWith('<p class="errors">Oops! your comment was to short.</p>').fadeIn(2000).slideDown(2000);
+        hasError = true;
+        $('p.errors').fadeOut(4000).delay(3000).slideUp(1000);
+	    }
+	    else if( postFormVal == commentText ) {
+	      $('.errors').replaceWith('<p class="errors">Please provide a message.</p>');
+	      hasError = true;
+	    };
+      if (hasError == true) {
+        alert('oops!');
+        hasError = false;
+        return false;
+      }
+      else {
+        return true;
+      };
+      
 	  });
   });
 
