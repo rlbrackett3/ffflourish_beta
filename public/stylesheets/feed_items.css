@@ -187,18 +187,27 @@ a.post_author {
 	/* background-color: gray; */
 }
 /* /////////////////////////////////////////////////////// */
-/* feed entry commnets */
-li.feed_entry_comments {
-    width: 380px;
+/* feed entry likers */
+li.feed_entry_likers {
+    width: 280px;
     position: relative;
-    float: right;
-    clear: both;
-    margin: 0px 20px 5px 0px;
+    float: left;
+    margin: 0px 0px 5px 20px;
     list-style: none;
     display: none; 
 }
 
 
+/* /////////////////////////////////////////////////////// */
+/* feed entry comments */
+li.feed_entry_comments {
+    width: 380px;
+    position: relative;
+    float: right;
+    margin: 0px 20px 5px 0px;
+    list-style: none;
+    display: none; 
+}
 
 .comment_form {
     width: 100%;

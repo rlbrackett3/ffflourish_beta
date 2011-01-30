@@ -6,21 +6,21 @@
   <% unless f.voters.include? current_user.id %>
     <%= link_to (image_tag "like.png", :size => "20x20",
                                        :mouseover => "like_red.png",
-                                       :id => "feeditem_votes_img_#{f.id}"),
+                                       :id => "feeditem_likes_img_#{f.id}"),
                 like_user_post_path(f.user, f),
                 :remote => true,
                 :class => "like_post_link" %>
   <% else %>
     <%= image_tag "like_red.png", :size => "20x20",
-                                  :id => "feeditem_votes_img_#{f.id}" %>
+                                  :id => "feeditem_likes_img_#{f.id}" %>
   <% end %>
     
   </span>
   <span class="activity_count">
-    <%= link_to f.votes, "#",
+    <%= link_to f.votes, likers_post_path(f),
                 :remote => true,
-                :id => "feeditem_votes_count_#{f.id}",
-                :class => "comment_count" %>
+                :id => "feeditem_likers_count_#{f.id}",
+                :class => "likes_count" %>
   </span>
 </div>
 <div class="post_stat" id="post_comments_stats_<%= f.id %>">

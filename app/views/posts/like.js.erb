@@ -1,5 +1,5 @@
-var voteCount = $('a#<%= escape_javascript("feeditem_votes_count_#{@post.id}") %>');
-var voteImage = $('#<%= escape_javascript("feeditem_votes_img_#{@post.id}") %>');
+var voteCount = $('a#<%= escape_javascript("feeditem_likers_count_#{@post.id}") %>');
+var voteImage = $('#<%= escape_javascript("feeditem_likes_img_#{@post.id}") %>');
 
 // update comment count
 $(voteCount).text("<%= escape_javascript(@post.vote_count.to_s) %>");

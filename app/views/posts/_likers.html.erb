@@ -1,0 +1,7 @@
+<ul id="likers_<%= @post.id %>" class="hidden">
+  <% @likers.each do |l| %>
+    <li class="liker" id="liker_#{@post.id}">
+      <%= image_tag l.profile.avatar.avatar.url %>
+    </li>
+  <% end %>
+</ul>

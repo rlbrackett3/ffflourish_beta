@@ -135,8 +135,17 @@ class PostsController < ApplicationController
 
     if @post.update_attributes(params[:post])
 #      redirect_to(user_following_path(current_user))
-      respond_with(@user, @post, :layout => !request.xhr?) 
+      respond_with(@user, @post, :layout => !request.xhr?)
+    else
+      respond_with(current_user)
     end
+  end
+  
+  def likers # add tests for this method
+    @post = Post.find(params[:id])
+    @likers = @post.liked_by
+    
+    respond_with(@post, @likers, :layout => !request.xhr?)
   end
 
 end

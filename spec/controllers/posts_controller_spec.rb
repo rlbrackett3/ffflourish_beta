@@ -178,6 +178,41 @@ describe PostsController do
     #------------------------------------------------#
     end
   #------------------------------------------------#
+    describe 'POST like' do
+      let(:user)          { Factory(:user) }
+      let(:other_user)    { Factory(:user, :email => Factory.next(:email)) }
+      let(:third_user)    { Factory(:user, :email => Factory.next(:email)) }
+      let(:post)          { Factory(:post, :user => other_user)}
+      
+      describe 'failure' do
+        
+        it 'should not increment the posts "vote" count field' do
+          pending
+        end
+        
+        it 'should not add the users ID to the "voters" array' do
+          pending
+        end
+        
+        it 'should redirect to the users "show" page' do
+         pending
+        end
+      end
+      
+      describe 'success' do
+        it 'should add a vote to the posts "vote" field' do
+          pending
+        end
+        
+        it 'should add the voters_id to the posts "voters" array' do
+          pending
+        end
+      end
+    end
+  #------------------------------------------------#
+    describe 'POST likers' do
+      
+    end
   end
 #------------------------------------------------#
 end

@@ -26,16 +26,9 @@
     <% end %>
   </div>
 </li>
-<% if feed_item.voters? %>
-  <li>
-    <div id="liked_by">
-      <% feed_item.liked_by.each do |u| %>
-        <%= image_tag u.profile.avatar.avatar.url %>
-
-      <% end %>
-    </div>
-  </li>
-<% end %>
+<li class="feed_entry_likers" id="feeditem_likers_<%= feed_item.id %>">
+  <div id="likers_container_<%= feed_item.id %>"></div>
+</li>
 <li class="feed_entry_comments" id="feeditem_comments_<%= feed_item.id %>">
   <div class="comment_form" id="new_comment_form_<%= feed_item.id %>">
     <%= form_for [current_user, feed_item, Comment.new],

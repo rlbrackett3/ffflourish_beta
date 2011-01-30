@@ -27,6 +27,7 @@ Ffflourish::Application.routes.draw do
     resources :posts do
       member do
         match 'like'
+        match 'likers'
       end
       resources :comments
     end
@@ -35,6 +36,7 @@ Ffflourish::Application.routes.draw do
   resources :posts do
     member do
       match 'like'
+      match 'likers'
     end
     resources :comments
   end

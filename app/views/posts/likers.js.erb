@@ -1,0 +1,19 @@
+// store element IDs in variables
+var feeditemLikers = $('<%= escape_javascript("#feeditem_likers_#{@post.id}")%>');
+var likersContainer = $('<%= escape_javascript("#likers_container_#{@post.id}")%>');
+var showLikers = $('<%= escape_javascript("#feeditem_likers_count_#{@post.id}")%>');
+
+// store the display value of the feeditem comments div
+var displayValue = $(feeditemLikers).css('display');
+
+if (displayValue == 'none') {
+  $(feeditemLikers).show('show', function() {
+    $(likersContainer).replaceWith("<%= escape_javascript(render :partial => 'posts/likers') %>");
+  });
+  }
+else {
+  $(feeditemLikers).hide('slow', function() {
+    $(likersContainer).empty();
+  });
+};
+
