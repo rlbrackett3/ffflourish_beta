@@ -134,8 +134,8 @@ class PostsController < ApplicationController
     end
 
     if @post.update_attributes(params[:post])
-      redirect_to(user_following_path(current_user))
-#      respond_with(@user, :location => user_following_path(@user)) #, :layout => request.xhr?
+#      redirect_to(user_following_path(current_user))
+      respond_with(@user, @post, :layout => !request.xhr?) 
     end
   end
 

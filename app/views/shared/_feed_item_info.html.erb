@@ -3,20 +3,24 @@
 </span>
 <div class="post_stat">
   <span class="activity_images">
-    <% if f.voted?(current_user) == false && f.user != current_user %>
-      <%= link_to (image_tag "like.png", :width => 20,
-                                         :height => 20,
-                                         :mouseover => "like_red.png"),
+  <% unless f.voters.include? current_user.id %>
+    <%= link_to (image_tag "like.png", :size => "20x20",
+                                       :mouseover => "like_red.png",
+                                       :id => "feeditem_votes_img_#{f.id}"),
                 like_user_post_path(f.user, f),
+                :remote => true,
                 :class => "like_post_link" %>
-    <% elsif f.voted?(current_user) == true %>
-      <%= image_tag "like_red.png", :width => 20, :height => 20 %>
-    <% else %>
-      <%= image_tag "like.png", :width => 20, :height => 20 %>
-    <% end %>
+  <% else %>
+    <%= image_tag "like_red.png", :size => "20x20",
+                                  :id => "feeditem_votes_img_#{f.id}" %>
+  <% end %>
+    
   </span>
   <span class="activity_count">
-    <%= f.votes %>
+    <%= link_to f.votes, "#",
+                :remote => true,
+                :id => "feeditem_votes_count_#{f.id}",
+                :class => "comment_count" %>
   </span>
 </div>
 <div class="post_stat" id="post_comments_stats_<%= f.id %>">
