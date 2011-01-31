@@ -1,10 +1,25 @@
-<% unless @feed_items.empty? %>
-    <div id="results">
-      <ul class="feed">
-        <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
-      </ul>
-    </div>
-  <!--<%= pageless(@feed_items.total_pages, user_following_path) %>-->
+<% case %>
+<% when @feed_items %>
+  <% unless @feed_items.empty? %>
+      <div id="results">
+        <ul class="feed">
+          <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
+        </ul>
+      </div>
+    <!--<%= pageless(@feed_items.total_pages, user_following_path) %>-->
+  <% end %>
+  <%= will_paginate @feed_items %>
+<% when @popular_posts %>
+  <div id="results">
+    <ul class="feed">
+      <%= render :partial => 'shared/feed_item', :collection => @popular_posts %>
+    </ul>
+  </div>
+<% when @recent_posts %>
+  <div id="results">
+    <ul class="feed">
+      <%= render :partial => 'shared/feed_item', :collection => @recent_posts %>
+    </ul>
+  </div>
 <% end %>
-<%= will_paginate @feed_items %>
 

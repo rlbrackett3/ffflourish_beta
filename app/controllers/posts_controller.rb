@@ -59,24 +59,23 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.desc(:created_at).paginate(:page => params[:page]) #to redirect to index
+    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10) #to redirect to index
     @post = @user.posts.build(params[:post])
 
     @user.profile.increment_posts_count
 
-    respond_to do |format|
-      if @post.save
+    if @post.save
+#      respond_with(@user, @post, :layout => !request.xhr?) #to post through ajax
+      respond_to do |format|
         format.html { redirect_to(@user,
                              :notice => 'Post created successfully!') }
         format.xml  { render :xml => @post,
                              :status => :created,
                              :location => @post }
-      else
-#        format.html { render :action => 'index' }
-#        format.xml  { render :xml => @post.errors,
-#                             :status => :unprocessable_entity }
-        respond_with(@user)
+        format.js   { render :layout => !request.xhr?}
       end
+    else
+      respond_with(@user)
     end
 #    flash[:notice] = 'Post created successfully!' if @post.valid?
 #    respond_with(@user, @posts)

@@ -2,6 +2,8 @@ class FollowingPostsController < ApplicationController
   include PostsHelper
   before_filter :authenticate_user!
   before_filter :initialize_new_post, :only => :index
+  #-- Responders --#
+  respond_to :js, :html, :xml, :json
 
 
   def index

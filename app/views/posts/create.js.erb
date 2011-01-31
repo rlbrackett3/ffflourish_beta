@@ -1,0 +1,31 @@
+var el = $('<%= escape_javascript("#new_post")%>');
+
+<% if @post.errors.any? %>
+  // Create a list of errors
+  var errors = $('<ul></ul>');
+
+  <% @post.errors.full_messages.each do |error| %>
+    errors.append('<li><%= escape_javascript( error ) %></li>');
+  <% end %>
+  // Display errors on form
+  el.find('p.errors').html(errors).fadeIn(1000);
+
+<% else %>
+  // store element IDs in variables
+  var feed = $('.feed');
+  var postCount = $('<%= escape_javascript("#user_post_count")%>')
+
+  // render partial to display comment
+  $(feed).prepend("<%= escape_javascript(render 'posts/show') %>");
+
+  // update post count
+  <% if @user == current_user %>
+    $(postCount).text("<%= escape_javascript(@user.profile.posts_count.to_s) %>");
+  <% end %>
+
+  // Clear forms
+  el.find('input:text,textarea').val('');
+  el.find('.errors').empty();
+
+<% end %>
+
