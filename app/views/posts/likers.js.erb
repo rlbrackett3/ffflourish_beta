@@ -12,8 +12,9 @@ if (displayValue == 'none') {
   });
   }
 else {
-  $(feeditemLikers).hide('slow', function() {
+  $(feeditemLikers).fadeOut(500).hide('slow', function() {
     $(likersContainer).empty();
+    $(feeditemLikers).css('display', 'none');
   });
 };
 

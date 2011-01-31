@@ -1,0 +1,15 @@
+<% if @user.followers.include?(current_user) %>
+  <%= link_to "unfollow", unfollow_user_path(@user),
+                            :class => 'unfollow_me',
+                            :confirm => "are you sure you want to unfollow #{@user.profile.name}",
+                            :remote => true,
+                            :id => "unfollow_me_#{@user_id.to_s}" %>
+<% else %>
+  <% if @user != current_user %>
+    <%= link_to "Follow", follow_user_path(@user), 
+                          :class => ['follow_me', 'follow_me_link'],
+                          :remote => true,
+                          :id => "follow_me_#{@user_id.to_s}" %>
+  <% end %>
+<% end %>
+

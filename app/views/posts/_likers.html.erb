@@ -1,7 +1,10 @@
-<ul id="likers_<%= @post.id %>" class="hidden">
+<ul id="likers_<%= @post.id %>" class="likers">
   <% @likers.each do |l| %>
-    <li class="liker" id="liker_#{@post.id}">
-      <%= image_tag l.profile.avatar.avatar.url %>
+    <li class="liker" id="liker_<%= l.id %>">
+      <%= link_to (image_tag l.profile.avatar.avatar.url, 
+                                        :class => "liker_avatar",
+                                        :alt => l.profile.name), 
+                  user_path(l) %>
     </li>
   <% end %>
 </ul>

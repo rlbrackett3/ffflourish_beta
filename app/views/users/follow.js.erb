@@ -1,0 +1,8 @@
+// store element IDs in variables
+var followBtn = $('#<%= escape_javascript("follow_me_#{@user.id}") %>');
+var followContainer = $('#<%= escape_javascript("follow_link_#{@user.id}") %>');
+
+// render partial to display comment
+$(followContainer).empty();
+$(followContainer).fadeIn(2000).append("<%= escape_javascript(render 'users/follow') %>");
+

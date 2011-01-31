@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
 #-- Responders --#
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js
 
 #-- Methods --#
 #----------------------------------------------------------------------#
@@ -45,7 +45,8 @@ class UsersController < ApplicationController
     @user.profile.increment_follower_count #test and move to model?
 
     if @me.update_attributes(params[:user])
-      redirect_to user_following_path(@me)
+#      redirect_to user_following_path(@me)
+      respond_with(@user, :layout => !request.xhr?)
     end
   end
   #----------------------------------------------------------------------#
@@ -60,7 +61,8 @@ class UsersController < ApplicationController
     @user.profile.decrement_follower_count #test and move to model?
 
     if @me.update_attributes(params[:user])
-      redirect_to user_following_path(@me)
+#      redirect_to user_following_path(@me)
+      respond_with(@user, :layout => !request.xhr?)
     end
   end
   #----------------------------------------------------------------------#

@@ -58,6 +58,9 @@ puts 'CREATING A BUNCH OF PEOPLE'
   puts u.to_param
   user.follow!(u)
   user.profile.increment_following_count
+  user.posts.each do |p|
+    p.vote 1, u
+  end
   u.profile.increment_follower_count
   u.follow!(user)
   u.profile.increment_following_count
