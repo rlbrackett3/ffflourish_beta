@@ -140,7 +140,13 @@ $(document).ready(function(){
       }, 3000);
     }
   });
-
+  
+  //////////////////////////////////////////////////////////////
+  // show/hide stats panel
+  $('#stats_tab').click(function() {
+    $('#stats_container').toggle('slow', function() {});
+    $('#stats_table').fadeIn(2000);
+  });
 
 });
 

@@ -11,6 +11,7 @@
     <div id="nav_bar_background">
       <%= image_tag 'nav_bar_background.png', :height => 56,
                                               :width => '100%' %>
+      <!-- flash notice for alert and notice messages -->
       <% if flash[:notice] || flash[:alert] %>
         <div class="alert trasparent" style="display: none;">
           <%= flash[:notice] || flash[:alert] %>
@@ -33,12 +34,14 @@
       </div>
       <!---------Main--------->
       <div id="main">
+        <!-- Left Column -->
         <div id="left_column">
           <% if user_signed_in? %>
             <%= render 'shared/name_menu_bar' %>
           <% end %>
           <%= yield %>
         </div>
+        <!--Right column for signed in and non signed in users -->
         <% if user_signed_in? %>
           <div id="right_side_column">
             <%= render 'layouts/right_column' %>
@@ -48,9 +51,8 @@
             <%= render 'layouts/right_info' %>
           </div>
         <% end %>
-        <!--Footer with Site Navigation Links-->
-      
       </div>
+      <!--Footer with Site Navigation Links-->
       <div id="footer">
           <%= render 'layouts/footer' %>
       </div>

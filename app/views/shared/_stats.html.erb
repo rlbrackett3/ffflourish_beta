@@ -1,22 +1,18 @@
 <% @user ||= current_user %>
-<table border="0">
-	<!--<tr>
-		<td><div class="stat_title"> status: </div> </td>
-		<td><div class="stat_value"> **** </div> </td>
-	</tr>-->
-	<tr>
-		<td><div class="stat_title"> likes: </div></td>
-		<td>
-		  <div class="stat_value" id="user_like_count">
-		    <%= @user.profile.likes_count %>
-		  </div>
-		</td>
-	</tr>
+<table id="stats_table" border="0">
 	<tr>
 		<td><div class="stat_title"> posts: </div></td>
 		<td>
 		  <div class="stat_value" id="user_post_count">
 		    <%= @user.profile.posts_count %>
+		  </div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="stat_title"> likes: </div></td>
+		<td>
+		  <div class="stat_value" id="user_like_count">
+		    <%= @user.profile.likes_count %>
 		  </div>
 		</td>
 	</tr>
@@ -49,22 +45,6 @@
 		<td>
 		  <div id="followers_count" class="stat_value">
 		    <%= @user.profile.follower_count %>
-		  </div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="stat_title"> member since: </div></td>
-		<td>
-		  <div class="stat_value">
-		    <%= time_ago_in_words(@user.created_at) %>
-		  </div>
-		</td>
-	</tr>
-	<tr>
-		<td><div class="stat_title"> last login: </div></td>
-		<td>
-		  <div class="stat_value">
-		    <%= time_ago_in_words(@user.last_sign_in_at) if @user.last_sign_in_at? %>
 		  </div>
 		</td>
 	</tr>

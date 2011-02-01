@@ -1,22 +1,19 @@
 	<!-- RIGHT COLUMN -->
+<% @user ||= current_user %>
 <div id="ffflourish_stats">
-	<div id="stats_tab">
-		<div id="stats_tab_text">
-			<table border="0">
-				<tr>
-					<td><div class="stats_text"> my </div> </td>
-					<td><div class="stats_green_text"> ffflourish </div> </td>
-					<td><div class="stats_text"> stats </div> </td>
-					<td><div id="stats_arrow"> &#x25BC; </div></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-
-	<div id="stats_table">
+  <span id="stats_tab">
+    <p id="stats_tab_title">
+      <span class="stats_text stats_text_blue">ffflourish</span>
+      <span class="stats_text">stats</span>
+			<span id="stats_arrow"> &#x25BC; </span>
+    </p>
+  </span>
+  <div id="stats_container">
 	  <%= render 'shared/stats' %>
 	</div>
-
-
-</div> <!-- close 'ffflourish stats' div -->
-
+</div><!-- close 'ffflourish stats' div -->
+<div id="ffflourish_feed_links">
+  <p><%= link_to 'See a random ffflourish', "#", :class => "text_darkgreen feed_links" %></p>
+  <p><%= link_to 'See recent ffflourishes', recent_path, :class => "text_lightgreen feed_links" %></p>
+  <p><%= link_to 'See popular ffflourishes', popular_path, :class => "text_green feed_links" %></p>
+</div>
