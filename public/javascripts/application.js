@@ -18,14 +18,6 @@ $(document).ready(function(){
   });
 
 //////////////////////////////////////////////////////////////
-  // disable form submit buttons for 5 seconds to avoid double submits
-//  $('form').submit(function() {
-//    //On submit disable its submit button
-//    $('input[type=submit]', this).attr('disabled', 'disabled');
-//    $('input[type=submit]', this).setTimeout(5000).attr("disabled", false);
-//  });
-
-//////////////////////////////////////////////////////////////
   // textarea countdown function
   $('textarea').keyup(function(){
     if(this.value.length >= 200) {
@@ -65,7 +57,7 @@ $(document).ready(function(){
         hasError = true;
         $('p.errors').fadeOut(2000);
 	    }
-	    else if ( postFormVal.length <= 5 ) {
+	    else if ( postFormVal.length <= 4 ) {
 	      $('p.errors').replaceWith('<p class="errors">Oops! your post was to short.</p>').slideDown(2000);
         hasError = true;
         $('p.errors').fadeOut(2000).delay(3000).slideUp(1000);
@@ -110,7 +102,7 @@ $(document).ready(function(){
 	      $('.errors').replaceWith('<p class="errors">Oops! your comment was empty.</p>');
         hasError = true;
 	    }
-	    else if ( postFormVal.length <= 5 ) {
+	    else if ( postFormVal.length <= 4 ) {
 	      $('p.errors').replaceWith('<p class="errors">Oops! your comment was to short.</p>').fadeIn(2000).slideDown(2000);
         hasError = true;
         $('p.errors').fadeOut(4000).delay(3000).slideUp(1000);
@@ -132,55 +124,22 @@ $(document).ready(function(){
   });
 
 //////////////////////////////////////////////////////////////
-  //dynamicly generated id for form fields
-//  $('.hidden').hide();
-
-//  $(function showHide(objID) {
-//    if (document.getElementById(objID)) {
-//      if (document.getElementById('show_comments'+objID).style.display != 'none') {
-//         document.getElementById('show_comments'+objID).style.display = 'none';
-//         document.getElementById(objID).style.display = 'block';
-//      }
-//      else {
-//         document.getElementById('show_comments'+objID).style.display = 'inline';
-//         document.getElementById(objID).style.display = 'none';
-//      }
-//   }
-//  });
-
-//  $('.comments_count').click(function(){
-//    var post_id = $(this).attr("data-id");
-//    $('#show_comments_'+post_id).prev('.hidden_comments').toggle('slow', function() {});
-//  });
-//  function showHide(objID) {
-//    $('#show_comments_'+objID).hide()
-//    $('#comment_count_'+objID).click(function() {
-//      $('#show_comments_'+objID).toggle('slow', function() {});
-//    });
-//  }
-
-//  $('.feed_entry_comments').hide()
-//  $('.comment_post_link').click(function() {
-//    $('.feed_entry_comments').toggle('slow', function() {});
-//
-//  });
-
-//  $(function(){
-//    $('a.comment_count').live('click', function() {
-
-//      var new_id = new Date().getTime();
-//      var regexp = new RegExp("new_" + association, "g")
-
-//      $(this).parent().before(content
-//    });
-
-//  });
-
-//////////////////////////////////////////////////////////////
   // linkify for links in posts
   $('.content').linkify();
   $('.feed_entry_text').linkify();
 
+//////////////////////////////////////////////////////////////
+  // flash notice and alert messages
+  $(function () {
+    var alert = $('.alert');
+    if (alert.length > 0) {
+      alert.show().animate({height: alert.outerHeight()}, 200);
+
+      window.setTimeout(function() {
+        alert.slideUp();
+      }, 3000);
+    }
+  });
 
 
 });

@@ -1,27 +1,45 @@
 /* ------------------- TOP NAVIGATION -----------------*/
-#top{
-	position: absolute;
+#nav_container {
 	width: 960px;
-	margin: 0px 0px 0px 32px;
+	height: 100%;
+	position: relative;
+	float: left;
+	margin: 5px 0px 0px 0px;
+	overflow: visible;
+	z-index: 1;
+}
+
+#ffflourish_logo {
+  position: relative;
+  float: left;
+  margin: 0px 0px 0px 20px;
 }
 
 #nav{
+/*	width: 466px;*/
+  	height: 36px;
+  	position: relative;
+  	float: right;
+  	padding: 0px;
+	margin: 5px 10px 0px 0px;
 	list-style: none;
-	overflow: hidden;
-	font-family: Georgia, Times, serif;
+/*	overflow: hidden;*/
+	overflow: visible;
+	font-family: "Georgia";
 	font-size: 14px;
 	font-style: italic;
-	background: black;
 	color: white;
 	line-height: 28px;
-	width: 466px;
-  height: 36px;
-  -webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	padding: 0px;
-	margin: 15px 10px 0px 0px;
+/*	background: black;*/
+/* -webkit-border-radius: 5px;*/
+/*	-moz-border-radius: 5px;*/
+/*	border-radius: 5px;*/	
+}
+
+#landing_signin_link {
+	position: relative;
 	float: right;
+	margin: 5px 0px 0px 0px;
 }
 
 #nav li {
@@ -31,7 +49,7 @@
 .menu_item {
 	height: 30px;
 	padding-top: 2px;
-	background-color: none;
+	background-color: transparent;
 }
 
 .menu_item:hover{
@@ -39,25 +57,29 @@
 	cursor: default;
 }
 
-#feed{
+.menu_item a {
+	overflow: visible;
+}
+
+
+#me_feed_link{
 	padding-left: 18px;
 	padding-right: 6px;
-	padding-top: 4px;  /* spacing profile from top of black bar */
+	padding-top: 8px;  /* spacing profile from top of black bar */
 }
 
-#feed:hover{
-	color: #31F48E; /* when you hover over FEED, ARROW turns GREEN */
+/* following feed link */
+#following_link{
+	padding-left: 24px;
+	padding-right: 24px;
+	padding-top: 8px;  /* spacing profile from top of black bar */
 }
 
-.menu_feed {
-	height: 28px; /* how far below drop down menu starts */
-	margin-left: 20px;	/* margin to left of word FEED */
-	padding-top: 4px; /* menu word feed moves down */
-}
-
-.menu_feed:hover{
-	color: #31F48E; /* when you hover over FEED, ARROW turns GREEN */
-	cursor: default;
+/* ffflourish users link */
+#ffflourishers_link {
+	padding-left: 12px;
+	padding-right: 30px;
+	padding-top: 8px;  /* spacing profile from top of black bar */	
 }
 
 .menu_title {
@@ -75,65 +97,26 @@
 	font-style: normal;
 }
 
-/* PROFILE */
-#profile{
-	padding-left: 24px;
-	padding-right: 24px;
-	padding-top: 4px;  /* spacing profile from top of black bar */
-}
-
-
 /* SEARCH FIELD */
-#search_field{
-	background: #FFF;
-	color: #CCC;
-	height: 22px;
-	width: 225px;
-	text-align: left;
-	margin-top: 7px;
-	margin-right: 10px;
-	line-height: 26px;
-	-webkit-border-top-right-radius: 2.5px;
-	-webkit-border-bottom-right-radius: 2.5px;
-	-moz-border-radius-topright: 2.5px;
-	-moz-border-radius-bottomright: 2.5px;
-	border-top-right-radius: 2.5px;
-	border-bottom-right-radius: 2.5px;
-}
-
-/* ARROW IN SEARCH BOX */
-#arrow_search{
-	position: relative;
-	font-size: 9px;
-	padding: 0px 0px 0px 2px; /* space arrow from word */
-	font-style: normal;
-}
-
-#search_word {
-  position: relative;
-  float: left;
-
-}
-
 #search_form {
   position: relative;
   float: right;
-  width: 75%;
+  width: 100%;
 }
 #search_form input{
-  float: right;
-  width: 100%;
-  margin: 2px 2px 0px 0px;
-  display: inline;
-  border: none;
-  background-color: #fff;
-  -webkit-border-radius: 2.5px;
+  	width: 100%;
+  	height: 22px;
+  	float: right;
+  	margin: 8px 10px 0px 0px;
+  	display: inline;
+  	border: none;
+  	background-color: #fff;
+  	-webkit-border-radius: 2.5px;
 	-moz-border-radius: 2.5px;
 	border-radius: 2.5px;
 	-webkit-box-shadow: 0 2px #666666;
-  -moz-box-shadow: 0 2px #666666;
-  box-shadow: 0 2px #666666;
-  
+  	-moz-box-shadow: 0 2px #666666;
+  	box-shadow: 0 2px #666666; 
 }
 
 #search_form input:hover {
@@ -142,36 +125,13 @@
 #search_form input.active {
   background-color: #eeeeee; 
 }
-/*#search_form input[type='search'] {*/
-/*  width: 200px;*/
-/*  padding: 4px; */
-/*}*/
 
-#account_gray{
-	width: 22px;
-	height: 22px;
-	float: left;
-	background: #CCC;
-	-webkit-border-top-left-radius: 2.5px;
-	-webkit-border-bottom-left-radius: 2.5px;
-	-moz-border-radius-topleft: 2.5px;
-	-moz-border-radius-bottomleft: 2.5px;
-	border-top-left-radius: 2.5px;
-	border-bottom-left-radius: 2.5px;
-	margin-top: 5px;
-}
-
-#account_icon{
-	margin-top: 5px;
-	padding-left: 8px;
-}
-
-/* main  words across top: feed, profile, search, account */
+/* main  words across top: me, following, ffflourishers */
 #nav li a {
 	display: block;
 	text-align: center;
 	text-decoration: none;
-	background: black;
+/*	background: black;*/
 	color: white;
 	line-height: 22px;
 }
@@ -179,102 +139,34 @@
 #nav li a:hover {
 	color: #31F48E; /*bright lime green*/
 	text-decoration: none;
-	background: black;
-}
-
-/*  FEED DROP-DOWN  */
-#dropdown_feed {
-	position: absolute; /*drop down always goes over whatever*/
-	display: none;
-	z-index: 50;
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	list-style: none;
-	overflow: hidden;
-	float: left;
-	text-align: left;
-}
-
-#dropdown_feed li {
-	float: none;
-	text-align: left;
-}
-
-#dropdown_feed li a {
-	text-decoration: none;
-	padding-left: 20px; /*space on left of words in drop down */
-	padding-right: 20px;
-	text-align: left;
-}
-
-#dropdown_feed li.last a{
-	padding-top: 3px;
-	padding-bottom: 7px;
-	-webkit-border-bottom-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	text-align: left;
-
-}
-
-#feed:hover #dropdown_feed {
-	display: block;
-}
-
-/*  SEARCH DROP-DOWN  */
-#dropdown_search {
-	position: absolute; /*drop down always goes over whatever*/
-	display: none;
-	z-index: 50;
-	margin: 0px 0px 0px -10px;
-	padding: 0px 0px 0px 10px;
-	width: 120px;
-	list-style: none;
-	overflow: hidden;
-	float: left;
-}
-
-#dropdown_search li {
-	float: none;
-}
-
-#dropdown_search li a {
-	text-decoration: none;
-	text-align:  left;
-	padding-left: 20px; /*space on left of words in drop down */
-	padding-right: 20px;
-}
-
-#dropdown_search li.last a{
-	padding-top: 3px;
-	padding-bottom: 7px;
-	-webkit-border-bottom-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-
-}
-
-#search:hover #dropdown_search{
-	display: block;
+/*	background: black;*/
 }
 
 /*  ACCOUNT DROP-DOWN  */
+#account {
+	margin: 1px 0px 0px 0px;	
+}
+#account_icon{
+	margin-top: 5px;
+	padding-left: 8px;
+}
+
 #dropdown_account {
-	position: absolute; /*drop down always goes over whatever*/
+	position: absolute; /* drop down always goes over whatever */
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 0px 0px;
 	display: none; /* use inline to see it drop down without hovering */
-	z-index: 50;
+	z-index: -1;
 	list-style: none;
 	overflow: hidden;
-	margin: 0px 0px 0px -10px;
-	padding: 0px 0px 0px 0px;
-
-}
+	background-color: #29303a;
+	-webkit-border-bottom-right-radius: 2.5px;
+	-webkit-border-bottom-left-radius: 2.5px;
+	-moz-border-radius-bottomright: 2.5px;
+	-moz-border-radius-bottomleft: 2.5px;
+	border-bottom-right-radius: 2.5px;
+	border-bottom-left-radius: 2.5px;
+} 
 
 #dropdown_account li {
 	float: none;
@@ -282,7 +174,7 @@
 
 #dropdown_account li a {
 	text-decoration: none;
-	padding-left: 10px; /*space on left of words in drop down */
+	padding-left: 10px; /* space on left of words in drop down */
 	padding-right: 10px;
 
 }

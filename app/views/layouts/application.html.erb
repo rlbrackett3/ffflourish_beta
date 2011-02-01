@@ -8,49 +8,59 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <!--Account Navigation-->
-    <div id="top">
-      <div id="ffflourish_logo">
-        <%= link_to (image_tag 'logo.png', :size => "132x36",
-                                           :alt => "ffflourish"), logo_path %>
-      </div>
-      <!--Devise Notice and Alert Messages-->
-      <div id="notifications">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
-      <% if user_signed_in? %>
-        <%= render 'layouts/nav' %>
+    <div id="nav_bar_background">
+      <%= image_tag 'nav_bar_background.png', :height => 56,
+                                              :width => '100%' %>
+      <% if flash[:notice] || flash[:alert] %>
+        <div class="alert trasparent" style="display: none;">
+          <%= flash[:notice] || flash[:alert] %>
+        </div>
       <% end %>
     </div>
-    <!---------Main--------->
-    <div id="main">
-      <div id="left_column">
+    <div id="container">
+      <!--Account Navigation-->
+      <div id="nav_container">
+        <div id="ffflourish_logo">
+          <%= link_to (image_tag 'ffflourish_logo.png', 
+                                              :size => "164x44",
+                                              :alt => "ffflourish logo"), logo_path %>
+        </div>
         <% if user_signed_in? %>
-          <%= render 'shared/name_menu_bar' %>
+          <%= render 'layouts/nav' %>
+        <% else %>
+          <div id="nav"><%= link_to "sign in", new_user_session_path, :id => "landing_signin_link" %></div>
         <% end %>
-        <%= yield %>
       </div>
-      <% if user_signed_in? %>
-        <div id="right_side_column">
-          <%= render 'layouts/right_column' %>
+      <!---------Main--------->
+      <div id="main">
+        <div id="left_column">
+          <% if user_signed_in? %>
+            <%= render 'shared/name_menu_bar' %>
+          <% end %>
+          <%= yield %>
         </div>
-      <% else %>
-        <div id="right_side_info">
-          <%= render 'layouts/right_info' %>
-        </div>
-      <% end %>
-      <!--Footer with Site Navigation Links-->
-
-    </div>
-    <div id="footer">
-        <%= render 'layouts/footer' %>
-    </div>
-    <div id="debug">
-      <% if Rails.env.development? %>
-        <%= debug(params) %>
-        <%= debug(session) %>
-      <% end %>
+        <% if user_signed_in? %>
+          <div id="right_side_column">
+            <%= render 'layouts/right_column' %>
+          </div>
+        <% else %>
+          <div id="right_side_info">
+            <%= render 'layouts/right_info' %>
+          </div>
+        <% end %>
+        <!--Footer with Site Navigation Links-->
+      
+      </div>
+      <div id="footer">
+          <%= render 'layouts/footer' %>
+      </div>
+      <!-- development debug information -->
+      <div id="debug">
+        <% if Rails.env.development? %>
+          <%= debug(params) %>
+          <%= debug(session) %>
+        <% end %>
+      </div><!-- end development debug information -->
     </div>
   </body>
 </html>

@@ -4,12 +4,10 @@
 html {background: #D9FFFC;}
 
 body {
-	margin:0px auto;
-	/* padding:auto;  */
-	width:1024px;
-	text-align:center;
-	font-family:"Georgia", Times New Roman, Times, serif;
-	font-size:12px;
+/*	width: 1024px;*/
+	text-align: center;
+	font-family: "Georgia", Times New Roman, Times, serif;
+	font-size: 12px;
 }
 
 a {
@@ -44,39 +42,86 @@ ul {
   -webkit-padding-start: 0px;
 }
 
-/* Guides.css */
+/* background for endless nav bar */
+#nav_bar_background {
+	width: 100%;
+	height: 56px;
+	position: absolute;
+	top: 0px;
+}
 
-/* Top_Navigation.css */
-#ffflourish_logo {
-  position: relative;
-  float: left;
-  margin: 55px 0px 0px 2px;
+/* main content container to wrap it all */
+#container {
+    width: 980px;
+    height: 100%;
+    margin: 0px auto;
+}
+
+/* zone between menu bar and main section */
+.transparent {
+	filter:alpha(opacity=50); /* IE 6/7 */
+  	filter:"alpha(opacity=50)"; /* IE 8 */
+   -moz-opacity: 0.5;
+   -khtml-opacity: 0.5;
+   opacity: 0.5; /* standard for css3 */
 }
 
 #notifications {
-  position: relative;
-  float: left;
-  margin: 45px 0px 0px 90px;
-  color: #666;
+	width: 100%;
+	height: 30px;
+  	position: relative;
+  	float: left;
+  	margin: 0px auto 0px auto;
+  	font-family: "Georgia";
+  	font-size: .75em;
+  	font-style: italic;
+  	text-align: center;
+  	color: #666;
+  	background-color: #31F48E;
+  	border-style: solid;
+  	border-color: #31F48E;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
 }
 
-/* MAIN
-/////////////////////////////////////*/
+.alert {
+	width: 100%;
+	height: 0px;
+	position: absolute;
+	top: 56px;
+	left: 0px;
+	padding: 5px 0px 10px 0px;
+	font-family: "Georgia";
+  	font-size: 0.75em;
+  	font-style: italic;
+  	text-align: center;
+	color: #666;
+  	background-color: rgb(49, 244, 143);
+	background-color: rgba(49, 244, 143, 0.5);
+	-webkit-border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+	z-index: 999;
+}
+
+/* MAIN */
+/*/////////////////////////////////////*/
+
 #main{
 	position: relative;
 	float: left;
 	width: 960px;
-/*	height: 600px;*/
-  margin: 80px 0px 0px 32px;
-  padding: 0px 0px 20px 0px;
+    margin: 50px 0px 0px 0px;
+    padding: 10px 10px 20px 10px;
 	background-color: #FFF;
 	border-bottom: 1px dotted #666;
-	-webkit-border-top-left-radius: 10px;
-	-webkit-border-top-right-radius: 10px;
-	-moz-border-top-left-radius: 10px;
-	-moz-border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px; /* top-left, top-right, bottom-left, bottom-right */
 }
 
 /* LEFT COLUMN
@@ -271,7 +316,7 @@ ul {
 .stat_value{
 	font-family: Georgia, serif;
 	font-size:14px;
-	font-style: oblique;
+	font-weight: bold;
 	color: #666;
 	text-align: left;
 	margin-left: 30px;
@@ -286,15 +331,12 @@ ul {
   	position: relative;
   	float: left;
 	width: 960px;
-  	margin: 0px 0px 0px 32px;
+  	margin: 0px 0px 0px 0px;
 	height: 25px;
 	background-color: #FFF;
-	-webkit-border-bottom-left-radius: 10px;
-	-webkit-border-bottom-right-radius: 10px;
-	-moz-border-bottom-left-radius: 10px;
-	-moz-border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
 }
 
 #bottom_table{

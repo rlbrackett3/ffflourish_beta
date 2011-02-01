@@ -1,34 +1,28 @@
 <ul id="nav">
 <!--FEED-->
-	<li id="feed">
+	<li id="me_feed_link">
 		<div class="menu_item">
 			<%= link_to 'me', user_path(current_user) %>
 		</div>
 	</li>
 
 <!--PROFILE-->
-	<li id="profile">
+	<li id="following_link">
 		<div class="menu_item">
 			<%= link_to 'following', user_following_path(current_user) %>
 		</div>
 	</li>
-
-<!--SEARCH-->
-	<li id="search">
+	
+<!--FFFLOURISHERS-->
+	<li id="ffflourishers_link">
 		<div class="menu_item">
-			<div id="account_gray">
-        <div id="arrow_search"> &#x25BC; </div>
-      </div>
+			<%= link_to 'ffflourishers', users_path %>
 		</div>
-		<ul id="dropdown_search">
-			<li><%= link_to 'people', users_path %></li>
-			<li class="last"><%= link_to 'posts', '#' %></li>
-		</ul>
 	</li>
 
+<!--SEARCH-->
 <!--SEARCH FIELD-->
 	<li id="search_field">
-		<div id="search_word">&nbsp; search </div>
     <div id="search_form">
       <%= form_tag @search_path, :method => 'get' do %>
         <%= text_field_tag :search, params[:search], :type => 'search', :results => 5%>
@@ -40,14 +34,16 @@
 	<li id="account">
 		<div class="menu_item">
 			<div class="menu_title">
-				<div id="account_icon"><%= image_tag 'account_icon.png', :size => '22x22', :alt => 'account' %></div>
+				<div id="account_icon">
+				  <%= image_tag 'account_icon.png', :size => '22x22', 
+				                                    :alt => 'account settings' %>
+				</div>
 			</div>
 			<div class="menu_arrow">&#x25BC;</div>
 		</div>
 		<ul id="dropdown_account">
-			<li><%= link_to 'settings', edit_user_profile_path(current_user) %></li>
-			<li><%= link_to 'help', about_path %></li>
-			<li class="last"><%= link_to 'logout', signout_path, :method => :delete %></li>
+			<li><%= link_to 'account', edit_user_profile_path(current_user) %></li>
+			<li class="last"><%= link_to 'signout', signout_path, :method => :delete %></li>
 		</ul>
 	</li>
 </ul>
