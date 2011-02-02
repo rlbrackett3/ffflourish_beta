@@ -329,7 +329,7 @@ ul {
 	width: 100%;
 	position: relative;
 	float: left;
-	margin: 48px 0px 0px 48px;
+	margin: 48px 0px 0px 54px;
 	font-family: Verdana, sans-serif;
 	font-size: 15px;
 	text-align: left;
