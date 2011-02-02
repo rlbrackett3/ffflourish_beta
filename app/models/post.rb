@@ -53,7 +53,14 @@ class Post
 
   scope :popular, order_by(:votes.desc)#write tests for me
 
+
 #--Methods--#
+
+  def self.random
+    if (c = count) != 0
+      find(:first, :skip =>rand(c))
+    end
+  end
 
   def comments_count #write tests for me
     self.comments.count

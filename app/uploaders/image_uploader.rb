@@ -27,8 +27,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [404, 308]
   end
 
-  version :avatar do
-    process :resize_to_fill => [50,50]
+  version :thumb do
+    process :resize_to_fill => [72,72]
   end
 
   #--Images for posts--#

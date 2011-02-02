@@ -48,6 +48,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :avatar do
     process :resize_to_fill => [50, 50]
   end
+  
+  version :avatar_mini do
+    process :resize_to_fill => [24, 24]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

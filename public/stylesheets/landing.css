@@ -72,7 +72,7 @@
   background: #99FFFF;
 }
 
-/*descrition*/
+/* descrition */
 #description{
 	width: 180px;
 	float: left;
@@ -86,12 +86,12 @@
 	line-height: 18px;
 	background-color: #666;
 	-webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  	-moz-border-radius: 5px;
+  	border-radius: 5px;
 }
 
 
-/*name logo*/
+/* name logo */
 #logo{
 	float:left;
 	margin-left: -33px;
@@ -110,4 +110,78 @@
   clear: both;
   margin: 20px auto 20px auto;
   
+}
+
+/* random post */
+#random_ffflourish {
+	width: 400px;
+	min-height: 144px;
+	max-height: 300px;
+	overflow: hidden;
+	position: relative;
+	float: left;
+	margin: 10px auto 0px auto;
+	background-color: #FFF;
+	-moz-box-shadow: 3px 3px 5px #999;
+  	-webkit-box-shadow: 3px 3px 5px #999;
+  	box-shadow: 3px 3px 5px #999;
+	-webkit-border-radius: 10px 10px 0px 10px; 
+	-moz-border-radius: 10px 10px 0px 10px;
+	border-radius: 10px 10px 0px 10px; /* top-left, top-right, bottom-right, bottom-left */	
+}
+
+#rand_post_content {
+	width: 360px;
+	position: relative;
+	float: left;
+	margin: 20px 0px 10px 20px;
+	font-family: Verdana, sans serif;
+	font-size: 1.1em;
+	text-align: left;
+	line-height: 1.2em;
+	word-spacing: 0.2em;
+	color: #999;
+}
+
+#rand_post_stats {
+	width: 185px;
+	height: 36px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 20px 20px;
+}
+
+#rand_post_author {
+	position: relative;
+	float: left;
+	margin: 0px 5px 0px 5px;
+	text-align: left;
+	
+}
+
+#rand_post_author_name {
+	padding: 8px 0px 0px 0px;
+	vertical-align: bottom;
+}
+
+#rand_post_avatar {
+	position: relative;
+	float: left;
+	margin: 0px 10px 0px 0px;
+}
+
+#rand_post_date {
+	position: relative;
+	float: left;
+	clear: both;
+	margin: 5px 0px 0px 5px;
+}
+
+#rand_post_img {
+	width: 125px;
+	/*height: 165px;*/	
+	position: relative;
+	float: right;
+	margin: 10px 20px 15px 0px;
+/*	background-color: #666;*/
 }

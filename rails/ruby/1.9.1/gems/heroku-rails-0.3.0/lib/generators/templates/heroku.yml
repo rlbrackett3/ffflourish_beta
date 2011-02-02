@@ -1,0 +1,53 @@
+apps:
+  # map the environments to your desired heroku app names
+  # for example,
+  #   production: awesomeapp
+  # would create the RACK_ENV=production
+  # and deploy to http://awesomeapp.heroku.com
+  production: awesomeapp
+  staging: awesomeapp-staging
+  legacy: awesomeapp-legacy
+
+stacks:
+  # choose the stacks you want to use for each app.
+  # the all: setting sets the default
+  all: bamboo-mri-1.9.2
+
+  # override on a per environment basis
+  legacy: bamboo-ree-1.8.7
+
+config:
+  # choose the configuration settings for all environments
+  all:
+    BUNDLE_WITHOUT: "test:development"
+    CONFIG_VAR1: "config1"
+    CONFIG_VAR2: "config2"
+
+  # you can also override configuration settings for each environment
+  production:
+    CONFIG_VAR1: "config1-production"
+  staging:
+    CONFIG_VAR1: "config1-staging"
+
+collaborators:
+  # Be sure to add yourself as a collaborator, otherwise your
+  # access to the app will be revoked.
+  all:
+    - "my-heroku-email@somedomain.com"
+    - "another-heroku-email@somedomain.com"
+
+domains:
+  production:
+    - "awesomeapp.com"
+    - "www.awesomeapp.com"
+
+addons:
+  all:
+    - custom_domains:basic
+    # add any other addons here
+
+  production:
+    - ssl:piggyback
+    - cron:daily
+    # - newrelic:bronze
+    # production env specific addons here

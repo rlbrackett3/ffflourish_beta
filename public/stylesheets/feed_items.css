@@ -104,7 +104,7 @@ a.follow_me {
 	clear: both;
 }
 
-a.post_author {
+.post_author {
     float: left;
     font-family: Verdana, sans serif;
 	color: #444;

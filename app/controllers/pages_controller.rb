@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   #-------------------------------------------------------------------#
   def home
     @title = "home"
+    @random_post = Post.random
     if user_signed_in?
       redirect_to user_path(current_user)
     end

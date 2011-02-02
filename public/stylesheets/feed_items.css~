@@ -17,7 +17,7 @@ li.feed_entry {
 }
 
 .border {
-    width: 656px;
+    width: 660px;
     height: 10px;
     clear: both;
     margin: 5px 20px 10px 10px;
