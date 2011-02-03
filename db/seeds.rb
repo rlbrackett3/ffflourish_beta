@@ -32,7 +32,7 @@ user = User.create  :urlname => 'rlblood',
                     :email_confirmation => "user@test.com",
                     :password => 'foobar', :password_confirmation => 'foobar'
 5.times do
-  p1 = user.posts.create  :content => Faker::Lorem.sentence,
+  p1 = user.posts.create  :content => Faker::Lorem.sentence + Faker::Lorem.sentence,
                           :created_at => Time.random(2),
                           :updated_at => Time.random(1)
   user.profile.increment_posts_count
@@ -49,7 +49,7 @@ puts 'CREATING A BUNCH OF PEOPLE'
                   :password => 'foobar', :password_confirmation => 'foobar'
   u.profile.handle = Faker::Lorem.sentence
   5.times do
-    p = u.posts.create! :content    => Faker::Lorem.sentence,
+    p = u.posts.create! :content    => Faker::Lorem.sentence + Faker::Lorem.sentence,
                         :created_at => Time.random(2),
                         :updated_at => Time.random(1)
     u.profile.increment_posts_count

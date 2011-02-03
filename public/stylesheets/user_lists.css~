@@ -51,6 +51,9 @@
 	color: #4d4d4d;
 }
 
+.user_name a{color: #4d4d4d;}
+.user_name a:hover{color: #31F48E;}
+
 .user_title {
 	position: relative;
 	float: left;
@@ -58,7 +61,7 @@
 	font-size: 0.65em;
 	vertical-align: bottom;
 	line-height: 100%;
-	color: #e5e5e5;
+	color: #b3b3b3;
 }
 
 .user_follow_link {
