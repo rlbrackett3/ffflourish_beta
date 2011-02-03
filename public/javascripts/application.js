@@ -30,13 +30,11 @@ $(document).ready(function(){
 		'transitionOut'	      :	'fade',
 		'speedIn'		          :	600, 
 		'speedOut'		        :	200, 
-		'overlayShow'	        :	true,
-		'width'               : 500,
-		'height'              : 400,
-		'overlayShow'	        :	true,
-		'overlayOpacity'      : 0.3,
+		'overlayShow'	        :	false,
+		'overlayOpacity'      : 0.75,
 		'overlayColor'        : '#e5e5e5',
-	  'showCloseButton'     : false
+	  'showCloseButton'     : true,
+	  'hideOnOverlayClick'  : false
 	});
 	
 	

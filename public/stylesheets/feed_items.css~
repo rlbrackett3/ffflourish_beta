@@ -40,7 +40,7 @@ img.avatar_small {
 	margin: 0px 0px 5px 0px;
 }
 
-.feed_entry_following_links {
+.following_links {
     width: 50px;
     height: 20px;
     position: relative;
@@ -104,7 +104,7 @@ a.follow_me {
 	clear: both;
 }
 
-a.post_author {
+.post_author {
     float: left;
     font-family: Verdana, sans serif;
 	color: #444;

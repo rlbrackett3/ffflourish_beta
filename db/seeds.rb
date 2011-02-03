@@ -47,6 +47,7 @@ puts 'CREATING A BUNCH OF PEOPLE'
                   :name     => Faker::Name.name,
                   :email    => Faker::Internet.email,
                   :password => 'foobar', :password_confirmation => 'foobar'
+  u.profile.handle = Faker::Lorem.sentence
   5.times do
     p = u.posts.create! :content    => Faker::Lorem.sentence,
                         :created_at => Time.random(2),

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def index
     @search_path = users_path
     @users = User.search(params[:search]).asc(:name).paginate(:page => params[:page], :per_page => 10)
+    @user = current_user
     @title = "members"
 
     respond_with(@users)

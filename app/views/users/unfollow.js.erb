@@ -2,7 +2,11 @@
 var unfollowBtn = $('#<%= escape_javascript("unfollow_me_#{@user.id}") %>');
 var followContainer = $('#<%= escape_javascript("follow_link_#{@user.id}") %>');
 
-// render partial to display comment
+// render partial to display follow link
 $(followContainer).empty();
 $(followContainer).append("<%= escape_javascript(render 'users/follow') %>").fadeIn(2000);
+
+// replace stats for current user
+//$('#stats_container').empty();
+//$('#stats_container').replaceWith("<%= escape_javascript(render 'shared/stats') %>");
 
