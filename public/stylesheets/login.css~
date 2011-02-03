@@ -108,7 +108,11 @@
   text-align: left;
 }
 
-
+#show_me_more {
+	position: relative;
+	float: right;
+	
+}
 
 
 

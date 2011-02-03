@@ -4,6 +4,43 @@
 $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
+  // jquery fancybox
+  $("a.feed_entry_image").fancybox({
+    'padding'             : 0,
+    'margin'              : 0,
+    'autoScale'           : false,
+    'autoDimension'       : false,
+		'transitionIn'	      :	'elastic',
+		'transitionOut'	      :	'elastic',
+		'speedIn'		          :	600, 
+		'speedOut'		        :	200, 
+		'overlayShow'	        :	true,
+		'overlayOpacity'      : 0.5,
+		'overlayColor'        : '#e5e5e5',
+		'hideOnContentClick'  : true,
+		'showCloseButton'     : false
+	});
+	
+	$("a#random_ffflourish_link").fancybox({
+		'padding'             : 0,
+    'margin'              : 0,
+    'scrolling'           : false,
+    'centerOnScroll'      : true,
+		'transitionIn'	      :	'fade',
+		'transitionOut'	      :	'fade',
+		'speedIn'		          :	600, 
+		'speedOut'		        :	200, 
+		'overlayShow'	        :	true,
+		'width'               : 500,
+		'height'              : 400,
+		'overlayShow'	        :	true,
+		'overlayOpacity'      : 0.3,
+		'overlayColor'        : '#e5e5e5',
+	  'showCloseButton'     : false
+	});
+	
+	
+//////////////////////////////////////////////////////////////
   // toggle post options icons
   $('#post_content').focus(function() {
     $('#posting_options').show('slow', function() {
@@ -122,12 +159,7 @@ $(document).ready(function(){
       
 	  });
   });
-
-//////////////////////////////////////////////////////////////
-  // linkify for links in posts
-  $('.content').linkify();
-  $('.feed_entry_text').linkify();
-
+  
 //////////////////////////////////////////////////////////////
   // flash notice and alert messages
   $(function () {
@@ -141,12 +173,17 @@ $(document).ready(function(){
     }
   });
   
-  //////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
   // show/hide stats panel
   $('#stats_tab').click(function() {
     $('#stats_container').toggle('slow', function() {});
     $('#stats_table').fadeIn(2000);
   });
+
+//////////////////////////////////////////////////////////////
+  // linkify for links in posts
+  // seems to have broken with update to jquery 1.4.4
+  $('.feed_entry_text').linkify();
 
 });
 

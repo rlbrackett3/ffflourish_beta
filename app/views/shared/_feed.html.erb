@@ -14,12 +14,14 @@
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @popular_posts %>
     </ul>
+    <%= will_paginate @popular_posts %>
   </div>
 <% when @recent_posts %>
   <div id="results">
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @recent_posts %>
     </ul>
+    <%= will_paginate @recent_posts %>
   </div>
 <% end %>
 

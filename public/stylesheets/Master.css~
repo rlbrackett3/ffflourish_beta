@@ -80,11 +80,8 @@ ul {
   	background-color: #31F48E;
   	border-style: solid;
   	border-color: #31F48E;
-	-webkit-border-bottom-left-radius: 10px;
 	-webkit-border-bottom-right-radius: 10px;
 	-moz-border-radius: 0px 0px 10px 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	border-radius: 0px 0px 10px 10px;
 	border-radius: 0px 0px 10px 10px;
 }
 
@@ -329,31 +326,39 @@ ul {
 	width: 100%;
 	position: relative;
 	float: left;
-	margin: 48px 0px 0px 54px;
+	margin: 48px 0px 0px 66px;
 	font-family: Verdana, sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	text-align: left;
 }
 
 #ffflourish_feed_links p {margin-bottom: 10px;}
 
 .feed_links:hover{
-	background-color: #fff;
-	padding: 3px;
+/*	background-color: #fff;*/
+	color: #ff5e5a;
+/*	padding: 3px;*/
 	-webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   	border-radius: 3px;
-  	font-weight: bold;
+/*  	font-weight: bold;*/
 	}
 
 .text_green{color: #31f48e;}
 .text_green:visited{color: #31f48e;}
+.text_green:hover{color: #ff5e5a;}
 
 .text_lightgreen{color: #66cc99;}
 .text_lightgreen:visited{color: #66cc99;}
+.text_lightgreen:hover{color: #ff5e5a;}
 
 .text_darkgreen{color: #1b9e6f;}
 .text_darkgreen:visited{color: #1b9e6f;}
+.text_darkgreen:hover{color: #ff5e5a;}
+
+.text_blue{color: #45e5ff;}
+.text_blue:visited{color: #45e5ff;}
+.text_blue:hover{color: #ff5e5a;}
 
 /* CONTENT IN BOTTOM
 /////////////////////////////////////*/

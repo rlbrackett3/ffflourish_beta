@@ -49,7 +49,7 @@ class Post
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
 
-  scope :recent, where(:created_at.lt => 3.days.ago).desc(:created_at)#write tests for me
+  scope :recent, where(:created_at.gt => 3.days.ago).desc(:created_at)#write tests for me
 
   scope :popular, order_by(:votes.desc)#write tests for me
 

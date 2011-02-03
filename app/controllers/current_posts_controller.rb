@@ -11,7 +11,7 @@ class CurrentPostsController < ApplicationController
     @page_title = "recent"
     
     @user = current_user
-    @recent_posts = Post.recent.paginate(:page => params[:page], :per_page => 10)
+    @recent_posts = Post.recent.paginate(:page => params[:page], :per_page => 31)
   end
 
   def show

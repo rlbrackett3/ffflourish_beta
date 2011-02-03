@@ -12,6 +12,9 @@ Ffflourish::Application.routes.draw do
   get "current_posts/index"
   get "current_posts/show"
   match '/recent' => 'current_posts#index', :as => 'recent'
+  # random post
+  get 'random_posts/show'
+  match '/random' => 'random_posts#show', :as => 'random'
 
   devise_for :users
   #  How To: Redirect to a specific page on successful sign in

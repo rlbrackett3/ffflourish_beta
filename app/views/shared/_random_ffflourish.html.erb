@@ -1,0 +1,29 @@
+<div style="display:none">
+  <div id="random_ffflourish">
+    <span id="rand_post_content">
+      "<%= "#{@random_post.content}" %>"
+    </span>
+    <span id="rand_post_img">
+      <% if @random_post.image? %>
+        <%= image_tag @random_post.image.medium.url, 
+                                        :width => 125,
+                                        :class => "post_image_thumb",
+                                        :id => "rand_post_image_thumb" %>
+      <% end %>
+    </span>
+    <span id="rand_post_stats">
+      <span id="rand_post_author">
+        <%= image_tag @random_post.user.profile.avatar.avatar_mini.url,
+                                        :size => "24x24",
+                                        :class => "avatar_mini",
+                                        :id => "rand_post_avatar" %>
+        <p id="rand_post_author_name" class="post_author">
+          <%= "#{@random_post.user.profile.name}" %>
+        </p>
+      </span>
+      <p id="rand_post_date" class="post_date">
+        <%= "#{time_ago_in_words(@random_post.created_at)} ago" %>
+      </p>
+    </span>
+  </div>
+</div>

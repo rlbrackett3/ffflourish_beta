@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   #--Page Titles--#
   def title
     base_title = "ffflourish"                         # Variable assignment

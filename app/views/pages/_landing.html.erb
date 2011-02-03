@@ -30,46 +30,9 @@
       <%= link_to "join", new_user_registration_path, :class => 'new_member' %>
       <%= link_to "sign in", signin_path, :class => 'member' %>
     </div>
-    <div id="random_ffflourish">
-      <span id="rand_post_content">
-        "<%= "#{@random_post.content}" %>"
-      </span>
-      <span id="rand_post_img">
-        <% if @random_post.image? %>
-          <%= image_tag @random_post.image.medium.url, 
-                                          :width => 125,
-                                          :class => "post_image_thumb",
-                                          :id => "rand_post_image_thumb" %>
-        <% end %>
-      </span>
-      <span id="rand_post_stats">
-        <span id="rand_post_author">
-          <%= image_tag @random_post.user.profile.avatar.avatar_mini.url,
-                                          :size => "24x24",
-                                          :class => "avatar_mini",
-                                          :id => "rand_post_avatar" %>
-          <p id="rand_post_author_name" class="post_author">
-            <%= "#{@random_post.user.profile.name}" %>
-          </p>
-        </span>
-        <p id="rand_post_date" class="post_date">
-          <%= "#{time_ago_in_words(@random_post.created_at)} ago" %>
-        </p>
-      </span>
-    </div>
-    
-    <div id="logo">
-      <%=link_to (image_tag 'logo.png',   :size => "439x125",
-                                          :alt => "ffflourish"), 
-                                          new_user_registration_path %>
-    </div> 
-    
-    <!--<div id="description">
-      <i><font color="#99FFFF" >ffflourish</font></i> is a new, free social networking utility dedicated to natural health. <i><font color="#99FFFF">ffflourish</font></i> allows you to create a profile, connect with friends, track your goals, share your passion and thrive in an inspiring community dedicated to what makes you feel your best. 
-     <BR/><BR/>
-     <i><font color="#99FFFF">ffflourish</font></i> is for everyone. go ahead and <i><font color="#99FFFF">ffflourish!</font></i>
-    </div>-->
-    
-    
+    <span id="random_public_ffflourish"><%= render 'random_posts/show' %></span>
+    <span id="show_me_more">
+      <%= link_to "Show me more!", root_path, :remote => true %>
+    </span>
   </div>
 </div>

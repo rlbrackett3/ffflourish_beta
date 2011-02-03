@@ -20,9 +20,9 @@
   </div>
   <div class="feed_entry_right">
     <% if feed_item.image? %>
-      <%= link_to (image_tag feed_item.image.medium.url,
-                                        :class => "photo_preview"),
-                                        feed_item.image.url %>
+      <%= link_to (image_tag feed_item.image.medium.url, :class => "photo_preview"),
+                                        feed_item.image.large.url,
+                                        :class => "feed_entry_image" %>
     <% end %>
   </div>
 </li>
@@ -32,8 +32,8 @@
 <li class="feed_entry_comments" id="feeditem_comments_<%= feed_item.id %>">
   <div class="comment_form" id="new_comment_form_<%= feed_item.id %>">
     <%= form_for [current_user, feed_item, Comment.new],
-                                    :remote => true,
-                                    :html => { :id => "comment_form_#{ feed_item.id }" } do |f| %>
+                                   :remote => true,
+                                   :html => { :id => "comment_form_#{ feed_item.id }" } do |f| %>
       <p class="field">
         <%= f.text_area :content, :class => "comment_field",
                                   :id => "comment_content_#{ feed_item.id }",
