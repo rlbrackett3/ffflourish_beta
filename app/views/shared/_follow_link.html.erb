@@ -1,0 +1,18 @@
+<span class="following_links user_follow_link" id="follow_link_<%= user.id %>">
+  <% if user.followers.include?(current_user) %>
+    <%= link_to "unfollow", unfollow_user_path(user),
+          :class => 'unfollow_me',
+          :remote => true,
+          :id => "unfollow_me_#{user.id}",
+          :confirm => "are you sure you want to unfollow #{user.profile.name}" %>
+  <% else %>
+    <% if user != current_user %>
+      <span class="follow_me_link">
+        <%= link_to "Follow", follow_user_path(user), 
+                        :class => 'follow_me',
+                        :remote => true,
+                        :id => "follow_me_#{user.id}" %>
+      </span>
+    <% end %>
+  <% end %>
+</span>

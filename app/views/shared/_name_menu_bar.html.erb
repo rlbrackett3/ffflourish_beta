@@ -2,7 +2,8 @@
 <div id="user_page_header">
   <span id="user_avatar">
   <%= link_to (image_tag @user.profile.avatar.profile_image.url, :size => "64x64",
-                                          :class => "profile_img"),
+                                          :class => "profile_img",
+                                          :id => "user_avatar_big"),
                                           edit_user_profile_path(@user) %>
   </span>
   <span id="user_information">
@@ -24,13 +25,7 @@
     <span id="local_nav">
     <% unless @user == current_user %>
       <!--Following-->
-      <span id="following">
-        <% if @user.followers.include?(current_user) %>
-          <%= link_to "unfollow", unfollow_user_path(@user), :id => 'unfollow_me', :confirm => "are you sure you want to unfollow #{@user.profile.name}" %>
-        <% else %>
-          <%= link_to "follow", follow_user_path(@user), :id => 'follow_me' %>
-        <% end %>
-      </span>
+      <%= render 'shared/follow_link', :user => @user %>
     <% end %>
   </span>
   </span>

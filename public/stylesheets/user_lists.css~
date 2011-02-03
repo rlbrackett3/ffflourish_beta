@@ -3,6 +3,7 @@
 	height: 100%;
 	position: relative;
 	float: left;
+	margin: 20px 0px 0px 0px;
 }
 
 #users_list {
@@ -16,7 +17,7 @@
 	float: left;
 	padding: 12px 10px 6px 10px;
 	list-style: none;
-	border-bottom: 1px dotted;
+	border-bottom: 1px dotted #b3b3b3;
 	
 }
 

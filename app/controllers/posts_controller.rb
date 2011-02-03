@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   #-- Filters --#
   before_filter :authenticate_user!
   before_filter :initialize_new_post, :only => [:index, :new]
-  before_filter :rendom_post, :only => :index
+
 
   #-- Responders --#
   respond_to :js, :html, :xml, :json

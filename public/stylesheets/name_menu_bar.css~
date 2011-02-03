@@ -14,18 +14,13 @@
     height: 64px;
     position: relative;
     float: left;
-    margin: 0px 0px 0px 0px;
-    overflow: hidden;
-    -webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+    margin: 0;
 }
 
-a.profile_img {
-    -webkit-border-radius: 3px;
+#user_avatar_big {
+	webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-
 }
 
 #user_information {
@@ -37,42 +32,47 @@ a.profile_img {
 }
 
 #username {
-    max-width: 342px;
-    height: 50px;
-    position: relative;
+   max-width: 342px;
+   height: 50px;
+   position: relative;
 	float: left;
 	text-align:left;
 	font-family: Verdana, sans serif;
-	font-size:1.75em;
-	line-height: 50%;
+	font-size:1.5em;
+	line-height: 100%;
 	font-weight: bold;
-	color: #444;
+/*	color: #29303a;*/
+	color: #999;
 	vertical-align: top;
 
 	/* background-color: yellow; */
 }
 
 #user_handle {
-    position: absolute;
-    float: left;
-    margin: 35px 0px 0px 0px;
+   position: absolute;
+   left: 0;
+   margin: 28px 0px 0px 0px;
 	font-family: Verdana, sans serif;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 0.85em;
-	color: #999;
+	color: #b3b3b3;
 }
 
+#user_handle a {color: #b3b3b3;}
+#user_handle a:hover {color: #31F48E;}
+
+
 #page_title {
-    max-width: 260px;
-    height: 30;
-    position: relative;
+   max-width: 260px;
+   height: 30px;
+   position: relative;
 	float: left;
-	margin: 15px 0px 0px 4px;
-    font-family: Lucidia;
+	margin: 5px 0px 0px 4px;
+   font-family: Lucidia;
 	font-style: normal;
 	font-weight: normal;
-	color: #999;
+	color: #808080;
 	font-size: 1em;
 	/* background-color: gray; */
 }
