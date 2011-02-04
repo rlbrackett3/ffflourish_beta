@@ -1,6 +1,6 @@
 <ul id="comments_<%= @post.id %>" class="hidden">
-  <% @post.comments.each do |c| %>
-    <li class="comment">
+  <% @comments.each do |c| %>
+    <li class="comment" id="comment_<%= c.id %>">
       <div class="feed_entry_left">
         <%= render "shared/feed_avatar_follow", :f => c %>
       </div>
@@ -9,15 +9,19 @@
         <span class="comment_date">
           <%="said #{time_ago_in_words(c.created_at)} ago" %>
         </span>
-        <% if c.commenter == current_user %>
-          <%= link_to "delete",
-                          user_post_comment_path(current_user, c.post, c),
-                          :confirm => "Really delete this comment?",
-                          :class => "delete_comment",
-                          :method => :delete %>
-        <% end %></div>
+      </div>
+      <% if c.user_id == current_user.id || current_user.post_ids.include?(c.post.id) %>
+        <%= link_to "delete",
+                        user_post_comment_path(current_user, c.post, c),
+                        :remote => true,
+                        :id => "delete_comment_#{c.id}",
+                        :confirm => "Really delete this comment?",
+                        :class => "delete_comment",
+                        :method => :delete %>
+      <% end %>
       <span class="comment_content"><%= c.content %></span>
     </li>
   <% end %>
+  <%= will_paginate @comments %>
 </ul>
 

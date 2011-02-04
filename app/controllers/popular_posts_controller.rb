@@ -10,7 +10,7 @@ class PopularPostsController < ApplicationController
     @page_title = "popular"
     
     @user = current_user
-    @popular_posts = Post.popular.paginate(:page => params[:page], :per_page => 10)
+    @popular_posts = Post.popular.paginate(:page => params[:page], :per_page => 50)
   end
 
   def show

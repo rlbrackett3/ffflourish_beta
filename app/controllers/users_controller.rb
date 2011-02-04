@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def show
     @user = User.find_by_slug(params[:id])
-    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10)
+    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
     @post = @user.posts.new
     @title = @user.profile.name
 

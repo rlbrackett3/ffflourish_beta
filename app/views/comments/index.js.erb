@@ -9,13 +9,12 @@ $(commentForm).find('p.errors').empty();
 var displayValue = $(feeditemComments).css('display');
 
 if (displayValue == 'none') {
-  $(feeditemComments).show('show', function() {
-    $(commentForm).fadeIn(1000);
-    $(commentsContainer).replaceWith("<%= escape_javascript(render :partial => 'comments/index') %>");
+  $(feeditemComments).slideDown('slow', function() {
+    $(commentsContainer).slideDown('slow').replaceWith("<%= escape_javascript(render :partial => 'comments/index') %>");
   });
-  }
+}
 else {
-  $(feeditemComments).hide('slow', function() {
+  $(feeditemComments).slideUp('slow', function() {
     $(commentsContainer).empty();
   });
 };

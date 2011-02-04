@@ -1,0 +1,10 @@
+// store element IDs in variables
+var deletePost = $('#<%= escape_javascript("delete_post_#{@user.id}") %>');
+var postContainer = $('#<%= escape_javascript("feed_entry_#{@post.id}") %>');
+var postBorder = $('#<%= escape_javascript("border_#{@post.id}") %>');
+
+// render partial to display follow link
+$(postContainer).fadeOut('fast', function() {
+  $(postBorder).fadeOut('fast');
+});
+

@@ -1,0 +1,5 @@
+// store element IDs in variables
+var commentContainer = $('#<%= escape_javascript("comment_#{@comment.id}") %>');
+
+// render partial to display follow link
+$(commentContainer).remove();

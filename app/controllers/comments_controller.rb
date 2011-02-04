@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def index
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:post_id])
-    @comments = @post.comments.all
+    @comments = @post.comments.all.desc(:created_at).paginate(:page => params[:page], :per_page => 5)
 
     respond_with(@post, @comment, :layout => !request.xhr?)
   end

@@ -1,14 +1,22 @@
 <!--feed item-->
-<li class="feed_entry">
+<li class="feed_entry" id="feed_entry_<%= feed_item.id %>">
   <div class="feed_entry_left">
-    <%= render "shared/feed_avatar_follow", :f => feed_item %>
+  <% if @feed_items %>
+    <%= link_to (image_tag feed_item.user.profile.avatar.avatar.url,
+                                      :class => "avatar_small"),
+                                      user_posts_path(feed_item.user) %>
+  <% elsif @recent_posts || @popular_posts %>
+    <%= render 'shared/feed_avatar_follow', :f => feed_item %>
+  <% end %>
   </div>
   <div class="feed_entry_center">
     <span class="feed_entry_content">
-      <p class="feed_entry_author">
-        <%= link_to feed_item.user.name, user_path(feed_item.user),
+      <% unless @posts %>
+        <p class="feed_entry_author">
+          <%= link_to feed_item.user.name, user_path(feed_item.user),
                                         :class => 'post_author' %>
-      </p>
+        </p>
+      <% end %>
       <p class="feed_entry_text">
         <%= feed_item.content %>
       </p>
@@ -49,5 +57,5 @@
   </div>
   <div id="comments_container_<%= feed_item.id %>"></div>
 </li>
-<div class="border"></div>
+<div class="border" id="border_<%= feed_item.id %>"></div>
 

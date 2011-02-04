@@ -177,6 +177,31 @@ $(document).ready(function(){
     $('#stats_container').toggle('slow', function() {});
     $('#stats_table').fadeIn(2000);
   });
+  
+//////////////////////////////////////////////////////////////
+  // fade out liker avatar and fade in liker name
+  $('.likers').hover(
+    
+    function() {
+      $('img.likers_avatar').stop().fadeTo('fast', 0.5);
+    },
+    function() {
+      $(this).stop().fadeTo('fast', 1);
+    }
+  
+  );
+  
+  $('img.profile_img').hover(
+    
+    function() {
+      $(this).stop().fadeTo('fast', 0.5);
+    },
+    function() {
+      $(this).stop().fadeTo('fast', 1);
+    }
+    
+  
+  );
 
 //////////////////////////////////////////////////////////////
   // linkify for links in posts

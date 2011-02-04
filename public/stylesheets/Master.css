@@ -396,12 +396,16 @@ ul {
 /* ERROR MESSAGES */
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  width: 400px;
+  border: 1px solid red;
   padding: 7px;
   padding-bottom: 0;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 20px;
   background-color: #f0f0f0;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  	border-radius: 8px;
+ 	overflow: hidden;
 }
 
 #error_explanation h2 {
@@ -415,9 +419,16 @@ ul {
   color: #fff;
 }
 
+#error_explanation ul {
+	margin: 10px 0px 10px 10px;
+}
+
 #error_explanation ul li {
+  font-family: Verdana, sans serif;
   font-size: 12px;
-  list-style: square;
+  color: #333;
+  text-align: left;
+  list-style: none;
 }
 
 #debug {

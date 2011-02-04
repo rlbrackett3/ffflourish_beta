@@ -44,4 +44,16 @@
                 :class => "comment_count" %>
   </span>
 </div>
+<div class="post_stat">
+  <% if f.user == current_user %>
+    <span class="post_edit_links">
+      <%= link_to "delete", user_post_path(f.user, f),
+                          :remote => true,
+                          :id => "delete_post_#{f.id}",
+                          :confirm => "Really delete this post?",
+                          :class => "delete_post",
+                          :method => :delete %>
+    </span>
+  <% end %>
+</div>
 

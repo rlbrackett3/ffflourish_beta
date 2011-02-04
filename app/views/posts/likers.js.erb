@@ -7,12 +7,12 @@ var showLikers = $('<%= escape_javascript("#feeditem_likers_count_#{@post.id}")%
 var displayValue = $(feeditemLikers).css('display');
 
 if (displayValue == 'none') {
-  $(feeditemLikers).show('show', function() {
-    $(likersContainer).replaceWith("<%= escape_javascript(render :partial => 'posts/likers') %>");
+  $(feeditemLikers).slideDown('slow', function() {
+    $(likersContainer).stop().fadeIn('slow').replaceWith("<%= escape_javascript(render :partial => 'posts/likers') %>");
   });
   }
 else {
-  $(feeditemLikers).fadeOut(500).hide('slow', function() {
+  $(feeditemLikers).slideUp('slow', function() {
     $(likersContainer).empty();
     $(feeditemLikers).css('display', 'none');
   });
