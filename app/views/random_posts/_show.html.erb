@@ -1,54 +1,55 @@
-<div id="random_ffflourish">
-  <span id="rand_post_content">
-    "<%= "#{@random_post.content}" %>"
-  </span>
-  <span id="rand_post_stats">
-    <span id="rand_post_author">
-      <%= image_tag @random_post.user.profile.avatar.avatar_mini.url,
-                                      :size => "24x24",
-                                      :class => "avatar_mini",
-                                      :id => "rand_post_avatar" %>
-      <p id="rand_post_author_name" class="post_author">
-        <%= link_to @random_post.user.profile.name, 
-                                    user_path(@random_post.user) %>
+<% unless @random_post == nil %>
+  <div id="random_ffflourish">
+    <span id="rand_post_content">
+      "<%= "#{@random_post.content}" %>"
+    </span>
+    <span id="rand_post_stats">
+      <span id="rand_post_author">
+        <%= image_tag @random_post.user.profile.avatar.avatar_mini.url,
+                                        :size => "24x24",
+                                        :class => "avatar_mini",
+                                        :id => "rand_post_avatar" %>
+        <p id="rand_post_author_name" class="post_author">
+          <%= link_to @random_post.user.profile.name, 
+                                      user_path(@random_post.user) %>
+        </p>
+      </span>
+      <p id="rand_post_date" class="post_date">
+        <%= "#{time_ago_in_words(@random_post.created_at)} ago" %>
       </p>
     </span>
-    <p id="rand_post_date" class="post_date">
-      <%= "#{time_ago_in_words(@random_post.created_at)} ago" %>
-    </p>
-  </span>
-  <div id="rand_post_likes" class="post_stat">
-    <% if user_signed_in? %>
-      <span class="activity_images">
-        <% unless @random_post.voters.include? current_user.id %>
-          <%= link_to (image_tag "like.png", :size => "20x20",
-                                    :mouseover => "like_red.png",
-                                    :id => "feeditem_likes_img_#{@random_post.id}"),
-                      like_user_post_path(@random_post.user, @random_post),
+    <div id="rand_post_likes" class="post_stat">
+      <% if user_signed_in? %>
+        <span class="activity_images">
+          <% unless @random_post.voters.include? current_user.id %>
+            <%= link_to (image_tag "like.png", :size => "20x20",
+                                      :mouseover => "like_red.png",
+                                      :id => "feeditem_likes_img_#{@random_post.id}"),
+                        like_user_post_path(@random_post.user, @random_post),
+                        :remote => true,
+                        :class => "like_post_link" %>
+          <% else %>
+            <%= image_tag "like_red.png", :size => "20x20",
+                                          :id => "feeditem_likes_img_#{@random_post.id}" %>
+          <% end %>
+        </span>
+        <span class="activity_count">
+          <%= link_to @random_post.votes, likers_post_path(@random_post),
                       :remote => true,
-                      :class => "like_post_link" %>
-        <% else %>
-          <%= image_tag "like_red.png", :size => "20x20",
-                                        :id => "feeditem_likes_img_#{@random_post.id}" %>
+                      :id => "feeditem_likers_count_#{@random_post.id}",
+                      :class => "likes_count" %>
+        </span>
+      <% end %>
+      <span id="rand_post_img">
+        <% if @random_post.image? %>
+          <%= link_to (image_tag @random_post.image.medium.url, 
+                                          :width => 125,
+                                          :class => "post_image_thumb",
+                                          :id => "rand_post_image_thumb"),
+                                          @random_post.image.url,
+                                          :class => "feed_entry_image" %>
         <% end %>
       </span>
-      <span class="activity_count">
-        <%= link_to @random_post.votes, likers_post_path(@random_post),
-                    :remote => true,
-                    :id => "feeditem_likers_count_#{@random_post.id}",
-                    :class => "likes_count" %>
-      </span>
-    <% end %>
-    <span id="rand_post_img">
-      <% if @random_post.image? %>
-        <%= link_to (image_tag @random_post.image.medium.url, 
-                                        :width => 125,
-                                        :class => "post_image_thumb",
-                                        :id => "rand_post_image_thumb"),
-                                        @random_post.image.url,
-                                        :class => "feed_entry_image" %>
-      <% end %>
-    </span>
+    </div>
   </div>
-</div>
-
+<% end %>
