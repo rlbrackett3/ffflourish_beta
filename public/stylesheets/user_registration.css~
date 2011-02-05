@@ -11,9 +11,17 @@
 }
 
 #right_column_spacer {
-	height: 380px;
+	height: 38px;
 }
 
+#signin_errors {
+	width: 400px;
+	height: 100%;
+	margin: 60px auto 20px auto;
+	
+}
+
+/* editing registration options */
 #edit_signup_form {
   width: 640px;
   position: relative;

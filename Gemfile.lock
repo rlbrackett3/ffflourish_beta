@@ -11,10 +11,17 @@ GIT
     mongoid_search (0.1.2)
       mongoid (~> 2.0.0.beta)
 
+GIT
+  remote: http://github.com/alluniq/validated-fields.git
+  revision: 905091dd5eed1539e8602cc742f2ccfd492fb500
+  specs:
+    validated_fields (0.0.2)
+      actionpack (~> 3.0.0)
+      activemodel (~> 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    RedCloth (4.2.3)
     ZenTest (4.4.2)
     abstract (1.0.0)
     actionmailer (3.0.3)
@@ -301,7 +308,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  RedCloth
   annotate-models
   autotest (>= 4.4.1)
   autotest-notification
@@ -348,5 +354,6 @@ DEPENDENCIES
   slowhandcuke
   spork!
   taps
+  validated_fields!
   webrat
   will_paginate (~> 3.0.pre2)

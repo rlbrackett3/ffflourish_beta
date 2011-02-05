@@ -1,6 +1,6 @@
 #signin_container {
   width: 520px;
-  height: 220px;
+  height: 180px;
   margin: 20px auto;
   background-color: transparent;
 }
@@ -171,18 +171,99 @@
 		color: #1b9e6f;
 	}
 	
-/* B4 */
+/* devise registration pages */
 
-.page_title {
+#signup_container {
+  width: 520px;
+  height: 440px;
+	margin: 20px auto;
+	background-color: transparent;
+	font-family: Verdana, sans serif;
+}
+
+#registration_form {
+  
+}
+
+#right_column_spacer {
+	height: 385px;
+}
+
+#signin_errors {
+	width: 400px;
+	height: 100%;
+	margin: 60px auto 20px auto;
+}
+
+/* forgot your password */
+
+#reset_password_container {
 	width: 480px;
+	height: 240px;
+	margin: 20px auto;
+	
+}
+
+	#reset_msg {
+		position: relative;
+		float: left;
+		margin: 20px 0px 0px 150px;
+		text-align: left;
+	}
+
+	#reset_password {
+		width: 260px;
+		height: 100px;
+		position: relative;
+		float: left;
+		margin: 20px 0px 20px 150px;
+	}
+	
+/* reset password button */
+#reset_submit {
+	width: 248px;
+	height: 42px;
+	position: relative;
+	float: right;
+	margin: 7px 10px 0px 0px;
+	padding: 0;
+	background: #31f48e;
+	overflow: hidden;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+	#reset_submit:hover {
+		background-color: #45e5ff;
+		padding: 2px 0px 0px 2px;
+		-moz-box-shadow: 2px 2px 8px #e5e5e5;
+		-webkit-box-shadow: 2px 2px 8px #e5e5e5;
+		box-shadow: 2px 2px 8px #e5e5e5;
+	}
+	
+	#reset_submit:active {
+		background-color: #31f48e;
+		-moz-box-shadow: 2px 2px 4px #e5e5e5;
+		-webkit-box-shadow: 2px 2px 4px #e5e5e5;
+		box-shadow: 2px 2px 4px #e5e5e5;
+	}
+
+.devise_links {
+	width: 248px;
 	height: 24px;
-	text-align: left; 
-	font-family:"Georgia", Times New Roman, Times, serif; 
-	font-size: 14pt;
-	font-style: italic;
+	position: relative;
+	float: left;
+	clear: both;
+	margin: 10px 0px 0px 150px;
+	font-family: Verdana;
+	font-size: 10pt;
 	color: #1b9e6f;
 }
 
+	.devise_links a {
+			
+	}
 
 
 

@@ -31,7 +31,9 @@ gem 'mini_magick'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'jquery-rails'
 gem 'ffaker'
-gem 'RedCloth'
+gem 'validated_fields', :git => 'http://github.com/alluniq/validated-fields.git'
+#gem 'RedCloth'
+
 
 #--HAML support--#
 gem 'haml'

@@ -1,7 +1,24 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+
 $(document).ready(function(){
+
+//////////////////////////////////////////////////////////////
+  // jquery validate-fields
+  new ValidatedFields(
+    // function called when validation fails
+    function(element, errorMsg) {
+      element.css('border', '1px #ff5e5a solid');
+      element.prev('span.error').html(errorMsg); // show error message
+    },
+
+    // function called when validation succeeds
+    function(element) {
+      element.css('border', '1px #31f48e solid');
+      element.prev('span.error').html(''); // clear error message
+    }
+  );
 
 //////////////////////////////////////////////////////////////
   // jquery fancybox
@@ -36,7 +53,6 @@ $(document).ready(function(){
 	  'showCloseButton'     : true,
 	  'hideOnOverlayClick'  : false
 	});
-	
 	
 //////////////////////////////////////////////////////////////
   // toggle post options icons

@@ -1,19 +1,6 @@
-#signup_container {
-  width: 520px;
-  height: 440px;
-	margin: 20px auto;
-	background-color: transparent;
-	font-family: Verdana, sans serif;
-}
 
-#registration_form {
-  
-}
 
-#right_column_spacer {
-	height: 385px;
-}
-
+/* editing registration options */
 #edit_signup_form {
   width: 640px;
   position: relative;

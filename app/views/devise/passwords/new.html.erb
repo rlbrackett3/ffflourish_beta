@@ -1,0 +1,28 @@
+<div id="reset_password_container">
+  <span id="reset_msg" class="landing_text_large">
+    <p>Oops! Forget your password?</p>
+    <p>Enter your email below.</p>
+  </span>
+  <span id="reset_password">
+    <%= form_for(resource,  :as => resource_name, 
+                            :url => password_path(resource_name),
+                            :validate => true, 
+                            :html => { :method => :post }) do |f| %>
+      <span class="signin_fields">
+        <%= f.label           :email, "e-mail", :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.text_field      :email, :class => "signin_field" %>
+      </span>
+      <span id="reset_submit" class="actions">
+        <%= f.submit "We'll send you a new one.", :class => "signin_btn" %>
+      </span>
+    <% end %>
+  </span>
+  <span class="devise_links">
+    here by mistake?
+    <%= link_to "  sign in  ", signin_path%>
+    or
+    <%= link_to "  sign up", signup_path %>
+  </span>
+</div>
+

@@ -397,7 +397,7 @@ ul {
   	font-size: 0.75em;
   	font-style: italic;
   	text-align: center;
-	color: #666;
+	color: #fff;
   	background-color: rgb(49, 244, 143);
 	background-color: rgba(69, 229, 255, 0.5);
 	-webkit-border-radius: 0px 0px 10px 10px;
@@ -409,27 +409,28 @@ ul {
 /* ERROR MESSAGES */
 
 #error_explanation {
-  width: 400px;
-  border: 1px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin: 10px 0px 10px 20px;
-  background-color: #f0f0f0;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  	border-radius: 8px;
- 	overflow: hidden;
+	width: 240px;
+	border: none;
+	padding: 5px;
+	padding-bottom: 0;
+	margin: 20px 0px 10px 110px;
+	background-color: #fff;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	overflow: hidden;
 }
 
 #error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
+	font-family: Verdana, sans serif;
+	text-align: left;
+	font-weight: bold;
+	padding: 5px 5px 5px 15px;
+	font-size: 8pt;
+	margin: -7px;
+	margin-bottom: 0px;
+	background-color: #31f48e;
+	color: #fff;
 }
 
 #error_explanation ul {
@@ -438,10 +439,24 @@ ul {
 
 #error_explanation ul li {
   font-family: Verdana, sans serif;
-  font-size: 12px;
-  color: #333;
+  font-size: 8pt;
+  color: #999;
   text-align: left;
   list-style: none;
+}
+
+/*.field_with_errors {
+	border: 1px solid #ff5e5a;
+}*/
+
+.error {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: Georgia;
+	font-size: 10pt;
+	font-style: italic;
+	color: #ff5e5a;
 }
 
 #debug {
