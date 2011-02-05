@@ -2,12 +2,14 @@
   <p id="ffflourish_question" class="landing_text_large">
     What are you doing right now that's healthy for you?
   </p>
-  <span id="random_public_ffflourish">
-    <%= render 'random_posts/show' %>
-  </span>
-  <span id="show_me_more">
-    <%= link_to "Show me more!", root_path, :remote => true %>
-  </span>
+  <% unless @random_post == nil %>
+    <span id="random_public_ffflourish">
+      <%= render 'random_posts/show' %>
+    </span>
+    <span id="show_me_more">
+      <%= link_to "Show me more!", root_path, :remote => true %>
+    </span>
+  <% end %>
 </div>
 
 
