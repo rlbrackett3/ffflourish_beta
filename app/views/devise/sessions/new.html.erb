@@ -1,0 +1,46 @@
+<div id="signin_container">
+  <span id="signin_left"></span>
+  <span id="signin_center">
+    <%= form_for(resource,  :as => resource_name, 
+                            :url => session_path(resource_name),
+                            :html => { :id => "signin_form" }) do |f| %>
+      <span class="signin_fields">
+        <%= f.label         :email, "e-mail", :class => "signin_label" %>
+        <%= f.email_field   :email, :class => "signin_field" %>
+      </span>
+      <span class="signin_fields">
+        <%= f.label           :password, "password", :class => "signin_label" %>
+        <%= f.password_field  :password, :class => "signin_field" %>
+      </span>
+      <% if devise_mapping.rememberable? %>
+        <p id="remember_me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "remember me" %>
+        </p>
+      <% end %>
+      <span id="signin_submit" class="actions">
+        <%= f.submit "sign in!", :class => "signin_btn" %>
+      </span>
+    <% end %>
+  </span>
+  <span id="signin_right">
+    <span class="signin_aux">
+      
+    </span>
+    <span class="signin_aux">
+      <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+        <%= link_to "Forgot?", new_password_path(resource_name), 
+                                :class => 'signin_links',
+                                :id => 'forgot_password_link' %>
+      <% end %>
+    </span>
+    <span class="signin_aux">
+      <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Or, Sign Up!", new_registration_path(resource_name),
+                                :class => 'signin_links',
+                                :id => 'signup_link' %>
+      <% end %>
+    </span>
+  </span>
+  
+</div>

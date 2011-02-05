@@ -110,10 +110,19 @@
 	right: -15px;
 	width: 30px;
 	height: 30px;
-	background: transparent url('fancybox.png') -40px 0px;
+/*	background: transparent url('fancybox.png') -40px 0px;*/
+	background: transparent url('randomffflourish3.png') -30px 0px;
 	cursor: pointer;
 	z-index: 1103;
 	display: none;
+}
+
+#fancybox-close:hover {
+    background: transparent url('randomffflourishblue.png') -30px 0px;
+}
+
+#fancybox-close:active {
+    background: transparent url('randomffflourishgreen.png') -30px 0px;
 }
 
 #fancybox-error {

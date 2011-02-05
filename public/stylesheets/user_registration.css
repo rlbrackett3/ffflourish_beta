@@ -1,19 +1,17 @@
+#signup_container {
+  width: 520px;
+  height: 440px;
+	margin: 20px auto;
+	background-color: transparent;
+	font-family: Verdana, sans serif;
+}
 
+#registration_form {
+  
+}
 
-#signup_form {
-  width: 380px;
-  position: relative;
-	float: left;
-	margin: 20px auto 0px 20px;
-	background-color: #efefef;
-	padding: 5px 20px 15px 20px;
-	font-family:"Georgia", Times New Roman, Times, serif;
-	font-size:12px;
-	color:#333;
-	text-align:left;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
+#right_column_spacer {
+	height: 385px;
 }
 
 #edit_signup_form {

@@ -1,13 +1,18 @@
 @charset "UTF-8";
 /* CSS Document */
 
-html {background: #D9FFFC;}
+html {
+/*	background: #D9FFFC;*/
+	background: #CCFFFF;
+}
 
 body {
 /*	width: 1024px;*/
 	text-align: center;
 	font-family: "Georgia", Times New Roman, Times, serif;
 	font-size: 12px;
+	background: #CCFFFF;
+	overflow: visible;
 }
 
 a {
@@ -31,11 +36,19 @@ a:visited {
 a:hover { color: #31F48E; }
 
 .field{
+	width: 100%;
+	position: relative;
+	float: left;
+	clear: both;
+	margin: 2px 0px 2px 0px;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-style:italic;
+	font-size:12px;
+}
+
+.field {
   position: relative;
-  float: left;
-  width: 100%;
-  clear: both;
-  margin: 2px 0px 2px 0px;
+  
 }
 
 ul {
@@ -55,54 +68,16 @@ ul {
     width: 980px;
     height: 100%;
     margin: 0px auto;
+    overflow: visible;
 }
 
-/* zone between menu bar and main section */
+/* reusable classes */
 .transparent {
 	filter:alpha(opacity=50); /* IE 6/7 */
   	filter:"alpha(opacity=50)"; /* IE 8 */
    -moz-opacity: 0.5;
    -khtml-opacity: 0.5;
    opacity: 0.5; /* standard for css3 */
-}
-
-#notifications {
-	width: 100%;
-	height: 30px;
-  	position: relative;
-  	float: left;
-  	margin: 0px auto 0px auto;
-  	font-family: "Georgia";
-  	font-size: .75em;
-  	font-style: italic;
-  	text-align: center;
-  	color: #666;
-  	background-color: #31F48E;
-  	border-style: solid;
-  	border-color: #31F48E;
-	-webkit-border-bottom-right-radius: 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	border-radius: 0px 0px 10px 10px;
-}
-
-.alert {
-	width: 100%;
-	height: 0px;
-	position: absolute;
-	top: 56px;
-	left: 0px;
-	padding: 5px 0px 10px 0px;
-	font-family: "Georgia";
-  	font-size: 0.75em;
-  	font-style: italic;
-  	text-align: center;
-	color: #666;
-  	background-color: rgb(49, 244, 143);
-	background-color: rgba(69, 229, 255, 0.5);
-	-webkit-border-radius: 0px 0px 10px 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	border-radius: 0px 0px 10px 10px;
-	z-index: 999;
 }
 
 /* MAIN */
@@ -392,12 +367,50 @@ ul {
 }
 
 /* NOTICE AND ALERT MESSAGES FOR DEVISE */
+#notifications {
+	width: 100%;
+	height: 30px;
+  	position: relative;
+  	float: left;
+  	margin: 0px auto 0px auto;
+  	font-family: "Georgia";
+  	font-size: .75em;
+  	font-style: italic;
+  	text-align: center;
+  	color: #666;
+  	background-color: #31F48E;
+  	border-style: solid;
+  	border-color: #31F48E;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+}
+
+.alert {
+	width: 100%;
+	height: 0px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 5px 0px 10px 0px;
+	font-family: "Georgia";
+  	font-size: 0.75em;
+  	font-style: italic;
+  	text-align: center;
+	color: #666;
+  	background-color: rgb(49, 244, 143);
+	background-color: rgba(69, 229, 255, 0.5);
+	-webkit-border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+	z-index: 999;
+}
 
 /* ERROR MESSAGES */
 
 #error_explanation {
   width: 400px;
-  border: 1px dotted red;
+  border: 1px solid red;
   padding: 7px;
   padding-bottom: 0;
   margin: 10px 0px 10px 20px;

@@ -1,0 +1,20 @@
+<div id="logo_container">
+  <p class="page_title">
+    <% if controller_name != 'sessions' && 
+                                  controller_name == 'registrations' %>
+      Sign up to:
+    <% elsif controller_name != 'registrations' && 
+                                  controller_name == 'sessions'%>
+      Sign in to: 
+    <% end %>
+  </p>
+  <span id="logo_img">
+    <%= link_to (image_tag 'landing_logo.png',  :size => "470x121",
+                                                :id => "landing_logo",
+                                                :alt => "ffflourish"),
+                                                root_path %>
+  </span>
+  <p id="logo_slogan" class="landing_text_large">
+    is for sharing what's healthy.
+  </p>
+</div>

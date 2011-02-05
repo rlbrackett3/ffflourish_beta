@@ -1,2 +1,23 @@
-#ff5e5a (bright salmon) => likes icon, link hover
-#45e5ff (bright blue) => comments icon
+// liking and comment icons
+
+#ff5e5a (bright salmon) => likes icon, special link hover
+#45e5ff (bright blue)   => comments icon
+
+// logo colors
+
+#1b9e6f (dark green)    => f,
+#66cc99 (medium green)  => f,
+#31f48e (light green)   => f, important submit buttons,
+#45e5ff (blue)          => l, button hover,
+##CCFFFF (light blue)   => site background
+
+// general colors
+
+#efefef (lightest gray) =>
+#e5e5e5 (lighter gray)  =>
+
+#999999 (light gray)    =>
+#666666 (medium gray)   =>
+#333333 (dark gray)     =>
+
+##29303A (dark blue gray)   => nav bar

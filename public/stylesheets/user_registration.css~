@@ -1,0 +1,101 @@
+#signup_container {
+  width: 520px;
+  height: 440px;
+	margin: 20px auto;
+	background-color: transparent;
+	font-family: Verdana, sans serif;
+}
+
+#registration_form {
+  
+}
+
+#right_column_spacer {
+	height: 380px;
+}
+
+#edit_signup_form {
+  width: 640px;
+  position: relative;
+	float: left;
+	margin: 20px auto 0px 20px;
+	background-color: #efefef;
+	padding: 5px 20px 15px 20px;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:12px;
+	color:#333;
+	text-align:left;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#reg_avatar {
+  position: relative;
+  float: left;
+  margin: 10px 0px 0px 0px;
+  overflow: hidden;
+}
+
+#reg_avatar img{
+  -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#edit_signup_fields {
+	width: 370px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 0px 10px;
+}
+
+.reg_label {
+  position: relative;
+  float: left;
+  padding: 6px 0px 0px 0px;
+}
+
+.reg_field {
+  position: relative;
+  float: right;
+  width: 200px;
+  background-color:#FFF;
+  padding: 3px 6px 3px 6px;
+	overflow: visible;
+	border-style: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.signup_btn {
+	position: relative;
+	float: right;
+	margin: 15px 0px 0px 2px;
+  color:#fff;
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-style:italic;
+	font-weight:normal;
+	font-size: 12px;
+	padding: 3px 6px 4px 6px;
+	clear: right;
+	border: none;
+	background-color: #6C9;
+	overflow: hidden;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.signup_btn:hover {
+  background-color: #666;
+  cursor: default;
+}
+
+#signup_links {
+  margin: 10px 0px 0px 0px;
+  position: relative;
+  float: left;
+  
+}

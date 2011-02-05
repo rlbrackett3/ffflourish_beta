@@ -8,62 +8,89 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="nav_bar_background">
-      <%= image_tag 'nav_bar_background.png', :height => 56,
-                                              :width => '100%' %>
-      <!-- flash notice for alert and notice messages -->
-      <% if flash[:notice] || flash[:alert] %>
-        <div class="alert trasparent" style="display: none;">
-          <%= flash[:notice] || flash[:alert] %>
-        </div>
-      <% end %>
-    </div>
-    <div id="container">
-      <!--Account Navigation-->
-      <div id="nav_container">
-        <div id="ffflourish_logo">
-          <%= link_to (image_tag 'ffflourish_logo.png', 
-                                              :size => "164x44",
-                                              :alt => "ffflourish logo"), logo_path %>
-        </div>
-        <% if user_signed_in? %>
-          <%= render 'layouts/nav' %>
-        <% else %>
-          <div id="nav"><%= link_to "sign in", new_user_session_path, :id => "landing_signin_link" %></div>
+    <!-- non-signed in users -->
+    <% if ! user_signed_in? %>
+      <div id="landing_nav">
+        <!-- flash notice for alert and notice messages -->
+        <% if flash[:notice] || flash[:alert] %>
+          <div class="alert trasparent" style="display: none;">
+            <%= flash[:notice] || flash[:alert] %>
+          </div>
+        <% end %>
+        <!-- end flash notice for alert and notice messages -->
+        <%= link_to "sign in", new_user_session_path, 
+                                :id => "landing_signin_link" %>
+      </div>
+      <!-- main container for landing pages -->
+      <div id="main_landing">
+        <%= render "pages/public_logo" %><!-- logo for public pages -->
+        <%= yield %>
+      </div>
+      <!-- end main container for landing pages -->
+      <!-- landscape image of ffflourish land -->
+      <div id="landing_img">
+        <%= image_tag 'ffflourish_landscape.png', :size => '1400x340',
+                                                  :id => 'ffflourish_landscape',
+                                                  :alt => 'ffflourish land' %>
+      </div>
+      <!-- end landscape image of ffflourish land -->
+    <!-- end non-signed in users -->
+    <% else %>
+      <!-- top bar navigation background -->
+      <div id="nav_bar_background">
+        <%= image_tag 'nav_bar_background.png', :height => 56,
+                                                :width => '100%' %>
+        <!-- flash notice for alert and notice messages -->
+        <% if flash[:notice] || flash[:alert] %>
+          <div class="alert trasparent" style="display: none;">
+            <%= flash[:notice] || flash[:alert] %>
+          </div>
         <% end %>
       </div>
-      <!---------Main--------->
-      <div id="main">
-        <!-- Left Column -->
-        <div id="left_column">
-          <% if user_signed_in? %>
-            <%= render 'shared/name_menu_bar' %>
-          <% end %>
-          <%= yield %>
+      <!-- end top bar navigation background -->
+      <!-- content container -->
+      <div id="container">
+        <!-- top bar navigation -->
+        <div id="nav_container">
+          <div id="ffflourish_logo">
+            <%= link_to (image_tag 'ffflourish_logo.png', 
+                                            :size => "164x44",
+                                            :alt => "ffflourish logo"), logo_path %>
+          </div>
+          <%= render 'layouts/nav' %>
         </div>
-        <!--Right column for signed in and non signed in users -->
-        <% if user_signed_in? %>
+        <!-- end top bar navigation -->
+        <!-- main site content -->
+        <div id="main">
+          <!-- left column for signed in users -->
+          <div id="left_column">
+            <%= render 'shared/name_menu_bar' %>
+            <%= yield %>
+          </div>
+          <!-- left column for signed in users -->
+          <!--right column for signed in users -->
           <div id="right_side_column">
             <%= render 'layouts/right_column' %>
           </div>
-        <% else %>
-          <div id="right_side_info">
-            <%= render 'layouts/right_info' %>
-          </div>
-        <% end %>
+          <!--end right column for signed in users -->
+        </div>
+        <!-- end main site content -->
+        <!-- footer with site navigation links -->
+        <div id="footer">
+            <%= render 'layouts/footer' %>
+        </div>
+        <!--end footer with site navigation links-->
+        <!-- development debug information -->
+        <div id="debug">
+          <% if Rails.env.development? %>
+            <%= debug(params) %>
+            <%= debug(session) %>
+          <% end %>
+        </div>
+        <!-- end development debug information -->
       </div>
-      <!--Footer with Site Navigation Links-->
-      <div id="footer">
-          <%= render 'layouts/footer' %>
-      </div>
-      <!-- development debug information -->
-      <div id="debug">
-        <% if Rails.env.development? %>
-          <%= debug(params) %>
-          <%= debug(session) %>
-        <% end %>
-      </div><!-- end development debug information -->
-    </div>
+      <!-- content container -->
+    <% end %>
   </body>
 </html>
 

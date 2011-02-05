@@ -1,0 +1,38 @@
+<div id="landing_backdrop">
+  <div id="landing">
+    <div id="icons">
+      <div id="icon_01">
+        <%= image_tag "connect_v01.png",  :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "connect",
+                                          :mouseover => "connect_v02.png" %>
+        connect.
+      </div>
+      <div id="icon_02">
+        <%= image_tag 'track_v01.png',    :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "track"  %>track.
+      </div>
+      <div id="icon_03">
+        <%= image_tag 'share_v01.png',    :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "share"  %>
+        share.
+      </div>
+      <div id="icon_04">
+        <%= image_tag 'thrive_v01.png',   :size => "92x92",
+                                          :class => "landing_icon",
+                                          :alt => "thrive"  %>
+        thrive.
+      </div>
+    </div>
+    <div id="join">
+      <%= link_to "join", new_user_registration_path, :class => 'new_member' %>
+      <%= link_to "sign in", signin_path, :class => 'member' %>
+    </div>
+    <span id="random_public_ffflourish"><%= render 'random_posts/show' %></span>
+    <span id="show_me_more">
+      <%= link_to "Show me more!", root_path, :remote => true %>
+    </span>
+  </div>
+</div>
