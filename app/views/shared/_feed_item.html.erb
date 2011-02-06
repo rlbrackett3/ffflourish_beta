@@ -46,7 +46,7 @@
         <%= f.text_area :content, :class => "comment_field",
                                   :id => "comment_content_#{ feed_item.id }",
                                   :rows => 5,
-                                  :value => "Support this ffflourish!" %>
+                                  :placeholder => "Support this ffflourish!" %>
       </p>
       <p>
         <%= f.submit "comment", :class => [ "actions", "comment_submit" ],
