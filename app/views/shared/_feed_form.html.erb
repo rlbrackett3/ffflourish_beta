@@ -1,6 +1,9 @@
 <div id="question_background">
 	<div id="question">
-		<!--What are you doing right now that's healthy for you?-->
+		<div id="countdown">
+	    <div id="countdown_title">Characters remaining:</div>
+	    <div id="counter"></div>
+	  </div>
 	</div>
 	<%= form_for [@user, @post], :html => {:multipart => true} do |f| %>
 	  <div id="question_field">
@@ -11,15 +14,20 @@
 	  </div>
 	  <p class="errors"></p>
 	  <div id="posting_options">
-	    <div id="countdown">
-	      <div id="countdown_title">Characters remaining:</div>
-	      <div id="counter"></div>
+	    <div id="post_helpers" class="active">
+	      <span id="post_helper_question">
+	        can't think of something?
+	      </span>
+	      <span id="post_helper_answer">
+	        
+	      </span>
 	    </div>
 	    <!-- POST TYPE DROP DOWN -->
 	    <%= render 'shared/feed_form_icons' %>
 	    <%= render 'shared/post_form', :f => f %>
 	    <div id="post_buttons_bottom">
-	      <%= f.submit "post!", :class => [ "actions", "submit_btn" ], :disable_with => "..." %>
+	      <%= f.submit "post!", :class => [ "actions", "submit_btn" ], 
+	                            :disable_with => "..." %>
 	    </div><!-- /post_buttons_bottom -->
 	  </div>
   <% end %>

@@ -26,8 +26,8 @@ Ffflourish::Application.routes.draw do
       match 'follow', 'unfollow'
       get :following, :followers
     end
-    resource :profile, :only => [:show, :edit, :update]
-    resources :posts do
+    resource :profile,  :only => [:show, :edit, :update]
+    resources :posts,   :except => [:show, :new] do
       member do
         match 'like'
         match 'likers'
@@ -36,7 +36,7 @@ Ffflourish::Application.routes.draw do
     end
   end
 
-  resources :posts do
+  resources :posts, :except => [:show, :new] do
     member do
       match 'like'
       match 'likers'

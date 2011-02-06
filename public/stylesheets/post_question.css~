@@ -14,10 +14,9 @@
 }
 
 #question{
-	width: 702px;
+	width: 680px;
 	height: 20px;
-	padding-top: 5px;
-	margin-left: 10px;
+	margin-left: 20px;
 	margin-top: 0px;
 	text-align: left;
 	background-color: transparent;
@@ -135,7 +134,7 @@ textarea#post_content {
 /* attach a photo to your post */
 #posting_options {
 	width: 100%;
-	height: 90px;
+	height: 95px;
 	clear: both;
 	display: none;
 }
@@ -168,7 +167,7 @@ textarea#post_content {
 #photo_post_upload{
 	width: 300px;
 	height: 35px;
-	background-color: #999; /* light blue */
+	background-color: #6C9; /* light blue */
 	padding: 8px 0px 0px 10px;
 	margin: 0px 0px 0px 0px;
 	-webkit-border-radius: 2.5px;
@@ -193,12 +192,14 @@ input#image{
 	margin: 3px auto 0px auto;
 }
 
+/* js countdown of characters remaining */
 #countdown{
+	display: none;
 	width: 200px;
 	height: 16px;
 	position: relative;
-	float: left;
-	margin: 3px 0px 0px 20px;
+	float: right;
+	margin: 2px 0px 0px 20px;
 	font-family: Verdana, sans serif;
 	font-size: .8em;
 	color: #666;
@@ -216,6 +217,29 @@ input#image{
 	position: relative;
 	float: left;
 	margin: 0px 0px 0px 10px;
+}
+
+/* random post helper question */
+#post_helpers {
+	width: 600px;
+	height: 16px;
+	position: relative;
+	float: left;
+	margin: 3px 0px 0px 20px;
+	font-family: Verdana, sans serif;
+	font-size: .8em;
+	color: #666;
+	text-align: left;	
+}
+
+#post_helper_question {
+	text-decoration: underline;
+	cursor: default;
+}
+
+#post_helper_answer {
+	margin: 0px 0px 0px 10px;
+	color: #1B9E6F;
 }
 	
 /* Post submit button and pivacy */

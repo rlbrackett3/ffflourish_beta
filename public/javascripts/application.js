@@ -61,6 +61,7 @@ $(document).ready(function(){
     $('#posting_options').slideDown(1000);
     $('#post_options_container').fadeIn(1200);
     $('#post_submit').fadeIn(1200);
+    $('#countdown').fadeIn(1000);
   });
 
   $('img#post_image').click(function() {
@@ -236,10 +237,38 @@ $(document).ready(function(){
     
   
   );
+  
+//////////////////////////////////////////////////////////////
+  // array of helpful suggestions for what to post about
+  var postHelpers = new Array(
+                      "What was the first this you did this morning?",
+                      "How many miles did you run today?",
+                      "Have you given anyone a hug today?",
+                      "What are you doing right now?",
+                      "Do you meditate?",
+                      "Have you gotten some fresh air?",
+                      "Take a deep breath.",
+                      "How bright is the sun today?",
+                      "What did you have for lunch?"
+                    );
+  
+  $('.active').live("click", function() {
+    var helperCount = postHelpers.length;
+    var position = Math.floor(Math.random() * helperCount);
+    var output = postHelpers[position - 1];
+    
+    $(this).removeClass('active');
+    $('#post_helper_answer').append(output).fadeIn(750, function() {
+       $(this).delay(2500).fadeOut(1000, function() {
+         $(this).empty();
+         $('#post_helpers').addClass('active');
+       });
+    });
+  });
+
 
 //////////////////////////////////////////////////////////////
   // linkify for links in posts
-  // seems to have broken with update to jquery 1.4.4
   $('.feed_entry_text').linkify();
   $('#user_handle').linkify();
 
