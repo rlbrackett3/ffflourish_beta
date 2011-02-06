@@ -269,27 +269,13 @@ li.feed_entry_comments {
     background-color: #E5E5E5;
 }
 
-p.errors {
-    width: 220px;
-    position: relative;
-    float: left;
-    margin: 5px 0px 0px 15px;
-    font-family: Georgia;
-    font-size: .6em;
-    color: red;     
-}
-
-p.errors ul li {
-    list-style: none;
-  }
-
 /* comment form items */
     .comment_field {
         width: 90%;
         height: 60px;
         max-width: 340px;
         min-height: 32px;
-        max-height: 96px;
+        /*max-height: 96px;*/
         position: relative;
         float: right;
         margin: 20px 16px 0px 0px;

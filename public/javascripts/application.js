@@ -85,7 +85,7 @@ $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
   // textarea autoResize
-  $('textarea#post_content').autoResize({
+  $('textarea#post_content, .comment_field').autoResize({
     // On resize:
     onResize : function() {
         $(this).css({opacity:0.8});
@@ -149,49 +149,50 @@ $(document).ready(function(){
   });
 
   // comment form
-  $(function() {
-    var hasError = false;
-    var commentText = $('.comment_field').val();
 
-    $('.comment_field')
-      .val(commentText)
-      .focus(function() {
-        if ( this.value == commentText ) this.value = ''
-      })
-      .blur(function() {
-        if ( !$.trim( this.value ) ) this.value = commentText
-      });
-    
-    // error handling for textarea value
-    // this does not work yet, perhaps it is a unique id issue
-    $('#comment_submit').click(function() {
-      $('.errors').hide();
-	    var postFormVal = $('#post_content').val();
+//  $(function() {
+//    var hasError = false;
+//    var commentText = $('.comment_field').val();
 
-	    if ( postFormVal == '' ) {
-	      $('.errors').replaceWith('<p class="errors">Oops! your comment was empty.</p>');
-        hasError = true;
-	    }
-	    else if ( postFormVal.length <= 4 ) {
-	      $('p.errors').replaceWith('<p class="errors">Oops! your comment was to short.</p>').fadeIn(2000).slideDown(2000);
-        hasError = true;
-        $('p.errors').fadeOut(4000).delay(3000).slideUp(1000);
-	    }
-	    else if( postFormVal == commentText ) {
-	      $('.errors').replaceWith('<p class="errors">Please provide a message.</p>');
-	      hasError = true;
-	    };
-      if (hasError == true) {
-        alert('oops!');
-        hasError = false;
-        return false;
-      }
-      else {
-        return true;
-      };
-      
-	  });
-  });
+//    $('.comment_field')
+//      .val(commentText)
+//      .focus(function() {
+//        if ( this.value == commentText ) this.value = ''
+//      })
+//      .blur(function() {
+//        if ( !$.trim( this.value ) ) this.value = commentText
+//      });
+//    
+//    // error handling for textarea value
+//    // this does not work yet, perhaps it is a unique id issue
+//    $('#comment_submit').click(function() {
+//      $('.errors').hide();
+//	    var postFormVal = $('#post_content').val();
+
+//	    if ( postFormVal == '' ) {
+//	      $('.errors').replaceWith('<p class="errors">Oops! your comment was empty.</p>');
+//        hasError = true;
+//	    }
+//	    else if ( postFormVal.length <= 4 ) {
+//	      $('p.errors').replaceWith('<p class="errors">Oops! your comment was to short.</p>').fadeIn(2000).slideDown(2000);
+//        hasError = true;
+//        $('p.errors').fadeOut(4000).delay(3000).slideUp(1000);
+//	    }
+//	    else if( postFormVal == commentText ) {
+//	      $('.errors').replaceWith('<p class="errors">Please provide a message.</p>');
+//	      hasError = true;
+//	    };
+//      if (hasError == true) {
+//        alert('oops!');
+//        hasError = false;
+//        return false;
+//      }
+//      else {
+//        return true;
+//      };
+//      
+//	  });
+//  });
   
 //////////////////////////////////////////////////////////////
   // flash notice and alert messages
