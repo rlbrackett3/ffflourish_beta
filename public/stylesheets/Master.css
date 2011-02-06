@@ -396,9 +396,9 @@ ul {
   list-style: none;
 }
 
-/*.field_with_errors {
+.field_with_errors input{
 	border: 1px solid #ff5e5a;
-}*/
+}
 
 p.errors {
     width: 220px;

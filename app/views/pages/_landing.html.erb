@@ -1,3 +1,9 @@
+<div id="new_user_question">
+  <%= form_for :post, :url => '/posts/create_before_account', :method => 'post' do |f| %>
+    <%= f.text_area :content %>
+    <%= f.submit "clicky" %>
+  <% end %>
+</div>
 <div id="rand_ffflourish_container">
   <p id="ffflourish_question" class="landing_text_large">
     What are you doing right now that's healthy for you?

@@ -22,8 +22,6 @@ class Post
 
   #-- search on --#
   search_in(:content,
-            { :user => :name },
-            { :user => :urlname},
             { :allow_empty_search => true}
             )
 

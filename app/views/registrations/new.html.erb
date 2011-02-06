@@ -1,0 +1,69 @@
+<div id="signin_errors">
+  <%= devise_error_messages! %>
+</div>
+<div id="signup_container">
+  <span id="signin_left">
+    <span class="signin_aux">
+      <p class="signin_label_aux">http://www.ffflourish.com/</p>
+    </span>
+  </span>
+  <span id="signin_center">
+    <%= form_for(resource,  :as => resource_name, 
+                            :url => registration_path(resource_name),
+                            :validate => true,
+                            :html => { :id => "registration_form" }) do |f| %>
+      <span class="signin_fields">
+        <%= f.label           :urlname, 
+                              "choose a unique URL!", 
+                              :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.text_field      :urlname, :class => "signin_field" %>
+      </span>
+      <span class="signin_fields">
+        <%= f.label           :name, "name", :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.text_field      :name, :class => "signin_field" %>
+      </span>
+      <span class="signin_fields">
+        <%= f.label           :email, "e-mail", :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.text_field      :email, :class => "signin_field" %>
+      </span>
+      <span class="signin_fields">
+        <%= f.label           :email_confirmation, 
+                              "e-mail confirmation", 
+                              :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.text_field     :email_confirmation, :class => "signin_field" %>
+      </span>
+      <span class="signin_fields">
+        <%= f.label           :password, 
+                              "password", 
+                              :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.password_field  :password, :class => "signin_field" %>
+      </span>
+      <span class="signin_fields">
+        <%= f.label           :password_confirmation, 
+                              "password confirmation",
+                              :class => "signin_label" %>
+        <span class="error"></span>
+        <%= f.password_field  :password_confirmation, :class => "signin_field" %>
+      </span>
+      <span id="signin_submit" class="actions">
+        <%= f.submit "sign up!", :class => "signin_btn" %>
+      </span>
+    <% end %>
+  </span>
+  <span id="signin_right">
+    <span class="signin_aux" id="right_column_spacer"></span>
+    <span class="signin_aux">
+      <% if controller_name != 'sessions' %>
+        <%= link_to "Or, Sign In!", new_session_path(resource_name),
+                                :class => 'signin_links',
+                                :id => 'signup_link' %>
+      <% end %>
+    </span>
+  </span>
+</div>
+

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   include ActiveModel::Validations
   include PostsHelper
   #-- Filters --#
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:create_before_account]
   before_filter :initialize_new_post, :only => [:index, :new]
 
 
@@ -57,9 +57,9 @@ class PostsController < ApplicationController
     respond_with(@user, @post)
   end
 #----------------------------------------------------------------------#
-  #--GET /users/1/posts
-  #--GET /users/1/posts.xml
-  #--GET /users/1/posts.json                                HTML and AJAX
+  #--POST /users/1/posts
+  #--POST /users/1/posts.xml
+  #--POST /users/1/posts.json                                HTML and AJAX
   #---------------------------------------------------------------------#
   def create
     @user = User.find_by_slug(params[:user_id])
@@ -83,6 +83,24 @@ class PostsController < ApplicationController
     end
 #    flash[:notice] = 'Post created successfully!' if @post.valid?
 #    respond_with(@user, @posts)
+  end
+#----------------------------------------------------------------------#
+  #--POST /users/1/posts
+  #--POST /users/1/posts.xml
+  #--POST /users/1/posts.json                                HTML and AJAX
+  #---------------------------------------------------------------------#
+  def create_before_account
+
+    @post = Post.new(params[:post])
+    if @post.save
+      session[:post_content] = @post.content
+      @post.destroy
+      respond_with(@post, :location => signup_path)
+    else
+      flash[:notice] = "Oops, somthing went wrong, please try again."
+      redirect_to root_path
+    end
+    
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/edit

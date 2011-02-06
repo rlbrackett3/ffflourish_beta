@@ -16,10 +16,13 @@ Ffflourish::Application.routes.draw do
   get 'random_posts/show'
   match '/random' => 'random_posts#show', :as => 'random'
 
-  devise_for :users
-  #  How To: Redirect to a specific page on successful sign in
-  #  redirect to another namespace that is outside of the user namespace
-  #match '/profile/:id' => 'profiles#show', :as => 'profile'
+  devise_for :users, :controllers => {:registrations => "registrations"} 
+  
+  devise_scope :user do
+    get "/signin"     => "devise/sessions#new"
+    match "/signout"  => "devise/sessions#destroy"
+    get "/signup"     => "registrations#new"
+  end
 
   resources :users do
     member do
@@ -44,15 +47,9 @@ Ffflourish::Application.routes.draw do
     resources :comments
   end
   
+  post '/posts/create_before_account' => 'posts#create_before_account'
+  
   resources :comments
-
-#  resource :profile, :only => [:show, :edit, :update]
-
-  devise_scope :user do
-    get "/signin"     => "devise/sessions#new"
-    match "/signout"  => "devise/sessions#destroy"
-    get "/signup"     => "devise/registrations#new"
-  end
 
   # named routes for user resources
   match '/:id'          => 'posts#index', :as => 'user_feed'

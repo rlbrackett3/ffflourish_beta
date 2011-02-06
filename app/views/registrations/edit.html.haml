@@ -1,0 +1,38 @@
+%h2
+  Edit #{resource_name.to_s.humanize}
+#devise_errors
+  = devise_error_messages!
+#edit_signup_form
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    #reg_avatar
+      = link_to (image_tag "#{@user.profile.avatar.profile_image.url}"), edit_user_profile_path(@user, @profile)
+    #edit_signup_fields
+      %p.field
+        = f.label :email, :class => "reg_label"
+        = f.email_field :email, :class => "reg_field"
+        %br
+      %p.field
+        = f.label :password, :class => "reg_label"
+        = f.password_field :password, :class => "reg_field"
+        %br
+      %p
+        %i (leave blank if you don't want to change it)
+        %br
+      %p.field
+        = f.label :password_confirmation, :class => "reg_label"
+        = f.password_field :password_confirmation, :class => "reg_field"
+        %br
+      %p.field
+        = f.label :current_password, :class => "reg_label"
+        = f.password_field :current_password, :class => "reg_field"
+        %br
+      %p
+        %i (we need your current password to confirm your changes)
+        %br
+        %br
+      %p.actions= f.submit "Update", :class => "signup_btn"
+      %h3 Cancel my account
+      %p
+      Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
+      %p= link_to "Back", :back
+
