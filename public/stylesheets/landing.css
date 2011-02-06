@@ -74,26 +74,26 @@ img#landing_logo {
 }
 
 #random_public_ffflourish {
-	width: 400px;
+	width: 420px;
 	min-height: 144px;
-	max-height: 360px;
+	max-height: 380px;
 	position: relative;
 	float: left;
-	margin: 10px auto 0px auto;
+	margin: 10px 0 0 0;
 	overflow: hidden;
 	background-color: #FFF;
 /*	-moz-box-shadow: 3px 3px 5px #efefef;*/
-/*  	-webkit-box-shadow: 3px 3px 5px #efefef;*/
-/*  	box-shadow: 3px 3px 5px #efefef;*/
+/*  -webkit-box-shadow: 3px 3px 5px #efefef;*/
+/*  box-shadow: 3px 3px 5px #efefef;*/
 	-webkit-border-radius: 10px 10px 10px 10px; 
 	-moz-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px; /* top-left, top-right, bottom-right, bottom-left */	
 }
 
 #random_ffflourish {
-	width: 400px;
+	width: 420px;
 	min-height: 144px;
-	max-height: 360px;
+	max-height: 380px;
 	position: relative;
 	float: left;
 	margin: 10px auto 0px auto;
@@ -101,7 +101,7 @@ img#landing_logo {
 }
 
 #rand_post_content {
-	width: 360px;
+	width: 380px;
 	position: relative;
 	float: left;
 	margin: 20px 0px 10px 20px;
@@ -155,7 +155,7 @@ img#landing_logo {
 
 #rand_post_img {
 	width: 125px;
-	/*height: 165px;*/	
+	max-height: 250px;	
 	position: relative;
 	float: right;
 	margin: 10px 20px 15px 0px;
