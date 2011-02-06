@@ -31,9 +31,11 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def show
     @user = User.find_by_slug(params[:user_id])
-    @post = @user.posts.find(params[:id])
-    @image = @post.image
-    @comments = @post.comments.all
+    unless @user.posts == nil
+      @post = @user.posts.find(params[:id])
+      @image = @post.image
+      @comments = @post.comments.all
+    end
 
     @title = @post.created_at
 

@@ -15,6 +15,11 @@ class User
   field :urlname
   field :name
   field :likes, :type => Array, :default => []
+  
+  # user management through cancan and roles
+  field :role
+  
+  ROLES = %w[admin user]
 
   slug  :urlname, :index => true
 
@@ -54,8 +59,10 @@ class User
                             :confirmation => true,
                             :uniqueness => { :case_sensitive => false }
   validates :profile,       :associated => true
+#  validates :role,          :presence => true
 
 #--Callbacks--#
+  after_create  :default_role
   after_create  :seed_profile
   after_update  :update_name
 
@@ -107,6 +114,11 @@ protected
 
   def update_name
     self.name = self.profile.name
+  end
+  
+  # set default user role
+  def default_role
+    self.role = "user"
   end
 
 #--Seed the user's profile with a name and nil data--#
