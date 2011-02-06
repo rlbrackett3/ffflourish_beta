@@ -65,9 +65,43 @@ img#landing_logo {
 	text-align: right;
 }
 
+/* signup post form */
+#new_user_question {
+    width: 420px;
+	min-height: 100px;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+#landing_post {
+    height: 60px;
+	width: 400px;
+	max-width: 400px;
+	position: relative;
+	float: left;
+	padding: 10px;
+	border: 1px solid #FFF;
+	outline: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	overflow: auto;
+	font-family: Verdana, sans serif;
+	font-size: 1.0em;
+	line-height:  1.1em;
+	word-spacing: 0.1em;
+	color: #999;
+	text-align: left;
+}
+
+#landing_post_submit {
+    position: relative;
+    float: right;
+}
+
 /* random public ffflourish examples */
 #rand_ffflourish_container {
-	width: 400px;
+	width: 420px;
 	min-height: 260px;
 	margin: 0 auto;
 	padding: 5px;

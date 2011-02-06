@@ -1,7 +1,7 @@
 <div id="new_user_question">
   <%= form_for :post, :url => '/posts/create_before_account', :method => 'post' do |f| %>
-    <%= f.text_area :content %>
-    <%= f.submit "clicky" %>
+    <%= f.text_area :content, :id => "landing_post" %>
+    <%= f.submit "clicky", :id => 'landing_post_submit', :class => 'actions' %>
   <% end %>
 </div>
 <div id="rand_ffflourish_container">
