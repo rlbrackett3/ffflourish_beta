@@ -27,7 +27,7 @@ class ProfileController < ApplicationController
 
       respond_with(@user, @profile)
     else
-      redirect_to(user_path(@user), :alert => "You may not update another users profile.")
+      redirect_to(user_feed_path(@user), :alert => "You may not update another users profile.")
     end
   end
 #---------------------------------------------------------------------#

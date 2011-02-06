@@ -5,7 +5,7 @@
   position: relative;
   float: left;
 	clear: both;
-	margin: 20px 0px 0px 10px;
+	margin: 20px 0px 0px 20px;
 	height: 43px;
 /*	background-color: red; */
 	list-style: none;
@@ -137,7 +137,7 @@ select#post_permissions{
 }
 
 select#post_permissions option {
-  line-height: double;
+  line-height: 200%;
 
 }
 

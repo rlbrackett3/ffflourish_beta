@@ -1,0 +1,19 @@
+<!-- Create a new post -->
+<% if @user == current_user %>
+  <%= render 'shared/feed_form' %>
+<% end %>
+<!-- Listing all the users posts -->
+<% if @posts.any? %>
+  <div id="results">
+    <div class="feed">
+      <%= render :partial => 'shared/feed_item', :collection => @posts %>
+    </div>
+  </div>
+<% else %>
+  <% if @user == current_user %>
+    <div id="get_posting">
+      <p>You have no ffflourishes yet!</p> 
+      <p>Answer the question above to get started.</p> 
+    </div>
+  <% end %>
+<% end %>

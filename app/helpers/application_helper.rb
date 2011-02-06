@@ -24,7 +24,7 @@ module ApplicationHelper
   # determines where the logo link reqirects users
   def logo_path
     if user_signed_in?
-      user_path(current_user)
+      user_feed_path(current_user)
     else
       root_path
     end

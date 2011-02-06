@@ -4,8 +4,10 @@
 	</div>
 	<%= form_for [@user, @post], :html => {:multipart => true} do |f| %>
 	  <div id="question_field">
-	    <%=f.text_area :content, :class => 'ffflourish_box_editor',
-	                             :value => "What are you doing right now that's healthy for you?" %>
+	    <%=f.text_area :content,  :class => 'ffflourish_box_editor',
+	                              :rows => 3,
+	     :placeholder => "What are you doing right now that's, healthy for you?",
+	     :value => "What are you doing right now that's, healthy for you?" %>
 	  </div>
 	  <p class="errors"></p>
 	  <div id="posting_options">
@@ -17,7 +19,7 @@
 	    <%= render 'shared/feed_form_icons' %>
 	    <%= render 'shared/post_form', :f => f %>
 	    <div id="post_buttons_bottom">
-	      <%= f.submit "post", :class => [ "actions", "submit_btn" ], :disable_with => "..." %>
+	      <%= f.submit "post!", :class => [ "actions", "submit_btn" ], :disable_with => "..." %>
 	    </div><!-- /post_buttons_bottom -->
 	  </div>
   <% end %>

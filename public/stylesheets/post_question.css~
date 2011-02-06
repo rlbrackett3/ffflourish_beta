@@ -1,0 +1,270 @@
+/* Posting fields */
+
+#question_background{
+	position: relative;
+	float: left;
+	width: 702px;
+/*	height: 182px;*/
+	background-color: #E5E5E5; /* lightest gray */
+	margin-left: 10px;
+	padding: 0px 0px 10px 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#question{
+	width: 702px;
+	height: 20px;
+	padding-top: 5px;
+	margin-left: 10px;
+	margin-top: 0px;
+	text-align: left;
+	background-color: transparent;
+	font-family: Times, serif;
+	font-size:14px;
+	color: #666;
+	font-style: italic;
+}
+
+/* TEXT BOX */
+
+#question_field {
+  margin: 0px 0px 0px 20px;
+}
+
+textarea#post_content {
+	min-height: 60px;
+	width: 640px;
+	max-width: 640px;
+	position: relative;
+	float: left;
+	padding: 10px;
+	border: 1px solid #FFF;
+	outline: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	overflow: auto;
+	font-family: Verdana, sans serif;
+	font-size: 1.0em;
+	line-height:  1.1em;
+	word-spacing: 0.1em;
+	color: #999;
+	text-align: left;
+}
+
+
+/*  POST OPTIONS DROP DOWN MENU */
+#post_options_container {
+	display: none;
+	position: relative;
+	float: left;
+	clear: both;
+	margin: 20px 0px 0px 20px;
+	height: 43px;
+	list-style: none;
+}
+
+#post_options_container ul {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+#post_options_container li{
+	margin-right:5px; 
+	float: left;
+}
+
+#post_options_container li a {
+/*	 padding: 0.5em; */
+/*	 margin-right:5px; */
+	color: #1B9E6F; /* DARK GREEN WHEN OVER ICONS*/
+	display: block;
+	cursor: default;
+}
+
+#post_options_container li a:hover{
+	color: #1B9E6F;  /* DARK GREEN */
+}
+
+.post_type{
+	float: left;
+	margin-right: 5px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+	overflow: hidden;
+	background-color: #6C9; /* #C1C3C9; */
+	list-style: none;
+}
+
+.post_type:hover{
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+	background: #99FFFF;
+}
+
+.post_type:hover .post_type_dropdown {
+	display: block;
+}
+
+.icon_background {
+	width: 43px;
+	height:43px;
+	cursor: default;
+}
+
+.icon_background:hover {
+	width: 43px;
+	height:43px;
+	/* background-color: #99FFFF; */ /* BRIGHT LIGHT BLUE*/
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+
+/* attach a photo to your post */
+#posting_options {
+	width: 100%;
+	height: 90px;
+	clear: both;
+	display: none;
+}
+
+.post_text_fields {
+	display: none;
+}
+
+.post_image_fields {
+	display: none;
+}
+
+#post_fields_container{
+	display: none;
+	position: relative;
+	float: left;
+	margin: 20px 0px 0px 10px;
+	width: 410px;
+}
+
+#photo_post_preview{
+	background-color: white;
+	width: 404px;
+	height: 308px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 2.5px;
+}
+
+#photo_post_upload{
+	width: 300px;
+	height: 35px;
+	background-color: #999; /* light blue */
+	padding: 8px 0px 0px 10px;
+	margin: 0px 0px 0px 0px;
+	-webkit-border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	border-radius: 3px;
+	font-family: Verdana, sans serif;
+	color: #1B9E6F;  /* dark green */
+	font-size: 1.1em;
+	text-align: center;
+	line-height: 1.9em;
+}
+
+#photo_post_upload:hover{
+	background-color: #CCFFFF; /* light blue */
+}
+
+input#image{
+	position: relative;
+	float: left;
+  	color: #FFFFFF;
+	font-family: Verdana, sans serif;
+	margin: 3px auto 0px auto;
+}
+
+#countdown{
+	width: 200px;
+	height: 16px;
+	position: relative;
+	float: left;
+	margin: 3px 0px 0px 20px;
+	font-family: Verdana, sans serif;
+	font-size: .8em;
+	color: #666;
+	clear: both;
+}
+
+#countdown_title {
+	position: relative;
+	float: left;
+	text-align: left;
+}
+	
+	
+#counter {
+	position: relative;
+	float: left;
+	margin: 0px 0px 0px 10px;
+}
+	
+/* Post submit button and pivacy */
+#post_buttons_bottom {
+	position: relative;
+	float: right;
+	margin-top: 20px;
+}
+
+#post_privacy_control{
+	text-align: left;
+	color: #666;
+	font-style: italic;
+	font-size: 1em;
+/*	line-height: 22px;*/
+	float:right;
+	margin-right: 2px;
+}
+
+select#post_permissions{
+    width: 100px;
+    height: 25px;
+    font-family: Verdana, sans serif;
+	font-size: 1em;
+	color: #fff;
+	background-color: #c1c3c9;
+	border: 0px;
+	border-color: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+select#post_permissions option {
+  line-height: 200%;
+
+}
+
+#post_submit {
+	width: 78px;
+	height: 43px;
+	position: relative;
+	float: left;
+	margin: 0px 20px 0px 2px;
+	clear: right;
+	color:#fff;
+	font-family: Verdana, sans serif;
+	font-weight:normal;
+	font-size: 12pt;
+	font-style: normal;
+	font-weight: bolder;
+}

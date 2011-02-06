@@ -1,6 +1,6 @@
 <%= link_to (image_tag f.user.profile.avatar.avatar.url,
                                                 :class => "avatar_small"),
-                                       user_path(f.user) %>
+                                       user_feed_path(f.user) %>
 <span class="following_links" id="follow_link_<%= f.user.id %>">
   <% if f.user.followers.include?(current_user) %>
     <%= link_to "unfollow", unfollow_user_path(f.user),

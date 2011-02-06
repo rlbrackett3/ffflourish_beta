@@ -55,7 +55,7 @@ Ffflourish::Application.routes.draw do
   end
 
   # named routes for user resources
-  match '/:id'          => 'users#show', :as => 'user'
+  match '/:id'          => 'posts#index', :as => 'user_feed'
 
   # named routes for user profile
   get '/:user_id/profile' => 'profile#show', :as => 'user_profile'

@@ -26,13 +26,23 @@
 <div class="post_stat" id="post_comments_stats_<%= f.id %>">
   <span class="activity_images">
     <% if f.commenters(current_user) == true %>
-      <%= image_tag "comment_blue.png", :size => "20x20",
-                                        :class => "comment_post_link",
-                                        :id => "feeditem_comments_img_#{f.id}" %>
+      <%= link_to (image_tag "comment_blue.png", 
+                                    :size => "20x20",
+                                    :class => "comment_post_link",
+                                    :id => "feeditem_comments_img_#{f.id}"),
+                user_post_comments_path(f.user, f),
+                :remote => true,
+                :id => "feeditem_comments_img_#{f.id}",
+                :class => "comment_count" %>
     <% else %>
-      <%= image_tag "comment.png", :size => "20x20",
-                                   :class => "comment_post_link",
-                                   :id => "feeditem_comments_img_#{f.id}" %>
+      <%= link_to (image_tag "comment.png", 
+                                    :size => "20x20",
+                                    :class => "comment_post_link",
+                                    :id => "feeditem_comments_img_#{f.id}"),
+                user_post_comments_path(f.user, f),
+                :remote => true,
+                :id => "feeditem_comments_img_#{f.id}",
+                :class => "comment_count" %>
     <% end %>
   </span>
   <span class="activity_count">

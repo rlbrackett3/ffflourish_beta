@@ -1,7 +1,8 @@
 /* TEXT POST FIELD */
 
 #posting_options {
-  display: none;
+	clear: both;
+	display: none;
 }
 
 .post_text_fields {
@@ -33,7 +34,7 @@
 }
 
 #photo_post_upload{
-	width: 240px;
+	width: 100%;
 	height: 35px;
 	background-color: #C1C3C9; /* light blue */
 	padding: 8px 0px 0px 10px;
@@ -55,9 +56,36 @@
 input#image{
   	color: #FFFFFF;
 	font-family: Verdana, sans serif;
+	margin: 0px auto 10px auto;
 }
 
+#countdown{
+	width: 200px;
+	height: 16px;
+	position: relative;
+	float: left;
+	margin: 3px 0px 0px 20px;
+	font-family: Verdana, sans serif;
+	font-size: .8em;
+	color: #666;
+	clear: both;
+}
 
+#countdown_title {
+	position: relative;
+	float: left;
+	text-align: left;
+	}
+	
+	
+#counter {
+	position: relative;
+	float: left;
+	margin: 0px 0px 0px 10px;
+	
+	}
+
+/* old stuff for esit post form */
 #post_form_first_title_container{
 	width: 404px;
 	height: 15px;
@@ -112,81 +140,6 @@ input#image{
 	padding-bottom: 2px;
 }
 
-.post_form_title_entry{
-	width: 404px;
-	height: 25px;
-	background-color: white;
-	-webkit-border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-	border-radius: 2.5px;
-	border: none;
-	text-align:left;
-	font-family: Verdana, sans serif;
-	font-size: 1.1em;
-	line-height:  1.25em;
-	word-spacing: 0.09em;
-	color: #999;
-}
 
-.post_form_source_entry{
-	width: 200px;
-	height: 25px;
-	background-color: white;
-	-webkit-border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-	border-radius: 2.5px;
-	border: none;
-	text-align:left;
-	font-family: Verdana, sans serif;
-	font-size: 1.1em;
-	line-height:  1.25em;
-	word-spacing: 0.09em;
-	color: #999;
-	float: left;
-	margin-left: 2px;
-}
-
-.post_form_tags_entry{
-	width: 404px;
-	max-width: 404px;
-	height: 50px;
-	background-color: white;
-	-webkit-border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-	border-radius: 2.5px;
-	border: none;
-	text-align:left;
-	font-family: Verdana, sans serif;
-	font-size: 1.1em;
-	line-height:  1.25em;
-	word-spacing: 0.09em;
-	color: #999;
-	/* vertical-align: top; */
-}
-
-#countdown{
-	width: 200px;
-	height: 10px;
-	position: relative;
-	float: left;
-	margin: 3px 0px 0px 10px;
-	font-family: Verdana, sans serif;
-	font-size: .8em;
-	color: #666;
-	clear: both;
-}
-
-#countdown_title {
-	/*position: relative;*/
-	float: left;
-	text-align: left;
-	}
-	
-	
-#counter {
-	position: relative;
-	float: right;
-	
-	}
 
 

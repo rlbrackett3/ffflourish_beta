@@ -17,7 +17,7 @@
     </p>
     <p id="user_handle">
       <% if @user == current_user %>
-        <%= link_to @user.profile.handle, edit_user_profile_path(@user) %>
+        <%= @user.profile.handle %>
       <% else %>
         <%= @user.profile.handle if @user.profile.handle? %>
       <% end %>

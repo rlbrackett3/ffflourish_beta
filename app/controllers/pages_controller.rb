@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @title = "home"
     @random_post = Post.random
     if user_signed_in?
-      redirect_to user_path(current_user)
+      redirect_to user_feed_path(current_user)
     end
   end
   #--GET /about

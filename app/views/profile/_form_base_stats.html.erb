@@ -1,5 +1,5 @@
 <div id="profile_avatar">
-  <%= link_to (image_tag @user.profile.avatar.profile_image.url), edit_user_profile_path(@user), :class => "avatar_img" %>
+  <%= image_tag @user.profile.avatar.profile_image.url, :class => "avatar_img" %>
   <div id="photo_upload">
     <%= f.file_field    :avatar, :id => "file_upload" %>
     <%= f.hidden_field  :avatar_cache %>

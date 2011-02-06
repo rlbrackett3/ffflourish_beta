@@ -4,7 +4,7 @@
   - if @post.comments.any?
     %h2 Comments
     - @post.comments.each do |comment|
-      #commenter= link_to comment.user.name, user_path(comment.user)
+      #commenter= link_to comment.user.name, user_feed_path(comment.user)
       #comment_content
         %p= comment.content
       %div.created= comment.created_at.strftime("%m.%d.%Y @ %H:%M:%S")

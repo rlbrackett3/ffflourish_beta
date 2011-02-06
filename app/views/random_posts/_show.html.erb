@@ -10,7 +10,7 @@
                                       :id => "rand_post_avatar" %>
       <p id="rand_post_author_name" class="post_author">
         <%= link_to @random_post.user.profile.name, 
-                                    user_path(@random_post.user) %>
+                                    user_feed_path(@random_post.user) %>
       </p>
     </span>
     <p id="rand_post_date" class="post_date">

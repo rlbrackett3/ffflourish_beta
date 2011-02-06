@@ -56,16 +56,17 @@ $(document).ready(function(){
 	
 //////////////////////////////////////////////////////////////
   // toggle post options icons
+  $('#post_submit').hide();
   $('#post_content').focus(function() {
-    $('#posting_options').show('slow', function() {
-      $('#post_options_container').show(1000);
-      $('#post_fields_container').show('fast');
-    });
+    $('#posting_options').slideDown(1000);
+    $('#post_options_container').fadeIn(1200);
+    $('#post_submit').fadeIn(1200);
   });
 
   $('img#post_image').click(function() {
-    $('.post_image_fields').toggle('slow', function() {});
-    $('.post_text_fields').fadeIn(2000);
+    $('#post_fields_container').show(250, function() {
+      $('.post_image_fields').toggle(1000, function() {});
+    });
   });
 
 //////////////////////////////////////////////////////////////
@@ -80,6 +81,23 @@ $(document).ready(function(){
     }
     $('#counter').text(200-this.value.length);
   });
+
+//////////////////////////////////////////////////////////////
+  // textarea autoResize
+  $('textarea#post_content').autoResize({
+    // On resize:
+    onResize : function() {
+        $(this).css({opacity:0.8});
+    },
+    // After resize:
+    animateCallback : function() {
+        $(this).css({opacity:1});
+    },
+    // Quite slow animation:
+    animateDuration : 300,
+    // More extra space:
+    extraSpace : 10
+});
 
 //////////////////////////////////////////////////////////////
   // onblur and onfocus functions for text areas
@@ -223,6 +241,7 @@ $(document).ready(function(){
   // linkify for links in posts
   // seems to have broken with update to jquery 1.4.4
   $('.feed_entry_text').linkify();
+  $('#user_handle').linkify();
 
 });
 

@@ -13,7 +13,7 @@
     <span class="feed_entry_content">
       <% unless @posts %>
         <p class="feed_entry_author">
-          <%= link_to feed_item.user.name, user_path(feed_item.user),
+          <%= link_to feed_item.user.name, user_feed_path(feed_item.user),
                                         :class => 'post_author' %>
         </p>
       <% end %>

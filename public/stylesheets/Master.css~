@@ -107,80 +107,31 @@ ul {
 
 /* User page header outsourced to name_menu_bar*/
 
-/* Posting fields */
-
-#question_background{
-  position: relative;
-  float: left;
-	width: 702px;
-/*	height: 182px;*/
-	background-color: #E5E5E5; /* lightest gray */
-	margin-left: 10px;
-	padding: 0px 0px 10px 0px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-#question{
-	width: 702px;
-	height: 20px;
-	padding-top: 5px;
-	margin-left: 10px;
-	margin-top: 0px;
-	text-align: left;
-	background-color: transparent;
-	font-family: Times, serif;
-	font-size:14px;
-	color: #666;
-	font-style: italic;
-}
-
-/* TEXT BOX /////////////////////////////////////*/
-
-#question_field {
-  margin: 0px 0px 0px 10px;
-}
-
-#post_content {
-  float: left;
-  height: 60px;
-  width: 660px;
-	max-width: 660px;
-  padding: 10px;
-	border: 1px solid #FFF;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	color: #222;
-	overflow: hidden;
-	font-family: Verdana, sans serif;
-	font-size: 1.1em;
-	line-height:  1.25em;
-	word-spacing: 0.09em;
-	color: #666;
-	text-align: left;
-}
 
 /* Post type select outsourced to posting_icons */
 
 .actions {
 	background-color: #66CC99;
   	color:#fff;
-	font-family:"Georgia", Times New Roman, Times, serif;
-	font-style: italic;
-	font-weight: normal;
-	font-size: 1.2em;
+	font-family: Verdana, sans serif;
+	font-weight:normal;
+	font-size: 12pt;
+	font-style: normal;
+	font-weight: bolder;
 	line-height: 22px;
 	border: none;
-	-webkit-border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-	border-radius: 2.5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .actions:hover {
-  background-color: #C1C3C9;
-  cursor: default;
+	background-color: #CCFFFF;
+	cursor: default;
+	padding: 2px 2px 0px 0px;
+	-moz-box-shadow: 2px 2px 8px #fff;
+	-webkit-box-shadow: 2px 2px 8px #fff;
+	box-shadow: 2px 2px 8px #;
 }
 
 /* posting forms outsources to posting_forms */
@@ -413,7 +364,7 @@ ul {
 	border: none;
 	padding: 5px;
 	padding-bottom: 0;
-	margin: 20px 0px 10px 110px;
+	margin: 0px 0px 10px 110px;
 	background-color: #fff;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -449,6 +400,21 @@ ul {
 	border: 1px solid #ff5e5a;
 }*/
 
+p.errors {
+    width: 220px;
+    position: relative;
+    float: left;
+    margin: 5px 0px 0px 15px;
+    font-family: Georgia;
+    font-size: .6em;
+    color: red;   
+    text-align: left;  
+}
+
+p.errors ul li {
+    list-style: none;
+  }
+
 .error {
 	position: absolute;
 	right: 0px;
@@ -458,6 +424,7 @@ ul {
 	font-style: italic;
 	color: #ff5e5a;
 }
+
 
 #debug {
   position: relative;
