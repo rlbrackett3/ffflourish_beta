@@ -18,8 +18,6 @@
           </div>
         <% end %>
         <!-- end flash notice for alert and notice messages -->
-        <%= link_to "sign in", new_user_session_path, 
-                                :id => "landing_signin_link" %>
       </div>
       <!-- main container for landing pages -->
       <div id="main_landing">
@@ -34,6 +32,9 @@
                                                   :alt => 'ffflourish land' %>
       </div>
       <!-- end landscape image of ffflourish land -->
+      <div id="landing_footer">
+        <%= render 'layouts/footer' %>
+      </div>
     <!-- end non-signed in users -->
     <% else %>
       <!-- top bar navigation background -->

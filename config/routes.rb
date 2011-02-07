@@ -60,10 +60,10 @@ Ffflourish::Application.routes.draw do
   match '/:user_id/profile/edit' => 'profile#edit', :as => 'edit_user_profile'
 
   # general routes
-  get '/ffflourish/about'        => 'pages#about',    :as => 'about'
-  get '/ffflourish/tour'         => 'pages#tour',     :as => 'tour'
-  get '/ffflourish/terms'        => 'pages#terms',    :as => 'terms'
-  match '/ffflourish/contact'    => 'pages#contact',  :as => 'contact'
+  get '/ffflourish/about'         => 'pages#about',         :as => 'about'
+  get '/ffflourish/terms'         => 'pages#terms',         :as => 'terms'
+  get '/ffflourish/who-made-this' => 'pages#who_made_this', :as => 'who'
+  match '/ffflourish/contact'     => 'pages#contact',       :as => 'contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

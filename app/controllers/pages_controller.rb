@@ -21,15 +21,15 @@ class PagesController < ApplicationController
   #--GET /tour.xml
   #--GET /tour.json                                       HTML and AJAX
   #-------------------------------------------------------------------#
-  def tour
-    @title = "tour"
+  def who_made_this
+    @title = "who made this?"
   end
   #--GET /terms
   #--GET /terms.xml
   #--GET /terms.json                                      HTML and AJAX
   #-------------------------------------------------------------------#
   def terms
-    @title = "terms & conditions"
+    @title = "community terms"
   end
   #--GET /contact
   #--GET /contact.xml

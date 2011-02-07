@@ -36,7 +36,7 @@
     </span>
     <span class="signin_aux">
       <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Or, Sign Up!", new_registration_path(resource_name),
+        <%= link_to "Or, Sign Up!", signup_path,
                                 :class => 'signin_links',
                                 :id => 'signup_link' %>
       <% end %>

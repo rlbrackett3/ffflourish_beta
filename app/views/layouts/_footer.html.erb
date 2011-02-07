@@ -1,13 +1,12 @@
-<div id="bottom_table">
-  <table border="0">
-    <tr>
-      <th class="footer_first">&copy ffflourish 2010</th>
-      <th class="footer_last"><%= link_to "about.", about_path %></th>
-      <th class="footer_last"><%= link_to "terms.", terms_path %></th>
-      <th class="footer_last"><%= link_to "jobs.", '#' %></th>
-      <th class="footer_last"><%= link_to "contact.", contact_path %></th>
-      <th class="footer_last"><%= link_to "take the tour.", tour_path %></th>
-      <th class="footer_last"><%= link_to "blog - putafonit", 'http://putafonit.com', :target => '_blank' %></th>
-    </tr>
-  </table>
-</div>
+<ul id="footer_links">
+  <li class="footer_link">&copy<%= link_to " ffflourish 2011", "#" %></li>
+  <li class="footer_dot">&bull;</li>
+  <li class="footer_link"><%= link_to "about", about_path %></li>
+  <li class="footer_dot">&bull;</li>
+  <li class="footer_link"><%= link_to "terms", terms_path %></li>
+  <li class="footer_dot">&bull;</li>
+  <li class="footer_link"><%= link_to "who made this?", who_path %></li>
+  <li class="footer_dot">&bull;</li>
+  <li class="footer_link"><%= link_to "feedback", contact_path %></li>
+</ul>
+

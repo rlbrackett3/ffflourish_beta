@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 #      @post.update_attributes!(:user_id => )
       if session[:post_content]
          resource.posts.create(:content => session[:post_content])
+         session[:post_content] = nil
       end
      
       if resource.active?
@@ -32,7 +33,5 @@ class RegistrationsController < Devise::RegistrationsController
     #@user.reset_authentication_token!
     redirect_to edit_user_registration_path(@user)
   end
-  
-  protected
 
 end

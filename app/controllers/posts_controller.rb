@@ -97,7 +97,7 @@ class PostsController < ApplicationController
       @post.destroy
       respond_with(@post, :location => signup_path)
     else
-      flash[:notice] = "Oops, somthing went wrong, please try again."
+      flash[:notice] = "Oops, something went wrong, please try again."
       redirect_to root_path
     end
     

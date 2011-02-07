@@ -295,6 +295,7 @@ ul {
   	float: left;
 	width: 960px;
   	margin: 0px 0px 0px 0px;
+  	padding: 0px 10px; 
 	height: 25px;
 	background-color: #FFF;
 	-webkit-border-radius: 0px 0px 10px 10px;
@@ -302,20 +303,28 @@ ul {
 	border-radius: 0px 0px 10px 10px;
 }
 
-#bottom_table{
-  position: relative;
-  float: left;
-	margin: 0px auto;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size:12px;
-	font-style:italic;
+#footer_links {
+	width: 720px;
+	height: 24px;
+	position: relative;
+	float: left;
+	margin: 3px 0px 0px 84px;
+	list-style: none;
+	font-family: Verdana;
+	font-size: 10pt;
 	color: #999;
 	text-align:center;
 }
 
-#copyright_ffflourish, #about, #terms, #privacy, #advertise, #jobs, #contact, #blog{
-	margin: 0px 10px 0px 10px;
+#footer_links li{
+	position: relative;
+	float: left;
+	margin: 0px 20px 0px 0px;
+	color: #45e5ff;
 }
+#footer_links li a{color: #45e5ff;}
+#footer_links li a:hover{color: #31f48e;}
+/*#footer_links li a:visited{color: #45e5ff;}*/
 
 /* NOTICE AND ALERT MESSAGES FOR DEVISE */
 #notifications {
@@ -396,18 +405,18 @@ ul {
   list-style: none;
 }
 
-/*.field_with_errors {
+.field_with_errors input{
 	border: 1px solid #ff5e5a;
-}*/
+}
 
 p.errors {
     width: 220px;
     position: relative;
     float: left;
     margin: 5px 0px 0px 20px;
-    font-family: Georgia;
+    font-family: Verdana;
     font-size: .6em;
-    color: red;   
+    color: #ff5e5a;   
     text-align: left;  
 }
 
@@ -419,9 +428,9 @@ p.errors ul li {
 	position: absolute;
 	right: 0px;
 	top: 0px;
-	font-family: Georgia;
-	font-size: 10pt;
-	font-style: italic;
+	font-family: Verdana;
+	font-size: 8pt;
+	font-style: normal;
 	color: #ff5e5a;
 }
 
