@@ -4,9 +4,8 @@ apps:
   #   production: awesomeapp
   # would create the RACK_ENV=production
   # and deploy to http://awesomeapp.heroku.com
-  production: ffflourishtest
-  staging: ffflourishtest-staging
-  legacy: ffflourishtest-legacy
+  production: ffflourish
+  staging: ffflourish-staging-bairs
 
 stacks:
   # choose the stacks you want to use for each app.
@@ -27,7 +26,7 @@ config:
   production:
     CONFIG_VAR1: "config1-production"
   staging:
-    CONFIG_VAR1: "config1-staging"
+    CONFIG_VAR1: "mongodb://[username:password@]host1[:port1][/database]"
 
 collaborators:
   all:
@@ -35,7 +34,10 @@ collaborators:
 
 domains:
   production:
-    - "ffflourishtest.heroku.com"
+    - "ffflourish.heroku.com"
+    - "www.ffflourish.heroku.com"
+  staging:
+    - "ffflourish-staging-bairs.heroku.com"
 
 addons:
   all:
@@ -43,6 +45,8 @@ addons:
     - bundles:single
     - mongohq:free
     - shareddatabase:5mb
+    - cron:daily
+    - sendgrid:free
 
   production:
     # list production env specific addons here

@@ -4,7 +4,6 @@ gem 'rails', '3.0.3'
 
 #--Deploy with Heroku--#
 gem 'heroku'
-gem 'heroku-rails'
 gem 'taps'
 
 #--Mongoid and MongoDB specific gems--#
@@ -68,13 +67,15 @@ group :development, :test do
 end
 
 group :development do
+  # heroku san to manage multiple devployment environments
+  gem 'heroku_san'
+  gem 'heroku-rails'
+  #misc
   gem 'rails3-generators'
   #--HAML support--#
   gem 'haml-rails'
   gem 'hpricot'
   gem 'ruby_parser'
-  #--Annotate-models--#
-  gem 'annotate-models'
 end
 
 group :test do
