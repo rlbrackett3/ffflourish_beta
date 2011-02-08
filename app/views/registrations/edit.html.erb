@@ -1,0 +1,57 @@
+<div id="edit_profile_container">
+  <%= form_for(resource,  :as => resource_name, 
+                          :url => registration_path(resource_name), 
+                          :html => { :method => :put }) do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+    <%= devise_error_messages! %>
+    <div id="base_stats">
+      <div id="profile_avatar">
+        <%= image_tag @user.profile.avatar.profile_image.url, :class => "avatar_img" %>
+      </div>
+      <div id="edit_profile_left">
+        <p class="signin_fields">
+          <%= f.label       :email, "e-mail", :class => "signin_label" %>
+          <%= f.text_field  :email, :class => "profile_field_left" %>
+        </p>
+        <p class="signin_fields">
+          <%= f.label       :password, "new password", :class => "signin_label" %>
+          <%= f.text_field  :password, :class => "profile_field_left" %>
+        </p>
+        <p class="signin_fields">
+          <%= f.label       :password_confirmation, "new password confirmation", 
+                                                    :class => "signin_label" %>
+          <%= f.text_field  :password_confirmation, :class => "profile_field_left" %>
+        </p>
+        <p class="signin_fields">
+          <%= f.label       :current_password, "current password", 
+                                               :class => "signin_label" %>
+          <%= f.text_field  :current_password, :class => "profile_field_left" %>
+        </p>
+        <p id="cancel_account">
+          Unhappy? <%= link_to 'Cancel my account', 
+                          registration_path(resource_name), 
+                          :confirm => 'Are you sure?  There is no going back!', 
+                          :method => :delete %>.
+      </p>
+      </div>
+      <div id="edit_profile_right">
+        <p class="update_account_settings">
+          update your e-mail address.
+        </p>
+        <p class="update_account_settings">
+          leave this blank if you don't want to change it.
+        </p>
+        <p class="update_account_settings">
+        </p>
+        <p class="update_account_settings">
+          your current password to confirm your changes.
+        </p>
+      </div>
+    </div>
+    <div id="profile_btn">
+      <%= f.submit "update", :class => 'actions', :id => "update_profile_btn" %>
+	  </div><!-- /post_buttons_bottom -->
+
+​ <% end %>
+</div>
+

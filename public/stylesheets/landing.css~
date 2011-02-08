@@ -401,7 +401,7 @@ img#landing_logo {
 /* landing footer section */
 
 #landing_footer {
-	width: 1024px;
+	width: 960px;
 	height: 24px;
 	margin: 0px auto;
 }
