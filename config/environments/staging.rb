@@ -56,6 +56,6 @@ Ffflourish::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   # logger for heroku
-  config.active_support.deprecation to :log#, :notify or :stderr
+#  config.active_support.deprecation to :log#, :notify or :stderr
 
 end

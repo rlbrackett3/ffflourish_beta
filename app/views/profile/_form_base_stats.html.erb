@@ -5,30 +5,28 @@
     <%= f.hidden_field  :avatar_cache %>
   </div>
 </div>
-<div id="edit_profile_fields">
-  <p class="field">
-    <%= f.label       :name, :class => "profile_label" %>
-    <%= f.text_field  :name, :class => "profile_field" %>
+<div id="edit_profile_left">
+  <p class="signin_fields">
+    <%= f.label       :name, "name", :class => "signin_label" %>
+    <%= f.text_field  :name, :class => "profile_field_left" %>
   </p>
-  </br></br>
-  <p class="field">
-    <%= f.label       "Personal description", :class => "profile_label" %>
-    <%= f.text_field  :handle, :class => "profile_field" %>
+  <p class="signin_fields">
+    <%= f.label       :handle, "about me", :class => "signin_label" %>
+    <%= f.text_field  :handle, :class => "profile_field_left" %>
   </p>
-  </br></br>
-  <p class="field">
-    <%= link_to "Edit your email address",
+</div>
+<div id="edit_profile_right">
+  <p class="signin_fields">
+    <%= link_to "edit e-mail",
           edit_user_registration_path(@user),
-          :class => "profile_label" %>
-    <span class="profile_field"> <%= @user.email %> </span>
+          :class => ["signin_label", "text_darkgreen", "edit_profile_link"] %>
+    <span class="profile_field_right"> <%= @user.email %> </span>
   </p>
-  </br></br>
-  <p class="field">
-    <%= link_to "Edit your password",
+  <p class="signin_fields">
+    <%= link_to "edit password",
           edit_user_registration_path(@user),
-          :class => "profile_label" %>
-    <span class="profile_field"> ************** </span>
+          :class => ["signin_label", "text_darkgreen", "edit_profile_link"] %>
+    <span class="profile_field_right"> ************** </span>
   </p>
-  </br></br>
 </div>
 
