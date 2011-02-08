@@ -69,7 +69,7 @@ end
 group :development do
   # heroku san to manage multiple devployment environments
 #  gem 'heroku_san'
-#  gem 'heroku-rails'
+  gem 'heroku-rails'
   #misc
   gem 'rails3-generators'
   #--HAML support--#
