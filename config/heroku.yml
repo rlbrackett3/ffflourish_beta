@@ -18,15 +18,16 @@ stacks:
 config:
   # choose the configuration settings for all environments
   all:
-    BUNDLE_WITHOUT: "test development"
-    CONFIG_VAR1: "config1"
-    CONFIG_VAR2: "config2"
+    BUNDLE_WITHOUT: "test:development"
+#    CONFIG_VAR1: "config1"
+#    CONFIG_VAR2: "config2"
 
   # you can also override configuration settings for each environment
   production:
-    CONFIG_VAR1: "config1-production"
+#    CONFIG_VAR1: "config1-production"
   staging:
-    CONFIG_VAR1: "mongodb://[username:password@]host1[:port1][/database]"
+#    CONFIG_VAR1: "config1-staging"
+    MONGODB_URI: "mongodb://[username:password@]host1[:port1][/database]"
 
 collaborators:
   all:

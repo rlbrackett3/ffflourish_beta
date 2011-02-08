@@ -145,10 +145,6 @@ GEM
       json_pure (>= 1.2.0, < 1.5.0)
       launchy (~> 0.3.2)
       rest-client (>= 1.4.0, < 1.7.0)
-    heroku-rails (0.3.0)
-      heroku (>= 1.11.0)
-    heroku_san (1.0.8)
-      heroku
     hpricot (0.8.3)
     i18n (0.5.0)
     jquery-rails (0.2.6)
@@ -330,8 +326,6 @@ DEPENDENCIES
   haml
   haml-rails
   heroku
-  heroku-rails
-  heroku_san
   hpricot
   jquery-rails
   launchy
