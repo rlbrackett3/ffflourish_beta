@@ -1,0 +1,15 @@
+#feedback_message_container
+  = form_for @message do |f|
+    #feedback_form_left
+      %span.feedback_fields
+        = f.label :title, "title", :class => 'feedback_label'
+        = f.text_field :title, :class => 'feedback_field'
+      %span.feedback_fields
+        = f.label :body, "message", :class => 'feedback_label'
+        = f.text_area :body, :class => 'feedback_area', :rows => 8
+      %span.feedback_fields
+        = f.label :category, "category", :class => 'feedback_label'
+        = f.select :category, FeedbackMessage::CATS, :prompt => "-select-", :class => 'feedback_select'
+    #feedback_form_right
+    %span#feedback_submit
+      = f.submit "send feedback!", :class => "actions", :id => "feedback_submit_btn"

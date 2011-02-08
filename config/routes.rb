@@ -50,6 +50,7 @@ Ffflourish::Application.routes.draw do
   post '/posts/create_before_account' => 'posts#create_before_account'
   
   resources :comments
+  resources :feedback_messages
 
   # named routes for user resources
   match '/:id'          => 'posts#index', :as => 'user_feed'

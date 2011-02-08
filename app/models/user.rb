@@ -47,6 +47,8 @@ class User
   references_many   :followers, :stored_as => :array,
                                 :class_name => 'User',
                                 :inverse_of => :following
+#--Feedback--# no tests for this yet
+  referenced_in :feedback_message
 
 #--Validations--#
   validates :urlname,       :uniqueness => true,
