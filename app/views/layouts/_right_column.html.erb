@@ -22,5 +22,10 @@
   <div style="display:none"></div>
   <p><%= link_to 'See recent ffflourishes', recent_path, :class => "text_lightgreen feed_links" %></p>
   <p><%= link_to 'See popular ffflourishes', popular_path, :class => "text_green feed_links" %></p>
-  <p><%= link_to "Feedback", new_feedback_message_path, :class => "text_blue feed_links" %></p>
+  <% if can? :manage, FeedbackMessage %>
+    <p><%= link_to "Feedback(manage)", feedback_messages_path, :class => "text_blue feed_links" %></p>
+  <% else %>
+    <p><%= link_to "Feedback", new_feedback_message_path, :class => "text_blue feed_links" %></p>
+  <% end %>
+  
 </div>

@@ -1,10 +1,11 @@
-- if @messages.any?
-  %ul#feedback_messages
-    - @messages.each do |message|
-      %li.feedback_message
-        %ul
-          %li= message.title
-          %li= message.body
-          %li= message.category
-- else
-  %p there are no feedback messages.
+#feedback_message_container
+  - if @messages.any?
+    %ul#feedback_messages
+      - @messages.each do |message|
+        %li.feedback_message
+          %ul
+            %li= message.title
+            %li= message.body
+            %li= message.category
+  - else
+    %p there are no feedback messages.

@@ -1,11 +1,14 @@
 #feedback_message_container
-  = form_for @message do |f|
+  = form_for @message, :validate => true do |f|
+    = render 'shared/error_messages', :object => f.object 
     #feedback_form_left
       %span.feedback_fields
         = f.label :title, "title", :class => 'feedback_label'
+        %span.errors
         = f.text_field :title, :class => 'feedback_field'
       %span.feedback_fields
         = f.label :body, "message", :class => 'feedback_label'
+        %span.errors
         = f.text_area :body, :class => 'feedback_area', :rows => 8
       %span.feedback_fields
         = f.label :category, "category", :class => 'feedback_label'

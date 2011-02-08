@@ -9,6 +9,31 @@
 	border-radius: 5px;
 }
 
+/* messages index */
+
+#feedback_messages {
+	width: 640px;
+	height: 100%;
+	position: relative;
+	float: left;
+	margin: 10px 0px 0px 0px;
+	padding: 20px;
+	font-family: Verdana;
+	font-size: 10pt;
+	text-align: left;
+	color: #1b9e6f;
+	list-style: none;
+}
+
+#feedback_messages li{
+	list-style: none;
+	margin: 5px 0px 0px 0px;
+	background: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 #feedback_form_left {
 	position: relative;
   	float: left;
@@ -110,3 +135,6 @@
 }
 
 #feedback_submit_btn:hover {background: #45e5ff; padding: 2px 0px 0px 2px;}
+
+
+

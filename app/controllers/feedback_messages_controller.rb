@@ -44,7 +44,7 @@ class FeedbackMessagesController < ApplicationController
   end
 
   def destroy
-    @messages = FeedbackMessage.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
+    @messages = FeedbackMessage.all.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
     @message = FeedbackMessage.find(params[:id])
     @message.destroy
     
