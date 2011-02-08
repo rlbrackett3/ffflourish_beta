@@ -11,7 +11,7 @@ gem 'mongoid', '~> 2.0.0.beta.20'
 gem 'mongo', '1.2.0'
 gem 'bson_ext', '1.2.0'
 gem 'mongoid_voteable'
-gem 'mongoid_slug', :require => 'mongoid/slug'
+gem 'mongoid_slug', '0.5.1', :require => 'mongoid/slug' # freeze at 0.5.1 for mongoid beta 20
 gem 'mongoid_taggable'
 gem 'mongoid_search', :git => 'git://github.com/mauriciozaffari/mongoid_search.git'
 
@@ -35,9 +35,6 @@ gem 'validated_fields', :git => 'http://github.com/alluniq/validated-fields.git'
 #--generating test and sample data--#
 gem 'factory_girl_rails', '>=1.0.1'
 gem 'ffaker'
-
-
-
 
 #--HAML support--#
 gem 'haml'
@@ -80,7 +77,7 @@ end
 
 group :test do
   #--Rspec Helpers--#
-  gem 'mongoid-rspec'
+  gem 'mongoid-rspec', '1.2.1' #head required mongoid 2.0.0
   gem 'remarkable_activemodel', '4.0.0.alpha4'
   gem 'remarkable_mongoid'
   #--Browser simulation--#
