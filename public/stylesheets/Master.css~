@@ -111,7 +111,7 @@ ul {
 /* Post type select outsourced to posting_icons */
 
 .actions {
-	background-color: #66CC99;
+	background-color: #31f48e;
   	color:#fff;
 	font-family: Verdana, sans serif;
 	font-weight:normal;
