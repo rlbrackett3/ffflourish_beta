@@ -202,7 +202,7 @@
 
 #reset_password_container {
 	width: 480px;
-	height: 240px;
+	height: 300px;
 	margin: 20px auto;
 	
 }
