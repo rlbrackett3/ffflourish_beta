@@ -165,7 +165,7 @@ img#landing_logo {
 /* random public ffflourish examples */
 #rand_ffflourish_container {
 	width: 720px;
-	height: 270px;
+	height: 300px;
 	max-height: 380px;
 /*	min-height: 260px;*/
 	margin: 20px auto;

@@ -174,7 +174,7 @@ img#landing_logo {
 
 #random_public_ffflourish {
 	width: 460px;
-	min-height: 144px;
+	min-height: 160px;
 	max-height: 380px;
 	position: relative;
 	float: left;
@@ -191,7 +191,7 @@ img#landing_logo {
 
 #random_ffflourish {
 	width: 420px;
-	min-height: 144px;
+	min-height: 160px;
 	max-height: 380px;
 	position: relative;
 	float: left;
