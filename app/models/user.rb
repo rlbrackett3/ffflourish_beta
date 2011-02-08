@@ -48,7 +48,7 @@ class User
                                 :class_name => 'User',
                                 :inverse_of => :following
 #--Feedback--# no tests for this yet
-  referenced_in :feedback_message
+  references_many :feedback_messages
 
 #--Validations--#
   validates :urlname,       :uniqueness => true,

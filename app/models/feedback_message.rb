@@ -5,7 +5,7 @@ class FeedbackMessage
   
   attr_accessible :title, :body, :status, :category
   
-  references_one :user, :stored_as => :array
+  referenced_in :user, :inverse_of => :feedback_messages
   
   field :title
   field :body

@@ -27,7 +27,8 @@ class FeedbackMessagesController < ApplicationController
   end
 
   def create
-    @message = FeedbackMessage.create(params[:feedback_message])
+    @user = current_user
+    @message = @user.feedback_messages.create(params[:feedback_message])
     if @message.save
       respond_with(current_user, :location => root_path)
     else
