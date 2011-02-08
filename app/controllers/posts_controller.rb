@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post = @user.posts.new
     
     @page_title = "ffflourishes"
-    @title = "#{@user.profile.name}'s posts"
+    @title = "#{@user.profile.name}'s ffflourishes"
     respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#

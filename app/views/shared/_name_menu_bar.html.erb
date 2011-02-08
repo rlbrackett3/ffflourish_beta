@@ -12,7 +12,7 @@
     </p>
     <p id="page_title">
       <% unless @page_title == nil %>
-        <%= "+ #{@page_title}" %>
+        <%= @page_title %>
       <% end %>
     </p>
     <p id="user_handle">
@@ -23,11 +23,11 @@
       <% end %>
     </p>
     <span id="local_nav">
-    <% unless @user == current_user %>
-      <!--Following-->
-      <%= render 'shared/follow_link', :user => @user %>
-    <% end %>
-  </span>
+      <% unless @user == current_user %>
+        <!--Following-->
+        <%= render 'shared/follow_link', :user => @user %>
+      <% end %>
+    </span>
   </span>
 </div>
 

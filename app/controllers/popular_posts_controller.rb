@@ -7,7 +7,7 @@ class PopularPostsController < ApplicationController
 
   def index
     @title = "popular ffflourishes"
-    @page_title = "popular"
+#    @page_title = "popular"
     
     @user = current_user
     @popular_posts = Post.popular.paginate(:page => params[:page], :per_page => 50)

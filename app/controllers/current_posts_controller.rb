@@ -8,7 +8,7 @@ class CurrentPostsController < ApplicationController
 
   def index
     @title = "recent posts"
-    @page_title = "recent"
+#    @page_title = "recent"
     
     @user = current_user
     @recent_posts = Post.recent.paginate(:page => params[:page], :per_page => 31)

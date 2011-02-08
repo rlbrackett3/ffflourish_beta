@@ -111,7 +111,7 @@ ul {
 /* Post type select outsourced to posting_icons */
 
 .actions {
-	background-color: #66CC99;
+	background-color: #31f48e;
   	color:#fff;
 	font-family: Verdana, sans serif;
 	font-weight:normal;
@@ -207,8 +207,6 @@ ul {
 	line-height: 12px;
 	font-family: Verdana, sans-serif;
 	font-size: 12px;
-/*	font-style: italic;*/
-	font-weight: bold;
 	letter-spacing: 1px;
 	text-align: center;
 }
@@ -325,6 +323,38 @@ ul {
 #footer_links li a{color: #45e5ff;}
 #footer_links li a:hover{color: #31f48e;}
 /*#footer_links li a:visited{color: #45e5ff;}*/
+
+/* will_paginate pagination links */
+
+#pagination {
+	clear: both;
+	
+}
+
+/* rendering static pages */
+
+#about{
+	width: 640px;
+	margin: 100px auto 0px auto;
+	font-family: Verdana;
+	font-size: 10pt;
+	color: #1b9e6f;
+	text-align: left;
+	line-height: 15pt;
+	
+}
+
+.static_content {
+	width: 450px;
+	margin: 10px 0px 0px 100px;
+}
+
+.static_content_blue {
+	font-family: Gerogia;
+	font-style: italic;
+	font-size: 14pt;
+	color: #45e5ff;	
+}
 
 /* NOTICE AND ALERT MESSAGES FOR DEVISE */
 #notifications {

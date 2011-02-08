@@ -33,12 +33,12 @@
 
 #username {
    max-width: 342px;
-   height: 50px;
+   height: 24px;
    position: relative;
 	float: left;
 	text-align:left;
 	font-family: Verdana, sans serif;
-	font-size:1.5em;
+	font-size:1.35em;
 	line-height: 100%;
 	font-weight: bold;
 /*	color: #29303a;*/
@@ -49,14 +49,19 @@
 }
 
 #user_handle {
-   position: absolute;
-   left: 0;
-   margin: 28px 0px 0px 0px;
+/*   position: absolute;*/
+/*   left: 0;*/
+	height: 16px;
+	position: relative;
+	float: left;
+	clear: both;
+   	margin: 0px 0px 0px 0px;
 	font-family: Verdana, sans serif;
-	font-style: italic;
+	font-style: normal;
 	font-weight: normal;
-	font-size: 0.85em;
+	font-size: 0.75em;
 	color: #b3b3b3;
+	vertical-align: top;
 }
 
 #user_handle a {color: #b3b3b3;}
@@ -65,21 +70,23 @@
 
 #page_title {
    max-width: 260px;
-   height: 30px;
+   height: 16px;
    position: relative;
 	float: left;
-	margin: 5px 0px 0px 4px;
-   font-family: Lucidia;
+	margin: 6px 0px 0px 10px;
+   font-family: Verdana;
 	font-style: normal;
 	font-weight: normal;
 	color: #808080;
-	font-size: 1em;
+	font-size: 0.75em;
 	/* background-color: gray; */
 }
 
 #local_nav {
   position: relative;
-  float: right;
+  float: left;
+  clear: both;
+  margin: 4px 0px 0px -10px;
 }
 
 #local_nav a.local_nav_link{
