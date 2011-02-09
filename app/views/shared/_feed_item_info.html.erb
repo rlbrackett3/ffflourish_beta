@@ -3,19 +3,23 @@
 </span>
 <div class="post_stat">
   <span class="activity_images">
-  <% if ! f.voted?(current_user) && f.votes == 0 %>
+  <% if f.voted?(current_user) %>
+    <%= image_tag "like_red.png", :size => "20x20",
+                                  :id => "feeditem_likes_img_#{f.id}" %>
+  <% elsif f.user == current_user && f.votes > 0 %>
+    <%= link_to (image_tag "like_red.png", :size => "20x20",
+                                       :mouseover => "like_red.png",
+                                       :id => "feeditem_likes_img_#{f.id}"),
+                like_user_post_path(f.user, f),
+                :remote => true,
+                :class => "like_post_link" %>
+  <% else %>
     <%= link_to (image_tag "like.png", :size => "20x20",
                                        :mouseover => "like_red.png",
                                        :id => "feeditem_likes_img_#{f.id}"),
                 like_user_post_path(f.user, f),
                 :remote => true,
                 :class => "like_post_link" %>
-  <% elsif f.user == current_user && f.votes > 0 %>
-    <%= image_tag "like_red.png", :size => "20x20",
-                                  :id => "feeditem_likes_img_#{f.id}" %>
-  <% else %>
-    <%= image_tag "like_red.png", :size => "20x20",
-                                  :id => "feeditem_likes_img_#{f.id}" %>
   <% end %>
     
   </span>
