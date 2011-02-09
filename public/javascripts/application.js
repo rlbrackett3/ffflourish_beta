@@ -204,15 +204,20 @@ $(document).ready(function(){
 //////////////////////////////////////////////////////////////
   // array of helpful suggestions for what to post about
   var postHelpers = new Array(
-                      "What was the first this you did this morning?",
-                      "How many miles did you run today?",
-                      "Have you given anyone a hug today?",
-                      "What are you doing right now?",
-                      "Do you meditate?",
-                      "Have you gotten some fresh air?",
-                      "Take a deep breath.",
-                      "How bright is the sun today?",
-                      "What did you have for lunch?"
+                      "Are you out in the sunshine?",
+                      "Maybe you just got some invigorating exercise?",
+                      "Is there something you're thankful for?",
+                      "Is there someone who inspires you?",
+                      "Are you preparing a healthy meal?",
+                      "Did you get a restful night's sleep?",
+                      "Maybe you're eating something particularly nourishing?",
+                      "Maybe you're taking time for quiet?",
+                      "Are you volunteering or helping others?",
+                      "Are you breathing fresh air?",
+                      "Maybe you're working towards a personal goal or resolution?",
+                      "Do you see something beautiful?",
+                      "Maybe you're eating your vegetables?",
+                      "Do you wanna share a link to an interesting health-related article?"
                     );
   
   $('.active').live("click", function() {
