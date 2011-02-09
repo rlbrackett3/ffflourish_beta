@@ -62,7 +62,7 @@
 }
 
 .feedback_field {
-	width: 100%;
+	width: 340px;
 	height: 36px;
 	position: relative;
 	float: left;
@@ -87,7 +87,7 @@
 }
 
 .feedback_area {
-	width: 100%;
+	width: 340px;
 	height: 76px;
 	position: relative;
 	float: left;
@@ -108,11 +108,11 @@
 #feedback_message_category {
 	position: relative;
 	float: left;
-	width: 100%;		
+	width: 100%;
 	height: 100%;
 	position: relative;
 	float: left;
-	padding-bottom: 5px;
+	padding: 0px 10px 5px 10px;
 	font-family: Verdana;
 	margin: 5px 0px;
 }
