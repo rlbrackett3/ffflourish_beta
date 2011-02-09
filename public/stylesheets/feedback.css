@@ -42,7 +42,7 @@
 }
 
 .feedback_fields {
-	width: 100%;		
+	width: 100%;
 	height: 100%;
 	position: relative;
 	float: left;
@@ -114,7 +114,6 @@
 	float: left;
 	padding-bottom: 5px;
 	font-family: Verdana;
-}
 	margin: 5px 0px;
 }
 

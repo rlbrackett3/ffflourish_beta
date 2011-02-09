@@ -1,5 +1,5 @@
 <div id="new_user_question">
-  <span id="question_wrapper">
+  <div id="question_wrapper">
     <p id="ffflourish_question" class="landing_text_large">
       What are you doing right now that's healthy for you?
     </p>
@@ -9,7 +9,7 @@
       <%= f.text_field :content, :id => "landing_post" %>
       <%= f.submit "share!", :id => 'landing_post_submit', :class => 'actions' %>
     <% end %>
-    <span id="landing_nav_links">
+    <div id="landing_nav_links">
       <p class="landing_link_right">
         <%= link_to "Or, Sign In!", signin_path,  :class => "landing_links" %>
       </p>
@@ -22,14 +22,14 @@
         <%= link_to "Tell me more about ffflourish!", about_path, 
                                                   :class => "landing_links" %>
       </p>
-    </span>
-  </span>
+    </div>
+  </div>
 </div>
 <div id="rand_ffflourish_container">
   <% unless @random_post == nil %>
-    <span id="random_public_ffflourish">
+    <div id="random_public_ffflourish">
       <%= render 'random_posts/show' %>
-    </span>
+    </div>
     <span id="show_me_more">
       <%= link_to "Show me another!", root_path, :remote => true,
                                               :class => "landing_links" %>
