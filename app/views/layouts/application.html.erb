@@ -3,7 +3,7 @@
   <head>
     <title><%= title %></title>
     <%= include_stylesheets :common, :vendor %>
-    <%= include_javascripts :workspace %>
+    <%= include_javascripts :workspace, :vendor %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
