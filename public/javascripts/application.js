@@ -140,7 +140,7 @@ $(document).ready(function(){
 	      $('p.errors').fadeOut(3000);
 	    };
       if (hasError == true) {
-        hasError = false;
+        //hasError = false;
         return false;
       }
       else {
