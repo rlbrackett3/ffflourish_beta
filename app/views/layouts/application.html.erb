@@ -2,8 +2,8 @@
 <html>
   <head>
     <title><%= title %></title>
-    <%= render 'layouts/stylesheets' %>
-    <%= render 'layouts/jscript' %>
+    <%= include_stylesheets :common, :vendor %>
+    <%= include_javascripts :workspace %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>

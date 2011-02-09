@@ -1,3 +1,5 @@
+embed_assets: on
+
 javascripts:
   workspace:
     - public/javascripts/vendor/*.js
@@ -9,4 +11,4 @@ stylesheets:
   common:
     - public/stylesheets/*.css
   vendor:
-    -- public/javascripts/vendor/fancybox/*.css
+    - public/javascripts/vendor/fancybox/jquery.fancybox-1.3.4.css
