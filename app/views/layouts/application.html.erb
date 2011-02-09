@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <%= include_stylesheets :common, :vendor %>
+    <%= render 'layouts/stylesheets'%>
     <%= render 'layouts/jscript'%>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
