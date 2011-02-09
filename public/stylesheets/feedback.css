@@ -107,7 +107,7 @@
 
 #feedback_message_category {
 	position: relative;
-	float: left;.feedback_fields {
+	float: left;
 	width: 100%;		
 	height: 100%;
 	position: relative;
@@ -121,6 +121,7 @@
 	position: relative;
   	float: left;
   	width: 280px;
+  	height: 250px;
  	margin: 20px 0px 0px 20px;
 }
 
