@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js"">
   <head>
-    <title><%= title %></title>
-    <%= render 'layouts/stylesheets'%>
-    <%= render 'layouts/jscript'%>
-    <%= csrf_meta_tag %>
-    <%= yield(:head) %>
-    <!-- google analytics -->
+    <%= render 'layouts/head' %>
   </head>
   <body>
     <!-- non-signed in users -->

@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 10) #to redirect to index
+    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #to redirect to index
     @post = @user.posts.create(params[:post])
 
     @user.profile.increment_posts_count

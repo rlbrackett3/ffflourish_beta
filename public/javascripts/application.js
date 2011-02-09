@@ -118,7 +118,7 @@ $(document).ready(function(){
 	    });
 	    
     // error handling for textarea value
-	  $('#post_submit').click(function() {
+	  $('#post_submit').live("click", function() {
 	  
       $('.errors').hide();
       var hasError = false

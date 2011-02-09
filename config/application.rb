@@ -68,6 +68,11 @@ module Ffflourish
 #    %w(observers mailers middleware).each do |dir|
 #      config.autoload_paths << "#{config.root}/app/#{dir}"
 #    end
+
+    # Heroku logging
+    config.logger = Logger.new(STDOUT)
+    config.logger.level = Logger::INFO
+    
   end
 end
 

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :ensure_domain if Rails.env.production?
   
   # rescue from permissions errors
   rescue_from CanCan::AccessDenied do |exception|
@@ -20,6 +21,17 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+  
 
+  
+  if Rails.env.production?
+    TheDomain = 'ffflourish.com'
+    
+    def ensure_domain
+      if request.env['HTTP_HOST'] != TheDomain
+        redirect_to TheDomain
+      end
+    end
+  end
 end
 
