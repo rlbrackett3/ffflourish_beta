@@ -8,7 +8,7 @@ class FeedbackMessagesController < ApplicationController
   def index
     @title = "feedback"
 #    @search_path = feeback_messages_path
-    @messages = FeedbackMessage.all
+    @messages = FeedbackMessage.desc(:created_at).paginate(:page => params[:page], :per_page => 50)
     
    respond_with(@messages) 
     
@@ -45,11 +45,11 @@ class FeedbackMessagesController < ApplicationController
   end
 
   def destroy
-    @messages = FeedbackMessage.all.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
+    @messages = FeedbackMessage.desc(:created_at).paginate(:page => params[:page], :per_page => 50)
     @message = FeedbackMessage.find(params[:id])
     @message.destroy
     
-    respond_with(@messages)
+    respond_with(@messages, :location => feedback_messages_path)
   end
 
 end

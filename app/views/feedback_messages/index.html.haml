@@ -7,5 +7,8 @@
             %li= message.title
             %li= message.body
             %li= message.category
+            %li= "user: #{message.user.urlname} - name: #{message.user.profile.name} "
+        %li= link_to "delete", feedback_message_path(message), :method => :delete, :confirm => "Are you sure?"
   - else
     %p there are no feedback messages.
+    
