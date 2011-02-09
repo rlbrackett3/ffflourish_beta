@@ -5,7 +5,7 @@ javascripts:
     - public/javascripts/vendor/*.js
     - public/javascripts/vendor/fancybox/*.js
     - public/javascripts/vendor/linkify/1.0/*.js
-    - piblic/javascripts/*.js
+    - public/javascripts/*.js
     
 stylesheets:
   common:
