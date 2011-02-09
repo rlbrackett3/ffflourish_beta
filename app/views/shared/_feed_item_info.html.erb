@@ -3,13 +3,16 @@
 </span>
 <div class="post_stat">
   <span class="activity_images">
-  <% unless f.voters.include? current_user.id %>
+  <% if ! f.voted?(current_user) && f.votes == 0 %>
     <%= link_to (image_tag "like.png", :size => "20x20",
                                        :mouseover => "like_red.png",
                                        :id => "feeditem_likes_img_#{f.id}"),
                 like_user_post_path(f.user, f),
                 :remote => true,
                 :class => "like_post_link" %>
+  <% elsif f.user == current_user && f.votes > 0 %>
+    <%= image_tag "like_red.png", :size => "20x20",
+                                  :id => "feeditem_likes_img_#{f.id}" %>
   <% else %>
     <%= image_tag "like_red.png", :size => "20x20",
                                   :id => "feeditem_likes_img_#{f.id}" %>
@@ -26,6 +29,16 @@
 <div class="post_stat" id="post_comments_stats_<%= f.id %>">
   <span class="activity_images">
     <% if f.commenters(current_user) == true %>
+      <%= link_to (image_tag "comment_blue.png", 
+                                    :size => "20x20",
+                                    :class => "comment_post_link",
+                                    :id => "feeditem_comments_img_#{f.id}",
+                                    :mouseover => "comment_blue.png",),
+                user_post_comments_path(f.user, f),
+                :remote => true,
+                :id => "feeditem_comments_img_#{f.id}",
+                :class => "comment_count" %>
+    <% elsif f.comments.any? && f.user == current_user %>
       <%= link_to (image_tag "comment_blue.png", 
                                     :size => "20x20",
                                     :class => "comment_post_link",

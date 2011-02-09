@@ -135,7 +135,7 @@ $(document).ready(function(){
 	  $('#post_submit').live("click", function() {
 	  
       $('.errors').hide();
-      var hasError = false
+      var hasError = false;
 	    var postFormVal = $('#post_content').val();
 
 	    if ( postFormVal == '' ) {
