@@ -1,13 +1,13 @@
 embed_assets: on
 
-javascripts:
-  workspace:
-    - public/javascripts/*.js
-  vendor:
-    - public/javascripts/vendor/*.js
-    - public/javascripts/vendor/fancybox/*.js
-    - public/javascripts/vendor/linkify/1.0/*.js
-    
+#javascripts:
+#  workspace:
+#    - public/javascripts/*.js
+#  vendor:
+#    - public/javascripts/vendor/*.js
+#    - public/javascripts/vendor/fancybox/*.js
+#    - public/javascripts/vendor/linkify/1.0/*.js
+#    
 stylesheets:
   common:
     - public/stylesheets/*.css
