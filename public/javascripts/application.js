@@ -82,6 +82,20 @@ $(document).ready(function(){
     }
     $('#counter').text(200-this.value.length);
   });
+  
+  $('input#profile_handle').focus(function() {
+    $('#countdown').show();
+  });
+  $('input#profile_handle').keyup(function(){
+    if(this.value.length >= 60) {
+      //handle the over the limit part here
+      $(this).addClass('overlimit');
+      this.value = this.value.substring(0, 60);
+    } else {
+      $(this).removeClass('overlimit');
+    }
+    $('#counter').text(60-this.value.length);
+  });
 
 //////////////////////////////////////////////////////////////
   // textarea autoResize
