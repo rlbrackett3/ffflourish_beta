@@ -127,17 +127,17 @@ $(document).ready(function(){
 	    if ( postFormVal == '' ) {
 	      $('p.errors').replaceWith('<p class="errors">Oops! your post was empty.</p>').show();
         hasError = true;
-        $('p.errors').fadeOut(2000);
+        $('p.errors').fadeOut(3000);
 	    }
-	    else if ( postFormVal.length <= 4 ) {
-	      $('p.errors').replaceWith('<p class="errors">Oops! your post was to short.</p>').slideDown(2000);
+	    else if ( postFormVal.length < 5 ) {
+	      $('p.errors').replaceWith('<p class="errors">Oops! your post was too short.</p>').slideDown(2000);
         hasError = true;
-        $('p.errors').fadeOut(2000).delay(3000).slideUp(1000);
+        $('p.errors').fadeOut(3000);
 	    }
 	    else if( postFormVal == postText ) {
 	      $('p.errors').replaceWith('<p class="errors">That\'s what we are asking you.</p>').show();
 	      hasError = true;
-	      $('p.errors').fadeOut(3000).delay(2000).slideUp(1000);
+	      $('p.errors').fadeOut(3000);
 	    };
       if (hasError == true) {
         hasError = false;
