@@ -119,7 +119,9 @@ $(document).ready(function(){
 	    
     // error handling for textarea value
 	  $('#post_submit').click(function() {
+	  
       $('.errors').hide();
+      var hasError = false
 	    var postFormVal = $('#post_content').val();
 
 	    if ( postFormVal == '' ) {
@@ -132,12 +134,12 @@ $(document).ready(function(){
         hasError = true;
         $('p.errors').fadeOut(2000).delay(3000).slideUp(1000);
 	    }
-	    else if( postFormVal === postText ) {
+	    else if( postFormVal == postText ) {
 	      $('p.errors').replaceWith('<p class="errors">That\'s what we are asking you.</p>').show();
 	      hasError = true;
 	      $('p.errors').fadeOut(3000).delay(2000).slideUp(1000);
 	    };
-      if (hasError === true) {
+      if (hasError == true) {
         hasError = false;
         return false;
       }

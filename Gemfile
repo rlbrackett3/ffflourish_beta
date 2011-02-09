@@ -5,6 +5,7 @@ gem 'rails', '3.0.3'
 #--Deploy with Heroku--#
 gem 'heroku'
 gem 'taps'
+gem 'jammit'
 
 #--Mongoid and MongoDB specific gems--#
 gem 'mongoid', '~> 2.0.0.beta.20'
