@@ -87,14 +87,14 @@ $(document).ready(function(){
     $('#countdown').show();
   });
   $('input#profile_handle').keyup(function(){
-    if(this.value.length >= 60) {
+    if(this.value.length >= 84) {
       //handle the over the limit part here
       $(this).addClass('overlimit');
-      this.value = this.value.substring(0, 60);
+      this.value = this.value.substring(0, 84);
     } else {
       $(this).removeClass('overlimit');
     }
-    $('#counter').text(60-this.value.length);
+    $('#counter').text(84-this.value.length);
   });
 
 //////////////////////////////////////////////////////////////
