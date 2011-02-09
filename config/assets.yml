@@ -1,0 +1,12 @@
+javascripts:
+  workspace:
+    - public/javascripts/vendor/*.js
+    - public/javascripts/vendor/fancybox/*.js
+    - public/javascripts/vendor/linkify/1.0/*.js
+    - piblic/javascripts/*.js
+    
+stylesheets:
+  common:
+    - public/stylesheets/*.css
+  vendor:
+    -- public/javascripts/vendor/fancybox/*.css
