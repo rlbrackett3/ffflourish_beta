@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
+    <%= javascript_include_tag :defaults %>
     <%= include_stylesheets :common, :vendor %>
     <%= include_javascripts :workspace, :vendor %>
     <%= csrf_meta_tag %>
