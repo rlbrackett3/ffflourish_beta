@@ -1,5 +1,8 @@
 <% case %>
 <% when @feed_items %>
+  <% if params[:page] %>
+    <div id="pagination"><%= will_paginate @feed_items %></div>
+  <% end %>
   <% unless @feed_items.empty? %>
       <div id="results">
         <ul class="feed">
@@ -10,6 +13,9 @@
   <% end %>
   <div id="pagination"><%= will_paginate @feed_items %></div>
 <% when @popular_posts %>
+  <% if params[:page] %>
+    <div id="pagination"><%= will_paginate @popular_posts %></div>
+  <% end %>
   <div id="results">
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @popular_posts %>
@@ -17,6 +23,9 @@
     <div id="pagination"><%= will_paginate @popular_posts %></div>
   </div>
 <% when @recent_posts %>
+  <% if params[:page] %>
+    <div id="pagination"><%= will_paginate @recent_posts %></div>
+  <% end %>
   <div id="results">
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @recent_posts %>
