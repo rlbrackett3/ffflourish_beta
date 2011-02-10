@@ -1,4 +1,8 @@
 #feedback_message_container
+  %br
+  .page_title 
+    %p Please give us your feedback.
+    %p Thank you.
   = form_for @message, :validate => true do |f|
     = render 'shared/error_messages', :object => f.object 
     #feedback_form_left

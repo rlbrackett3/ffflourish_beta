@@ -11,7 +11,7 @@
     <li class="footer_link"><%= link_to "feedback", new_feedback_message_path %></li>
   <% else %>
     <li class="footer_dot">&bull;</li>
-    <li class="footer_link"><%= mail_to 'info@ffflourish.com', 'Feedback', :class => "text_blue feed_links" %></li>
+    <li class="footer_link"><%= mail_to 'info@ffflourish.com', 'feedback', :class => "text_blue feed_links" %></li>
   <% end %>
 </ul>
 
