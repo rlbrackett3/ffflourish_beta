@@ -73,14 +73,14 @@ $(document).ready(function(){
 //////////////////////////////////////////////////////////////
   // textarea countdown function
   $('textarea').keyup(function(){
-    if(this.value.length >= 200) {
+    if(this.value.length >= 254) {
       //handle the over the limit part here
       $(this).addClass('overlimit');
-      this.value = this.value.substring(0, 200);
+      this.value = this.value.substring(0, 254);
     } else {
       $(this).removeClass('overlimit');
     }
-    $('#counter').text(200-this.value.length);
+    $('#counter').text(254-this.value.length);
   });
   
   $('input#profile_handle').focus(function() {

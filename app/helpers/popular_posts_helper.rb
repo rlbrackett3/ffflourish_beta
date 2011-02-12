@@ -1,2 +1,2 @@
-module PopularPostsHelper
+module PopularPostsHelper  
 end

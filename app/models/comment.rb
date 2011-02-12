@@ -15,10 +15,8 @@ class Comment
   index( [ :created_at, Mongo::DESCENDING ] )
   #--validations--#
   validates :content,   :presence => true,
-                        :length => { :within => 3..201 }
+                        :length => { :within => 3..255 }
   validates :commenter, :presence => true
-  
-  scope :recent_user_comments, lambda { |user| where(:user_id.in => user.id).and(:created_at.gt => 1.week.ago) }
 
 end
 

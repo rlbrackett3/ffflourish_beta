@@ -19,6 +19,7 @@ class Post
 #  field           :permissions, :type => Integer, :default => 2
   #--data fields--#
   field           :content
+  field           :pop_score, :type => Float, :default => 0.0
 
   #-- search on --#
   search_in(:content,
@@ -36,7 +37,7 @@ class Post
 #                  :length => { :within => 2..140, :message => "is too short." },
 #                  :allow_blank => true
   validates       :content,
-                  :length => { :within => 2..201 }
+                  :length => { :within => 2..255 }
   validates       :comments,
                   :associated => true
   validate :content_or_image_present?
@@ -95,6 +96,12 @@ class Post
     regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
     text.gsub!( regex, '<a href="\1">\1</a>' )
   end
+  
+#  def self.pop_score
+#    votes*0.25 + comments_count*5
+#  end
+  
+  
 
   protected
 
@@ -105,6 +112,8 @@ class Post
   end
 
   private
+  
+  
 
 end
 
