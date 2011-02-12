@@ -17,6 +17,8 @@ class Comment
   validates :content,   :presence => true,
                         :length => { :within => 3..201 }
   validates :commenter, :presence => true
+  
+  scope :recent_user_comments, lambda { |user| where(:user_id.in => user.id).and(:created_at.gt => 1.week.ago) }
 
 end
 

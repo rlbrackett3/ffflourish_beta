@@ -17,7 +17,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td><div class="stat_title"> comments: </div></td>
+		<td><div class="stat_title"> <%= link_to 'comments:', commented_on_path(@user) %> </div></td>
 		<td>
 		  <div class="stat_value" id="user_comment_count">
 		    <%= @user.profile.comments_count %>

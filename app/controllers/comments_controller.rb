@@ -14,6 +14,11 @@ class CommentsController < ApplicationController
     respond_with(@post, @comment, :layout => !request.xhr?)
   end
 #----------------------------------------------------------------------#
+  def commented_on
+    @user = User.find_by_slug(params[:user_id])
+    @post
+  end
+#----------------------------------------------------------------------#
   def new
     @comment = Comment.new
   end

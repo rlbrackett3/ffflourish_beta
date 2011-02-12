@@ -50,6 +50,8 @@ class Post
   scope :recent, where(:created_at.gt => 3.days.ago).desc(:created_at)#write tests for me
 
   scope :popular, order_by(:votes.desc)#write tests for me
+  
+  scope :commented_on_by_user, lambda { |user| where( { "comments.user_id" => user.id } ).desc(:updated_at) }
 
 
 #--Methods--#

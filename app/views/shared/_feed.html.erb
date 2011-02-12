@@ -32,5 +32,15 @@
     </ul>
     <div id="pagination"><%= will_paginate @recent_posts %></div>
   </div>
+<% when @commented_posts %>
+  <% if params[:page] %>
+    <div id="pagination"><%= will_paginate @commented_posts %></div>
+  <% end %>
+  <div id="results">
+    <ul class="feed">
+      <%= render :partial => 'shared/feed_item', :collection => @commented_posts %>
+    </ul>
+    <div id="pagination"><%= will_paginate @commented_posts %></div>
+  </div>
 <% end %>
 

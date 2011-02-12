@@ -110,6 +110,10 @@ class User
   def following_feed
     Post.from_users_followed_by(self)
   end
+  
+  def commented_on_posts
+    Post.commented_on_by_user(self)
+  end
 
 
 protected

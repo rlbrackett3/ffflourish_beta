@@ -26,6 +26,13 @@ class PostsController < ApplicationController
     respond_with(@user, @posts)
   end
 #----------------------------------------------------------------------#
+  def commented_on
+    @user = User.find_by_slug(params[:user_id])
+    @commented_posts = @user.commented_on_posts.paginate(:page => params[:page], :per_page => 50)
+    
+     @post = @user.posts.new
+  end
+#----------------------------------------------------------------------#
   #--GET /users/1/posts/1
   #--GET /users/1/posts/1.xml
   #--GET /users/1/posts/1.json                              HTML and AJAX

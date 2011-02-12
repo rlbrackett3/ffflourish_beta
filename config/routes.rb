@@ -47,6 +47,8 @@ Ffflourish::Application.routes.draw do
     resources :comments
   end
   
+  get ':user_id/commented_on' => 'posts#commented_on', :as => 'commented_on'
+  
   post '/posts/create_before_account' => 'posts#create_before_account'
   
   resources :comments
