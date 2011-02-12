@@ -350,7 +350,7 @@ ul {
 	width: 100%;
 	position: relative;
 	float: left;
-	margin: 20px 0px 0px 40px;	
+	margin: 20px 0px 20px 40px;	
 	clear: both;
 }
 
