@@ -3,7 +3,8 @@
   <div class="feed_entry_left">
   <% if @feed_items %>
     <%= link_to (image_tag feed_item.user.profile.avatar.avatar.url,
-                                      :class => "avatar_small"),
+                                      :class => "avatar_small",
+                                      :title => feed_item.user.profile.name),
                                       user_feed_path(feed_item.user) %>
   <% elsif @recent_posts || @popular_posts %>
     <%= render 'shared/feed_avatar_follow', :f => feed_item %>

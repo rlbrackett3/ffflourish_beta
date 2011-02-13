@@ -5,18 +5,23 @@
   <span class="activity_images">
   <% if f.voted?(current_user) %>
     <%= image_tag "like_red.png", :size => "20x20",
-                                  :id => "feeditem_likes_img_#{f.id}" %>
+                                  :id => "feeditem_likes_img_#{f.id}",
+                                  :title => "I like this!" %>
   <% elsif f.user == current_user && f.votes > 0 %>
-    <%= link_to (image_tag "like_red.png", :size => "20x20",
-                                       :mouseover => "like_red.png",
-                                       :id => "feeditem_likes_img_#{f.id}"),
+    <%= link_to (image_tag "like_red.png",
+                                  :size => "20x20",
+                                  :mouseover => "like_red.png",
+                                  :id => "feeditem_likes_img_#{f.id}",
+                                  :title => "I like this!"),
                 like_user_post_path(f.user, f),
                 :remote => true,
                 :class => "like_post_link" %>
   <% else %>
-    <%= link_to (image_tag "like.png", :size => "20x20",
-                                       :mouseover => "like_red.png",
-                                       :id => "feeditem_likes_img_#{f.id}"),
+    <%= link_to (image_tag "like.png", 
+                                  :size => "20x20",
+                                  :mouseover => "like_red.png",
+                                  :id => "feeditem_likes_img_#{f.id}",
+                                  :title => "I like this!"),
                 like_user_post_path(f.user, f),
                 :remote => true,
                 :class => "like_post_link" %>
@@ -27,7 +32,8 @@
     <%= link_to f.votes, likers_post_path(f),
                 :remote => true,
                 :id => "feeditem_likers_count_#{f.id}",
-                :class => "likes_count" %>
+                :class => "likes_count",
+                :title => "See other ffflourishers who like this too." %>
   </span>
 </div>
 <div class="post_stat" id="post_comments_stats_<%= f.id %>">
@@ -37,7 +43,8 @@
                                     :size => "20x20",
                                     :class => "comment_post_link",
                                     :id => "feeditem_comments_img_#{f.id}",
-                                    :mouseover => "comment_blue.png",),
+                                    :mouseover => "comment_blue.png",
+                                    :title => "Support this ffflourish!"),
                 user_post_comments_path(f.user, f),
                 :remote => true,
                 :id => "feeditem_comments_img_#{f.id}",
@@ -47,7 +54,8 @@
                                     :size => "20x20",
                                     :class => "comment_post_link",
                                     :id => "feeditem_comments_img_#{f.id}",
-                                    :mouseover => "comment_blue.png",),
+                                    :mouseover => "comment_blue.png",
+                                    :title => "Support this ffflourish!"),
                 user_post_comments_path(f.user, f),
                 :remote => true,
                 :id => "feeditem_comments_img_#{f.id}",
@@ -57,7 +65,8 @@
                                     :size => "20x20",
                                     :class => "comment_post_link",
                                     :id => "feeditem_comments_img_#{f.id}",
-                                    :mouseover => "comment_blue.png",),
+                                    :mouseover => "comment_blue.png",
+                                    :title => "Support this ffflourish!"),
                 user_post_comments_path(f.user, f),
                 :remote => true,
                 :id => "feeditem_comments_img_#{f.id}",
@@ -70,7 +79,8 @@
                 'data-id' => f.id.to_s,
                 :remote => true,
                 :id => "feeditem_comments_count_#{f.id}",
-                :class => "comment_count" %>
+                :class => "comment_count",
+                :title => "See comments on this ffflourish." %>
   </span>
 </div>
 <div class="post_stat">
@@ -81,6 +91,7 @@
                           :id => "delete_post_#{f.id}",
                           :confirm => "Really delete this post?",
                           :class => "delete_post",
+                          :title => "Delete your ffflourish!",
                           :method => :delete %>
     </span>
   <% end %>

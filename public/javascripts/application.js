@@ -253,6 +253,26 @@ $(document).ready(function(){
   // linkify for links in posts
   $('.feed_entry_text').linkify();
   $('#user_handle').linkify();
+  
+//////////////////////////////////////////////////////////////
+  // jquery tools tool tip
+  $("img[title], a[title]").tooltip( {
+    // use div.tooltip as our tooltip
+//		tip: '.tooltip',
+
+		// use the fade effect instead of the default
+		effect: 'fade',
+
+		// make fadeOutSpeed similar to the browser's default
+		fadeOutSpeed: 100,
+
+		// the time before the tooltip is shown
+		predelay: 200,
+
+		// tweak the position
+		position: "bottom right",
+		offset: [5, 5]
+  });
 
 });
 

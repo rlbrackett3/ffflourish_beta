@@ -2,19 +2,22 @@
 <!--FEED-->
 	<li id="me_feed_link">
 		<div class="menu_item">
-			<%= link_to 'me', user_feed_path(current_user) %>
+			<%= link_to 'me', user_feed_path(current_user),
+			                  :title => "my ffflourishes" %>
 		</div>
 	</li>
 <!--PROFILE-->
 	<li id="following_link">
 		<div class="menu_item">
-			<%= link_to 'following', user_following_path(current_user) %>
+			<%= link_to 'following', user_following_path(current_user),
+			                  :title => "my friends ffflourishes" %>
 		</div>
 	</li>
 <!--FFFLOURISHERS-->
 	<li id="ffflourishers_link">
 		<div class="menu_item">
-			<%= link_to 'ffflourishers', users_path %>
+			<%= link_to 'ffflourishers', users_path,
+			                  :title => "discover more ffflourishers" %>
 		</div>
 	</li>
 <!--SEARCH-->

@@ -17,7 +17,10 @@
 		</td>
 	</tr>
 	<tr>
-		<td><div class="stat_title"> <%= link_to 'comments:', commented_on_path(@user) %> </div></td>
+		<td><div class="stat_title"> 
+		  <%= link_to 'comments:', commented_on_path(@user),
+		              :title => "#{@user.profile.name}'s newest comments." %> 
+		</div></td>
 		<td>
 		  <div class="stat_value" id="user_comment_count">
 		    <%= @user.profile.comments_count %>
@@ -27,7 +30,8 @@
 	<tr>
 		<td>
 		  <div class="stat_title">
-		    <%= link_to 'following:', following_user_path(@user) %>
+		    <%= link_to 'following:', following_user_path(@user),
+		              :title => "See who #{@user.profile.name} is following." %>
 		  </div>
 		</td>
 		<td>
@@ -39,7 +43,8 @@
 	<tr>
 		<td>
 		  <div class="stat_title">
-		    <%= link_to 'followers:', followers_user_path(@user) %>
+		    <%= link_to 'followers:', followers_user_path(@user),
+		              :title => "See who is following #{@user.profile.name}."  %>
 		  </div>
 		</td>
 		<td>

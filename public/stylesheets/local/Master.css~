@@ -121,6 +121,22 @@ ul {
 	box-shadow: 2px 2px 8px #fff;
 }
 
+/* tooltip styling. by default the element to be styled is .tooltip  */
+.tooltip {
+	display:none;
+	background-color: #e5e5e5;
+/*	border:1px solid #cc9;*/
+	padding:2px 5px;
+	font-family: Verdana;
+	font-size:10pt;
+	color: #1b9e6f;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 2px 2px 11px #666;
+	-webkit-box-shadow: 2px 2px 11px #666;
+}
+
 /* posting forms outsources to posting_forms */
 
 /* following feed formating outsourced to feed_items */
@@ -181,7 +197,7 @@ ul {
 	line-height: 12px;
 	font-family: Verdana, sans-serif;
 	font-size: 12px;
-	font-style: italic;
+	font-style: normal;
 	color: #666;
 	letter-spacing: 1px;
 	text-align: center;
