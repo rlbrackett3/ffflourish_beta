@@ -15,11 +15,11 @@ class Profile
   field :about_me
   field :birthday,        :type => Date
 
-  field :likes_count,     :type => Integer, :default => 0
-  field :posts_count,     :type => Integer, :default => 0
-  field :comments_count,  :type => Integer, :default => 0
-  field :following_count, :type => Integer, :default => 0
-  field :follower_count,  :type => Integer, :default => 0
+#  field :likes_count,     :type => Integer, :default => 0
+#  field :posts_count,     :type => Integer, :default => 0
+#  field :comments_count,  :type => Integer, :default => 0
+#  field :following_count, :type => Integer, :default => 0
+#  field :follower_count,  :type => Integer, :default => 0
 
   mount_uploader :avatar, AvatarUploader
 
@@ -40,50 +40,50 @@ class Profile
   # this could all be DRYer but i needed to get it implemented first
   # refactor and test #################
 
-  def increment_likes_count #write tests for me
-    self.likes_count += 1
-    self.save
-  end
+#  def increment_likes_count #write tests for me
+#    self.likes_count += 1
+#    self.save
+#  end
 
-  def increment_following_count #write tests for me
-    self.following_count += 1
-    self.save
-  end
+#  def increment_following_count #write tests for me
+#    self.following_count += 1
+#    self.save
+#  end
 
-  def decrement_following_count #write tests for me
-    self.following_count += -1
-    self.save
-  end
+#  def decrement_following_count #write tests for me
+#    self.following_count += -1
+#    self.save
+#  end
 
-  def increment_follower_count #write tests for me
-    self.follower_count += 1
-    self.save
-  end
+#  def increment_follower_count #write tests for me
+#    self.follower_count += 1
+#    self.save
+#  end
 
-  def decrement_follower_count #write tests for me
-    self.follower_count += -1
-    self.save
-  end
+#  def decrement_follower_count #write tests for me
+#    self.follower_count += -1
+#    self.save
+#  end
 
-  def increment_posts_count
-    self.posts_count += 1
-    self.save
-  end
+#  def increment_posts_count
+#    self.posts_count += 1
+#    self.save
+#  end
 
-  def decrement_posts_count
-    self.posts_count += -1
-    self.save
-  end
+#  def decrement_posts_count
+#    self.posts_count += -1
+#    self.save
+#  end
 
-  def increment_comments_count
-    self.comments_count += 1
-    self.save
-  end
+#  def increment_comments_count
+#    self.comments_count += 1
+#    self.save
+#  end
 
-  def decrement_comments_count
-    self.comments_count += -1
-    self.save
-  end
+#  def decrement_comments_count
+#    self.comments_count += -1
+#    self.save
+#  end
 
 end
 

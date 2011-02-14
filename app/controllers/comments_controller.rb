@@ -15,8 +15,8 @@ class CommentsController < ApplicationController
   end
 #----------------------------------------------------------------------#
   def commented_on
+    @search_path = commented_on_path
     @user = User.find_by_slug(params[:user_id])
-    @post
   end
 #----------------------------------------------------------------------#
   def new
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
 
     if @comment.save(params[:comment])
       current_user.comments << @comment #test and move to model?
-      current_user.profile.increment_comments_count#test and move to model?
+#      current_user.profile.increment_comments_count#test and move to model?
       flash[:notice] = "Comment created successfully!"
     end
 #    respond_with(@user, :location => user_following_path(@user))
@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
 
-    @user.profile.decrement_comments_count
+#    @user.profile.decrement_comments_count
 
     respond_with(@user, :location => user_following_path(@user))
   end

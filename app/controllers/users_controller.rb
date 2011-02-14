@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
     @me.follow!(@user)
     current_user.profile.increment_following_count #test and move to model?
-    @user.profile.increment_follower_count #test and move to model?
+#    @user.profile.increment_follower_count #test and move to model?
 
     if @me.update_attributes(params[:user])
 #      redirect_to user_following_path(@me)
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
     @me.unfollow!(@user)
     current_user.profile.decrement_following_count #test and move to model?
-    @user.profile.decrement_follower_count #test and move to model?
+#    @user.profile.decrement_follower_count #test and move to model?
 
     if @me.update_attributes(params[:user])
 #      redirect_to user_following_path(@me)

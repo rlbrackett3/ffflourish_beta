@@ -6,6 +6,7 @@ class PopularPostsController < ApplicationController
   respond_to :js, :html, :xml, :json
 
   def index
+    @search_path = popular_path
     @title = "popular ffflourishes"
 #    @page_title = "popular"
     

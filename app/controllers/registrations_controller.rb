@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 #      @post.update_attributes!(:user_id => )
       if session[:post_content]
          resource.posts.create(:content => session[:post_content])
-         session[:post_content] = nil
+         session[:post_content] = nil if resource.valid?
       end
      
       if resource.active?

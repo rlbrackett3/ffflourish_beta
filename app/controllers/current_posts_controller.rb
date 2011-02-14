@@ -7,6 +7,7 @@ class CurrentPostsController < ApplicationController
   
 
   def index
+    @search_path = recent_path
     @title = "recent posts"
 #    @page_title = "recent"
     

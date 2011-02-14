@@ -73,7 +73,7 @@ class PostsController < ApplicationController
     @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #to redirect to index
     @post = @user.posts.create(params[:post])
 
-    @user.profile.increment_posts_count
+#    @user.profile.increment_posts_count
 
     if @post.save
 #      respond_with(@user, @post, :layout => !request.xhr?) #to post through ajax
@@ -145,7 +145,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
     @post.destroy
 
-    @user.profile.decrement_posts_count
+#    @user.profile.decrement_posts_count
 
     respond_with(@user, :location => user_posts_path(@user))
   end
@@ -156,7 +156,7 @@ class PostsController < ApplicationController
     @post.vote 1, current_user
     unless @post.voted?(current_user) == false
       @post.add_user_likes(current_user) #tests for this method
-      current_user.profile.increment_likes_count #tests for this method
+#      current_user.profile.increment_likes_count #tests for this method
     else
       flase[:notice] = "You may only like a post once."
     end
