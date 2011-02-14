@@ -12,7 +12,7 @@ class Comment
   field           :content
   field           :commenter, :index => true
 
-  index( [ :created_at, Mongo::DESCENDING ] )
+  index( [ :created_at, Mongo::ASCENDING ] )
   #--validations--#
   validates :content,   :presence => true,
                         :length => { :within => 3..255 }

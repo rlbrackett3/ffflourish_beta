@@ -77,8 +77,25 @@ class User
 #    [first_name, last_name].strip!.join()
 #  end
 
+# stat counts
+  def posts_count
+    posts.count
+  end
+
   def likes_count
     likes.count
+  end
+  
+  def comments_count
+    comment_ids.count
+  end
+  
+  def following_count
+    following.count
+  end
+
+  def follower_count
+    followers.count
   end
 
 #--Methods for following and unfollowing users--#
@@ -97,14 +114,6 @@ class User
     user.save!
     self.save!
   end
-
-#  def following_count
-#    following.count
-#  end
-
-#  def followers_count
-#    followers.count
-#  end
 
 #--Method for feed me + following--#
   def following_feed

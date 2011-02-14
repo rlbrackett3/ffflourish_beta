@@ -22,7 +22,7 @@ var el = $('<%= escape_javascript("#comment_form_#{@post.id}")%>');
   // update comment count
   $(commentCount).text("<%= escape_javascript(@post.comments_count.to_s) %>");
   <% if @user == current_user %>
-    $('#user_comment_count').text("<%= escape_javascript(@user.profile.comments_count.to_s) %>");
+    $('#user_comment_count').text("<%= escape_javascript((@user.comments_count + 1).to_s) %>");
   <% end %>
 
   var d = new Date();
