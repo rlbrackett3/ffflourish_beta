@@ -23,8 +23,6 @@ class Post
 
   #-- search on --#
   search_in(:content,
-            { :user => :urlname },
-            { :user => :name },
             { :allow_empty_search => true }
             )
 

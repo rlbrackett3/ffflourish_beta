@@ -18,13 +18,13 @@
           <span class="user_stats">
             <ul>
               <li>
-                <%= "#{user.profile.posts_count} 
-                ff#{make_this_plural(user.profile.posts_count, 'flourish')}" %>
+                <%= "#{user.posts_count} 
+                ff#{make_this_plural(user.posts_count, 'flourish')}" %>
               </li>
-              <li><%= "#{user.profile.following_count} following" %></li>
+              <li><%= "#{user.following_count} following" %></li>
               <li>
-                <%= "#{user.profile.follower_count} 
-                #{make_this_plural(user.profile.follower_count, 'follower')}" %>
+                <%= "#{user.follower_count} 
+                #{make_this_plural(user.follower_count, 'follower')}" %>
               </li>
             </ul>
           </span>

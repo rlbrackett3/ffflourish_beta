@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     end
 
     @me.follow!(@user)
-    current_user.profile.increment_following_count #test and move to model?
+#    current_user.profile.increment_following_count #test and move to model?
 #    @user.profile.increment_follower_count #test and move to model?
 
     if @me.update_attributes(params[:user])
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     end
 
     @me.unfollow!(@user)
-    current_user.profile.decrement_following_count #test and move to model?
+#    current_user.profile.decrement_following_count #test and move to model?
 #    @user.profile.decrement_follower_count #test and move to model?
 
     if @me.update_attributes(params[:user])

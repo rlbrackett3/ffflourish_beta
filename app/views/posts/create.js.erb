@@ -20,7 +20,7 @@ var el = $('<%= escape_javascript("#new_post")%>');
 
   // update post count
   <% if @user == current_user %>
-    $(postCount).text("<%= escape_javascript(@user.profile.posts_count.to_s) %>");
+    $(postCount).text("<%= escape_javascript(@user.posts_count.to_s) %>");
   <% end %>
 
   // Clear forms
