@@ -17,7 +17,7 @@ var el = $('<%= escape_javascript("#comment_form_#{@post.id}")%>');
   var commentImage = $('#<%= escape_javascript("feeditem_comments_img_#{@post.id}") %>');
 
   // render partial to display comment
-  $(commentsList).prepend("<%= escape_javascript(render 'comments/show') %>");
+  $(commentsList).append("<%= escape_javascript(render 'comments/show') %>");
 
   // update comment count
   $(commentCount).text("<%= escape_javascript(@post.comments_count.to_s) %>");

@@ -93,7 +93,7 @@ img#landing_logo {
 	position: relative;
 	float: right;	
 	text-align: right;
-	margin: 0px 30px 0px 0px;
+	margin: 0px 32px 0px 0px;
 }
 
 #show_rand_ffflourish {
