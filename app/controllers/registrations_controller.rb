@@ -3,12 +3,14 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource
     resource.role = "user"
-
+    if session[:post_content]
+      @post_content = session[:post_content]
+    end
+    
     if resource.save
-#      user = User.find(params[:user][:urlname])
-#      @post.update_attributes!(:user_id => )
-      if session[:post_content]
-         resource.posts.create(:content => session[:post_content])
+      
+      if @post_content
+         resource.posts.create(:content => @post_content)
          session[:post_content] = nil if resource.valid?
       end
      
@@ -22,7 +24,6 @@ class RegistrationsController < Devise::RegistrationsController
         redirect_to after_inactive_sign_up_path_for(resource)
       end
     else
-      session[:post_content] = nil
       clean_up_passwords(resource)
       render_with_scope :new
     end
