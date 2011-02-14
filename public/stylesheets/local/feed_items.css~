@@ -278,7 +278,7 @@ li.feed_entry_comments {
     position: inherit;
     float: inherit;
     clear: both;
-    margin: 10px 0px 5px 0px;
+    margin: 0px 0px 5px 0px;
     background-color: #E5E5E5;
 }
 

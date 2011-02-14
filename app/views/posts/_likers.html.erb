@@ -3,7 +3,8 @@
     <li class="liker" id="liker_<%= l.id %>">
       <%= link_to (image_tag l.profile.avatar.avatar.url, 
                                         :class => "liker_avatar",
-                                        :alt => l.profile.name), 
+                                        :alt => l.profile.name,
+                                        :title => l.profile.name), 
                                         user_feed_path(l) %>
     </li>
   <% end %>
