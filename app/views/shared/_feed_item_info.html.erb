@@ -86,6 +86,12 @@
 <div class="post_stat">
   <% if f.user == current_user %>
     <span class="post_edit_links">
+      <%= link_to "edit", edit_user_post_path(f.user, f),
+                          :id => "edit_post_#{f.id}",
+                          :class => "delete_post",
+                          :title => "Edit your ffflourish!"%>
+    </span>
+    <span class="post_edit_links">
       <%= link_to "delete", user_post_path(f.user, f),
                           :remote => true,
                           :id => "delete_post_#{f.id}",
@@ -94,7 +100,6 @@
                           :title => "Delete your ffflourish!",
                           :method => :delete %>
     </span>
-    
   <% end %>
 </div>
 
