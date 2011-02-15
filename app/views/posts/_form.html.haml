@@ -1,7 +1,0 @@
-
-= form_for [@user, @post], :html => {:multipart => true} do |f|
-  = render 'shared/error_messages', :object => f.object
-  = render 'shared/feed_form', :f => f
-  %p.actions
-    = f.submit "Post"
-

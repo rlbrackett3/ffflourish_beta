@@ -1,7 +1,7 @@
 <!--feed item-->
 <li class="feed_entry" id="feed_entry_<%= feed_item.id %>">
   <div class="feed_entry_left">
-  <% if @feed_items %>
+  <% if @feed_items || @commented_on %>
     <%= link_to (image_tag feed_item.user.profile.avatar.avatar.url,
                                       :class => "avatar_small",
                                       :title => feed_item.user.profile.name),

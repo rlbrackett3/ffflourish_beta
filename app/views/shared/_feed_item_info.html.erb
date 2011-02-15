@@ -94,6 +94,12 @@
                           :title => "Delete your ffflourish!",
                           :method => :delete %>
     </span>
+        <span class="post_edit_links">
+      <%= link_to "edit", edit_user_post_path(f.user, f),
+                          :id => "edit_post_#{f.id}",
+                          :class => "edit_post",
+                          :title => "Edit your ffflourish!"%>
+    </span>
   <% end %>
 </div>
 
