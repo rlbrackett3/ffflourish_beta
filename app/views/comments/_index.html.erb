@@ -10,7 +10,7 @@
           <%="said #{time_ago_in_words(c.created_at)} ago" %>
         </span>
       </div>
-      <% if c.user_id == current_user.id || current_user.post_ids.include?(c.post.id) %>
+      <% if c.user_id == current_user.id || current_user.post_ids.include?(c.post.id) || current_user.role == "admin" %>
         <%= link_to "delete",
                         user_post_comment_path(current_user, c.post, c),
                         :remote => true,
