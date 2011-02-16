@@ -18,5 +18,16 @@
       </span>
     <% end %>
   <% end %>
+  <% if current_user.role == "admin" %>
+     <span class="post_edit_links">
+      <%= link_to "delete", user_post_path(f.user, f),
+                          :remote => true,
+                          :id => "delete_post_#{f.id}",
+                          :confirm => "Really delete this post?",
+                          :class => "delete_post",
+                          :title => "Delete your ffflourish!",
+                          :method => :delete %>
+    </span>
+  <% end %>
 </span>
 
