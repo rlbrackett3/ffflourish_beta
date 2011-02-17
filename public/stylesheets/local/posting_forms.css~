@@ -17,7 +17,7 @@
 }
 
 	.edit_post_content {
-		width: 100%;
+		/*width: 100%;*/
 		min-width: 460px;
 		max-width: 600px;
 		min-height: 60px;
@@ -57,7 +57,7 @@
 	
 	/* adding an image or editing and existing image */
 		.edit_post_image_fields {
-			width: 300px;
+			width: 340px;
 			height: 35px;
 			position: relative;
 			float: left;
@@ -76,6 +76,22 @@
 		
 		.edit_post_image_fields:hover{
 			background-color: #CCFFFF;
+		}
+		
+		/* remove image input */
+		.remove_img_label {
+			position: relative;
+			float: left;
+			font-family: Verdana;
+			font-size: 8pt;
+			text-align: top;
+			margin: 0px 0px 0px 5px;
+		}
+		
+		.remove_img_input {
+			position: relative;
+			float: left;
+			margin: 10px 0px 0px 10px;
 		}
 		
 	/* submit button for edit post */
