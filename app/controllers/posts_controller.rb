@@ -133,8 +133,11 @@ class PostsController < ApplicationController
   def update
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
+    
+    
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
+    
     flash[:notice] = "Post successfully updated!" if @post.update_attributes(params[:post])
     respond_with(@user, :layout => user_feed_path(@user))
     
