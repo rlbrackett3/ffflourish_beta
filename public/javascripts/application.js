@@ -5,6 +5,12 @@
 $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
+  // jquery form
+//  $(".editpost").ajaxForm( {
+//    dataType: 'script'
+//  });
+
+//////////////////////////////////////////////////////////////
   // jquery validate-fields
   new ValidatedFields(
     // function called when validation fails
@@ -99,7 +105,7 @@ $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
   // textarea autoResize
-  $('textarea#post_content, .comment_field').autoResize({
+  $('textarea#post_content, .comment_field, textarea.edit_post_content').autoResize({
     // On resize:
     onResize : function() {
         $(this).css({opacity:0.8});

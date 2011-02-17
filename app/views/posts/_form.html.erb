@@ -1,24 +1,35 @@
-<%= form_for [@user, @post], :html => {:multipart => true} do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <div id="post_fields_container">
-    <div class="post_image_fields">
-      <div id="photo_post_preview">
-        <%= image_tag(@post.image.large.url) if @post.image? %>
-      </div>
-      <div id="photo_post_upload">
-        <%= f.file_field :image, :id => "image",
-                  :value => "upload photo (5 MB max, .jpg, .gif, .png, .bmp)" %>
-        <%= f.hidden_field  :image_cache %>
-      </div>
-    </div>
-    <!-- post content -->
-    <div class="post_text_fields">
-  
-    </div>
-    
-    <p>
-      <%= f.submit "Update", :class => "actions" %>
-    </p>
+<li class="feed_entry" id="feed_entry_<%= @post.id %>">
+  <div class="edit_question_background">
+  	<%= form_for [@user, @post], :html => {:multipart => true} do |f| %>
+  	  <div id="question_field">
+  	    <%=f.text_area :content,  :class => 'edit_post_content',
+  	                              :id => "edit_post_#{@post.id}",
+  	                              :rows => 3 %>
+  	    <span class="edit_post_img_preview">
+  	      <% if @post.image? %>
+  	        <%= image_tag  @post.image.medium.url, :class => "photo_preview"%>
+  	      <% end %>
+  	    </span>
+  	  </div>
+  	  <p class="errors"></p>
+  	  <div class="edit_post_options">
+        <div class="post_type">
+        	<div class="icon_background">
+        	  <%= image_tag 'photo.png', :size => '43x43', 
+        	                             :id => "post_image_#{@post.id}" %>
+        	</div>
+        </div>
+        <div class="edit_post_image_fields">
+          <%= f.file_field :image, :id => "image" %>
+          <%= f.hidden_field  :image_cache %>
+        </div>
+  	  </div>
+  	  <div class="edit_post_button">
+  	    <%= f.submit "update!", :id => "edit_post_submit_#{@post}",
+  	                            :class => [ "actions", "edit_post_btn" ],
+  	                            :disable_with => "..." %>
+  	  </div><!-- /post_buttons_bottom -->
+    <% end %>
   </div>
-<% end %>
+</li>
 

@@ -56,8 +56,8 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/new.json                            HTML and AJAX
   #---------------------------------------------------------------------#
   def new
+    
     @user = User.find_by_slug(params[:user_id])
-#    @post = @user.posts.new
 
     @title = "new post"
 
@@ -78,8 +78,10 @@ class PostsController < ApplicationController
     if @post.save
 #      respond_with(@user, @post, :layout => !request.xhr?) #to post through ajax
       respond_to do |format|
-        format.html { redirect_to(@user,
-                             :notice => 'Post created successfully!') }
+        format.html { redirect_back_or_default(@user)
+#                     redirect_to(@user,
+#                     flash[:notice] = 'Post created successfully!'
+                    }
         format.xml  { render :xml => @post,
                              :status => :created,
                              :location => @post }
@@ -115,9 +117,10 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/edit.json                           HTML and AJAX
   #---------------------------------------------------------------------#
   def edit
+    
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
-
+    
     @post_title = "editing your post"
 #    @title = "editing #{@post.title}" if @post.title?
     respond_with(@user, @post)
@@ -133,7 +136,21 @@ class PostsController < ApplicationController
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
     flash[:notice] = "Post successfully updated!" if @post.update_attributes(params[:post])
-    respond_with(@user, @post)
+    respond_with(@user, :layout => user_feed_path(@user))
+    
+#    if @post.update_attributes
+#      respond_to do |format|
+#        format.html { redirect_to session[:return_to] } #,
+#                             #:notice => 'Post updated successfully!') }
+#        format.xml  { render :xml => @post,
+#                             :status => :created,
+#                             :location => @post }
+#        format.js   { render :layout => !request.xhr? }
+#      end
+#    else
+#      respond_with(@user)
+#    end
+#    
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/1

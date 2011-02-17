@@ -1,0 +1,54 @@
+<!--feed item-->
+<li class="feed_entry" id="feed_entry_<%= @post.id %>">
+  <div class="feed_entry_left">
+    <%= render 'shared/feed_avatar_follow', :f => @post %>
+  </div>
+  <div class="feed_entry_center">
+    <span class="feed_entry_content">
+      <p class="feed_entry_author">
+        <%= link_to @post.user.name, user_feed_path(@user),
+                                      :class => 'post_author' %>
+      </p>
+      <p class="feed_entry_text">
+        <%= @post.content %>
+      </p>
+    </span>
+    <!--post information and stats-->
+    <div class="feed_entry_info">
+      <%= render 'shared/feed_item_info', :f => @post %>
+     </div>
+  </div>
+  <div class="feed_entry_right">
+    <% if @post.image? %>
+      <%= link_to (image_tag @post.image.medium.url, 
+                                        :class => "photo_preview"),
+                                        @post.image.large.url,
+                                        :class => "feed_entry_image" %>
+    <% end %>
+  </div>
+</li>
+<li class="feed_entry_likers" id="feeditem_likers_<%= @post.id %>">
+  <div id="likers_container_<%= @post.id %>"></div>
+</li>
+<li class="feed_entry_comments" id="feeditem_comments_<%= @post.id %>">
+  <div id="comments_container_<%= @post.id %>"></div>
+  <div class="comment_form" id="new_comment_form_<%= @post.id %>">
+    <%= form_for [current_user, @post, Comment.new],
+                                   :remote => true,
+                                   :html => { :id => "comment_form_#{ @post.id }" } do |f| %>
+      <p class="field">
+        <%= f.text_area :content, :class => "comment_field",
+                                  :id => "comment_content_#{ @post.id }",
+                                  :rows => 5,
+                                  :placeholder => "Support this ffflourish!" %>
+      </p>
+      <p>
+        <%= f.submit "comment", :class => [ "actions", "comment_submit" ],
+                                :disable_with => "..." %>
+      </p>
+      <p class="errors"></p><!-- format this -->
+    <% end %>
+  </div>
+</li>
+<div class="border" id="border_<%= @post.id %>"></div>
+

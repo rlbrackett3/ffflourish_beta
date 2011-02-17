@@ -128,7 +128,7 @@ ul {
 /*	border:1px solid #cc9;*/
 	padding:2px 5px;
 	font-family: Verdana;
-	font-size:10pt;
+	font-size: 8pt;
 	color: #1b9e6f;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;

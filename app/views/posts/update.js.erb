@@ -1,0 +1,6 @@
+  var postID = $('li#<%= escape_javascript("feed_entry_#{@post.id}") %>');
+  
+  $(postID).fadeOut(1000, function() {
+    $(this).replaceWith("<%= escape_javascript(render :partial => 'posts/show') %>");
+  });
+

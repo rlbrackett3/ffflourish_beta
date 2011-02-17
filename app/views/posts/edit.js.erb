@@ -1,0 +1,9 @@
+var postID = $('li#<%= escape_javascript("feed_entry_#{@post.id}") %>');
+var commentsID = $('li#<%= escape_javascript("feeditem_comments_#{@post.id}") %>');
+var likesID = $('li#<%= escape_javascript("feeditem_likers_#{@post.id}") %>');
+
+$(commentsID).slideUp(1000);
+$(likesID).slideUp(1000);
+$(postID).fadeOut(1500, function() {
+  $(this).replaceWith("<%= escape_javascript(render :partial => 'posts/form') %>");
+});

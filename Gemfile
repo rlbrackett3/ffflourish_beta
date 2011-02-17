@@ -31,6 +31,7 @@ gem 'mini_magick'
 #--General Utility Gems--#
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'jquery-rails'
+gem 'remotipart'
 gem 'validated_fields', :git => 'http://github.com/alluniq/validated-fields.git'
 
 #--generating test and sample data--#

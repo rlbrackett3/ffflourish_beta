@@ -238,6 +238,7 @@ GEM
       rspec (>= 2.0.0.alpha11)
     remarkable_mongoid (0.5.0)
       remarkable_activemodel (>= 4.0.0.alpha2)
+    remotipart (0.2.1)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.4.0)
@@ -355,6 +356,7 @@ DEPENDENCIES
   rails3-generators
   remarkable_activemodel (= 4.0.0.alpha4)
   remarkable_mongoid
+  remotipart
   rspec-rails (>= 2.4.1)
   ruby-debug19
   ruby_parser

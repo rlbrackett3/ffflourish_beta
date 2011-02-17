@@ -31,5 +31,12 @@ class ApplicationController < ActionController::Base
 #      end
 #    end
 #  end
+  
+  private
+  
+  def redirect_back_or_default(default)
+    redirect_to(session[:return_to] || default, :notice => "Success!")
+    session[:return_to] = nil
+  end
 end
 
