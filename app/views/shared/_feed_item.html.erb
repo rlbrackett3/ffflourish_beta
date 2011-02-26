@@ -8,6 +8,17 @@
                                       user_feed_path(feed_item.user) %>
   <% elsif @recent_posts || @popular_posts || @commented_posts %>
     <%= render 'shared/feed_avatar_follow', :f => feed_item %>
+    <% if current_user.role == "admin" %>
+     <span class="post_edit_links">
+      <%= link_to "delete", user_post_path(feed_item.user, feed_item),
+                          :remote => true,
+                          :id => "delete_post_#{feed_item.id}",
+                          :confirm => "Really delete this post?",
+                          :class => "delete_post",
+                          :title => "Delete your ffflourish!",
+                          :method => :delete %>
+      </span>
+    <% end %>
   <% end %>
   </div>
   <div class="feed_entry_center">
