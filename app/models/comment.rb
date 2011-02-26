@@ -16,7 +16,7 @@ class Comment
   index( [ :created_at, Mongo::ASCENDING ] )
   #--validations--#
   validates :content,   :presence => true,
-                        :length => { :within => 3..255 }
+                        :length => { :within => 3..513 }
   validates :commenter, :presence => true
 
   # untested

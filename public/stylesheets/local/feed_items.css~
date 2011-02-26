@@ -278,7 +278,7 @@ li.feed_entry_comments {
     position: inherit;
     float: inherit;
     clear: both;
-    margin: 0px 0px 5px 0px;
+    margin: 10px 0px 5px 0px;
     background-color: #E5E5E5;
 }
 
@@ -286,20 +286,21 @@ li.feed_entry_comments {
     .comment_field {
         width: 90%;
         height: 60px;
-        max-width: 340px;
-        min-height: 32px;
+        max-width: 330px;
+/*        min-height: 32px;*/
         /*max-height: 96px;*/
         position: relative;
         float: right;
         margin: 20px 16px 0px 0px;
         border: none;
-        padding: 3px;
+        padding: 10px;
         font-family: Verdana, sans serif;
     	font-size: 1.0em;
     	color: #666;
         -webkit-border-radius: 5px;
     	-moz-border-radius: 5px;
     	border-radius: 5px;
+    	overflow: auto;
     }
     
     input#comment_submit {

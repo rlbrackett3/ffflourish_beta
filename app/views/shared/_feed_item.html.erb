@@ -65,7 +65,11 @@
         <%= f.submit "comment", :class => [ "actions", "comment_submit" ],
                                 :disable_with => "..." %>
       </p>
-      <p class="errors"></p><!-- format this -->
+      <div class="countdown_comments">
+	      <div class="countdown_title">Characters remaining:</div>
+	      <div class="counter_comments"></div>
+	    </div>
+      <p class="errors"></p>
     <% end %>
   </div>
 </li>

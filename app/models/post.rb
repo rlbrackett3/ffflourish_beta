@@ -37,7 +37,7 @@ class Post
 #                  :length => { :within => 2..140, :message => "is too short." },
 #                  :allow_blank => true
   validates       :content,
-                  :length => { :within => 2..255 }
+                  :length => { :within => 2..257 }
   validates       :comments,
                   :associated => true
   validate :content_or_image_present?

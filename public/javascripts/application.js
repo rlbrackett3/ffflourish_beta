@@ -77,21 +77,47 @@ $(document).ready(function(){
   });
 
 //////////////////////////////////////////////////////////////
-  // textarea countdown function
-  $('textarea').keyup(function(){
-    if(this.value.length >= 254) {
+  // post textarea countdown function
+  $('textarea#post_content').keyup(function(){
+    if(this.value.length >= 256) {
       //handle the over the limit part here
       $(this).addClass('overlimit');
-      this.value = this.value.substring(0, 254);
+      this.value = this.value.substring(0, 256);
     } else {
       $(this).removeClass('overlimit');
     }
-    $('#counter').text(254-this.value.length);
+    $('#counter_post').text(256-this.value.length);
+  });
+  
+  
+  // comment text limit and counter
+  $(".countdown_comments").hide();
+  $('textarea.comment_field').focus(function() {
+    $(".countdown_comments").fadeIn(1000, function() {
+      $('.counter_comments').show();
+    });
+  });
+  
+  $('textarea.comment_field').keyup(function(){
+    if(this.value.length >= 512) {
+      //handle the over the limit part here
+      $(this).addClass('overlimit');
+      this.value = this.value.substring(0, 512);
+    } else {
+      $(this).removeClass('overlimit');
+    }
+    $('.counter_comments').text(512-this.value.length);
+  });
+  
+  // about me text limit and counter
+  $('input#profile_handle').focus(function() {
+    $('#countdown').show();
   });
   
   $('input#profile_handle').focus(function() {
     $('#countdown').show();
   });
+  
   $('input#profile_handle').keyup(function(){
     if(this.value.length >= 84) {
       //handle the over the limit part here
@@ -105,7 +131,7 @@ $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////
   // textarea autoResize
-  $('textarea#post_content, .comment_field, textarea.edit_post_content').autoResize({
+  $('textarea#post_content, textarea.edit_post_content').autoResize({
     // On resize:
     onResize : function() {
         $(this).css({opacity:0.8});
@@ -118,6 +144,22 @@ $(document).ready(function(){
     animateDuration : 300,
     // More extra space:
     extraSpace : 0
+});
+
+  // comments textarea autoResize
+  $('.comment_field').autoResize({
+    // On resize:
+    onResize : function() {
+        $(this).css({opacity:0.8});
+    },
+    // After resize:
+    animateCallback : function() {
+        $(this).css({opacity:1});
+    },
+    // Quite slow animation:
+    animateDuration : 150,
+    // More extra space:
+    extraSpace : 20
 });
 
 //////////////////////////////////////////////////////////////

@@ -228,7 +228,7 @@ input#image{
 	float: left;
 	margin: 0px 0px 0px 10px;
 }
-/* countdown for comments */
+
 .countdown_comments{
 	display: none;
 	width: 180px;
