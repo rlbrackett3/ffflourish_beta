@@ -54,11 +54,16 @@ class Post
   
   scope :commented_on_by_user, lambda { |user| where( { "comments.user_id" => user.id } ).desc(:updated_at) }
 
-
-before_save :strip_content
-before_update :strip_content
+# callbacks
+  before_save :strip_content
+  before_update :strip_content
 
 #--Methods--#
+
+  def update_popscore
+    self.pop_score = (self.votes.to_f * 5) + (self.comments_count.to_f * 10)
+    self.save
+  end
 
   def strip_content
     self.content.strip!

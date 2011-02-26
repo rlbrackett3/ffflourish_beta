@@ -177,8 +177,9 @@ class PostsController < ApplicationController
     unless @post.voted?(current_user) == false
       @post.add_user_likes(current_user) #tests for this method
 #      current_user.profile.increment_likes_count #tests for this method
+      @post.update_popscore
     else
-      flase[:notice] = "You may only like a post once."
+      flash.now[:notice] = "You may only like a post once."
     end
 
     if @post.update_attributes(params[:post])

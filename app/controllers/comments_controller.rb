@@ -39,7 +39,8 @@ class CommentsController < ApplicationController
     if @comment.save(params[:comment])
       current_user.comments << @comment #test and move to model?
 #      current_user.profile.increment_comments_count#test and move to model?
-      flash[:notice] = "Comment created successfully!"
+      @post.update_popscore
+      flash.now[:notice] = "Comment created successfully!"
     end
 #    respond_with(@user, :location => user_following_path(@user))
     respond_with(@post, @comment, :layout => !request.xhr?)
@@ -55,6 +56,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     @comment.delete_comment_from_user(@comment.user)
+    @post.update_popscore
 
 #    @user.profile.decrement_comments_count
 
