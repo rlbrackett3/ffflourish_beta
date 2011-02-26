@@ -258,6 +258,7 @@ $(document).ready(function(){
 //////////////////////////////////////////////////////////////
   // linkify for links in posts
   $('.feed_entry_text').linkify();
+  $('.comment_content').linkify();
   $('#user_handle').linkify();
   
 //////////////////////////////////////////////////////////////

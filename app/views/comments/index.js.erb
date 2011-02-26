@@ -12,7 +12,9 @@ if (displayValue == 'none') {
   $(commentForm).hide();
   $(feeditemComments).slideDown('slow', function() {
     $(commentsContainer).slideDown('slow').replaceWith("<%= escape_javascript(render :partial => 'comments/index') %>");
-    $(commentForm).fadeIn('slow').slideDown('slow');
+    $(commentForm).fadeIn('slow').slideDown('slow', function() {
+      $('.comment_content').linkify();
+    });
   });
 }
 else {
