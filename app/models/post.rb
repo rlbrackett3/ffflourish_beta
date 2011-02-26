@@ -55,7 +55,15 @@ class Post
   scope :commented_on_by_user, lambda { |user| where( { "comments.user_id" => user.id } ).desc(:updated_at) }
 
 
+before_save :strip_content
+before_update :strip_content
+
 #--Methods--#
+
+  def strip_content
+    self.content.strip!
+    self.content.gsub!(/\r\n/, " ")
+  end
 
   def self.random
     if (c = count) != 0
