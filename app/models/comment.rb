@@ -11,6 +11,7 @@ class Comment
   #--data fields--#
   field           :content
   field           :commenter, :index => true
+#  field           :viewed, :type => Array, :default => []
 
   index( [ :created_at, Mongo::ASCENDING ] )
   #--validations--#

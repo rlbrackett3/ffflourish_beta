@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comments = @post.comments.all.asc(:created_at)
+    
+    #keeping track of when a user views a posts comments
 
     respond_with(@post, @comment, :layout => !request.xhr?)
   end

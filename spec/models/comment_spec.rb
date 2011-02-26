@@ -9,6 +9,7 @@ describe Comment do
     it { should have_field :created_at }
     it { should have_field :updated_at }
     it { should have_field :user_id }
+    it { should have_field :viewed }
 
   end
 #------------------------------------------------#

@@ -63,6 +63,7 @@ class Post
     end
   end
 
+  # comment methods
   def comments_count #write tests for me
     self.comments.count
   end
@@ -75,6 +76,10 @@ class Post
         nil
       end
     end
+  end
+  
+  def comments_viewed_by
+    
   end
 
   def add_user_likes(user) #write tests for me

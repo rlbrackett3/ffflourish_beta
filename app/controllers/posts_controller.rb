@@ -17,9 +17,8 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def index
     @search_path = user_feed_path
-    @user = User.find_by_slug(params[:id])
+    @user = User.find_by_slug(params[:user_id])
     @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
-    @post = @user.posts.new
     
     @page_title = "ffflourishes"
     @title = "#{@user.profile.name}'s ffflourishes"

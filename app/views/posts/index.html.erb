@@ -4,6 +4,9 @@
 <% end %>
 <!-- Listing all the users posts -->
 <% if @posts.any? %>
+  <% if params[:page] %>
+    <div id="pagination"><%= will_paginate @posts %></div>
+  <% end %>
   <div id="results">
     <div class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @posts %>
@@ -17,3 +20,4 @@
     </div>
   <% end %>
 <% end %>
+<div id="pagination"><%= will_paginate @posts %></div>

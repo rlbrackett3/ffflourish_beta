@@ -22,7 +22,9 @@
         <div class="edit_post_image_fields">
           <%= f.file_field :image, :id => "image" %>
           <%= f.hidden_field  :image_cache %>
-          
+          <!-- this does not work in productions -->
+          <%= f.check_box :remove_image!, :class => "remove_img_input" %>
+          <%= f.label "remove image", :class => "remove_img_label" %>
         </div>
   	  </div>
   	  <div class="edit_post_button">

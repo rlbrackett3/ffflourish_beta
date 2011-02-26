@@ -47,7 +47,7 @@ describe Post do
 
     it "should delete a post's comments on destroy" do
       post = @user.posts.create!(:title => 'hello', :content => 'world')
-      post.comments.create!(:content => "comment")
+      post.comments.create!(:content => "comment", :commenter => @user)
       post.destroy
       Post.all(:id => post.id).empty?.should == true
       Comment.all(:text => "comment").empty?.should == true
@@ -65,7 +65,7 @@ describe Post do
       @user_post = @user.posts.create!(:content => "foo", :created_at => 1.hour.ago)
       @other_post = @other_user.posts.create!(:content => "bar", :created_at => 1.day.ago)
       @third_post = @third_user.posts.create!(:content => "squirrel", :created_at => 2.days.ago)
-      @oldpost = @user.posts.create!(:content => "foo", :created_at => 4.days.ago)
+      @oldpost = @user.posts.create!(:content => "foo", :created_at => 8.days.ago)
 
       @user.follow!(@other_user)
     end
@@ -98,27 +98,27 @@ describe Post do
     end
     #------------------------------------------------#
     describe 'current' do
-
-      it 'should have a current_posts class method' do
-        Post.should respond_to(:current)
+      
+      it 'should have a "recent" class method' do
+        Post.should respond_to(:recent)
+      end
+      
+      it 'should have a "recent" posts scope' do
+        Post.scopes.should include(:recent)
       end
 
-      it "adds the 'current' scope to the scopes" do
-        Post.scopes.should include(:popular)
+      it 'should include all users posts within 5 days' do
+        Post.recent.should include(@user_post)
+        Post.recent.should include(@other_post)
+        Post.recent.should include(@third_post)
       end
 
-      it 'should include all users posts within 3 days' do
-        Post.current.should include(@user_post)
-        Post.current.should include(@other_post)
-        Post.current.should include(@third_post)
-      end
-
-      it 'should not include posts older than 3 days ago' do
-        Post.current.should_not include(@oldpost)
+      it 'should not include posts older than 5 days ago' do
+        Post.recent.should_not include(@oldpost)
       end
 
       it 'should display current posts in desc order' do
-        Post.current.options[:sort].should == [[:created_at, :desc]]
+        Post.recent.options[:sort].should == [[:created_at, :desc]]
       end
     end
     #------------------------------------------------#
@@ -170,6 +170,21 @@ describe Post do
         end
       end
     end
+  end
+#------------------------------------------------#
+  describe 'keeping track of comment views' do
+    let(:user)        { Factory(:user) }
+    let(:second_user) { Factory(:user, :email => Factory.next(:email)) }
+    let(:post)        { Factory(:post, :user => second_user)}
+    
+    describe 'comments_viewed_by method' do
+      
+      it 'should respond to "comments_viewed_by"' do
+        Post.should respond_to(:comments_viewed_by)
+      end
+      
+    end
+    
   end
 #------------------------------------------------#
 end
