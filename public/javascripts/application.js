@@ -89,6 +89,22 @@ $(document).ready(function(){
     $('#counter_post').text(256-this.value.length);
   });
   
+  $('.edit_post_content').keyup(function(){
+    $(this).focus(function() {
+      $("#countdown").fadeIn(1000, function() {
+        $('#counter_post').show();
+      });
+    });
+    if(this.value.length >= 256) {
+      //handle the over the limit part here
+      $(this).addClass('overlimit');
+      this.value = this.value.substring(0, 256);
+    } else {
+      $(this).removeClass('overlimit');
+    }
+    $('#counter_post').text(256-this.value.length);
+  });
+  
   
   // comment text limit and counter
   $(".countdown_comments").hide();

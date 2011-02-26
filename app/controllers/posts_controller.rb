@@ -132,26 +132,27 @@ class PostsController < ApplicationController
   def update
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
-    
-    
+    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
     
-    flash[:notice] = "Post successfully updated!" if @post.update_attributes(params[:post])
-    respond_with(@user, :layout => user_feed_path(@user))
+#    flash[:notice] = "Post successfully updated!" if @post.update_attributes(params[:post])
+#    respond_with(@user)
     
-#    if @post.update_attributes
-#      respond_to do |format|
-#        format.html { redirect_to session[:return_to] } #,
-#                             #:notice => 'Post updated successfully!') }
-#        format.xml  { render :xml => @post,
-#                             :status => :created,
-#                             :location => @post }
-#        format.js   { render :layout => !request.xhr? }
-#      end
-#    else
-#      respond_with(@user)
-#    end
+    if @post.update_attributes(params[:post])
+      respond_to do |format|
+        format.html { redirect_back_or_default(@user)
+                    }
+        format.xml  { render :xml => @post,
+                             :status => :created,
+                             :location => @post }
+        format.js   { render :layout => !request.xhr?}
+      end
+    else
+      respond_with(@user)
+#      flash[:notice] = "There was an error editing your post, please try again."
+#      redirect_back_or_default(@user)
+    end
 #    
   end
 #----------------------------------------------------------------------#

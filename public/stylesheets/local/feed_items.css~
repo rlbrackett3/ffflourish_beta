@@ -287,8 +287,6 @@ li.feed_entry_comments {
         width: 90%;
         height: 60px;
         max-width: 330px;
-/*        min-height: 32px;*/
-        /*max-height: 96px;*/
         position: relative;
         float: right;
         margin: 20px 16px 0px 0px;

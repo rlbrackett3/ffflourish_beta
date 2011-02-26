@@ -20,7 +20,7 @@
 		/*width: 100%;*/
 		min-width: 460px;
 		max-width: 600px;
-		min-height: 60px;
+/*		min-height: 60px;*/
 		position: relative;
 		float: left;
 		padding: 10px;
@@ -46,7 +46,7 @@
 	}
 	
 	.edit_post_options {
-		width: 400px;
+		width: 460px;
 		height: 43px;
 		position: relative;
 		float: left;
@@ -57,7 +57,7 @@
 	
 	/* adding an image or editing and existing image */
 		.edit_post_image_fields {
-			width: 340px;
+			width: 400px;
 			height: 35px;
 			position: relative;
 			float: left;
