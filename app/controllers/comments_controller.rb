@@ -54,6 +54,7 @@ class CommentsController < ApplicationController
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
+    @comment.delete_comment_from_user(@user)
 
 #    @user.profile.decrement_comments_count
 

@@ -19,5 +19,11 @@ class Comment
                         :length => { :within => 3..255 }
   validates :commenter, :presence => true
 
+  # untested
+  def delete_comment_from_user(user)
+    user.comment_ids.delete self.id
+    user.save!
+  end
+
 end
 
