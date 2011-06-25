@@ -6,7 +6,7 @@
     <span class="comment_date">
       <%="said #{time_ago_in_words(@comment.created_at)} ago" %>
     </span>
-      <% if @comment.user_id == current_user.id || current_user.posts.include?(@comment.post.id) %>
+      <% if @comment.commenter_id == current_user.id || current_user.posts.include?(@comment.post.id) %>
         <%= link_to "delete",
                         user_post_comment_path(current_user, @comment.post, @comment),
                         :remote => true,

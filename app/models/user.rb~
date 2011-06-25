@@ -10,11 +10,12 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   attr_accessible :name, :urlname, :likes, :email, :email_confirmation,
-                  :profile, :password, :password_confirmation
+                  :profile, :password, :password_confirmation, :comment_ids
   #--fields--#
-  field :urlname
-  field :name
+  field :urlname, :type => String
+  field :name, :type => String
   field :likes, :type => Array, :default => []
+  field :comment_ids, :type => Array, :default => []
 
   # user management through cancan and roles
   field :role
@@ -26,7 +27,7 @@ class User
   search_in(:name,
             :urlname,
             :email,
-            :posts => :content,
+            { :posts => :content },
             { :allow_empty_search => true })
 #--Indexed fields--#
 
@@ -35,13 +36,7 @@ class User
   accepts_nested_attributes_for :profile
 
 #--User Blog--#
-  references_many :posts,
-                  :inverse_of => :user,
-                  :dependent => :delete,
-                  :index => true
-  references_and_referenced_in_many :comments,
-                                    :inverse_of => :user,
-                                    :index => true
+  references_many :posts, :dependent => :delete, :index => true
   references_and_referenced_in_many :following,
                                     :class_name => 'User',
                                     :inverse_of => :followers
@@ -77,6 +72,11 @@ class User
 #  def url_name
 #    [first_name, last_name].strip!.join()
 #  end
+
+  def add_comment_id_to_user(comment) #write tests for me
+    self.comment_ids << comment.id
+    self.save
+  end
 
 # stat counts
   def posts_count
@@ -154,6 +154,7 @@ protected
                                    )
     self.save
   end
+
 
 end
 

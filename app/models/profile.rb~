@@ -2,7 +2,7 @@ class Profile
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in :user, :inverse_of => :profile
+  embedded_in :user#, :inverse_of => :profile
 
   attr_accessible  :name, :handle, :status, :about_me, :birthday, :avatar,
                    :locations, :websites,
@@ -14,12 +14,6 @@ class Profile
   field :status,          :type => Integer
   field :about_me
   field :birthday,        :type => Date
-
-#  field :likes_count,     :type => Integer, :default => 0
-#  field :posts_count,     :type => Integer, :default => 0
-#  field :comments_count,  :type => Integer, :default => 0
-#  field :following_count, :type => Integer, :default => 0
-#  field :follower_count,  :type => Integer, :default => 0
 
   mount_uploader :avatar, AvatarUploader
 
@@ -34,57 +28,6 @@ class Profile
                                        :message => " is too long." },
                           :allow_blank => true
 
-  protected
-
-  # incrementing stats counts for user profile _count fields
-  # this could all be DRYer but i needed to get it implemented first
-  # refactor and test #################
-
-#  def increment_likes_count #write tests for me
-#    self.likes_count += 1
-#    self.save
-#  end
-
-#  def increment_following_count #write tests for me
-#    self.following_count += 1
-#    self.save
-#  end
-
-#  def decrement_following_count #write tests for me
-#    self.following_count += -1
-#    self.save
-#  end
-
-#  def increment_follower_count #write tests for me
-#    self.follower_count += 1
-#    self.save
-#  end
-
-#  def decrement_follower_count #write tests for me
-#    self.follower_count += -1
-#    self.save
-#  end
-
-#  def increment_posts_count
-#    self.posts_count += 1
-#    self.save
-#  end
-
-#  def decrement_posts_count
-#    self.posts_count += -1
-#    self.save
-#  end
-
-#  def increment_comments_count
-#    self.comments_count += 1
-#    self.save
-#  end
-
-#  def decrement_comments_count
-#    self.comments_count += -1
-#    self.save
-#  end
-
 end
 
 
@@ -93,12 +36,12 @@ class Location
   include Mongoid::Timestamps
   attr_accessible :city, :state, :country, :postal_code
 
-  field :city
-  field :state
-  field :country
-  field :postal_code
+  field :city, :type => String
+  field :state, :type => String
+  field :country, :type => String
+  field :postal_code, :type => String
 
-  embedded_in :profile,  :inverse_of => :locations
+  embedded_in :profile#,  :inverse_of => :locations
 
 #  def locale
 #    if ! postal_code.blank? and (city.blank? or state.blank?)
@@ -118,11 +61,11 @@ class Website
   include Mongoid::Timestamps
   attr_accessible :name, :url, :info
 
-  field :name
-  field :url
-  field :info
+  field :name, :type => String
+  field :url, :type => String
+  field :info, :type => String
 
-  embedded_in :profile,  :inverse_of => :websites
+  embedded_in :profile#,  :inverse_of => :websites
 
 end
 

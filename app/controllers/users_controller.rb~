@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     @page_title = "is following"
     @title = "following"
     @user = User.find_by_slug(params[:id])
-    @users = @user.following.csearch(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
+    @users = @user.following.search(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
     render 'show_follow'
   end
   #----------------------------------------------------------------------#
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     @page_title = "is followed by"
     @title = "followers"
     @user = User.find_by_slug(params[:id])
-    @users = @user.followers.csearch(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
+    @users = @user.followers.search(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
     render 'show_follow'
   end
 #----------------------------------------------------------------------#

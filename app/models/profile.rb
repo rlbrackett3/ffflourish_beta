@@ -2,17 +2,17 @@ class Profile
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in :user, :inverse_of => :profile
+  embedded_in :user#, :inverse_of => :profile
 
   attr_accessible  :name, :handle, :status, :about_me, :birthday, :avatar,
                    :locations, :websites,
                    :likes_count
   accepts_nested_attributes_for :locations, :websites
 
-  field :name
-  field :handle
+  field :name, :type => String
+  field :handle, :type => String
   field :status,          :type => Integer
-  field :about_me
+  field :about_me, :type => String
   field :birthday,        :type => Date
 
   mount_uploader :avatar, AvatarUploader
@@ -36,12 +36,12 @@ class Location
   include Mongoid::Timestamps
   attr_accessible :city, :state, :country, :postal_code
 
-  field :city
-  field :state
-  field :country
-  field :postal_code
+  field :city, :type => String
+  field :state, :type => String
+  field :country, :type => String
+  field :postal_code, :type => String
 
-  embedded_in :profile,  :inverse_of => :locations
+  embedded_in :profile#,  :inverse_of => :locations
 
 #  def locale
 #    if ! postal_code.blank? and (city.blank? or state.blank?)
@@ -61,11 +61,11 @@ class Website
   include Mongoid::Timestamps
   attr_accessible :name, :url, :info
 
-  field :name
-  field :url
-  field :info
+  field :name, :type => String
+  field :url, :type => String
+  field :info, :type => String
 
-  embedded_in :profile,  :inverse_of => :websites
+  embedded_in :profile#,  :inverse_of => :websites
 
 end
 

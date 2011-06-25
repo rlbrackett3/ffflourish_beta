@@ -8,8 +8,7 @@ class Image
   embedded_in :post, :inverse_of => :images
   referenced_in :user
 
-  field :title, :type => String
-
+  field :title
   mount_uploader :image, ImageUploader
 
   #--validations--#

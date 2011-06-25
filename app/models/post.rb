@@ -8,14 +8,14 @@ class Post
   attr_accessible :content, :image, :image_filename, :image_cache, :created_at, :comments
 
   #--Associations--#
-  referenced_in :user, :inverse_of => :posts, :index => true
+  referenced_in :user, :index => true#, :inverse_of => :posts
   embeds_many   :comments
   accepts_nested_attributes_for :comments
 
   mount_uploader  :image, ImageUploader
 
   #--data fields--#
-  field           :content
+  field           :content, :type => String
   field           :pop_score, :type => Float, :default => 0.0
 
   #-- search on --#
@@ -24,7 +24,7 @@ class Post
   #--indexes--#
   index           :created_at
   index           :updated_at
-#  index           :user_ids
+  index           :user_id
   index           "comments.created_at"
 
   #--validations--#
@@ -44,7 +44,7 @@ class Post
 
   scope :popular, where(:created_at.gt => 2.weeks.ago).order_by(:pop_score.desc)#write tests for me
 
-  scope :commented_on_by_user, lambda { |user| where( { "comments.user_id" => user.id } ).desc(:updated_at) }
+  scope :commented_on_by_user, lambda { |user| where( { "comments.user_id" => user.id.to_s } ).desc(:updated_at) }
 
 # callbacks
   before_save :strip_content
