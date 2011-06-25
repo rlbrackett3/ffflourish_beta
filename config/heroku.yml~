@@ -1,0 +1,78 @@
+apps:
+  # map the environments to your desired heroku app names
+  # for example,
+  #   production: awesomeapp
+  # would create the RACK_ENV=production
+  # and deploy to http://awesomeapp.heroku.com
+  production: ffflourish
+  staging: ffflourish-staging
+  
+  stacks:
+  # choose the stacks you want to use for each app.
+  # the all: setting sets the default
+  all: bamboo-mri-1.9.2
+
+  # override on a per environment basis
+  #legacy: bamboo-ree-1.8.7
+
+config:
+  # choose the configuration settings for all environments
+  all:
+    BUNDLE_WITHOUT: "test:development"
+
+  # you can also override configuration settings for each environment
+  production:
+#    MONGODB_URL: "mongodb://heroku:zx4ot2gwkfu3ivn4e483mq@flame.mongohq.com:27030/app433651"
+    MONGOHQ_URL: "mongodb://heroku:zx4ot2gwkfu3ivn4e483mq@pearl.mongohq.com:27089/ffflourish_beta_01"
+    NEW_RELIC_APPNAME: "ffflourish"
+    NEW_RELIC_ID: "33710"
+    NEW_RELIC_LICENSE_KEY: "a18a57a9c352d401ade270497be5808964a3b872"
+    SENDGRID_DOMAIN: "heroku.com"
+    SENDGRID_PASSWORD: "e26762088b423562ab"
+    SENDGRID_USERNAME: "app433651@heroku.com"
+    S3_KEY: "AKIAJPBA33D3AE6RCG6Q"
+    S3_SECRET: "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"
+    S3_BUCKET: "ffflourish"
+
+    
+  staging:
+    MONGOHQ_URL: "mongodb://heroku:zx4ot2gwkfu3ivn4e483mq@flame.mongohq.com:27030/app433651"
+    NEW_RELIC_APPNAME: "ffflourish-staging"
+    NEW_RELIC_ID: "33833"
+    NEW_RELIC_LICENSE_KEY: "030808a99f88cc0d7e1a5d528fda30f42d654993"
+    RACK_ENV: "staging"
+    S3_BUCKET: "ffflourish_beta_01"
+    S3_KEY: "AKIAJPBA33D3AE6RCG6Q"
+    S3_SECRET: "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"
+    SENDGRID_DOMAIN: "heroku.com"
+    SENDGRID_PASSWORD: "6e2f34a4fe09f6b045"
+    SENDGRID_USERNAME: "app437610@heroku.com"
+    SHARED_DATABASE_URL: "postgres://vvqcaicnbr:jItEFy8z1IApNIHf1zf5@ec2-50-16-205-219.compute-1.amazonaws.com/vvqcaicnbr"
+    DATABASE_URL: "postgres://vvqcaicnbr:jItEFy8z1IApNIHf1zf5@ec2-50-16-205-219.compute-1.amazonaws.com/vvqcaicnbr"
+
+
+
+collaborators:
+  all:
+    - "robert.brackett3@gmail.com"
+
+domains:
+  production:
+    - "ffflourish.com"
+    - "www.ffflourish.com"
+#    - "ffflourish.heroku.com"
+#    - "www.ffflourish.heroku.com"
+  staging:
+#    - "ffflourish-staging.heroku.com"
+
+addons:
+  all:
+    # add any other addons here
+    - mongohq:free
+    - shareddatabase:5mb
+    - cron:daily
+    - sendgrid:free
+    - newrelic:bronze
+
+  production:
+    # list production env specific addons here
