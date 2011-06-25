@@ -19,7 +19,7 @@ class Post
   field           :pop_score, :type => Float, :default => 0.0
 
   #-- search on --#
-  search_in :content, { :allow_empty_search => true }
+  search_in :content, { :profile => :name }, { :allow_empty_search => true }
 
   #--indexes--#
   index           :created_at

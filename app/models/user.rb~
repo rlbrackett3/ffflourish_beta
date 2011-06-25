@@ -26,7 +26,7 @@ class User
   search_in(:name,
             :urlname,
             :email,
-            { :posts => :content },
+            :posts => :content,
             { :allow_empty_search => true })
 #--Indexed fields--#
 

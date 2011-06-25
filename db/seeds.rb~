@@ -38,15 +38,20 @@ puts 'CREATING A BUNCH OF PEOPLE'
     p = u.posts.create! :content    => Faker::Lorem.sentence + Faker::Lorem.sentence,
                         :created_at => Time.random(2),
                         :updated_at => Time.random(1)
+    u.profile.increment_posts_count
     p.save!
   end
   u.save!
   puts u.to_param
   user.follow!(u)
+  user.profile.increment_following_count
   user.posts.each do |p|
     p.vote 1, u
   end
+  u.profile.increment_follower_count
   u.follow!(user)
+  u.profile.increment_following_count
+  user.profile.increment_follower_count
 end
 puts "lots of new test users created!!!!"
 

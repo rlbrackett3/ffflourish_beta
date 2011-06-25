@@ -7,7 +7,7 @@ class FollowingPostsController < ApplicationController
 
 
   def index
-    @search_path = user_following_path(@user)
+    @search_path = user_following_path
     @user = User.find_by_slug(params[:id])
     @profile = @user.profile
     @feed_items = @user.following_feed.csearch(params[:search]).paginate(:page => params[:page], :per_page => 50)

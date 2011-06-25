@@ -19,8 +19,7 @@ test:
   autocreate_indexes: false
 
 cucumber:
-  #<<: *defaults
-  host: localhost
+  <<: *defaults
   database: ffflourish_cucumber
   autocreate_indexes: false
 

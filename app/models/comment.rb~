@@ -4,12 +4,9 @@ class Comment
 
   attr_accessible :content, :commenter
   #--Associations--#
-  #referenced_in   :user, :stored_as => :array,
-  #                       :inverse_of => :comments,
-  #                       :index => true
-  references_and_referenced_in_many :user,
-                                    :inverse_of => :comments,
-                                    :index => true
+  referenced_in   :user, :stored_as => :array,
+                         :inverse_of => :comments,
+                         :index => true
   embedded_in     :post, :inverse_of => :comments
   #--data fields--#
   field           :content

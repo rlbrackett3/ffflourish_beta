@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.csearch(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search]) #to redirect to index
+    @posts = @user.posts.desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search]) #to redirect to index
     @post = @user.posts.create(params[:post])
 
 #    @user.profile.increment_posts_count
@@ -132,7 +132,7 @@ class PostsController < ApplicationController
   def update
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @posts = @user.posts.csearch(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search])
+    @posts = @user.posts.desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search])
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
 
