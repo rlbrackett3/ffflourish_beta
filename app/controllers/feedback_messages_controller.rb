@@ -2,22 +2,22 @@ class FeedbackMessagesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
   skip_authorize_resource :only => [:new, :create]
-  
+
   respond_to :js, :html, :xml, :json
-  
+
   def index
     @title = "feedback"
 #    @search_path = feeback_messages_path
-    @messages = FeedbackMessage.desc(:created_at).paginate(:page => params[:page], :per_page => 50)
-    
-   respond_with(@messages) 
-    
+    @messages = FeedbackMessage.desc(:created_at).page(params[:page]).per(50)
+
+   respond_with(@messages)
+
   end
 
   def show
     @title = "feedback message"
     @message = FeedbackMessage.find(params[:id])
-    
+
     respond_with(@message)
   end
 
@@ -37,18 +37,18 @@ class FeedbackMessagesController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
-    
+
   end
 
   def destroy
-    @messages = FeedbackMessage.desc(:created_at).paginate(:page => params[:page], :per_page => 50)
+    @messages = FeedbackMessage.desc(:created_at).page(params[:page]).per_page(50)
     @message = FeedbackMessage.find(params[:id])
     @message.destroy
-    
+
     respond_with(@messages, :location => feedback_messages_path)
   end
 

@@ -1,4 +1,4 @@
-require 'carrierwave/orm/mongoid'
+require 'carrierwave/mongoid'
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -10,15 +10,16 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   attr_accessible :name, :urlname, :likes, :email, :email_confirmation,
-                  :profile, :password, :password_confirmation
+                  :profile, :password, :password_confirmation, :comment_ids
   #--fields--#
-  field :urlname
-  field :name
+  field :urlname, :type => String
+  field :name, :type => String
   field :likes, :type => Array, :default => []
-  
+  field :comment_ids, :type => Array, :default => []
+
   # user management through cancan and roles
   field :role
-  
+
   ROLES = %w[admin user]
 
   slug  :urlname, :index => true
@@ -26,6 +27,7 @@ class User
   search_in(:name,
             :urlname,
             :email,
+            { :posts => :content },
             { :allow_empty_search => true })
 #--Indexed fields--#
 
@@ -34,32 +36,26 @@ class User
   accepts_nested_attributes_for :profile
 
 #--User Blog--#
-  references_many   :posts,     :stored_as => :array,
-                                :inverse_of => :user,
-                                :dependent => :delete,
-                                :index => true
-  references_many   :comments,  :stored_as => :array,
-                                :inverse_of => :user,
-                                :index => true
-  references_many   :following, :stored_as => :array,
-                                :class_name => 'User',
-                                :inverse_of => :followers
-  references_many   :followers, :stored_as => :array,
-                                :class_name => 'User',
-                                :inverse_of => :following
+  references_many :posts, :dependent => :delete#, :index => true
+  references_and_referenced_in_many :following,
+                                    :class_name => 'User',
+                                    :inverse_of => :followers
+  references_and_referenced_in_many :followers,
+                                    :class_name => 'User',
+                                    :inverse_of => :following
 #--Feedback--# no tests for this yet
   references_many :feedback_messages
 
 #--Validations--#
   validates :urlname,       :uniqueness => true,
-                            :length => 5..60,
-                            :format => { :with => /^[\w \.\-@]+$/ }
+                                      :length => 5..60#,
+                                      #:format => { :with => /^[\w \.\-@]+$/ }
   validates :name,          :presence => true,
-                            :length => 2..60,
-                            :format => { :with => /^[\w \.\-@]+$/ }
+                                     :length => 2..60#,
+                                      #:format => { :with => /^[\w \.\-@]+$/ }
   validates :email,         :presence => true,
-                            :confirmation => true,
-                            :uniqueness => { :case_sensitive => false }
+                                    :confirmation => true,
+                                    :uniqueness => { :case_sensitive => false }
   validates :profile,       :associated => true
 #  validates :role,          :presence => true
 
@@ -77,6 +73,16 @@ class User
 #    [first_name, last_name].strip!.join()
 #  end
 
+  def add_comment_id_to_user(comment) #write tests for me
+    self.comment_ids << comment.id
+    self.save
+  end
+
+  def delete_comment_from_comment_ids(commenter)
+    self.comment_ids.delete commenter.id
+    self.save!
+  end
+
 # stat counts
   def posts_count
     posts.count
@@ -85,11 +91,11 @@ class User
   def likes_count
     likes.count
   end
-  
+
   def comments_count
     comment_ids.count
   end
-  
+
   def following_count
     following.count
   end
@@ -119,7 +125,7 @@ class User
   def following_feed
     Post.from_users_followed_by(self)
   end
-  
+
   def commented_on_posts
     Post.commented_on_by_user(self)
   end
@@ -130,7 +136,7 @@ protected
   def update_name
     self.name = self.profile.name
   end
-  
+
   # set default user role
   def default_role
     self.role = "user"
@@ -153,6 +159,7 @@ protected
                                    )
     self.save
   end
+
 
 end
 

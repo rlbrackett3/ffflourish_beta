@@ -35,32 +35,32 @@ Spork.each_run do
     #--devise-rspec--#
 #    config.include Devise::TestHelpers
 
-    #config.before :all do
-    #  Mongoid.database.collections.each(&:drop)
-    #end
+    config.before :all do
+      Mongoid.database.collections.each(&:drop)
+    end
 
-    #config.after :all do
-    #  Mongoid.database.collections.each(&:drop)
-    #end
+    config.after :all do
+      Mongoid.database.collections.each(&:drop)
+    end
 
     # config.before :each do
     #   Mongoid.master.collections.select{|c| c.name !~ /system/ }.each(&:drop)
     # end
 
     #--use database cleaner to clear mongoDB test data--#
-    require 'database_cleaner'
-    config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
-      DatabaseCleaner.orm = "mongoid"
-    end
+    #require 'database_cleaner'
+    #config.before(:suite) do
+    #  DatabaseCleaner.strategy = :truncation
+    #  DatabaseCleaner.orm = "mongoid"
+    #end
 
-    config.before(:each) do
-      DatabaseCleaner.clean
-    end
+    #config.before(:each) do
+    #  DatabaseCleaner.clean
+    #end
 
-    config.after(:suite) do
-      DatabaseCleaner.clean
-    end
+    #config.after(:suite) do
+    #  DatabaseCleaner.clean
+    #end
 
 #    config.before(:each) do
 #      @fbot = Factory(:fbot)

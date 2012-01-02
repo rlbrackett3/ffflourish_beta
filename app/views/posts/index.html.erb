@@ -5,7 +5,7 @@
 <!-- Listing all the users posts -->
 <% if @posts.any? %>
   <% if params[:page] %>
-    <div id="pagination"><%= will_paginate @posts %></div>
+    <div id="pagination"><%= paginate @posts %></div>
   <% end %>
   <div id="results">
     <div class="feed">
@@ -15,9 +15,9 @@
 <% else %>
   <% if @user == current_user %>
     <div id="get_posting">
-      <p class="static_content">You have no ffflourishes yet!</p> 
-      <p class="static_content">Answer the question above to get started.</p> 
+      <p class="static_content">You have no ffflourishes yet!</p>
+      <p class="static_content">Answer the question above to get started.</p>
     </div>
   <% end %>
 <% end %>
-<div id="pagination"><%= will_paginate @posts %></div>
+<div id="pagination"><%= paginate @posts %></div>

@@ -2,7 +2,6 @@
   <% @comments.each do |c| %>
     <li class="comment" id="comment_<%= c.id %>">
       <div class="feed_entry_left">
-        <%= render "shared/feed_avatar_follow", :f => c %>
       </div>
       <div class="comment_stats">
         <span class="commenter"><%= c.commenter %></span>
@@ -10,7 +9,7 @@
           <%="said #{time_ago_in_words(c.created_at)} ago" %>
         </span>
       </div>
-      <% if c.user_id == current_user.id || current_user.post_ids.include?(c.post.id) || current_user.role == "admin" %>
+      <% if c.user_id == current_user.id || current_user.posts.include?(c.post.id) || current_user.role == "admin" %>
         <%= link_to "delete",
                         user_post_comment_path(current_user, c.post, c),
                         :remote => true,

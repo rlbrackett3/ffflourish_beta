@@ -1,4 +1,4 @@
-require 'carrierwave/orm/mongoid'
+require 'carrierwave/mongoid'
 class Image
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -8,7 +8,8 @@ class Image
   embedded_in :post, :inverse_of => :images
   referenced_in :user
 
-  field :title
+  field :title, :type => String
+
   mount_uploader :image, ImageUploader
 
   #--validations--#

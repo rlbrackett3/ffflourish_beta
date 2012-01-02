@@ -12,7 +12,7 @@ if ENV['MONGOHQ_URL']
   ENV['MONGOID_DATABASE'] = mongo_uri.path.gsub('/', '')
 end
 
-require 'mongoid/railtie'
+#require 'mongoid/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'active_resource/railtie'
@@ -30,7 +30,7 @@ module Ffflourish
       g.template_engine     :haml
       g.test_framework      :rspec, :fixture => false
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
-      g.fixture_replacement :fabrication, :dir => "spec/fabricators"
+      #g.fixture_replacement :fabrication, :dir => "spec/fabricators"
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -72,7 +72,7 @@ module Ffflourish
     # Heroku logging
     config.logger = Logger.new(STDOUT)
     config.logger.level = Logger::INFO
-    
+
   end
 end
 

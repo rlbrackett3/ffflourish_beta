@@ -1,5 +1,5 @@
 <%= link_to (image_tag f.user.profile.avatar.avatar.url,
-                                                :class => "avatar_small"),
+                                       :class => "avatar_small"),
                                        user_feed_path(f.user) %>
 <span class="following_links" id="follow_link_<%= f.user.id %>">
   <% if f.user.followers.include?(current_user) %>
@@ -11,7 +11,7 @@
   <% else %>
     <% if f.user != current_user %>
       <span class="follow_me_link" id="follow_link_<%= f.user.id %>">
-        <%= link_to "Follow", follow_user_path(f.user), 
+        <%= link_to "Follow", follow_user_path(f.user),
                               :class => 'follow_me',
                               :remote => true,
                               :id => "follow_me_#{f.user_id.to_s}" %>

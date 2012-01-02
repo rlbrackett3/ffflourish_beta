@@ -16,10 +16,10 @@ class PostsController < ApplicationController
   #--GET /users/1/posts.json                                HTML and AJAX
   #---------------------------------------------------------------------#
   def index
-    @search_path = user_feed_path
+    @search_path = user_feed_path(@user)
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
-    
+    @posts = @user.posts.csearch(params[:search]).page(params[:page]).per(50).order('created_at DESC') #.search(params[:search])
+
     @page_title = "ffflourishes"
     @title = "#{@user.profile.name}'s ffflourishes"
     respond_with(@user, @posts)
@@ -27,8 +27,8 @@ class PostsController < ApplicationController
 #----------------------------------------------------------------------#
   def commented_on
     @user = User.find_by_slug(params[:user_id])
-    @commented_posts = @user.commented_on_posts.paginate(:page => params[:page], :per_page => 50)
-    
+    @commented_posts = @user.commented_on_posts.page(params[:page]).per(50)
+
      @post = @user.posts.new
   end
 #----------------------------------------------------------------------#
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/new.json                            HTML and AJAX
   #---------------------------------------------------------------------#
   def new
-    
+
     @user = User.find_by_slug(params[:user_id])
 
     @title = "new post"
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #to redirect to index
+    @posts = @user.posts.csearch(params[:search]).desc(:created_at).page(params[:page]).per(50) #.search(params[:search]) #to redirect to index
     @post = @user.posts.create(params[:post])
 
 #    @user.profile.increment_posts_count
@@ -108,7 +108,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Oops, something went wrong, please try again."
       redirect_to root_path
     end
-    
+
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/edit
@@ -116,10 +116,10 @@ class PostsController < ApplicationController
   #--GET /users/1/posts/edit.json                           HTML and AJAX
   #---------------------------------------------------------------------#
   def edit
-    
+
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
-    
+
     @post_title = "editing your post"
 #    @title = "editing #{@post.title}" if @post.title?
     respond_with(@user, @post)
@@ -132,13 +132,13 @@ class PostsController < ApplicationController
   def update
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @posts = @user.posts.search(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
+    @posts = @user.posts.csearch(params[:search]).desc(:created_at).page(params[:page]).per(50) #.search(params[:search])
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
-    
+
 #    flash[:notice] = "Post successfully updated!" if @post.update_attributes(params[:post])
 #    respond_with(@user)
-    
+
     if @post.update_attributes(params[:post])
       respond_to do |format|
         format.html { redirect_back_or_default(@user)
@@ -153,7 +153,7 @@ class PostsController < ApplicationController
 #      flash[:notice] = "There was an error editing your post, please try again."
 #      redirect_back_or_default(@user)
     end
-#    
+#
   end
 #----------------------------------------------------------------------#
   #--GET /users/1/posts/1
@@ -165,8 +165,6 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
     @post.destroy
 
-#    @user.profile.decrement_posts_count
-
     respond_with(@user, :location => user_posts_path(@user))
   end
 
@@ -176,7 +174,6 @@ class PostsController < ApplicationController
     @post.vote 1, current_user
     unless @post.voted?(current_user) == false
       @post.add_user_likes(current_user) #tests for this method
-#      current_user.profile.increment_likes_count #tests for this method
       @post.update_popscore
     else
       flash.now[:notice] = "You may only like a post once."
@@ -189,11 +186,11 @@ class PostsController < ApplicationController
       respond_with(current_user)
     end
   end
-  
+
   def likers # add tests for this method
     @post = Post.find(params[:id])
     @likers = @post.liked_by
-    
+
     respond_with(@post, @likers, :layout => !request.xhr?)
   end
 

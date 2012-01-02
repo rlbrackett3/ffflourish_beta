@@ -1,13 +1,12 @@
 <li class="comment">
   <div class="feed_entry_left">
-    <%= render "shared/feed_avatar_follow", :f => @comment %>
   </div>
   <div class="comment_stats">
     <span class="commenter"><%= @comment.commenter %></span>
     <span class="comment_date">
       <%="said #{time_ago_in_words(@comment.created_at)} ago" %>
     </span>
-      <% if @comment.user_id == current_user.id || current_user.post_ids.include?(@comment.post.id) %>
+      <% if @comment.user_id == current_user.id || current_user.posts.include?(@comment.post.id) %>
         <%= link_to "delete",
                         user_post_comment_path(current_user, @comment.post, @comment),
                         :remote => true,
