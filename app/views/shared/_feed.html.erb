@@ -1,7 +1,7 @@
 <% case %>
 <% when @feed_items %>
   <% if params[:page] %>
-    <div id="pagination"><%= will_paginate @feed_items %></div>
+    <div id="pagination"><%= paginate @feed_items %></div>
   <% end %>
   <% unless @feed_items.empty? %>
       <div id="results">
@@ -11,36 +11,36 @@
       </div>
     <!--<%= pageless(@feed_items.total_pages, user_following_path) %>-->
   <% end %>
-  <div id="pagination"><%= will_paginate @feed_items %></div>
+  <div id="pagination"><%= paginate @feed_items %></div>
 <% when @popular_posts %>
   <% if params[:page] %>
-    <div id="pagination"><%= will_paginate @popular_posts %></div>
+    <div id="pagination"><%= paginate @popular_posts %></div>
   <% end %>
   <div id="results">
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @popular_posts %>
     </ul>
-    <div id="pagination"><%= will_paginate @popular_posts %></div>
+    <div id="pagination"><%= paginate @popular_posts %></div>
   </div>
 <% when @recent_posts %>
   <% if params[:page] %>
-    <div id="pagination"><%= will_paginate @recent_posts %></div>
+    <div id="pagination"><%= paginate @recent_posts %></div>
   <% end %>
   <div id="results">
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @recent_posts %>
     </ul>
-    <div id="pagination"><%= will_paginate @recent_posts %></div>
+    <div id="pagination"><%= paginate @recent_posts %></div>
   </div>
 <% when @commented_posts %>
   <% if params[:page] %>
-    <div id="pagination"><%= will_paginate @commented_posts %></div>
+    <div id="pagination"><%= paginate @commented_posts %></div>
   <% end %>
   <div id="results">
     <ul class="feed">
       <%= render :partial => 'shared/feed_item', :collection => @commented_posts %>
     </ul>
-    <div id="pagination"><%= will_paginate @commented_posts %></div>
+    <div id="pagination"><%= paginate @commented_posts %></div>
   </div>
 <% end %>
 

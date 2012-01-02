@@ -1,4 +1,4 @@
-require 'carrierwave/orm/mongoid'
+require 'carrierwave/mongoid'
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -40,9 +40,9 @@ class Post
 
   scope :from_users_followed_by, lambda { |user| where(:user_id.in => user.following_ids).desc(:created_at)}
 
-  scope :recent, where(:created_at.gt => 2.weeks.ago).desc(:created_at)#write tests for me
+  scope :recent, where(:created_at.gt => 12.weeks.ago).desc(:created_at)#write tests for me
 
-  scope :popular, where(:created_at.gt => 2.weeks.ago).order_by(:pop_score.desc)#write tests for me
+  scope :popular, where(:created_at.gt => 12.weeks.ago).order_by(:pop_score.desc)#write tests for me
 
   scope :commented_on_by_user, lambda { |user| where( { "comments.user_id" => user.id.to_s } ).desc(:updated_at) }
 

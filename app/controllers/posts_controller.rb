@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def index
     @search_path = user_feed_path(@user)
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.csearch(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search])
+    @posts = @user.posts.csearch(params[:search]).page(params[:page]).per(50).order('created_at DESC') #.search(params[:search])
 
     @page_title = "ffflourishes"
     @title = "#{@user.profile.name}'s ffflourishes"
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 #----------------------------------------------------------------------#
   def commented_on
     @user = User.find_by_slug(params[:user_id])
-    @commented_posts = @user.commented_on_posts.paginate(:page => params[:page], :per_page => 50)
+    @commented_posts = @user.commented_on_posts.page(params[:page]).per(50)
 
      @post = @user.posts.new
   end
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   #---------------------------------------------------------------------#
   def create
     @user = User.find_by_slug(params[:user_id])
-    @posts = @user.posts.csearch(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search]) #to redirect to index
+    @posts = @user.posts.csearch(params[:search]).desc(:created_at).page(params[:page]).per(50) #.search(params[:search]) #to redirect to index
     @post = @user.posts.create(params[:post])
 
 #    @user.profile.increment_posts_count
@@ -132,7 +132,7 @@ class PostsController < ApplicationController
   def update
     @user = User.find_by_slug(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @posts = @user.posts.csearch(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50) #.search(params[:search])
+    @posts = @user.posts.csearch(params[:search]).desc(:created_at).page(params[:page]).per(50) #.search(params[:search])
 
     #there seems to be an issue with the default 'respond_with' response for update_attributes and devise??
 

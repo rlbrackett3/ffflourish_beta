@@ -1,7 +1,7 @@
 <% if params[:page] %>
-  <div id="pagination"><%= will_paginate @users %></div>
+  <div id="pagination"><%= paginate @users %></div>
 <% end %>
 <%= render "users_list" %>
-<%= will_paginate @users %>
+<%= paginate @users %>
 
 

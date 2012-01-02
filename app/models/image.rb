@@ -1,4 +1,4 @@
-require 'carrierwave/orm/mongoid'
+require 'carrierwave/mongoid'
 class Image
   include Mongoid::Document
   include Mongoid::Timestamps

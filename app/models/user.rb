@@ -1,4 +1,4 @@
-require 'carrierwave/orm/mongoid'
+require 'carrierwave/mongoid'
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -36,7 +36,7 @@ class User
   accepts_nested_attributes_for :profile
 
 #--User Blog--#
-  references_many :posts, :dependent => :delete, :index => true
+  references_many :posts, :dependent => :delete#, :index => true
   references_and_referenced_in_many :following,
                                     :class_name => 'User',
                                     :inverse_of => :followers
@@ -48,14 +48,14 @@ class User
 
 #--Validations--#
   validates :urlname,       :uniqueness => true,
-                            :length => 5..60#,
-                            #:format => { :with => /^[\w \.\-@]+$/ }
+                                      :length => 5..60#,
+                                      #:format => { :with => /^[\w \.\-@]+$/ }
   validates :name,          :presence => true,
-                            :length => 2..60#,
-                            #:format => { :with => /^[\w \.\-@]+$/ }
+                                     :length => 2..60#,
+                                      #:format => { :with => /^[\w \.\-@]+$/ }
   validates :email,         :presence => true,
-                            :confirmation => true,
-                            :uniqueness => { :case_sensitive => false }
+                                    :confirmation => true,
+                                    :uniqueness => { :case_sensitive => false }
   validates :profile,       :associated => true
 #  validates :role,          :presence => true
 

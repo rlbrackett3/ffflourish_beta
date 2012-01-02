@@ -9,9 +9,9 @@ class PopularPostsController < ApplicationController
     @search_path = popular_path
     @title = "popular ffflourishes"
 #    @page_title = "popular"
-    
+
     @user = current_user
-    @popular_posts = Post.popular.paginate(:page => params[:page], :per_page => 50)
+    @popular_posts = Post.popular.page(params[:page]).per(50)
   end
 
   def show

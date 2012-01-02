@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def index
     @search_path = users_path
-    @users = User.search(params[:search]).asc(:name).paginate(:page => params[:page], :per_page => 25)
+    @users = User.search(params[:search]).asc(:name).page(params[:page]).per(25)
     @user = current_user
     @title = "members"
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   #----------------------------------------------------------------------#
   def show
     @user = User.find_by_slug(params[:id])
-    @posts = @user.posts.csearch(params[:search]).desc(:created_at).paginate(:page => params[:page], :per_page => 50)
+    @posts = @user.posts.csearch(params[:search]).desc(:created_at).page(params[:page]).per(50)
     @post = @user.posts.new
     @title = @user.profile.name
 
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     @page_title = "is following"
     @title = "following"
     @user = User.find_by_slug(params[:id])
-    @users = @user.following.csearch(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
+    @users = @user.following.csearch(params[:search]).desc(:name).page(params[:page]).per(25)
     render 'show_follow'
   end
   #----------------------------------------------------------------------#
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     @page_title = "is followed by"
     @title = "followers"
     @user = User.find_by_slug(params[:id])
-    @users = @user.followers.csearch(params[:search]).desc(:name).paginate(:page => params[:page], :per_page => 25)
+    @users = @user.followers.csearch(params[:search]).desc(:name).page(params[:page]).per(25)
     render 'show_follow'
   end
 #----------------------------------------------------------------------#

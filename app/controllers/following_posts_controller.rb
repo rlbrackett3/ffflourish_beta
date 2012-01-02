@@ -10,7 +10,7 @@ class FollowingPostsController < ApplicationController
     @search_path = user_following_path(@user)
     @user = User.find_by_slug(params[:id])
     @profile = @user.profile
-    @feed_items = @user.following_feed.csearch(params[:search]).paginate(:page => params[:page], :per_page => 50)
+    @feed_items = @user.following_feed.csearch(params[:search]).page(params[:page]).per(50)
 
     # for jquery.pageless
 #    if request.xhr?

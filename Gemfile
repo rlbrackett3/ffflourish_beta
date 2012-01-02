@@ -22,13 +22,16 @@ gem 'devise_invitable'#, '~> 0.3.5'
 gem 'cancan'
 
 #--Image uploads and storage--#
-gem 'carrierwave' #:git => 'git://github.com/jnicklas/carrierwave.git'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# gem 'carrierwave' #:git => 'git://github.com/jnicklas/carrierwave.git'
 gem 'fog'
 gem 'aws-s3'
 gem 'mini_magick'
 
 #--General Utility Gems--#
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'kaminari'
+#gem "will_paginate_mongoid"
+#gem 'will_paginate'
 gem 'jquery-rails'
 gem 'remotipart'
 gem 'validated_fields', :git => 'http://github.com/alluniq/validated-fields.git'
